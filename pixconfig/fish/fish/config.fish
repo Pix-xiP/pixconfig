@@ -77,8 +77,6 @@ function peco_select_history_order
     end
 end
 
-set -gx OPENAI_API_KEY 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
-
 # Fish fix for lack of !! from bash
 #function sudo --description "Replacement for Bash 'sudo !!' command to run last command using sudo."
 #    if test "$argv" = !!
