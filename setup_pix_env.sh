@@ -88,11 +88,12 @@ if [[ $CFG =~ ^[Nn]$ ]]; then
 	info "Config files not installed"
 else
 	info "Copying configuration files into .config"
-	cp -r pixconfig/alacritty ~/.config/ 2>&1 | tee -a $LOG
+	# cp -r pixconfig/alacritty ~/.config/ 2>&1 | tee -a $LOG
 	cp -r pixconfig/dunst ~/.config/ 2>&1 | tee -a $LOG
 	cp -r pixconfig/fish ~/.config/ 2>&1 | tee -a $LOG
 	cp -r pixconfig/hypr ~/.config/ 2>&1 | tee -a $LOG
-	cp -r pixconfig/pipewire ~/.config/ 2>&1 | tee -a $LOG
+	# cp -r pixconfig/nvim ~/.config/ 2>&1 | tee -a $LOG
+	# cp -r pixconfig/pipewire ~/.config/ 2>&1 | tee -a $LOG
 	cp -r pixconfig/rofi ~/.config/ 2>&1 | tee -a $LOG
 	cp -r pixconfig/swaylock ~/.config/ 2>&1 | tee -a $LOG
 	cp -r pixconfig/waybar ~/.config/ 2>&1 | tee -a $LOG
@@ -111,7 +112,7 @@ cd ./waybar-setup
 axel -n 4 https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.1/CascadiaCode.zip
 unzip '*.zip' -d ./nerdfonts
 rm -rf *.zip
-sudo cp -R ./waybar-setup/nerdfonts/ /usr/share/fonts/
+sudo cp -R ./nerdfonts/ /usr/share/fonts/
 
 fc-cache -rv
 
