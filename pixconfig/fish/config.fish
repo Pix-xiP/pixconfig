@@ -1,5 +1,7 @@
 if status is-interactive
     # Commands to run hn interactive sessions can go here
+    fzf_configure_bindings --directory=\cf --git_log=\e\f
+
 end
 
 # How to make zoxide run
@@ -16,6 +18,7 @@ alias docker="sudo docker"
 alias gg="git pull"
 alias n="nvim"
 alias wz="wezterm"
+alias imgcat="wezterm imgcat"
 
 # Abbr Hours
 abbr rsync "rsync -avP --progress --verbose"
@@ -32,36 +35,31 @@ abbr ls "eza -g --sort=type"
 abbr ll "eza -g --sort=type -lah"
 abbr zt zerotier-cli
 abbr lg lazygit
+abbr edit "swappy -f"
 
+# ====================
+# EXPORTS
+# ====================
 # Set X for export
+# Set G for global
 set -x PATH "/opt/homebrew/opt/gnu-getopt/bin:$PATH"
 set -x C_INCLUDE_PATH "/usr/local/include:$C_INCLUDE_PATH"
 # Includes for Mac homebrew if using it cross platform.
 set -x PATH "/opt/homebrew:$PATH"
 set -x PATH "/opt/homebrew/bin:$PATH"
+set -gx WEZTERM_CONFIG_FILE "/home/pix/.config/wezterm/wezterm.lua"
+set -gx GRAVEYARD "/home/pix/.local/graveyard"
+set -x ODIN_ROOT /home/pix/AdeptusCustodes/Odin
+set -x EDITOR nvim
 
-# XZ Tar file
 function xtar --argument filename
-    tar cvJf $filename.tar.xz $filename
+    tar -I pixz cvf $filename.tar.xz $filename
 end
 
 # Quick backup!
 function backup --argument filename
     cp $filename $filename.bak
 end
-
-# Peco keybindings
-function fish_user_key_bindings
-    bind \cr fzf_history # ctrl + r
-    bind \cf fzf_file # ctrl + f 
-end
-
-function sudobangbang --on-event fish_postexec
-    abbr -g !! sudo $argv[1]
-end
-
-set -gx WEZTERM_CONFIG_FILE "/home/pix/.config/wezterm/wezterm.lua"
-set -gx GRAVEYARD "/home/pix/.local/graveyard"
 
 function __history_previous_command --description "Replacement for Bash 'sudo !!' command to run last commmand with sudo"
     switch (commandline -t)
@@ -87,6 +85,3 @@ end
 function get_pub_key --description "Quickly cat out public file"
     /bin/cat ~/.ssh/id_rsa.pub
 end
-
-set -U FZF_LEGACY_KEYBINDINGS 0
-set -U FZF_REVERSE_ISEARCH_OPTS "--reverse --height=100%"
