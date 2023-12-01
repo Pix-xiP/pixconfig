@@ -9,7 +9,7 @@
   "modules-left": [
     "clock",
     "custom/weather",
-    "wlr/workspaces"
+    "hyprland/workspaces"
   ],
   "modules-center": [
     "hyprland/window"
@@ -17,16 +17,18 @@
   "modules-right": [
     "tray",
     "custom/updates",
+    "cpu",
+    "memory",
     "custom/language",
-    "battery",
-    "backlight",
+    //"battery",
+    // "backlight",
     "pulseaudio",
     "pulseaudio#microphone"
   ],
   "hyprland/window": {
     "format": "{}"
   },
-  "wlr/workspaces": {
+  "hyprland/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
     "on-click": "activate",
@@ -44,12 +46,25 @@
       "10": []
     }
   },
+  "cpu": {
+    "interval": 10,
+    "format": " {}%",
+    "max-length": 10,
+    "on-click": ""
+  },
+  "memory": {
+    "interval": 30,
+    "format": " {}%",
+    "format-alt": " {used:0.1f}G",
+    "max-length": 10
+  },
   "custom/updates": {
-    "format": " {}",
+    "exec": "(checkupdates; yay -Qua) | wc -l",
     "interval": 7200, // every two hours
-    "exec": "i=$(checkupdates); echo \"$i\" |wc -l; echo \"$i\" |column -t |tr '\n' '\r'", // # of updates and tooltip details
+    "format": " {}",
+    // "exec": "i=$(checkupdates); echo \"$i\" |wc -l; echo \"$i\" |column -t |tr '\n' '\r'", // # of updates and tooltip details
     "exec-if": "exit 0", // always run; consider advanced run conditions
-    "on-click": "alacritty -e sudo pacman -Syu", // update system
+    "on-click": "wezterm --always-new-process -e yay -Syu", // update system
     "signal": 8
   },
   "custom/weather": {
@@ -67,18 +82,18 @@
     "format": "{: %R   %m/%d}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "{icon} {percent}%",
-    "format-icons": [
-      "",
-      "",
-      ""
-    ],
-    "on-scroll-up": "brightnessctl set 1%+",
-    "on-scroll-down": "brightnessctl set 1%-",
-    "min-length": 6
-  },
+  // "backlight": {
+  //   "device": "intel_backlight",
+  //   "format": "{icon} {percent}%",
+  //   "format-icons": [
+  //     "",
+  //     "",
+  //     ""
+  //   ],
+  //   "on-scroll-up": "brightnessctl set 1%+",
+  //   "on-scroll-down": "brightnessctl set 1%-",
+  //   "min-length": 6
+  // },
   "battery": {
     "states": {
       "good": 95,
