@@ -82,18 +82,15 @@ Improved Screenshotting capabilities
   - Tide configuration
   - Fisherman package manager
     - My List:
-      jorgebucaran/fisher
-      jorgebucaran/fish-bax
-      jethrokuan/fzf
-      decors/fish-colored-man
-      danhper/fish-ssh-agent
-      jorgebucaran/spark.fish
-      jorgebucaran/autopair.fish
-      catppuccin/fish
-      takashabe/fish-fzf
-      ilancosman/tide@v5
+      jorgebucaran/fisher        # Package manager
+      decors/fish-colored-man    # Coloured man pages  
+      danhper/fish-ssh-agent     # SSH agent using fish.
+      jorgebucaran/autopair.fish # Auto [] {} () etc.
+      catppuccin/fish            # Pastel theme (mocha)
+      ilancosman/tide@v6         # Async modern shell prompt.
+      meaningful-ooo/sponge      # Cleans up typos from history
 - `zsh`
-- Warp (Mac only, propritary...)
+- Warp (Mac only, proprietary...)
 
 ### Markdown:
 Viewers:
@@ -105,14 +102,14 @@ Viewers:
   - `LazyVim`: Easy bootstrapper, I run a customised version of this.
     Extras I add:
       - Fish Plugin and Parser
-      - Chatgpt integration 
+      - LLM integration via LM Studio && Codeium
       - Customised LSP servers 
       - Custom styles for nvim via nvim.lua / nvim.style in folder roots.
       - Redone keymapping cause `Colemak` keyboard
       - Extra treesitter files for languages like `odin` and `zig` 
       - Custom formatters for C and Swift.
 - `Sublime Text`
-- Running a custom theme I made on MacOS.
+  Running a custom theme I made on MacOS.
 - `Zed`
 - Interesting editor written in Rust, comes with built in LSP support.
 
@@ -323,7 +320,7 @@ Yes its a language, bite me. Get good at it.
 - `fish`
 Like bash, but if you use that shell, handy to know. 
 - `C#`
-Access to the dotnet environment can be nice, but its basically better Java 
+Access to the dotnet environment can be nice, but its basically better Java
 - `perl` || `raku`
 If you really just need to golf something.. 
 - `lua`
