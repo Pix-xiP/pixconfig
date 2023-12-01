@@ -101,7 +101,7 @@ config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 
 -- Background wallpaper
-config.window_background_image = "/home/pix/cyberpunk-terminal.jpg"
+config.window_background_image = "/home/pix/.config/wallpapers/cyberpunk-terminal.jpg"
 config.window_background_image_hsb = {
 	-- Darken the background image by reducing it to 1/3rd
 	brightness = 0.1,
