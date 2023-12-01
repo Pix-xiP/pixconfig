@@ -10,6 +10,10 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
+-- Hotload Helpers
+wezterm.add_to_config_reload_watch_list(wezterm.config_dir)
+wezterm.add_to_config_reload_watch_list("/home/pix/AdeptusCustodes/pix_hyprland/pixconfig/wezterm")
+
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
@@ -97,8 +101,7 @@ config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 
 -- Background wallpaper
-config.window_background_image = "/home/pix/Downloads/wallpaperflare.com_wallpaper.jpg"
-
+config.window_background_image = "/home/pix/cyberpunk-terminal.jpg"
 config.window_background_image_hsb = {
 	-- Darken the background image by reducing it to 1/3rd
 	brightness = 0.1,
