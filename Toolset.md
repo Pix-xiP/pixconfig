@@ -88,6 +88,7 @@ Improved Screenshotting capabilities
       jorgebucaran/autopair.fish # Auto [] {} () etc.
       catppuccin/fish            # Pastel theme (mocha)
       ilancosman/tide@v6         # Async modern shell prompt.
+      patrickF1/fzf.fish         # FZF with hotkeys for fish.
       meaningful-ooo/sponge      # Cleans up typos from history
 - `zsh`
 - Warp (Mac only, proprietary...)
