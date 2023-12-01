@@ -129,7 +129,7 @@ config.window_padding = {
 
 config.adjust_window_size_when_changing_font_size = false
 
-local keymaps_for_conf = require("keymaps")
+local keymaps_for_conf = require("keymaps.keymaps")
 config.keys = keymaps_for_conf
 
 -- and finally, return the configuration to wezterm
