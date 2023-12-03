@@ -19,6 +19,7 @@ alias gg="git pull"
 alias n="nvim"
 alias wz="wezterm"
 alias imgcat="wezterm imgcat"
+alias valgrind="sudo -E valgrind"
 
 # Abbr Hours
 abbr rsync "rsync -avP --progress --verbose"
