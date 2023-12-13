@@ -1,8 +1,6 @@
--- This will be where I add the majority of the files
--- that I want ot have added, plugins etc, instead of the init.lua direct.
+-- Non specific core things I want changed about my setup.
 
 return {
-
   {
     "LazyVim/LazyVim",
     opts = {
@@ -10,7 +8,7 @@ return {
         local theme = require("catppuccin")
         theme.setup({
           flavour = "mocha", -- latte, frappe, macchiato, mocha
-          -- term_colors = true,
+          --term_colors = true,
           transparent_background = true,
           no_italic = false,
           no_bold = false,
@@ -28,9 +26,9 @@ return {
             types = {},
           },
           -- color_overrides = {
-          --   mocha = {
-          --     base = "#000000",
-          --   },
+          -- mocha = {
+          -- base = "#000000",
+          -- },
           -- },
           highlight_overrides = {
             mocha = function(C)
@@ -55,4 +53,29 @@ return {
       background_colour = "#000000",
     },
   },
+  {
+    "hedyhli/outline.nvim",
+    lazy = true,
+    cmd = { "Outline", "OutlineOpen" },
+    keys = {
+      { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle Outline open/shut" },
+    },
+    opts = {
+      -- Put opts here bby
+    },
+  },
+  -- {
+  --   "github/copilot-cmp",
+  --   opts = {
+  --     copilot_proxy = "localhost:11900",
+  --     copilot_proxy_strict_ssl = false,
+  --   },
+  -- },
+  -- {
+  --   "github/copilot",
+  --   opts = {
+  --     copilot_proxy = "localhost:11900",
+  --     copilot_proxy_strict_ssl = false,
+  --   },
+  -- },
 }

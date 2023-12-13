@@ -69,14 +69,14 @@ fatal() {
 # }
 
 info "Running Pix's Arch Linux Hyprland and Development Environment Script\n"
-sleep 2
+sleep 1
 warn "Please remember to backup your files if this isn't a fresh install! " \
 	"\nThis script will pave over your config files\n"
-sleep 2
+sleep 1
 warn "Some commands require you to enter a password to execute, you may need " \
 	"to baby sit this script.\n"
 warn "CTRL C or CTRL Q can quit this script if you need to!\n"
-sleep 2
+sleep 1
 
 HAS_YAY=/sbin/yay
 
@@ -107,7 +107,7 @@ USER_IN=""
 ### Install Packages ###
 p "Would you like to install packages?"
 USER_IN=$(gum input --placeholder "[Y/n]")
-if [[ $INST =~ ^[Nn]$ ]]; then
+if [[ $USER_IN =~ ^[Nn]$ ]]; then
 	warn "No packages installed. Ending Script"
 	exit 1
 else
@@ -163,36 +163,46 @@ fi
 USER_IN=""
 ### Config Files ###
 
-p "Would you like to copy config files?"
-USER_IN=$(gum input --placeholder "[Y/n]")
-if [[ $USER_IN =~ ^[Nn]$ ]]; then
-	info "Config files not installed"
+# p "Would you like to copy config files?"
+# USER_IN=$(gum input --placeholder "[Y/n]")
+# if [[ $USER_IN =~ ^[Nn]$ ]]; then
+# 	info "Config files not installed"
+# else
+
+p "====================="
+p "Whad would you like to do with config files?"
+p "====================="
+USER_IN=$(gum choose "Copy" "Symlink" "Skip")
+if [[ $USER_IN == "Skip" ]]; then
+	info "Skipping configuration files"
 else
-	info "Copying configuration files into .config"
-	## Experiment with just doing a symlink?
-	# SYMLINK EXPERIMENT
-	ln -b -n pixconfig/dunst ~/.config/dunst
-	ln -b -n pixconfig/fish ~/.config/fish 2>&1 | tee -a $LOG
-	ln -b -n pixconfig/hypr ~/.config/hypr 2>&1 | tee -a $LOG
-	ln -b -n pixconfig/nvim ~/.config/nvim 2>&1 | tee -a $LOG
-	ln -b -n pixconfig/pipewire ~/.config/pipewire 2>&1 | tee -a $LOG
-	ln -b -n pixconfig/rofi ~/.config/rofi 2>&1 | tee -a $LOG
-	ln -b -n pixconfig/swaylock ~/.config/swaylock 2>&1 | tee -a $LOG
-	ln -b -n pixconfig/waybar ~/.config/waybar 2>&1 | tee -a $LOG
-	ln -b -n pixconfig/wezterm ~/.config/wezterm 2>&1 | tee -a $LOG
-	ln -b -n pixconfig/wlogout ~/.config/wlogout 2>&1 | tee -a $LOG
-
-	# cp -r pixconfig/dunst ~/.config/ 2>&1 | tee -a $LOG
-	# cp -r pixconfig/fish ~/.config/ 2>&1 | tee -a $LOG
-	# cp -r pixconfig/hypr ~/.config/ 2>&1 | tee -a $LOG
-	# cp -r pixconfig/nvim ~/.config/ 2>&1 | tee -a $LOG
-	# cp -r pixconfig/pipewire ~/.config/ 2>&1 | tee -a $LOG
-	# cp -r pixconfig/rofi ~/.config/ 2>&1 | tee -a $LOG
-	# cp -r pixconfig/swaylock ~/.config/ 2>&1 | tee -a $LOG
-	# cp -r pixconfig/waybar ~/.config/ 2>&1 | tee -a $LOG
-	# cp -r pixconfig/wezterm ~/.config/ 2>&1 | tee -a $LOG
-	# cp -r pixconfig/wlogout ~/.config/ 2>&1 | tee -a $LOG
-
+	if [[ $USER_IN == "Copy" ]]; then
+		info "Copying configuration files into .config"
+		cp -r pixconfig/dunst ~/.config/ 2>&1 | tee -a $LOG
+		cp -r pixconfig/fish ~/.config/ 2>&1 | tee -a $LOG
+		cp -r pixconfig/hypr ~/.config/ 2>&1 | tee -a $LOG
+		cp -r pixconfig/nvim ~/.config/ 2>&1 | tee -a $LOG
+		cp -r pixconfig/pipewire ~/.config/ 2>&1 | tee -a $LOG
+		cp -r pixconfig/rofi ~/.config/ 2>&1 | tee -a $LOG
+		cp -r pixconfig/swaylock ~/.config/ 2>&1 | tee -a $LOG
+		cp -r pixconfig/waybar ~/.config/ 2>&1 | tee -a $LOG
+		cp -r pixconfig/wezterm ~/.config/ 2>&1 | tee -a $LOG
+		cp -r pixconfig/wlogout ~/.config/ 2>&1 | tee -a $LOG
+	elif [[ $USER_IN == "Symlink" ]]; then
+		## Experiment with just doing a symlink?
+		# SYMLINK EXPERIMENT
+		info "Symlinking config files"
+		ln -b -n pixconfig/dunst ~/.config/dunst
+		ln -b -n pixconfig/fish ~/.config/fish 2>&1 | tee -a $LOG
+		ln -b -n pixconfig/hypr ~/.config/hypr 2>&1 | tee -a $LOG
+		ln -b -n pixconfig/nvim ~/.config/nvim 2>&1 | tee -a $LOG
+		ln -b -n pixconfig/pipewire ~/.config/pipewire 2>&1 | tee -a $LOG
+		ln -b -n pixconfig/rofi ~/.config/rofi 2>&1 | tee -a $LOG
+		ln -b -n pixconfig/swaylock ~/.config/swaylock 2>&1 | tee -a $LOG
+		ln -b -n pixconfig/waybar ~/.config/waybar 2>&1 | tee -a $LOG
+		ln -b -n pixconfig/wezterm ~/.config/wezterm 2>&1 | tee -a $LOG
+		ln -b -n pixconfig/wlogout ~/.config/wlogout 2>&1 | tee -a $LOG
+	fi
 	# Set some files as executable!
 	chmod +x ~/.config/hypr/xdg-portal-hyprland
 	chmod +x ~/.config/waybar/scripts/waybar-wttr.py
