@@ -29,8 +29,8 @@ abbr nvim-config "nvim ~/.config/nvim/init.lua"
 abbr hypr-config "nvim ~/.config/hypr/hyprland.conf"
 abbr wz-config "nvim ~/.config/wezterm/wezterm.lua"
 abbr re-src "source ~/.config/fish/config.fish"
-abbr grep "rg --color=auto"
-abbr rg "rg --color=auto"
+abbr rg "rg --color=always --column --line-number --smart-case --no-heading"
+abbr rgc "rg --color=auto"
 abbr fping "ping -c 20 -i.2"
 abbr ls "eza -g --sort=type"
 abbr ll "eza -g --sort=type -lah"
@@ -52,6 +52,8 @@ set -gx WEZTERM_CONFIG_FILE "/home/pix/.config/wezterm/wezterm.lua"
 set -gx GRAVEYARD "/home/pix/.local/graveyard"
 set -x ODIN_ROOT /home/pix/AdeptusCustodes/Odin
 set -x EDITOR nvim
+
+set -x FZF_DEFAULT_OPTS '--cycle --layout=reverse --border --height=95% --preview-window=wrap --marker="=>" --bind "shift-up:preview-up,shift-down:preview-down"'
 
 function xtar --argument filename
     tar -I pixz cvf $filename.tar.xz $filename
