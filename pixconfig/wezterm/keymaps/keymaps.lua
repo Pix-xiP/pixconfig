@@ -18,7 +18,6 @@ local CTRL_SHIFT_SUPER = CTRL .. S .. SHIFT .. S .. SUPER
 -- Defaults found at: https://wezfurlong.org/wezterm/config/default-keys.html
 -- Which OS are we running on?
 local the_os = get_os()
-print(the_os)
 local keys = {}
 local act = wezterm.action
 
@@ -64,6 +63,71 @@ if the_os == "Darwin" then
 		-- Pane Movement
 		{ key = "o", mods = CTRL, action = act.PaneSelect({ alphabet = "arstqwfpzxcvneio", mode = "SwapWithActive" }) },
 		{ key = "'", mods = CTRL, action = act.PaneSelect({ alphabet = "arstqwfpzxcvneio" }) },
+		-- Switch to the default workspace
+		{ key = "r", mods = CTRL_SUPER, action = wezterm.action.SwitchToWorkspace({ name = "default" }) },
+		-- Switch to a monitoring workspace, which will have `top` launched into it
+		{
+			key = "s",
+			mods = CTRL_SUPER,
+			action = wezterm.action.SwitchToWorkspace({
+				name = "scratch_pad",
+				spawn = {
+					args = { "vim" },
+				},
+			}),
+		},
+		{
+			key = "p",
+			mods = CTRL_SUPER,
+			action = act.PromptInputLine({
+				description = wezterm.format({
+					{ Attribute = { Intensity = "Bold" } },
+					{ Foreground = { AnsiColor = "Fuchsia" } },
+					{ Text = "Enter name for workspace" },
+				}),
+				action = wezterm.action_callback(function(window, pane, line)
+					-- line will be `nil` if they hit escape without entering anything
+					-- An empty string if they just hit enter
+					-- Or the actual line of text they wrote
+					if line then
+						window:perform_action(
+							act.SwitchToWorkspace({
+								name = line,
+							}),
+							pane
+						)
+					end
+				end),
+			}),
+		},
+		{
+			key = "g",
+			mods = CTRL_SUPER,
+			action = wezterm.action_callback(function(window, pane)
+				local choices = {}
+				for n = 1, 20 do
+					table.insert(choices, { label = tostring(n) .. "workspace" })
+				end
+
+				window:perform_action(
+					act.InputSelector({
+						action = wezterm.action_callback(function(window, pane, id, label)
+							if not id and not label then
+								wezterm.log_info("cancelled")
+							else
+								wezterm.log_info("you selected: ", id, label)
+								pane:send_text(label)
+							end
+						end),
+						title = "Title Text",
+						choices = choices,
+						alphabet = "123456789",
+						description = " Testing pressing keys, using / to search",
+					}),
+					pane
+				)
+			end),
+		},
 	}
 end
 
