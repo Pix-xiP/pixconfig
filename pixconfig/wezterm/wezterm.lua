@@ -20,7 +20,8 @@ wezterm.add_to_config_reload_watch_list("/home/pix/AdeptusCustodes/pix_hyprland/
 -- config.color_scheme = "AdventureTime"
 config.color_scheme = "Catppuccin Mocha"
 
-config.font = wezterm.font("FiraCode", { weight = "Bold", italic = false })
+-- config.font = wezterm.font("FiraCode", { weight = "Bold", italic = false })
+config.font = wezterm.font("FiraCode Nerd Font", { weight = "Regular", italic = false })
 -- You can specify some parameters to influence the font selection;
 -- for example, this selects a Bold, Italic font variant.
 -- config.font = wezterm.font("JetBrains Mono", { weight = "Bold", italic = true })
@@ -101,7 +102,8 @@ config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 
 -- Background wallpaper
-config.window_background_image = "/home/pix/.config/wallpapers/cyberpunk-terminal.jpg"
+-- config.window_background_image = "/home/pix/.config/wallpapers/cyberpunk-terminal.jpg"
+config.window_background_image = "/Users/pix/.config/wallpapers/terminal_background.jpg"
 config.window_background_image_hsb = {
 	-- Darken the background image by reducing it to 1/3rd
 	brightness = 0.1,
