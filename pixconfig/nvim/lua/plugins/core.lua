@@ -25,11 +25,6 @@ return {
             properties = {},
             types = {},
           },
-          -- color_overrides = {
-          -- mocha = {
-          -- base = "#000000",
-          -- },
-          -- },
           highlight_overrides = {
             mocha = function(C)
               return {
@@ -64,18 +59,4 @@ return {
       -- Put opts here bby
     },
   },
-  -- {
-  --   "github/copilot-cmp",
-  --   opts = {
-  --     copilot_proxy = "localhost:11900",
-  --     copilot_proxy_strict_ssl = false,
-  --   },
-  -- },
-  -- {
-  --   "github/copilot",
-  --   opts = {
-  --     copilot_proxy = "localhost:11900",
-  --     copilot_proxy_strict_ssl = false,
-  --   },
-  -- },
 }
