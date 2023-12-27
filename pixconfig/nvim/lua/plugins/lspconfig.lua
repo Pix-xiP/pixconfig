@@ -21,7 +21,7 @@ return {
             enable_format = true,
             enable_hover = true,
             enable_document_symbols = true,
-            -- enable_semantic_tokens = true, // Don't want highlighting
+            -- enable_semantic_tokens = true, -- Don't want highlighting
             enable_inlay_hints = true,
             enable_snippets = false,
             enable_references = true,
