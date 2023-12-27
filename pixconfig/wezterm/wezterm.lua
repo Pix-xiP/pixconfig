@@ -15,6 +15,9 @@ wezterm.add_to_config_reload_watch_list(wezterm.config_dir)
 wezterm.add_to_config_reload_watch_list("/home/pix/AdeptusCustodes/pix_hyprland/pixconfig/wezterm")
 
 -- This is where you actually apply your config choices
+--
+-- Remove window decoration bar along the top
+config.window_decorations = "RESIZE"
 
 -- For example, changing the color scheme:
 -- config.color_scheme = "AdventureTime"
