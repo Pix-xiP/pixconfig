@@ -20,6 +20,7 @@ alias n="nvim"
 alias wz="wezterm"
 alias imgcat="wezterm imgcat"
 alias valgrind="sudo -E valgrind"
+alias tree="eza -g --icons --sort=type --tree"
 
 # Abbr Hours
 abbr rsync "rsync -avP --progress --verbose"
@@ -32,8 +33,8 @@ abbr re-src "source ~/.config/fish/config.fish"
 abbr rg "rg --color=auto"
 abbr rgc "rg --color=always --column --line-number --smart-case --no-heading"
 abbr fping "ping -c 20 -i.2"
-abbr ls "eza -g --sort=type"
-abbr ll "eza -g --sort=type -lah"
+abbr ls "eza -g --icons --sort=type"
+abbr ll "eza -g --icons --sort=type -lah"
 abbr zt zerotier-cli
 abbr lg lazygit
 abbr edit "swappy -f"
