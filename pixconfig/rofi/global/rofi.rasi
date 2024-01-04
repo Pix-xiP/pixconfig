@@ -1,5 +1,5 @@
 configuration {
-    font: "Inter Regular 10";
+    font: "JetBrainsMono Regular 10";
     sidebar-mode: true;
     show-icons: true;
     icon-theme: "Nordzy";

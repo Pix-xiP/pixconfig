@@ -1,16 +1,5 @@
 @import "default"
 
-configuration {
-  sidebar-mode: false;
-  show-icons: true;
-  icon-theme: "Nordzy";
-  fullscreen: false;
-  threads: 0;
-  matching: "fuzzy";
-  scroll-method: 0;
-  monitor: "primary";
-}
-
 * {
 	bg: #232136;
 	cur: #2a273f;
@@ -24,7 +13,6 @@ configuration {
 	yel: #f6c177;
 
 	font: "Cartograph CF 12";
-  transparent: #00000000;
 
 	foreground: @fgd;
 	background: @bg;
@@ -38,63 +26,46 @@ configuration {
 	bordercolor: @ora;
 }
 
-window {
+#window {
 	background-color: @background;
 	border:           3;
 	border-radius:    6;
 	border-color:     @bordercolor;
 	padding:          5;
 }
-
+#mainbox {
+	border:  0;
+	padding: 5;
+}
 #message {
-	border:       1px solid 0px 0px ;
+	border:       1px dash 0px 0px ;
 	border-color: @separatorcolor;
 	padding:      1px ;
 }
-
-textbox {
+#textbox {
 	text-color: @foreground;
 }
-
-listview {
+#listview {
 	fixed-height: 0;
-	border:       2px solid 0px 0px ;
+	border:       2px dash 0px 0px ;
 	border-color: @bordercolor;
 	spacing:      2px ;
 	scrollbar:    false;
 	padding:      2px 0px 0px ;
-  dynamic: true;
 }
-
-element {
-    background-color: @transparent;
-    text-color: @foreground;
-    orientation: horizontal;
-    border: 0;
-    border-radius: 6px;
-    spacing: 24px;
-    margin: 0px 12px 0px 12px;
-    padding: 5px 12px 5px 12px;
+#element {
+	border:  0;
+	padding: 1px ;
 }
-
-element-icon {
-    size: 24px;
-    border: 0;
-    border-color: @transparent;
-    background-color: transparent;
-}
-
-element.normal.normal {
+#element.normal.normal {
 	background-color: @background;
 	text-color:       @foreground;
 }
-
-element.normal.urgent {
+#element.normal.urgent {
 	background-color: @urgent-background;
 	text-color:       @urgent-foreground;
 }
-
-element.normal.active {
+#element.normal.active {
 	background-color: @active-background;
 	text-color:       @background;
 }
@@ -125,9 +96,8 @@ element.normal.active {
 #scrollbar {
 	width:        2px ;
 	border:       0;
-	handle-width: 4px ;
+	handle-width: 8px ;
 	padding:      0;
-  border-radius: 6px;
 }
 #sidebar {
 	border:       2px dash 0px 0px ;
@@ -146,51 +116,20 @@ element.normal.active {
 	spacing:    0;
 	text-color: @foreground;
 }
-
-
-prompt {
-  enabled: false;
+#entry {
+	spacing:    0;
+	text-color: @cya;
 }
-
-entry {
-  spacing: 0;
-  text-color: @cya;
-  background-color: @transparent;
-  expant: true;
-  vertical-align: 0.5;
-  horizontal-align: 0;
-  placeholder: "Search...";
-  placeholder-color: @foreground;
-  blink: true;
+#prompt {
+	spacing:    0;
+	text-color: @grn;
 }
-
 #inputbar {
-	children:   [ prompt,entry,case-indicator ];
+	children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
-inputbar {
-  padding: 12px;
-  margin: 8px 8px 12px 8px;
-  background-color: #333146;
-  text-color: @foreground;
-  expand: false;
-  border-radius: 9px;
-  position: north;
-
-}
-
-listview {
-    background-color: @transparent;
-    spacing: 0;
-    cycle: true;
-    dynamic: true;
-    scrollbar: true;
-}
-
-mainbox {
-    width: 200px;
-    expand: true;
-    spacing: 12px;
-    padding: 5px;
-    background-color: @background;
-    children: [ inputbar, listview ];
+#textbox-prompt-colon {
+	expand:     false;
+	str:        ":";
+	margin:     0px 0.3em 0em 0em;
+	text-color: @grn;
 }
