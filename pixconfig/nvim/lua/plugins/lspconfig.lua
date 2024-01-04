@@ -1,17 +1,26 @@
--- LSP configuration goes here :>
 return {
   { "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
   {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        bashls = {
+          cmd = { "bash-language-server", "start" },
+          filetypes = { "sh" },
+          settings = {
+            bashIde = {
+              globPattern = "*@(.sh|.inc|.bash|.command)",
+            },
+          },
+        },
         clangd = {
           cmd = { "clangd" },
           filetypes = { "c", "h", "cpp", "hpp" },
         },
-        sourcekit = {
-          cmd = { "sourcekit-lsp" },
-          filetypes = { "swift" },
+        gopls = {
+          cmd = { "gopls" },
+          filetypes = { "go", "gomod", "gowork", "gotmpl" },
+          rootPatterns = { "go.work", "go.mod", ".git" },
         },
         ols = {
           cmd = { "ols" },
@@ -28,16 +37,6 @@ return {
             enable_rename = true,
             enable_label_details = true,
           },
-        },
-        gopls = {
-          cmd = { "gopls" },
-          filetypes = { "go", "gomod", "gowork", "gotmpl" },
-          rootPatterns = { "go.work", "go.mod", ".git" },
-        },
-        zls = {
-          cmd = { "zls" },
-          filetypes = { "zig" },
-          single_file_support = true,
         },
         omnisharp = {
           cmd = { "omnisharp" },
@@ -68,8 +67,18 @@ return {
             },
           },
         },
+        sourcekit = {
+          cmd = { "sourcekit-lsp" },
+          filetypes = { "swift" },
+        },
+        zls = {
+          cmd = { "zls" },
+          filetypes = { "zig" },
+          single_file_support = true,
+        },
       },
     },
+    -- Formatting for Swift since nothing built in x(
     {
       "stevearc/conform.nvim",
       opts = {
