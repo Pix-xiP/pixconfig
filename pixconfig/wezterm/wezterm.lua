@@ -23,8 +23,8 @@ config.window_decorations = "RESIZE"
 -- config.color_scheme = "AdventureTime"
 config.color_scheme = "Catppuccin Mocha"
 
--- config.font = wezterm.font("FiraCode", { weight = "Bold", italic = false })
-config.font = wezterm.font("FiraCode Nerd Font", { weight = "Regular", italic = false })
+config.font = wezterm.font("FiraCode", { weight = "Bold", italic = false })
+-- config.font = wezterm.font("FiraCode Nerd Font", { weight = "Regular", italic = false })
 -- You can specify some parameters to influence the font selection;
 -- for example, this selects a Bold, Italic font variant.
 -- config.font = wezterm.font("JetBrains Mono", { weight = "Bold", italic = true })
@@ -105,20 +105,17 @@ config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 
 -- Background wallpaper
--- config.window_background_image = "/home/pix/.config/wallpapers/cyberpunk-terminal.jpg"
-config.window_background_image = "/Users/pix/.config/wallpapers/terminal_background.jpg"
+config.window_background_image = "/home/pix/.config/wallpapers/terminal_background.jpg"
+-- config.window_background_image = "/Users/pix/.config/wallpapers/terminal_background.jpg"
 config.window_background_image_hsb = {
-	-- Darken the background image by reducing it to 1/3rd
-	brightness = 0.1,
-	-- You can adjust the hue by scaling its value.
-	-- a multiplier of 1.0 leaves the value unchanged.
-	hue = 1.0,
-	-- You can adjust the saturation also.
+	brightness = 0.1, -- Darken background by x..
+	hue = 1.0, -- Default, 1.0 leaves it unchanged.
 	saturation = 1.0,
 }
 
 -- MULTIPLEXER
 -- Setup for different multiplex domains.
+-- TODO: Setup with the rest of the workspaces :>
 config.unix_domains = {
 	{ name = "pix_std", no_serve_automatically = false },
 	{ name = "odin", no_serve_automatically = false },

@@ -42,6 +42,58 @@ if the_os == "Linux" then
 		-- Pane Movement.
 		{ key = "o", mods = CTRL, action = act.PaneSelect({ alphabet = "arstqwfpzxcvneio", mode = "SwapWithActive" }) },
 		{ key = "'", mods = CTRL, action = act.PaneSelect({ alphabet = "arstqwfpzxcvneio" }) },
+		{
+			key = "p",
+			mods = CTRL_ALT,
+			action = act.PromptInputLine({
+				description = wezterm.format({
+					{ Attribute = { Intensity = "Bold" } },
+					{ Foreground = { AnsiColor = "Fuchsia" } },
+					{ Text = "Enter name for workspace" },
+				}),
+				action = wezterm.action_callback(function(window, pane, line)
+					-- line will be `nil` if they hit escape without entering anything
+					-- An empty string if they just hit enter
+					-- Or the actual line of text they wrote
+					if line then
+						window:perform_action(
+							act.SwitchToWorkspace({
+								name = line,
+							}),
+							pane
+						)
+					end
+				end),
+			}),
+		},
+		{
+			key = "g",
+			mods = CTRL_ALT,
+			action = wezterm.action_callback(function(window, pane)
+				local choices = {}
+				for n = 1, 20 do
+					table.insert(choices, { label = tostring(n) .. "workspace" })
+				end
+
+				window:perform_action(
+					act.InputSelector({
+						action = wezterm.action_callback(function(window, pane, id, label)
+							if not id and not label then
+								wezterm.log_info("cancelled")
+							else
+								wezterm.log_info("you selected: ", id, label)
+								pane:send_text(label)
+							end
+						end),
+						title = "Title Text",
+						choices = choices,
+						alphabet = "123456789",
+						description = " Testing pressing keys, using / to search",
+					}),
+					pane
+				)
+			end),
+		},
 	}
 end
 
