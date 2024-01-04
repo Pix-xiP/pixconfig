@@ -1,35 +1,39 @@
+-- PIX WEZTERM CONFIG
+-- Featureing my own brand of terrible LUA!
+--
+
+-- ===============
+-- Setup and Requires
+-- ===============
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
 -- This table will hold the configuration.
-local config = {}
-
--- In newer versions of wezterm, use the config_builder which will
--- help provide clearer error messages
+local C = {}
 if wezterm.config_builder then
-	config = wezterm.config_builder()
+	C = wezterm.config_builder()
 end
+
+local theme = require("themes.theme")
+local utils = require("utils.utils")
+-- ===============
+-- Actual Config :>
+-- ===============
 
 -- Hotload Helpers
 wezterm.add_to_config_reload_watch_list(wezterm.config_dir)
 wezterm.add_to_config_reload_watch_list("/home/pix/AdeptusCustodes/pix_hyprland/pixconfig/wezterm")
 
 -- This is where you actually apply your config choices
---
+
 -- Remove window decoration bar along the top
-config.window_decorations = "RESIZE"
+C.window_decorations = "RESIZE"
 
--- For example, changing the color scheme:
--- config.color_scheme = "AdventureTime"
-config.color_scheme = "Catppuccin Mocha"
+-- Colors and theme configuration in theme.lua
+C.color_scheme = theme.default
+C.font = theme.font
 
-config.font = wezterm.font("FiraCode", { weight = "Bold", italic = false })
--- config.font = wezterm.font("FiraCode Nerd Font", { weight = "Regular", italic = false })
--- You can specify some parameters to influence the font selection;
--- for example, this selects a Bold, Italic font variant.
--- config.font = wezterm.font("JetBrains Mono", { weight = "Bold", italic = true })
-
-config.colors = {
+C.colors = {
 	tab_bar = {
 		-- The active tab is the one that has focus in the window
 		active_tab = {
@@ -99,16 +103,17 @@ config.colors = {
 	},
 }
 
-config.window_decorations = "RESIZE"
-config.use_fancy_tab_bar = true
--- config.enable_tab_bar = false
-config.hide_tab_bar_if_only_one_tab = true
-config.tab_bar_at_bottom = true
+C.window_decorations = "RESIZE"
+C.use_fancy_tab_bar = true
+-- C.enable_tab_bar = false
+C.hide_tab_bar_if_only_one_tab = true
+C.tab_bar_at_bottom = true
 
--- Background wallpaper
-config.window_background_image = "/home/pix/.config/wallpapers/terminal_background.jpg"
--- config.window_background_image = "/Users/pix/.config/wallpapers/terminal_background.jpg"
-config.window_background_image_hsb = {
+-- Background loaded by local lua
+local bg_config = require("background.wallpaper")
+C.window_background_image = bg_config
+
+C.window_background_image_hsb = {
 	brightness = 0.1, -- Darken background by x..
 	hue = 1.0, -- Default, 1.0 leaves it unchanged.
 	saturation = 1.0,
@@ -117,26 +122,21 @@ config.window_background_image_hsb = {
 -- MULTIPLEXER
 -- Setup for different multiplex domains.
 -- TODO: Setup with the rest of the workspaces :>
-config.unix_domains = {
+C.unix_domains = {
 	{ name = "pix_std", no_serve_automatically = false },
-	{ name = "odin", no_serve_automatically = false },
+	{ name = "other", no_serve_automatically = false },
 }
 
 -- Scrollback
-config.scrollback_lines = 10000
+C.scrollback_lines = 10000
 
 -- Terminal padding inside the window.
-config.window_padding = {
-	left = 0,
-	right = 0,
-	top = 0,
-	bottom = 0,
-}
+C.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 
-config.adjust_window_size_when_changing_font_size = false
+C.adjust_window_size_when_changing_font_size = false
 
 local keymaps_for_conf = require("keymaps.keymaps")
-config.keys = keymaps_for_conf
+C.keys = keymaps_for_conf
 
 -- and finally, return the configuration to wezterm
-return config
+return C
