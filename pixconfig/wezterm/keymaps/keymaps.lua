@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
-local get_os = require("keymaps.which_os")
+local utils = require("utils.utils")
+local theme = require("themes.theme")
 
 local S = "|"
 
@@ -11,19 +12,26 @@ local SUPER = "SUPER"
 local CTRL_SUPER = CTRL .. S .. SUPER
 local CTRL_SHIFT = CTRL .. S .. SHIFT
 local CTRL_ALT = CTRL .. S .. ALT
+local ALT_SHIFT = ALT .. S .. SHIFT
 local CTRL_ALT_SHIFT = CTRL .. S .. ALT .. S .. SHIFT
 local CTRL_SHIFT_SUPER = CTRL .. S .. SHIFT .. S .. SUPER
+local ALT_SUPER_SHIFT = ALT .. S .. SUPER .. S .. SHIFT
 
 -- KEYBINDINGS
 -- Defaults found at: https://wezfurlong.org/wezterm/config/default-keys.html
--- Which OS are we running on?
-local the_os = get_os()
 local keys = {}
 local act = wezterm.action
 
+-- TODO: Smarter way to do this would be to remap the above CTRL_ALT etc to be
+-- os agnostic.
+-- TODO: TODO: Actualy do the above, have all the utils and stuff good to go.
+
 -- Check for Linux
-if the_os == "Linux" then
+if utils.os == "Linux" then
 	keys = {
+
+		-- TEST
+
 		-- Movements
 		{ key = "n", mods = CTRL_ALT, action = act.ActivatePaneDirection("Left") },
 		{ key = "o", mods = CTRL_ALT, action = act.ActivatePaneDirection("Right") },
@@ -94,10 +102,32 @@ if the_os == "Linux" then
 				)
 			end),
 		},
-	}
-end
+		-- Tab Management
+		{
+			key = "n",
+			mods = ALT_SHIFT,
+			action = act.PromptInputLine({
+				description = "Enter new name for tab",
+				-- selene: allow(unused_variable)
+				---@diagnostic disable-next-line: unused-local
+				action = wezterm.action_callback(function(window, pane, line)
+					if line then
+						window:active_tab():set_title(line)
+					end
+				end),
+			}),
+		},
 
-if the_os == "Darwin" then
+		-- Theme Selection and Hotloading.
+		{
+			key = "t",
+			mods = ALT_SUPER_SHIFT,
+			action = wezterm.action_callback(function(window, pane)
+				theme.select_theme(window, pane)
+			end),
+		},
+	}
+elseif utils.os == "Darwin" then
 	keys = {
 		{ key = "n", mods = CTRL_SUPER, action = act.ActivatePaneDirection("Left") },
 		{ key = "o", mods = CTRL_SUPER, action = act.ActivatePaneDirection("Right") },
