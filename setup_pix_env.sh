@@ -144,7 +144,7 @@ else
 		" noise-suppression-for-voice polkit-gnome ffmpeg viewnior pavucontrol thunar ffmpegthumbnailer" \
 		" tumbler thunar-archive-plugin xdg-user-dirs"
 	#
-	THEME_PKGS="nordic-theme papirus-icon-theme starship"
+	THEME_PKGS="nordic-theme papirus-icon-theme starship tree-sitter-cli tree-sitter"
 
 	# Terminal Packages for Dev and general everything else.
 	# See the Toolset.MD for information.
