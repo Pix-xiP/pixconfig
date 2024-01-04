@@ -1,22 +1,35 @@
 -- For all syntax highlighting needs, just pulling out of core to make finding easier.
 
 return {
-  "luckasRanarison/tree-sitter-hypr",
-}, {
-  "nvim-treesitter/nvim-treesitter",
-  opts = function(_, opts)
-    vim.list_extend(opts.ensure_installed, {
-      ensure_installed = {
-        "swift",
-        "fish",
-        "zig",
-        "odin",
-        "c",
-        "markdown",
-        "lua",
-        "bash",
-        "hypr",
+  -- HYPRLAND TREESITTER <3
+  {
+    "luckasRanarison/tree-sitter-hyprlang",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
+
+  -- Everything else
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      highlight = { enable = true },
+      indent = {
+        enable = true,
+        disable = { "odin" },
       },
-    })
-  end,
+
+      ensure_installed = {
+        "bash",
+        "c",
+        "c_sharp",
+        "fish",
+        "go",
+        "hypr",
+        "lua",
+        "markdown",
+        "odin",
+        "swift",
+        "zig",
+      },
+    },
+  },
 }
