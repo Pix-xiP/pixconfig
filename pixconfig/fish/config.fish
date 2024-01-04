@@ -56,6 +56,18 @@ set -x EDITOR nvim
 
 set -x FZF_DEFAULT_OPTS '--cycle --layout=reverse --border --height=95% --preview-window=wrap --marker="=>" --bind "shift-up:preview-up,shift-down:preview-down"'
 
+if test (uname) = Linux
+    set -gx PIXCONFIG /home/pix/AdeptusCustodes/pix_hyprland/pixconfig/
+
+else if test (uname) = Darwin
+    set -gx PIXCONFIG /Users/pix/AdeptusCustodes/pix_hyprland/pixconfig/
+else
+    set -gx PIXCONFIG "./"
+end
+
+# ===================
+# FUNCTIONS  (that aren't in their own fish files)
+# ===================
 function xtar --argument filename
     tar -I pixz cvf $filename.tar.xz $filename
 end
@@ -84,6 +96,8 @@ function __history_previous_command_arguments
             commandline -i '$'
     end
 end
+
+
 
 # Ez cat SSH pub key
 function get_pub_key --description "Quickly cat out public file"
