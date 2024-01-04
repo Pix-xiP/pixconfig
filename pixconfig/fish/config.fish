@@ -1,6 +1,7 @@
 if status is-interactive
     # Commands to run hn interactive sessions can go here
     fzf_configure_bindings --directory=\cf --git_log=\e\f
+    fish_config theme choose "Rosé Pine"
 
 end
 
@@ -77,27 +78,23 @@ function backup --argument filename
     cp $filename $filename.bak
 end
 
-function __history_previous_command --description "Replacement for Bash 'sudo !!' command to run last commmand with sudo"
-    switch (commandline -t)
-        case "!"
-            commandline -t $history[1]
-            commandline -f repaint
-        case "*"
-            commandline -i !
-    end
+function fzf --wraps="fzf"
+    set -Ux FZF_DEFAULT_OPTS '
+      --color=fg:#908caa,bg:#232136,hl:#ea9a97
+      --color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97
+      --color=border:#44415a,header:#3e8fb0,gutter:#232136
+      --color=spinner:#f6c177,info:#9ccfd8,separator:#44415a
+      --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa
+      --cycle 
+      --layout=reverse 
+      --border 
+      --height=95% 
+      --preview-window=wrap 
+      --marker="=>" 
+      --bind "shift-up:preview-up,shift-down:preview-down"
+      '
+    command fzf
 end
-
-function __history_previous_command_arguments
-    switch (commandline -t)
-        case "!"
-            commandline -t ""
-            commandline -f history-token-search-backward
-        case "*"
-            commandline -i '$'
-    end
-end
-
-
 
 # Ez cat SSH pub key
 function get_pub_key --description "Quickly cat out public file"
