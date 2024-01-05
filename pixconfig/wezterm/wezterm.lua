@@ -15,7 +15,9 @@ if wezterm.config_builder then
 end
 
 local theme = require("themes.theme")
+local keys = require("keymaps.keymaps")
 local utils = require("utils.utils")
+local bg_config = require("background.wallpaper")
 -- ===============
 -- Actual Config :>
 -- ===============
@@ -23,7 +25,6 @@ local utils = require("utils.utils")
 -- Hotload Helpers
 wezterm.add_to_config_reload_watch_list(wezterm.config_dir)
 wezterm.add_to_config_reload_watch_list("/home/pix/AdeptusCustodes/pix_hyprland/pixconfig/wezterm")
-
 -- This is where you actually apply your config choices
 
 -- Remove window decoration bar along the top
@@ -33,91 +34,83 @@ C.window_decorations = "RESIZE"
 C.color_scheme = theme.default
 C.font = theme.font
 
+local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
+
 C.colors = {
 	tab_bar = {
+		background = theme.rose_pallete.moon.surface,
 		-- The active tab is the one that has focus in the window
 		active_tab = {
 			-- The color of the background area for the tab
-			bg_color = "#2b2042",
+			bg_color = theme.rose_pallete.moon.iris,
 			-- The color of the text for the tab
-			fg_color = "#c0c0c0",
-
+			fg_color = theme.rose_pallete.moon.base,
 			-- Specify whether you want "Half", "Normal" or "Bold" intensity for the
 			-- label shown for this tab.
 			-- The default is "Normal"
 			intensity = "Normal",
-
 			-- Specify whether you want "None", "Single" or "Double" underline for
 			-- label shown for this tab.
 			-- The default is "None"
 			underline = "None",
-
 			-- Specify whether you want the text to be italic (true) or not (false)
 			-- for this tab.  The default is false.
-			italic = false,
-
+			italic = true,
 			-- Specify whether you want the text to be rendered with strikethrough (true)
 			-- or not for this tab.  The default is false.
 			strikethrough = false,
 		},
-
-		-- Inactive tabs are the tabs that do not have focus
 		inactive_tab = {
-			bg_color = "#1b1032",
-			fg_color = "#808080",
-
-			-- The same options that were listed under the `active_tab` section above
-			-- can also be used for `inactive_tab`.
+			bg_color = theme.rose_pallete.moon.overlay,
+			fg_color = theme.rose_pallete.moon.subtle,
 		},
-
 		-- You can configure some alternate styling when the mouse pointer
 		-- moves over inactive tabs
 		inactive_tab_hover = {
-			bg_color = "#3b3052",
-			fg_color = "#909090",
+			bg_color = theme.rose_pallete.moon.base,
+			fg_color = theme.rose_pallete.moon.text,
 			italic = true,
-
-			-- The same options that were listed under the `active_tab` section above
-			-- can also be used for `inactive_tab_hover`.
 		},
 
 		-- The new tab button that let you create new tabs
 		new_tab = {
-			bg_color = "#1b1032",
-			fg_color = "#808080",
-
-			-- The same options that were listed under the `active_tab` section above
-			-- can also be used for `new_tab`.
+			bg_color = theme.rose_pallete.moon.surface,
+			fg_color = theme.rose_pallete.moon.text,
 		},
-
-		-- You can configure some alternate styling when the mouse pointer
-		-- moves over the new tab button
 		new_tab_hover = {
-			bg_color = "#3b3052",
-			fg_color = "#909090",
+			bg_color = theme.rose_pallete.moon.base,
+			fg_color = theme.rose_pallete.moon.text,
 			italic = true,
-
-			-- The same options that were listed under the `active_tab` section above
-			-- can also be used for `new_tab_hover`.
 		},
 	},
 }
 
-C.window_decorations = "RESIZE"
-C.use_fancy_tab_bar = true
+local function tab_title(tab_info)
+	local title = tab_info.tab_title
+	if title and #title > 0 then
+		return title
+	end
+
+	return tab_info.active_pane.title
+end
+
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+	local title = tab_title(tab)
+	if tab.is_active then
+		return {
+			{ Text = " " .. SOLID_LEFT_ARROW .. " " .. title .. " " },
+		}
+	end
+	return " " .. title .. " "
+end)
+
+C.use_fancy_tab_bar = false
 -- C.enable_tab_bar = false
 C.hide_tab_bar_if_only_one_tab = true
 C.tab_bar_at_bottom = true
 
--- Background loaded by local lua
-local bg_config = require("background.wallpaper")
-C.window_background_image = bg_config
-
-C.window_background_image_hsb = {
-	brightness = 0.1, -- Darken background by x..
-	hue = 1.0, -- Default, 1.0 leaves it unchanged.
-	saturation = 1.0,
-}
+C.window_background_image = bg_config.image
+C.window_background_image_hsb = bg_config.window_hsb
 
 -- MULTIPLEXER
 -- Setup for different multiplex domains.
@@ -129,14 +122,11 @@ C.unix_domains = {
 
 -- Scrollback
 C.scrollback_lines = 10000
-
 -- Terminal padding inside the window.
 C.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
-
 C.adjust_window_size_when_changing_font_size = false
 
-local keymaps_for_conf = require("keymaps.keymaps")
-C.keys = keymaps_for_conf
+C.keys = keys
 
 -- and finally, return the configuration to wezterm
 return C

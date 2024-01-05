@@ -1,7 +1,7 @@
 -- Utils for useful Lua functions to help wezterm config :>
 
 -- Capture name for require.
-local NAME = ...
+-- local NAME = ...
 
 -- Module to return
 local M = {}
