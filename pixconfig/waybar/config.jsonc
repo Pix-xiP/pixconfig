@@ -7,7 +7,8 @@
   "gtk-layer-shell": true,
   "height": 0,
   "modules-left": [
-    "clock",
+    // "clock", // Needs to be fixed.
+    "custom/clock",
     "custom/weather",
     "hyprland/workspaces"
   ],
@@ -74,12 +75,16 @@
     "exec": "~/.config/waybar/scripts/waybar-wttr.py",
     "return-type": "json"
   },
+  "custom/clock": {
+    "exec": "echo '  '$(date +'%H:%M')'  '",
+    "interval": 60
+  },
   "tray": {
     "icon-size": 13,
     "spacing": 10
   },
   "clock": {
-    "format": "{: %R   %m/%d}",
+    "format": "Hi Mum! {: %R   %m/%d}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   // "backlight": {
