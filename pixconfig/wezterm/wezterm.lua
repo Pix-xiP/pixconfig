@@ -119,6 +119,10 @@ C.unix_domains = {
 	{ name = "pix_std", no_serve_automatically = false },
 	{ name = "other", no_serve_automatically = false },
 }
+local path = "/opt/homebrew/bin/nvim"
+if utils.os == "Linux" then
+	path = "/usr/bin/nvim"
+end
 
 -- Scrollback
 C.scrollback_lines = 10000
