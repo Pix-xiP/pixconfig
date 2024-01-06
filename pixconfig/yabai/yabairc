@@ -1,0 +1,34 @@
+#!/bin/sh
+
+yabai -m config external_bar               all:1:0      \
+                mouse_follows_focus        on           \
+                focus_follows_mouse        off          \
+                window_placement           second_child \
+                window_topmost             off          \
+                window_shadow              float        \
+                window_opacity             on           \
+                window_opacity_duration    0.15         \
+                active_window_opacity      1.0          \
+                normal_window_opacity      0.95         \
+                insert_feedback_color      0xff9dd274   \
+                split_ratio                0.50         \
+                auto_balance               off          \
+                mouse_modifier             fn           \
+                mouse_action1              move         \
+                mouse_action2              resize       \
+                mouse_drop_action          swap         \
+                                                        \
+                top_padding                27           \
+                bottom_padding             0            \
+                left_padding               1            \
+                right_padding              1            \
+                window_gap                 1            \
+                layout                     bsp
+
+yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
+yabai -m rule --add label="Alfred" app="Alfred" title="Alfred" manage=off
+yabai -m rule --add label="Mail" app="Mail" title="Email" manage=off
+yabai -m rule --add label="Raycast" app="Raycast" title="Raycast" manage=off
+yabai -m rule --add label="qFlipper" app="qFlipper" title="qFlipper" manage=off
+
+echo "yabai configuration loaded.."
