@@ -1,6 +1,7 @@
 local wezterm = require("wezterm")
 local utils = require("utils.utils")
 local theme = require("themes.theme")
+local act = wezterm.action
 
 local S = "|"
 
@@ -32,10 +33,7 @@ end
 
 -- KEYBINDINGS
 -- Defaults found at: https://wezfurlong.org/wezterm/config/default-keys.html
-local act = wezterm.action
 
--- Check for Linux
--- if utils.os == "Linux" then
 local keys = {
 	-- Movements
 	{ key = "n", mods = LEADER, action = act.ActivatePaneDirection("Left") },
@@ -55,6 +53,7 @@ local keys = {
 	-- Pane Movement.
 	{ key = "o", mods = CTRL, action = act.PaneSelect({ alphabet = "arstqwfpzxcvneio", mode = "SwapWithActive" }) },
 	{ key = "'", mods = CTRL, action = act.PaneSelect({ alphabet = "arstqwfpzxcvneio" }) },
+	-- Workspace Management
 	{
 		key = "p",
 		mods = LEADER,
@@ -83,32 +82,48 @@ local keys = {
 	{
 		key = "g",
 		mods = LEADER,
-		action = wezterm.action_callback(function(window, pane)
-			local choices = {}
-			for n = 1, 20 do
-				table.insert(choices, { label = tostring(n) .. "workspace" })
-			end
-
-			window:perform_action(
-				act.InputSelector({
-					---@diagnostic disable-next-line: redefined-local, unused-local
-					action = wezterm.action_callback(function(window, pane, id, label)
-						if not id and not label then
-							wezterm.log_info("cancelled")
-						else
-							wezterm.log_info("you selected: ", id, label)
-							pane:send_text(label)
-						end
-					end),
-					title = "Title Text",
-					choices = choices,
-					alphabet = "123456789",
-					description = " Testing pressing keys, using / to search",
-				}),
-				pane
-			)
-		end),
+		action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES", title = "WORKSPACES" }),
 	},
+	{ key = "r", mods = LEADER, action = wezterm.action.SwitchToWorkspace({ name = "default" }) },
+	{
+		key = "s",
+		mods = LEADER,
+		action = wezterm.action.SwitchToWorkspace({
+			name = "scratch_pad",
+			spawn = {
+				args = { "nvim", ".scratchpad" },
+			},
+		}),
+	},
+	-- {
+	-- 	key = "g",
+	-- 	mods = LEADER,
+	-- 	action = wezterm.action_callback(function(window, pane)
+	-- 		local choices = {}
+	-- 		for n = 1, 20 do
+	-- 			table.insert(choices, { label = tostring(n) .. "workspace" })
+	-- 		end
+	--
+	-- 		window:perform_action(
+	-- 			act.InputSelector({
+	-- 				---@diagnostic disable-next-line: redefined-local, unused-local
+	-- 				action = wezterm.action_callback(function(window, pane, id, label)
+	-- 					if not id and not label then
+	-- 						wezterm.log_info("cancelled")
+	-- 					else
+	-- 						wezterm.log_info("you selected: ", id, label)
+	-- 						pane:send_text(label)
+	-- 					end
+	-- 				end),
+	-- 				title = "Title Text",
+	-- 				choices = choices,
+	-- 				alphabet = "123456789",
+	-- 				description = " Testing pressing keys, using / to search",
+	-- 			}),
+	-- 			pane
+	-- 		)
+	-- 	end),
+	-- 	},
 	-- Tab Management
 	{
 		key = "n",
