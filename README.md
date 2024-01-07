@@ -3,8 +3,20 @@ My Hyprland Setup and Config Files
 
 ## What do you use?
 
-Checkout the README.md file for the long list of tools and stuff that I use. There is also the setup_env script that can give you an idea of what I install in most setups.
+Checkout the Toolset.md file for the long list of tools and stuff that I use. There is also the setup_env script that can give you an idea of what I install in most setups.
 
-### WIP 
+The quick and dirty breakdown is:
 
-Working on the script to use symlinks instead of copying the files across. There are some instances where this has caused problems such as on wezterm and needing to add the helper function to watch the config dir for updates.
+**Terminal**: WezTerm
+**Shell**: Fish
+**Editor**: Neovim
+**WM**: Hyprland 
+**Launcher**: Rofi 
+**Bar**: Waybar
+**Notifications**: Dunst
+**Pager**: Bat
+**AUR-Helper**: yay || paru
+
+### Note:
+
+This has semi devolved into just where I put all my config, hyprland related or not, so there are things like Sketchybar and Yabai from the Mac setup that are also included here.
