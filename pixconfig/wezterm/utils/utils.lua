@@ -19,5 +19,16 @@ end
 
 M.os = get_os()
 
+function M.merge_lists(t1, t2)
+	local merged = {}
+	for _, v in pairs(t1) do
+		table.insert(merged, v)
+	end
+	for _, v in pairs(t2) do
+		table.insert(merged, v)
+	end
+	return merged
+end
+
 -- Give functions back to whoever requires.
 return M

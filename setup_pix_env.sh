@@ -45,29 +45,6 @@ fatal() {
 	exit 1
 }
 
-# # Easy Colour printing!
-# SUCCUSS="$(tput setaf 2)[S]:$(tput sgr0)"
-# ERROR="$(tput setaf 1)[!]:$(tput sgr0)"
-# INFO="$(tput setaf 4)[+]:$(tput sgr0)"
-# WARN="$(tput setaf 3)[W]:$(tput sgr0)"
-# INPUT="$(tput setaf 6)[>]:$(tput sgr0)"
-#
-# info() {
-# 	printf "%s%s%s\n" "$INFO" "$1" "$NC"
-# }
-#
-# success() {
-# 	printf "%s%s%s\n" "$SUCCUSS" "$1" "$NC"
-# }
-#
-# warn() {
-# 	printf "%s%s%s\n" "$WARN" "$1" "$NC"
-# }
-#
-# error() {
-# 	printf "%s%s%s\n" "$ERROR" "$1" "$NC" >&2
-# }
-
 info "Running Pix's Arch Linux Hyprland and Development Environment Script\n"
 sleep 1
 warn "Please remember to backup your files if this isn't a fresh install! " \
@@ -78,8 +55,8 @@ warn "Some commands require you to enter a password to execute, you may need " \
 warn "CTRL C or CTRL Q can quit this script if you need to!\n"
 sleep 1
 
+# TODO: Make a better yay check.
 HAS_YAY=/sbin/yay
-
 if [ -f "$HAS_YAY" ]; then
 	info "'yay' was located, using it to install.\n"
 else
@@ -112,48 +89,20 @@ if [[ $USER_IN =~ ^[Nn]$ ]]; then
 	exit 1
 else
 
-	## Use Midori Browser but download from the side direct, the AUR is a full major version behind.
-	#
-	#
-	# Need the Git version specifically.
-	# grimblast - Screenshot Utility
-	# SDDM - Simple Display Manager
-	# Hyprpicker - Pick colours from something!
-	# Waybar-Hyprland - Waybar but for Hyprland :>
+	# See the Toolset.MD for information.
 	GIT_PKGS="grimblast-git sddm-git hyprpicker-git waybar-hyprland-git"
 
-	# Specific to Hyprland Programs
-	# Hyprland - Window Manager.
-	# Hyprpaper - Wallpapers for Hyprland.
-	# wl-clipboard - Clipboard manager for Wayland.
-	# wf-recorder -
-	# Rofi - GUI Launcher program
-	# wlogout - Wayland logout.
-	# Swaylock-effects - Make swaylock look pretty <3
-	# dunst - Notification System :D
-	# Swappy - Screenshot / basic picture editor.
 	HYPR_PKGS="hyprland hyprpaper wl-clipboard wf-recorder rofi wlogout swaylock-effects dunst swappy"
 
-	FONT_PKGS="ttf-fira-code ttf-nerd-fonts-symbols-common otf-firamono-nerd inter-font otf-sora " \
-		"noto-fonts noto-fonts-emoji ttf-jetbrains-mono-nerd adobe-source-code-pro-fonts"
+	FONT_PKGS="ttf-fira-code ttf-nerd-fonts-symbols-common otf-firamono-nerd inter-font otf-sora noto-fonts noto-fonts-emoji ttf-jetbrains-mono-nerd adobe-source-code-pro-fonts"
 
-	# General APPS I like to use :>
-	# Discord - #TalkingToPeople
-	# btop/htop - Fancy looking top
-	APP_PKGS="discord wg-look-bin qt5ct btop gvfs ffmpegthumbs swww mousepad mpv playerctl pamixer " \
-		" noise-suppression-for-voice polkit-gnome ffmpeg viewnior pavucontrol thunar ffmpegthumbnailer" \
-		" tumbler thunar-archive-plugin xdg-user-dirs"
-	#
+	APP_PKGS="discord wg-look-bin qt5ct btop gvfs ffmpegthumbs swww mousepad mpv playerctl pamixer noise-suppression-for-voice polkit-gnome ffmpeg viewnior pavucontrol thunar ffmpegthumbnailer tumbler thunar-archive-plugin xdg-user-dirs"
+
 	THEME_PKGS="nordic-theme papirus-icon-theme starship tree-sitter-cli tree-sitter"
 
-	# Terminal Packages for Dev and general everything else.
-	# See the Toolset.MD for information.
-	TERM_PKGS="alacritty axel bat bear btop croc curl duf dust eza fastmod fd fish fzf glow go go-task gum htop jq" \
-		" jujutsu lazygit less lua meson navi neofetch neovim pixz procs ripgrep rm-improved rsync sd tealdeer" \
-		" tokei trippy unzip vim wezterm wget zerotier-one zoxide pacman-contrib"
+	TERM_PKGS="alacritty axel bat bear btop croc curl duf dust eza fastmod fd fish fzf glow go go-task gum htop jq jujutsu lazygit less lua meson navi neofetch neovim pixz procs ripgrep rm-improved rsync sd tealdeer tokei trippy unzip vim wezterm wget zerotier-one zoxide pacman-contrib"
 
-	if ! yay -S --noconfirm "$GIT_PKGS" "$HYPR_PKGS" "$FONT_PKGS" \
-		"$APP_PKGS" "$TERM_PKGS" "$THEME_PKGS" 2>&1 | tee -a "$LOG"; then
+	if ! yay -S --noconfirm "$GIT_PKGS" "$HYPR_PKGS" "$FONT_PKGS" "$APP_PKGS" "$TERM_PKGS" "$THEME_PKGS" 2>&1 | tee -a "$LOG"; then
 		error "Failed to install additional packages - please check the install log\n"
 		exit 1
 	fi
@@ -161,13 +110,6 @@ else
 	success "All packages installed successfully!"
 fi
 USER_IN=""
-### Config Files ###
-
-# p "Would you like to copy config files?"
-# USER_IN=$(gum input --placeholder "[Y/n]")
-# if [[ $USER_IN =~ ^[Nn]$ ]]; then
-# 	info "Config files not installed"
-# else
 
 p "====================="
 p "Whad would you like to do with config files?"
@@ -178,30 +120,15 @@ if [[ $USER_IN == "Skip" ]]; then
 else
 	if [[ $USER_IN == "Copy" ]]; then
 		info "Copying configuration files into .config"
-		cp -r pixconfig/dunst ~/.config/ 2>&1 | tee -a $LOG
-		cp -r pixconfig/fish ~/.config/ 2>&1 | tee -a $LOG
-		cp -r pixconfig/hypr ~/.config/ 2>&1 | tee -a $LOG
-		cp -r pixconfig/nvim ~/.config/ 2>&1 | tee -a $LOG
-		cp -r pixconfig/pipewire ~/.config/ 2>&1 | tee -a $LOG
-		cp -r pixconfig/rofi ~/.config/ 2>&1 | tee -a $LOG
-		cp -r pixconfig/swaylock ~/.config/ 2>&1 | tee -a $LOG
-		cp -r pixconfig/waybar ~/.config/ 2>&1 | tee -a $LOG
-		cp -r pixconfig/wezterm ~/.config/ 2>&1 | tee -a $LOG
-		cp -r pixconfig/wlogout ~/.config/ 2>&1 | tee -a $LOG
+		cp -r pixconfig/* ~/.config/ 2>&1 | tee -a $LOG
 	elif [[ $USER_IN == "Symlink" ]]; then
-		## Experiment with just doing a symlink?
 		# SYMLINK EXPERIMENT
 		info "Symlinking config files"
-		ln -b -n pixconfig/dunst ~/.config/dunst
-		ln -b -n pixconfig/fish ~/.config/fish 2>&1 | tee -a $LOG
-		ln -b -n pixconfig/hypr ~/.config/hypr 2>&1 | tee -a $LOG
-		ln -b -n pixconfig/nvim ~/.config/nvim 2>&1 | tee -a $LOG
-		ln -b -n pixconfig/pipewire ~/.config/pipewire 2>&1 | tee -a $LOG
-		ln -b -n pixconfig/rofi ~/.config/rofi 2>&1 | tee -a $LOG
-		ln -b -n pixconfig/swaylock ~/.config/swaylock 2>&1 | tee -a $LOG
-		ln -b -n pixconfig/waybar ~/.config/waybar 2>&1 | tee -a $LOG
-		ln -b -n pixconfig/wezterm ~/.config/wezterm 2>&1 | tee -a $LOG
-		ln -b -n pixconfig/wlogout ~/.config/wlogout 2>&1 | tee -a $LOG
+		CUR=$(pwd)
+		for f in ./pixconfig/*; do
+			filename="${f##*/}"
+			ln -b -s "$CUR/$f" ~/.config/"$filename" 2>&1 | tee -a $LOG
+		done
 	fi
 	# Set some files as executable!
 	chmod +x ~/.config/hypr/xdg-portal-hyprland
