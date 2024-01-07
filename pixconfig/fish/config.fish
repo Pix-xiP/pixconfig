@@ -15,7 +15,7 @@ if test (uname) = Darwin
 
     set -x DOCKER_DEFAULT_PLATFORM linux/amd64
     set -gx GRAVEYARD "/Users/pix/.local/graveyard"
-    set -x ODIN_ROOT /Users/pix/AdeptusCustodes/Odin
+    set -x ODIN_ROOT /Users/pix/AdeptusCustodes/Fenris/Odin
     set -x PATH "/opt/homebrew:$PATH"
     set -x PATH "/opt/homebrew/bin:$PATH"
     set -x PATH "/opt/homebrew/opt/gnu-getopt/bin:$PATH"
