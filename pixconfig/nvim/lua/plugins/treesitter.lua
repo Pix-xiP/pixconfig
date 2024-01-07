@@ -23,7 +23,6 @@ return {
         "c_sharp",
         "fish",
         "go",
-        "hypr",
         "lua",
         "markdown",
         "odin",

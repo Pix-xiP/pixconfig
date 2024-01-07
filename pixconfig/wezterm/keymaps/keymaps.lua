@@ -127,7 +127,7 @@ local keys = {
 	-- Tab Management
 	{
 		key = "n",
-		mods = ALT_SHIFT,
+		mods = ALT_SUPER_SHIFT,
 		action = act.PromptInputLine({
 			description = "Enter new name for tab",
 			-- selene: allow(unused_variable)

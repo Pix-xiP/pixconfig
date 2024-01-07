@@ -34,6 +34,8 @@ C.window_decorations = "RESIZE"
 C.color_scheme = theme.default
 C.font = theme.font
 
+C.keys = keys
+
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 
 C.colors = {
@@ -112,25 +114,53 @@ C.tab_bar_at_bottom = true
 C.window_background_image = bg_config.image
 C.window_background_image_hsb = bg_config.window_hsb
 
+-- Workspaces
+---- Startup Specific.
+local mux = wezterm.mux
+
+wezterm.on("gui-startup", function(cmd)
+	local args = {}
+	if cmd then
+		args = cmd.args
+	end
+
+	---@diagnostic disable-next-line: unused-local
+	local tab, monitor_pane, window = mux.spawn_window({
+		workspace = "monitoring",
+		cwd = "~",
+		args = args,
+	})
+	monitor_pane:send_text("btop\n")
+
+	---@diagnostic disable-next-line: unused-local, redefined-local
+	local tab, pane, window = mux.spawn_window({
+		workspace = "default",
+		args = args,
+	})
+
+	---@diagnostic disable-next-line: unused-local
+	local splitter = pane:split({
+		direction = "Right",
+		size = 0.5,
+	})
+	pane:send_text("ls\n")
+
+	mux.set_active_workspace("driver")
+end)
+
 -- MULTIPLEXER
 -- Setup for different multiplex domains.
 -- TODO: Setup with the rest of the workspaces :>
 C.unix_domains = {
-	{ name = "pix_std", no_serve_automatically = false },
-	{ name = "other", no_serve_automatically = false },
+	{ name = "pix", no_serve_automatically = false },
+	{ name = "backup", no_serve_automatically = false },
 }
-local path = "/opt/homebrew/bin/nvim"
-if utils.os == "Linux" then
-	path = "/usr/bin/nvim"
-end
 
 -- Scrollback
 C.scrollback_lines = 10000
 -- Terminal padding inside the window.
 C.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 C.adjust_window_size_when_changing_font_size = false
-
-C.keys = keys
 
 -- and finally, return the configuration to wezterm
 return C
