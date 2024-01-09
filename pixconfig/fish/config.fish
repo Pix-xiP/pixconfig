@@ -118,23 +118,25 @@ function peep --argument file --description "Open a file with FZF with search an
     cat $file | fzf --preview "echo {} | fish_indent --ansi" --preview-window="top:5:wrap"
 end
 
-function fzf --wraps="fzf"
-    set -Ux FZF_DEFAULT_OPTS '
-      --color=fg:#908caa,bg:#232136,hl:#ea9a97
-      --color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97
-      --color=border:#44415a,header:#3e8fb0,gutter:#232136
-      --color=spinner:#f6c177,info:#9ccfd8,separator:#44415a
-      --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa
-      --cycle 
-      --layout=reverse 
-      --border 
-      --height=95% 
-      --preview-window=wrap 
-      --marker="=>" 
-      --bind "shift-up:preview-up,shift-down:preview-down"
-      '
-    command fzf
-end
+set -x FZF_DEFAULT_OPTS '--cycle --layout=reverse --border --height=95% --preview-window=wrap --marker="=>" --bind "shift-up:preview-up,shift-down:preview-down"'
+
+# function fzf --wraps="fzf"
+#     set -Ux FZF_DEFAULT_OPTS '
+#       --color=fg:#908caa,bg:#232136,hl:#ea9a97
+#       --color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97
+#       --color=border:#44415a,header:#3e8fb0,gutter:#232136
+#       --color=spinner:#f6c177,info:#9ccfd8,separator:#44415a
+#       --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa
+#       --cycle
+#       --layout=reverse
+#       --border
+#       --height=95%
+#       --preview-window=wrap
+#       --marker="=>"
+#       --bind "shift-up:preview-up,shift-down:preview-down"
+#       '
+#     command fzf
+# end
 
 # Ez cat SSH pub key
 function get_pub_key --description "Quickly cat out public file"
