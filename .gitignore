@@ -2,3 +2,6 @@ fishd.tmp*
 pixconfig/fish/fish_variables
 pixconfig/nvim/lazy-lock.json
 pixconfig/fish/secrets.fish
+pixconfig/fish/completions
+pixconfig/fish/conf.d
+pixconfig/fish/functions
