@@ -5,3 +5,8 @@ pixconfig/fish/secrets.fish
 pixconfig/fish/completions
 pixconfig/fish/conf.d
 pixconfig/fish/functions
+
+!pixconfig/fish/functions/fzf-match.fish
+!pixconfig/fish/functions/fzf-s.fish
+!pixconfig/fish/functions/rg-search.fish
+!pixconfig/fish/functions/peep.fish
