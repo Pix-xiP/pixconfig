@@ -16,4 +16,14 @@ return {
       -- Put opts here bby
     },
   },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      keywords = {
+        PIXNOTE = { icon = "N", color = "test", alt = { "THOUGHT" } },
+        PIXHACK = { icon = "? ", color = "hint", alrt = { "HACKFIX" } },
+      },
+    },
+  },
 }
