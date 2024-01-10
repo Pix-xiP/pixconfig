@@ -22,7 +22,7 @@ return {
     opts = {
       keywords = {
         PIXNOTE = { icon = "N", color = "test", alt = { "THOUGHT" } },
-        PIXHACK = { icon = "? ", color = "hint", alrt = { "HACKFIX" } },
+        PIXHACK = { icon = "? ", color = "hint", alt = { "HACKFIX" } },
       },
     },
   },
