@@ -13,7 +13,21 @@ map({ "i" }, "<M-down>", "<esc><cmd>m+<cr>a", { desc = "Move line DOWN" })
 map({ "v" }, "<M-down>", ":m '>+1<CR>gv=gv")
 map({ "v" }, "<M-up>", ":m '<-2<CR>gv=gv")
 
--- Run Pix Autoformatter on current buffer
-map({ "n" }, "<leader>pf", ":!pix-af -i -f %<enter>", { desc = "Format currently open Swift buffer" })
+-- -- Run Pix Autoformatter on current buffer
+-- map({ "n" }, "<leader>pf", ":!pix-af -i -f %<enter>", { desc = "Format currently open Swift buffer" })
+
+-- J but cursor stays in current location.
+map({ "n" }, "J", "mzJ`z", { desc = "Join lines without moving cursor" })
+
+-- n / N but it keeps cursor in middle of screen.
+map({ "n" }, "n", "nzzzv", { desc = "Next search result" })
+map({ "n" }, "N", "Nzzzv", { desc = "Previous search result" })
+
+-- Paste without losing current copy - copy arst, paste over tsra without losing arst.
+map({ "x" }, "<leader>p", '"_dP', { desc = "Paste without overwriting register when highlighted." })
+
+map({ "n" }, "<leader>xr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "Replace current word" })
+
+map({ "n" }, "<leader>mx", "<cmd>!chmod +x %<CR>", { desc = "Make file executable" })
 
 -- map({ "i" }, "<M-m>", "<esc>a", { desc = "Remove auto suggestions and continue typing" })
