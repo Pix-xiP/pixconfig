@@ -16,4 +16,12 @@ return {
       -- Put opts here bby
     },
   },
+  {
+    "mbbill/undotree",
+    lazy = true,
+    keys = {
+      { "<leader>cu", "<cmd>UndotreeToggle<cr>", desc = "Toggle undotree" },
+    },
+    opts = {},
+  },
 }
