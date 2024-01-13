@@ -17,7 +17,8 @@ lctrl + lalt - k : yabai -m window --focus last
 lcmd + shift - v : yabai -m window --toggle float; sketchybar --trigger window_focus
 
 # Make window zoom to fullscreen: shift + lalt - f
-lctrl + shift + lalt - f : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
+# lctrl + shift + lalt - f : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
+lctrl + lalt - f : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
 
 # Toggle split orientation of the selected windows node: shift + lalt - s
 shift + lalt - s : yabai -m window --toggle split

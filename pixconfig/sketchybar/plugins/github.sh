@@ -8,9 +8,9 @@ update() {
   COUNT="$(echo "$NOTIFICATIONS" | jq 'length')"
   args=()
   if [ "$NOTIFICATIONS" = "[]" ]; then
-    args+=(--set $NAME icon=$BELL label="0")
+    args+=(--set "$NAME" icon="$BELL" label="0")
   else
-    args+=(--set $NAME icon=$BELL_DOT label="$COUNT")
+    args+=(--set "$NAME" icon="$BELL_DOT" label="$COUNT")
   fi
 
   PREV_COUNT=$(sketchybar --query github.bell | jq -r .label.value)
@@ -75,7 +75,7 @@ update() {
 }
 
 popup() {
-  sketchybar --set $NAME popup.drawing=$1
+  sketchybar --set "$NAME" popup.drawing="$1"
 }
 
 case "$SENDER" in

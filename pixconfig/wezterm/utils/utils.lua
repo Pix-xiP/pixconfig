@@ -5,6 +5,7 @@
 
 -- Module to return
 local M = {}
+M.name = "utils"
 
 -- What OS are we running on!
 local function get_os()
