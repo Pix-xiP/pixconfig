@@ -98,7 +98,7 @@ else
 
 	APP_PKGS="discord wg-look-bin qt5ct btop gvfs ffmpegthumbs swww mousepad mpv playerctl pamixer noise-suppression-for-voice polkit-gnome ffmpeg viewnior pavucontrol thunar ffmpegthumbnailer tumbler thunar-archive-plugin xdg-user-dirs"
 
-	THEME_PKGS="nordic-theme papirus-icon-theme starship tree-sitter-cli tree-sitter"
+	THEME_PKGS="nordic-theme papirus-icon-theme starship tree-sitter-cli tree-sitter rose-pine-cursor"
 
 	TERM_PKGS="alacritty axel bat bear btop croc curl duf dust eza fastmod fd fish fzf glow go go-task gum htop jq jujutsu lazygit less lua meson navi neofetch neovim pixz procs ripgrep rm-improved rsync sd tealdeer tokei trippy unzip vim wezterm wget zerotier-one zoxide pacman-contrib"
 
