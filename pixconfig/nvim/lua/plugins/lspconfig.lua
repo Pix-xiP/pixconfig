@@ -1,5 +1,4 @@
 return {
-  { "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -70,6 +69,7 @@ return {
         sourcekit = {
           cmd = { "sourcekit-lsp" },
           filetypes = { "swift" },
+          rootPatterns = { "Package.swift", ".git" },
         },
         zls = {
           cmd = { "zls" },
@@ -78,6 +78,8 @@ return {
         },
       },
     },
+    --  To make omnisharp not trash
+    { "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
     -- Formatting for Swift since nothing built in x(
     {
       "stevearc/conform.nvim",
