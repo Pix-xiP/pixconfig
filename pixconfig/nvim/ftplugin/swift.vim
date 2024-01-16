@@ -7,6 +7,6 @@ let b:undo_ftplugin = "setlocal comments< expandtab< tabstop< shiftwidth< smarti
 
 setlocal comments=s1:/*,mb:*,ex:*/,:///,://
 setlocal expandtab
-setlocal sw=2 sts=2
+setlocal sw=4 sts=4
 setlocal nosmartindent
 
