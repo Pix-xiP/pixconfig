@@ -78,22 +78,23 @@ return {
         },
       },
     },
-    --  To make omnisharp not trash
-    { "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
-    -- Formatting for Swift since nothing built in x(
-    {
-      "stevearc/conform.nvim",
-      opts = {
-        formatters = {
-          swift_format = {
-            command = "swift-format",
-            args = { "--configuration", "/Users/pix/.config/formatting/swift-config.json" },
-            stdin = true,
-          },
+  },
+
+  --  To make omnisharp not trash
+  { "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
+  -- Formatting for Swift since nothing built in x(
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters = {
+        swift_format = {
+          command = "swift-format",
+          args = { "--configuration", "/Users/pix/.config/formatting/swift-config.json" },
+          stdin = true,
         },
-        formatters_by_ft = {
-          swift = { "swift_format" },
-        },
+      },
+      formatters_by_ft = {
+        swift = { "swift_format" },
       },
     },
   },
