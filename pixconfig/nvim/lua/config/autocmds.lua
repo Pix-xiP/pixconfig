@@ -17,7 +17,11 @@ api.nvim_create_autocmd("FileType", {
   group = api.nvim_create_augroup("KillSwiftTSContext", { clear = true }),
   callback = function()
     local tsc = require("treesitter-context")
-    tsc.toggle()
+    if vim.bo.filetype == "swift" then
+      tsc.disable()
+    else
+      tsc.enable()
+    end
   end,
   pattern = { "swift" },
 })
