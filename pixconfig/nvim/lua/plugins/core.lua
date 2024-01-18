@@ -28,9 +28,21 @@ return {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
+      colors = {
+        error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
+        warning = { "DiagnosticWarn", "WarningMsg", "#FBBF24" },
+        info = { "DiagnosticInfo", "#2563EB" },
+        hint = { "DiagnosticHint", "#10B981" },
+        default = { "Identifier", "#7C3AED" },
+        test = { "Identifier", "#FF00FF" },
+        pix_todo = { "#3e8fb0" },
+        pix_note = { "#c4a7e7" },
+        pix_hack = { "#eb6f92" },
+      },
       keywords = {
-        PIXNOTE = { icon = "N", color = "test", alt = { "THOUGHT" } },
-        PIXHACK = { icon = "? ", color = "hint", alt = { "HACKFIX" } },
+        PIXNOTE = { icon = "N", color = "pix_note", alt = { "THOUGHT" } },
+        PIXHACK = { icon = "? ", color = "pix_hack", alt = { "HACKFIX" } },
+        PIXTODO = { icon = "P", color = "pix_todo", alt = { "TODO: (Pix):" } },
       },
     },
   },
