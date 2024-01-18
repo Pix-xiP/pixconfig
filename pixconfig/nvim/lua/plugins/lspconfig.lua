@@ -79,7 +79,6 @@ return {
       },
     },
   },
-
   --  To make omnisharp not trash
   { "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
   -- Formatting for Swift since nothing built in x(
