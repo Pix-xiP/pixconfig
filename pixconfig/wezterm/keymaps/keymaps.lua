@@ -49,7 +49,6 @@ local keys = {
 	{ key = "o", mods = SHIFT_LEADER, action = act.AdjustPaneSize({ "Right", 2 }) },
 	{ key = "e", mods = SHIFT_LEADER, action = act.AdjustPaneSize({ "Up", 2 }) },
 	{ key = "i", mods = SHIFT_LEADER, action = act.AdjustPaneSize({ "Down", 2 }) },
-
 	-- Pane Movement.
 	{ key = "o", mods = CTRL, action = act.PaneSelect({ alphabet = "arstqwfpzxcvneio", mode = "SwapWithActive" }) },
 	{ key = "'", mods = CTRL, action = act.PaneSelect({ alphabet = "arstqwfpzxcvneio" }) },
@@ -95,35 +94,6 @@ local keys = {
 			},
 		}),
 	},
-	-- {
-	-- 	key = "g",
-	-- 	mods = LEADER,
-	-- 	action = wezterm.action_callback(function(window, pane)
-	-- 		local choices = {}
-	-- 		for n = 1, 20 do
-	-- 			table.insert(choices, { label = tostring(n) .. "workspace" })
-	-- 		end
-	--
-	-- 		window:perform_action(
-	-- 			act.InputSelector({
-	-- 				---@diagnostic disable-next-line: redefined-local, unused-local
-	-- 				action = wezterm.action_callback(function(window, pane, id, label)
-	-- 					if not id and not label then
-	-- 						wezterm.log_info("cancelled")
-	-- 					else
-	-- 						wezterm.log_info("you selected: ", id, label)
-	-- 						pane:send_text(label)
-	-- 					end
-	-- 				end),
-	-- 				title = "Title Text",
-	-- 				choices = choices,
-	-- 				alphabet = "123456789",
-	-- 				description = " Testing pressing keys, using / to search",
-	-- 			}),
-	-- 			pane
-	-- 		)
-	-- 	end),
-	-- 	},
 	-- Tab Management
 	{
 		key = "n",
@@ -149,90 +119,5 @@ local keys = {
 		end),
 	},
 }
--- elseif utils.os == "Darwin" then
--- 	keys = {
--- 		{ key = "n", mods = LEADER, action = act.ActivatePaneDirection("Left") },
--- 		{ key = "o", mods = LEADER, action = act.ActivatePaneDirection("Right") },
--- 		{ key = "e", mods = LEADER, action = act.ActivatePaneDirection("Up") },
--- 		{ key = "i", mods = LEADER, action = act.ActivatePaneDirection("Down") },
--- 		-- Pane Management
--- 		{ key = "\\", mods = LEADER, action = act.SplitHorizontal },
--- 		{ key = "-", mods = LEADER, action = act.SplitVertical },
--- 		{ key = "w", mods = LEADER, action = wezterm.action.CloseCurrentPane({ confirm = true }) },
--- 		{ key = "f", mods = LEADER, action = wezterm.action.TogglePaneZoomState },
--- 		{ key = "n", mods = SHIFT_LEADER, action = act.AdjustPaneSize({ "Left", 2 }) },
--- 		{ key = "o", mods = SHIFT_LEADER, action = act.AdjustPaneSize({ "Right", 2 }) },
--- 		{ key = "e", mods = SHIFT_LEADER, action = act.AdjustPaneSize({ "Up", 2 }) },
--- 		{ key = "i", mods = SHIFT_LEADER, action = act.AdjustPaneSize({ "Down", 2 }) },
--- 		-- Pane Movement
--- 		{ key = "o", mods = CTRL, action = act.PaneSelect({ alphabet = "arstqwfpzxcvneio", mode = "SwapWithActive" }) },
--- 		{ key = "'", mods = CTRL, action = act.PaneSelect({ alphabet = "arstqwfpzxcvneio" }) },
--- 		-- Switch to the default workspace
--- 		{ key = "r", mods = LEADER, action = wezterm.action.SwitchToWorkspace({ name = "default" }) },
--- 		-- Switch to a monitoring workspace, which will have `top` launched into it
--- 		{
--- 			key = "s",
--- 			mods = LEADER,
--- 			action = wezterm.action.SwitchToWorkspace({
--- 				name = "scratch_pad",
--- 				spawn = {
--- 					args = { "vim" },
--- 				},
--- 			}),
--- 		},
--- 		{
--- 			key = "p",
--- 			mods = LEADER,
--- 			action = act.PromptInputLine({
--- 				description = wezterm.format({
--- 					{ Attribute = { Intensity = "Bold" } },
--- 					{ Foreground = { AnsiColor = "Fuchsia" } },
--- 					{ Text = "Enter name for workspace" },
--- 				}),
--- 				action = wezterm.action_callback(function(window, pane, line)
--- 					-- line will be `nil` if they hit escape without entering anything
--- 					-- An empty string if they just hit enter
--- 					-- Or the actual line of text they wrote
--- 					if line then
--- 						window:perform_action(
--- 							act.SwitchToWorkspace({
--- 								name = line,
--- 							}),
--- 							pane
--- 						)
--- 					end
--- 				end),
--- 			}),
--- 		},
--- 		{
--- 			key = "g",
--- 			mods = LEADER,
--- 			action = wezterm.action_callback(function(window, pane)
--- 				local choices = {}
--- 				for n = 1, 20 do
--- 					table.insert(choices, { label = tostring(n) .. "workspace" })
--- 				end
---
--- 				window:perform_action(
--- 					act.InputSelector({
--- 						action = wezterm.action_callback(function(window, pane, id, label)
--- 							if not id and not label then
--- 								wezterm.log_info("cancelled")
--- 							else
--- 								wezterm.log_info("you selected: ", id, label)
--- 								pane:send_text(label)
--- 							end
--- 						end),
--- 						title = "Title Text",
--- 						choices = choices,
--- 						alphabet = "123456789",
--- 						description = " Testing pressing keys, using / to search",
--- 					}),
--- 					pane
--- 				)
--- 			end),
--- 		},
--- 	}
--- end
 
 return keys

@@ -107,7 +107,6 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 end)
 
 C.use_fancy_tab_bar = false
--- C.enable_tab_bar = false
 C.hide_tab_bar_if_only_one_tab = true
 C.tab_bar_at_bottom = true
 
