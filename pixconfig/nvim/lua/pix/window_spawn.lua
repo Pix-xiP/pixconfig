@@ -23,9 +23,28 @@ local M = {}
 -- end
 M.exists = false
 
-function M:toggle_window(message)
+function M:run_command(command)
+  local file = io.popen(command, "r")
+  if file == nil then
+    return false, ""
+  end
+  local res = file:read("*a")
+  local ok, _, _ = file:close()
+  return ok, res
+end
+
+function M:toggle_window()
   if not M.exists then
-    M:spawn_floating_window(message)
+    local cmd = vim.fn.input("Enter command: ")
+    local ok, result = M:run_command(cmd)
+    if not ok then
+      return nil
+    end
+    local msg = {}
+    for line in result:gmatch("[^\n]+") do
+      table.insert(msg, line)
+    end
+    M:spawn_floating_window(msg)
     M.exists = true
   else
     vim.api.nvim_win_close(0, true)
@@ -46,7 +65,7 @@ function M:spawn_floating_window(message)
   -- local config = vim.api.nvim_win_get_config(win)
 
   local cols = vim.api.nvim_get_option("columns")
-  local lines_num = vim.api.nvim_get_option("lines")
+  -- local lines_num = vim.api.nvim_get_option("lines")
 
   -- Create the floating window
   local opts = {
@@ -71,7 +90,16 @@ function M:spawn_floating_window(message)
   for _, line in pairs(message) do
     table.insert(lines, line)
   end
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, message)
+  --
+  -- local ok, output = run_command("ls -lah")
+  -- if ok then
+  --   for line in output:gmatch("[^\n]+") do
+  --     print(line)
+  --     table.insert(lines, line)
+  --   end
+  -- end
+
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
 end
 
 return M
