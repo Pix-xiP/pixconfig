@@ -254,15 +254,15 @@ M.hyper_plug_opts = function()
     config = {
       header = vim.split(logo, "\n"),
       shortcut = {
-        { key = "f", action = "Telescope find_files", desc = " Find files", icon = " ", group = "@property" },
+        { key = "f", action = "Telescope find_files", desc = " Find", icon = " ", group = "@property" },
         {
           key = "s",
           action = 'lua require("persistence").load()',
           icon = " ",
-          desc = " Restore Session",
+          desc = " Session",
           group = "@property",
         },
-        { key = "l", action = "Lazy", desc = " Lazy Manager", icon = "󰒲 ", group = "Number" },
+        { key = "l", action = "Lazy", desc = " Lazy", icon = "󰒲 ", group = "Number" },
         { key = "q", action = "qa", desc = " Quits", icon = " " },
       },
       packages = { enable = true, limit = 5, icon = "PIX", label = "LABEL", action = "Telescope find_files cwd=." },
