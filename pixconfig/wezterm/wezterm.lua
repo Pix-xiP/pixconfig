@@ -144,7 +144,7 @@ wezterm.on("gui-startup", function(cmd)
 	})
 	pane:send_text("ls\n")
 
-	mux.set_active_workspace("driver")
+	mux.set_active_workspace("default")
 end)
 
 -- MULTIPLEXER
