@@ -262,6 +262,13 @@ M.hyper_plug_opts = function()
           desc = " Session",
           group = "@property",
         },
+        {
+          key = "c",
+          action = [[lua require("lazyvim.util").telescope.config_files()()]],
+          desc = " Config",
+          icon = " ",
+          group = "Text",
+        },
         { key = "l", action = "Lazy", desc = " Lazy", icon = "󰒲 ", group = "Number" },
         { key = "q", action = "qa", desc = " Quits", icon = " " },
       },
