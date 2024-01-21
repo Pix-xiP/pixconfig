@@ -10,3 +10,4 @@ pixconfig/fish/functions
 !pixconfig/fish/functions/fzf-s.fish
 !pixconfig/fish/functions/rg-search.fish
 !pixconfig/fish/functions/peep.fish
+pixconfig/wezterm/secrets/servers.lua
