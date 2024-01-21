@@ -1,4 +1,3 @@
-local NAME = ...
 local wez = require("wezterm")
 local utils = require("utils.utils")
 
@@ -25,7 +24,7 @@ function T.select_theme(window, pane)
 	window:perform_action(
 		wez.action.InputSelector({
 			-- selene: allow(unused_variable)
-			---@diagnostic disable-next-line: unused-local
+			---@diagnostic disable-next-line: unused-local, redefined-local
 			action = wez.action_callback(function(window, pane, id, label)
 				if not id and not label then
 					wez.log_info("cancelled")

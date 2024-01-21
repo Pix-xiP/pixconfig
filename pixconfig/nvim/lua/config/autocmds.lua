@@ -4,6 +4,7 @@
 --
 
 local api = vim.api
+local filetype = vim.filetype
 
 api.nvim_create_autocmd("FileType", {
   group = api.nvim_create_augroup("AddOdinCommentString", { clear = true }),
@@ -24,4 +25,8 @@ api.nvim_create_autocmd("FileType", {
     end
   end,
   pattern = { "swift" },
+})
+
+filetype.add({
+  pattern = { [".*/hyprland%.conf"] = "hyprlang" },
 })
