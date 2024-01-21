@@ -18,6 +18,7 @@ local theme = require("themes.theme")
 local keys = require("keymaps.keymaps")
 local utils = require("utils.utils")
 local bg_config = require("background.wallpaper")
+local secrets = require("secrets.servers")
 -- ===============
 -- Actual Config :>
 -- ===============
@@ -154,6 +155,8 @@ C.unix_domains = {
 	{ name = "pix", no_serve_automatically = false },
 	{ name = "backup", no_serve_automatically = false },
 }
+
+-- C.ssh_domains = secrets.ssh_domains
 
 -- Scrollback
 C.scrollback_lines = 10000
