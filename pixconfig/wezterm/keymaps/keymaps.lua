@@ -50,8 +50,8 @@ local keys = {
 	{ key = "e", mods = SHIFT_LEADER, action = act.AdjustPaneSize({ "Up", 2 }) },
 	{ key = "i", mods = SHIFT_LEADER, action = act.AdjustPaneSize({ "Down", 2 }) },
 	-- Pane Movement.
-	{ key = "o", mods = CTRL, action = act.PaneSelect({ alphabet = "arstqwfpzxcvneio", mode = "SwapWithActive" }) },
-	{ key = "'", mods = CTRL, action = act.PaneSelect({ alphabet = "arstqwfpzxcvneio" }) },
+	{ key = "'", mods = CTRL, action = act.PaneSelect({ alphabet = "arstqwfpzxcvneio", mode = "SwapWithActive" }) },
+	-- { key = '"', mods = CTRL, action = act.PaneSelect({ alphabet = "arstqwfpzxcvneio" }) },
 	-- Workspace Management
 	{
 		key = "p",
