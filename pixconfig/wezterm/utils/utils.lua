@@ -7,6 +7,9 @@
 local M = {}
 M.name = "utils"
 
+M.linux_config = "/home/pix/.config/"
+M.darwin_config = "/Users/pix/.config/"
+
 -- What OS are we running on!
 local function get_os()
 	local f = assert(io.popen("uname", "r"))

@@ -10,6 +10,13 @@ elseif U.os == "Darwin" then
 	M.image = "/Users/pix/.config/wallpapers/terminal_background.jpg"
 end
 
+-- M.image = ""
+-- if U.os == "Linux" then
+-- 	M.image = U.linux_config .. "/wallpapers/terminal_background.jpg"
+-- elseif U.os == "Darwin" then
+-- 	M.image = U.darwin_config .. "/wallpapers/terminal_background.jpg"
+-- end
+
 -- Setting wallpaper settings, brightness, hue, saturation etc.
 M.window_hsb = {
 	brightness = 0.1, -- Darken background by x..

@@ -156,7 +156,7 @@ C.unix_domains = {
 	{ name = "backup", no_serve_automatically = false },
 }
 
--- C.ssh_domains = secrets.ssh_domains
+C.ssh_domains = secrets.ssh_domains
 
 -- Scrollback
 C.scrollback_lines = 10000
