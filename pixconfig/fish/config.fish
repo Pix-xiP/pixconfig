@@ -4,6 +4,8 @@ if status is-interactive
     fish_config theme choose "Rosé Pine"
 end
 
+## TODO: Make a generic PATH variable for MAC and Linux.
+
 # Specific to Mac
 if test (uname) = Darwin
     set SECRETS_PATH /Users/pix/.config/fish/secrets.fish
@@ -31,12 +33,19 @@ if test (uname) = Darwin
     set -gx DOTNET_ROOT /opt/homebrew/bin/dotnet
     set -gx PIXCONFIG /Users/pix/AdeptusCustodes/pix_hyprland/pixconfig/
 
+    set -gx LUA_INIT "@/Users/pix/.config/lua/init.lua"
+
     function zt_restart --description "Restarts the ZeroTier daemon for when you're having trouble"
         echo "Unloading..."
         sudo launchctl unload /Library/LaunchDaemons/com.zerotier.one.plist
         echo "Reloading..."
         sudo launchctl load /Library/LaunchDaemons/com.zerotier.one.plist
         echo "Done!"
+    end
+
+    function brew --description "Wraps brew and sends a sketchybar trigger"
+        command brew $argv
+        sketchybar --trigger brew_update
     end
 end
 
