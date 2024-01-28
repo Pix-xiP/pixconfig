@@ -11,3 +11,6 @@ pixconfig/fish/functions
 !pixconfig/fish/functions/rg-search.fish
 !pixconfig/fish/functions/peep.fish
 pixconfig/wezterm/secrets/servers.lua
+pixconfig/btop/btop.log
+pixconfig/btop/btop.conf
+pixconfig/btop/btop.conf
