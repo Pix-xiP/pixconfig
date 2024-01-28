@@ -48,4 +48,6 @@ map({ "n" }, "<leader>xr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>
 
 map({ "n" }, "<leader>mx", "<cmd>!chmod +x %<CR>", { desc = "Make file executable" })
 
+map({ "n" }, "<leader>mw", ":w !sudo tee %<CR>", { desc = "Reopen a file with changes using sudo permissions" })
+
 -- map({ "i" }, "<M-m>", "<esc>a", { desc = "Remove auto suggestions and continue typing" })
