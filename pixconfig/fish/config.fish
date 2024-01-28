@@ -47,6 +47,12 @@ if test (uname) = Darwin
         command brew $argv
         sketchybar --trigger brew_update
     end
+
+    function wez_update --description "Update nightly version of Wezterm"
+        echo "Running update"
+        command brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest
+        echo Updated
+    end
 end
 
 # Specific to Linux
