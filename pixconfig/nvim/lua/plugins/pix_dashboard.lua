@@ -272,7 +272,14 @@ M.hyper_plug_opts = function()
         { key = "l", action = "Lazy", desc = " Lazy", icon = "󰒲 ", group = "Number" },
         { key = "q", action = "qa", desc = " Quits", icon = " " },
       },
-      packages = { enable = true, limit = 5, icon = "PIX", label = "LABEL", action = "Telescope find_files cwd=." },
+      packages = { enable = true },
+      project = {
+        enable = true,
+        limit = 2,
+        icon = "",
+        label = " Projects",
+        action = "Telescope find_files cwd=.",
+      },
       mru = { limit = 5, icon = "", label = " Recent Files", cwd_only = false },
       footer = function()
         local stats = require("lazy").stats()
