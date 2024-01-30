@@ -94,13 +94,13 @@ static inline void cpu_update(struct cpu* cpu) {
 
     char color[16];
     if (total_perc >= .7) {
-      snprintf(color, 16, "%s", getenv("RED"));
+      snprintf(color, 16, "%s", "0xffeb6f92");
     } else if (total_perc >= .3) {
-      snprintf(color, 16, "%s", getenv("ORANGE"));
+      snprintf(color, 16, "%s", "0xffea9a97");
     } else if (total_perc >= .1) {
-      snprintf(color, 16, "%s", getenv("YELLOW"));
+      snprintf(color, 16, "%s", "0xffc4a7e7"); 
     } else {
-      snprintf(color, 16, "%s", getenv("LABEL_COLOR"));
+      snprintf(color, 16, "%s", "0xffe9def4");
     }
 
     snprintf(cpu->command, 256, "--push cpu.sys %.2f "
