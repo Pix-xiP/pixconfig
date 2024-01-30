@@ -5,6 +5,13 @@ return {
       background_colour = "#000000",
     },
   },
+  -- If I want to play around with smooth scrolling..
+  -- {
+  --   "karb94/neoscroll.nvim",
+  --   config = function()
+  --     require("neoscroll").setup()
+  --   end,
+  -- },
   {
     "hedyhli/outline.nvim",
     lazy = true,
