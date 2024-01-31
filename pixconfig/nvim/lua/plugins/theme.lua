@@ -50,13 +50,22 @@ local night_fox = {
   },
 }
 
-local rose_pine = {
+local rose_pine_moon = {
   "rose-pine/neovim",
   name = "rose-pine",
   opts = {
     lazy = true,
     variant = "moon",
     dark_variant = "moon",
+    disable_background = true,
+    disable_float_background = true,
+  },
+}
+local rose_pine = {
+  "rose-pine/neovim",
+  name = "rose-pine",
+  opts = {
+    lazy = true,
     disable_background = true,
     disable_float_background = true,
   },
@@ -71,6 +80,7 @@ local lazy_theme = {
 
 return {
   rose_pine,
+  rose_pine_moon,
   catppuccin,
   night_fox,
   lazy_theme,

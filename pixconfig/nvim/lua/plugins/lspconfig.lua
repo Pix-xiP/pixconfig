@@ -81,19 +81,44 @@ return {
   },
   --  To make omnisharp not trash
   { "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
-  -- Formatting for Swift since nothing built in x(
   {
     "stevearc/conform.nvim",
+    dependencies = { "neovim/nvim-lspconfig" },
+    lazy = true,
+    cmd = "ConformInfo",
+    keys = {
+      -- Leader, Code, Format
+      {
+        "<leader>cF",
+        mode = { "n", "v" },
+        function()
+          require("conform").format({ formatters = { "injected" } })
+        end,
+        desc = "Format injected languages from lsp",
+      },
+    },
     opts = {
+      format = {
+        timeout_ms = 5000,
+        async = false,
+        quiet = false,
+      },
+      formatters_by_ft = {
+        lua = { "stylua" },
+        fish = { "fish_indent" },
+        sh = { "shfmt" },
+        c = { "clang-format" },
+        odin = { "odinfmt" },
+        swift = { "swift_format" },
+      },
       formatters = {
+        injected = { options = { ignore_errors = true } },
+        -- Formatting for Swift since nothing built in x(
         swift_format = {
           command = "swift-format",
           args = { "--configuration", "/Users/pix/.config/formatting/swift-config.json" },
           stdin = true,
         },
-      },
-      formatters_by_ft = {
-        swift = { "swift_format" },
       },
     },
   },

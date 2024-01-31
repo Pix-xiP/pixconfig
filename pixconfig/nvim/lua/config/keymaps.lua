@@ -3,6 +3,9 @@
 
 local map = vim.keymap.set
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 -- Better up and down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -24,12 +27,28 @@ map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window w
 -- Move a single line up and down.
 map({ "n" }, "<M-up>", "<cmd>m-2<cr>", { desc = "Move line UP" })
 map({ "n" }, "<M-down>", "<cmd>m+<cr>", { desc = "Move line DOWN" })
-map({ "i" }, "<M-up>", "<esc><cmd>m-2<cr>a", { desc = "Move line UP" })
-map({ "i" }, "<M-down>", "<esc><cmd>m+<cr>a", { desc = "Move line DOWN" })
+map({ "i" }, "<M-down>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move line DOWN" })
+map({ "i" }, "<M-up>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move line UP" })
 
 -- Move a selection up and down
 map({ "v" }, "<M-down>", ":m '>+1<CR>gv=gv")
 map({ "v" }, "<M-up>", ":m '<-2<CR>gv=gv")
+
+-- Clear search with <ESC>
+map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+
+-- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+-- TLDR: Make n always forard and N always backward.
+map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search result" })
+map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev search result" })
+map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+
+-- Better indentation with g
+map("v", "<", "<gv")
+map("v", ">", ">gv")
 
 -- -- Run Pix Autoformatter on current buffer
 -- map({ "n" }, "<leader>pf", ":!pix-af -i -f %<enter>", { desc = "Format currently open Swift buffer" })
