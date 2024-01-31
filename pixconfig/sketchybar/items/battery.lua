@@ -71,10 +71,6 @@ function M.battery_update()
 	})
 end
 
-M.battery:subscribe({
-	"routine",
-	"power_source_change",
-	"system_woke",
-}, M.battery_update)
+M.battery:subscribe({ "routine", "power_source_change", "system_woke" }, M.battery_update)
 
 return M

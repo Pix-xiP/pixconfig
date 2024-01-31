@@ -10,7 +10,7 @@ print("Volume running")
 print("Unloading the macOS screen indicator")
 os.execute("launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist >/dev/null 2>&1")
 
-M.volume_slider = sbar.add("slider", {
+M.volume_slider = sbar.add("slider", 0, {
 	position = "right",
 	updates = true,
 	icon = { drawing = false },

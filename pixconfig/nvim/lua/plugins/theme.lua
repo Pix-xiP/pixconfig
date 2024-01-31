@@ -4,6 +4,7 @@ local catppuccin = {
     "catppuccin/nvim",
     name = "catppuccin",
     opts = {
+      lazy = true,
       flavour = "mocha", -- latte, frappe, macchiato, mocha
       --term_colors = true,
       transparent_background = true,
@@ -53,6 +54,7 @@ local rose_pine = {
   "rose-pine/neovim",
   name = "rose-pine",
   opts = {
+    lazy = true,
     variant = "moon",
     dark_variant = "moon",
     disable_background = true,

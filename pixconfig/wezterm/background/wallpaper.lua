@@ -19,7 +19,7 @@ end
 
 -- Setting wallpaper settings, brightness, hue, saturation etc.
 M.window_hsb = {
-	brightness = 0.1, -- Darken background by x..
+	brightness = 0.05, -- Darken background by x..
 	hue = 1.0, -- Default, 1.0 leaves it unchanged.
 	saturation = 1.0,
 }
