@@ -13,6 +13,12 @@ return {
   --   end,
   -- },
   {
+    "L3MON4D3/LuaSnip",
+    opts = {
+      enabled = false,
+    },
+  },
+  {
     "hedyhli/outline.nvim",
     lazy = true,
     cmd = { "Outline", "OutlineOpen" },

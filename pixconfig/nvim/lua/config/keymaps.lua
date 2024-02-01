@@ -2,6 +2,7 @@
 -- Add any additional keymaps here
 
 local map = vim.keymap.set
+local del = vim.keymap.del
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
@@ -70,3 +71,6 @@ map({ "n" }, "<leader>mx", "<cmd>!chmod +x %<CR>", { desc = "Make file executabl
 map({ "n" }, "<leader>mw", ":w !sudo tee %<CR>", { desc = "Reopen a file with changes using sudo permissions" })
 
 -- map({ "i" }, "<M-m>", "<esc>a", { desc = "Remove auto suggestions and continue typing" })
+
+-- Nuke CTRL S for saving...
+del({ "i", "x", "n", "s" }, "<C-s>")
