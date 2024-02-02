@@ -43,7 +43,7 @@ lalt - v : yabai -m window --insert south; skhd -k "cmd - n"
 
 # Toggle sketchybar
 shift + lalt - space : sketchybar --bar hidden=toggle
-shift + lalt - r : sketchybar --restart-service
+shift + lalt - r : sketchybar --reload
 #shift + lalt - r : sketchybar --exit
 
 ## Resize (ctrl + lalt - ...)
