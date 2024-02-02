@@ -56,7 +56,7 @@ sbar.bar({
 	height = 28,
 	color = colours.rose_pallete.base,
 	border_color = colours.rose_pallete.highlight_low,
-	shadow = true,
+	-- shadow = true,
 	sticky = true,
 	padding_right = 10,
 	padding_left = 10,
