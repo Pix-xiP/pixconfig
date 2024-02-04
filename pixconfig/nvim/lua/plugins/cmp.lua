@@ -13,6 +13,7 @@ return {
     dependencies = {
       "hrsh7th/cmp-emoji",
     },
+
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local has_words_before = function()
@@ -49,6 +50,25 @@ return {
           end
         end, { "i", "s" }),
       })
+
+      opts.window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      }
+
+      opts.sorting = {
+        comparators = {
+          cmp.config.compare.offset,
+          cmp.config.compare.exact,
+          cmp.config.compare.sort_text,
+          cmp.config.compare.score,
+          require("cmp-under-comparator").under,
+          cmp.config.compare.recently_used,
+          cmp.config.compare.kind,
+          cmp.config.compare.length,
+          cmp.config.compare.order,
+        },
+      }
     end,
   },
 }
