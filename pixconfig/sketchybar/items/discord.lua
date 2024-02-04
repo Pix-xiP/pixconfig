@@ -5,10 +5,8 @@ local icons = require("icons")
 local M = {}
 
 M.discord = sbar.add("item", "discord", {
-	update_freq = 60,
-	-- This is a tempt fix till I talk to Felix I guess
+	update_freq = 20,
 	position = "right",
-	click_script = "sketchybar --trigger discord",
 	icon = {
 		string = icons.discord,
 		color = colours.rose_pallete.pine,
@@ -40,16 +38,20 @@ function M.status_label()
 			icon_color = colours.rose_pallete.love
 			new_label = label
 		else
-			print("Discord exiting")
+			M.discord:set({ drawing = false })
 			return
 		end
 		if new_label == "" then
-			M.discord:set({ icon = { color = icon_color }, label = { string = new_label, drawing = false } })
+			M.discord:set({
+				drawing = true,
+				icon = { color = icon_color },
+				label = { string = new_label, drawing = false },
+			})
 		else
-			M.discord:set({ icon = { color = icon_color }, label = { string = new_label } })
+			M.discord:set({ drawing = true, icon = { color = icon_color }, label = { string = new_label } })
 		end
 	else
-		print("Discord exiting")
+		M.discord:set({ drawing = false })
 		return
 	end
 end
