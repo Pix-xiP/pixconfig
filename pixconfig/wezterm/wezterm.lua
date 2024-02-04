@@ -152,9 +152,15 @@ end)
 -- Setup for different multiplex domains.
 -- TODO: Setup with the rest of the workspaces :>
 C.unix_domains = {
-	{ name = "pix", no_serve_automatically = false },
+	{
+		name = "pix",
+		no_serve_automatically = false,
+		local_echo_threshold_ms = 1000,
+	},
 	{ name = "backup", no_serve_automatically = false },
 }
+
+C.default_gui_startup_args = { "connect", "pix" }
 
 C.ssh_domains = secrets.ssh_domains
 
