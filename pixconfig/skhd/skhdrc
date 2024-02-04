@@ -16,7 +16,7 @@ lctrl + lalt - k : yabai -m window --focus last
 # Float / Unfloat window: lcmd + shift - v
 lcmd + shift - v : yabai -m window --toggle float; sketchybar --trigger window_focus
 
-# Make window zoom to fullscreen: shift + lalt - f
+# Make window zoom to fullscreen: lctrl + lalt - f
 # lctrl + shift + lalt - f : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
 lctrl + lalt - f : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
 
