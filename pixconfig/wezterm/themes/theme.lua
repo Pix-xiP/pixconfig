@@ -20,6 +20,11 @@ else
 	T.font = wez.font("JetBrains Mono", { weight = "Bold", italic = true })
 end
 
+T.icons = {
+	heart = " ",
+	battery = "󰁹",
+}
+
 function T.select_theme(window, pane)
 	window:perform_action(
 		wez.action.InputSelector({
@@ -50,6 +55,7 @@ T.rose_pallete = {
 		muted = "#6e6a86",
 		subtle = "#908caa",
 		text = "#e0def4",
+		dim_text = "#bebccf",
 		love = "#eb6f92",
 		gold = "#f6c177",
 		rose = "#ea9a97",
@@ -62,5 +68,112 @@ T.rose_pallete = {
 		none = "NONE",
 	},
 }
+
+T.status_bar_colors = {
+	wez_purple = {
+		"#3c1361",
+		"#52307c",
+		"#663a82",
+		"#7c5295",
+		"#b491c8",
+	},
+}
+
+-- selene:allow(unused_variable)
+---@diagnostic disable-next-line: unused-local, redefined-local
+wez.on("update-status", function(window, pane)
+	-- Get the current workspace:
+	local workspace = wez.mux.get_active_workspace()
+
+	local elements = {
+		{ Foreground = { Color = T.rose_pallete.moon.dim_text } },
+		{ Background = { Color = T.status_bar_colors.wez_purple[1] } },
+		{ Text = " WS: " .. tostring(workspace) .. " " },
+
+		{ Background = { Color = T.status_bar_colors.wez_purple[2] } },
+		{ Foreground = { Color = T.status_bar_colors.wez_purple[1] } },
+		{ Text = "" .. wez.nerdfonts.pl_left_hard_divider },
+
+		{ Foreground = { Color = T.rose_pallete.moon.dim_text } },
+		{ Text = " " .. T.icons.heart .. " " },
+
+		{ Foreground = { Color = T.status_bar_colors.wez_purple[2] } },
+		{ Text = "" .. wez.nerdfonts.pl_left_hard_divider },
+	}
+
+	window:set_left_status(wez.format(elements))
+end)
+
+wez.on("update-right-status", function(window, pane)
+	-- Each element holds the text for a cell in a "powerline" style << fade
+	local cells = {}
+
+	-- Figure out the cwd and host of the current pane.
+	-- This will pick up the hostname for the remote host if your
+	-- shell is using OSC 7 on the remote host.
+	local cwd_uri_data = pane:get_current_working_dir()
+
+	if cwd_uri_data then
+		local cwd_uri = tostring(cwd_uri_data)
+		if cwd_uri ~= nil then
+			cwd_uri = cwd_uri:sub(8)
+			local slash = cwd_uri:find("/")
+			local cwd = ""
+			local hostname = ""
+			if slash then
+				hostname = cwd_uri:sub(1, slash - 1)
+				-- Remove the domain name portion of the hostname
+				local dot = hostname:find("[.]")
+				if dot then
+					hostname = hostname:sub(1, dot - 1)
+				end
+				-- and extract the cwd from the uri
+				cwd = cwd_uri:sub(slash)
+
+				table.insert(cells, cwd)
+				table.insert(cells, hostname)
+			end
+		end
+	end
+
+	-- Wez likes his date/time in this style: "Wed Mar 3 08:14"
+	local date = wez.strftime("%a %b %-d %H:%M")
+	table.insert(cells, date)
+
+	-- An entry for each battery (typically 0 or 1 battery)
+	for _, b in ipairs(wez.battery_info()) do
+		table.insert(cells, string.format("%.0f%%" .. T.icons.battery, b.state_of_charge * 100))
+	end
+
+	-- Foreground color for the text across the fade
+	-- local text_fg = "#c0c0c0"
+	local text_fg = T.rose_pallete.moon.dim_text
+
+	-- The elements to be formatted
+	local elements = {}
+	-- How many cells have been formatted
+	local num_cells = 0
+
+	-- Translate a cell into elements
+	local function push(text, is_last)
+		local cell_no = num_cells + 1
+		table.insert(elements, { Foreground = { Color = text_fg } })
+		table.insert(elements, { Background = { Color = T.status_bar_colors.wez_purple[cell_no] } })
+		table.insert(elements, { Text = " " .. text .. " " })
+		if not is_last then
+			table.insert(elements, { Foreground = { Color = T.status_bar_colors.wez_purple[cell_no + 1] } })
+			table.insert(elements, { Text = wez.nerdfonts.pl_right_hard_divider })
+		end
+		num_cells = num_cells + 1
+	end
+
+	while #cells > 0 do
+		local cell = table.remove(cells, 1)
+		push(cell, #cells == 0)
+	end
+
+	-- print("Setting right status")
+	window:set_right_status(wez.format(elements))
+end)
 
 return T

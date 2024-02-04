@@ -32,6 +32,7 @@ return {
 		_0 = "􀛪",
 		charging = "􀢋",
 	},
+
 	git = {
 		bell = "􀋚",
 		bell_dot = "􀝗",
