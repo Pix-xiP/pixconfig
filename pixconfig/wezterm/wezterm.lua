@@ -34,6 +34,7 @@ C.window_decorations = "RESIZE"
 -- Colors and theme configuration in theme.lua
 C.color_scheme = theme.default
 C.font = theme.font
+C.font_size = theme.font_size
 
 C.keys = keys
 
