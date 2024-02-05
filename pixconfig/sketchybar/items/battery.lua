@@ -33,6 +33,7 @@ function M.battery_update()
 	if string.find(battery, "AC Power") then
 		colour = colours.rose_pallete.pine
 		icon = icons.battery.charging
+		charge_str = ""
 	else
 		local found, _, charge = battery:find("(%d+)%%")
 		if found then

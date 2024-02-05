@@ -1,7 +1,15 @@
+function pix_print_osc7 --description "Prints OSC7 for the terminal to use"
+    set wez_current_dir_var (pwd)
+
+    printf "\033]7;file://%s/%s\033\\" $hostname $wez_current_dir_var
+
+end
+
 if status is-interactive
     # Commands to run hn interactive sessions can go here
     fzf_configure_bindings --directory=\cf --git_log=\e\f
     fish_config theme choose "Rosé Pine"
+    pix_print_osc7
 end
 
 ## TODO: Make a generic PATH variable for MAC and Linux.

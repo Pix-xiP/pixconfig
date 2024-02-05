@@ -46,7 +46,7 @@ C.colors = {
 		-- The active tab is the one that has focus in the window
 		active_tab = {
 			-- The color of the background area for the tab
-			bg_color = theme.rose_pallete.moon.iris,
+			bg_color = theme.rose_pallete.moon.subtle,
 			-- The color of the text for the tab
 			fg_color = theme.rose_pallete.moon.base,
 			-- Specify whether you want "Half", "Normal" or "Bold" intensity for the
@@ -109,8 +109,8 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 end)
 
 C.use_fancy_tab_bar = false
-C.hide_tab_bar_if_only_one_tab = true
-C.tab_bar_at_bottom = true
+C.hide_tab_bar_if_only_one_tab = false
+C.tab_bar_at_bottom = false
 
 C.window_background_image = bg_config.image
 C.window_background_image_hsb = bg_config.window_hsb
@@ -153,9 +153,15 @@ end)
 -- Setup for different multiplex domains.
 -- TODO: Setup with the rest of the workspaces :>
 C.unix_domains = {
-	{ name = "pix", no_serve_automatically = false },
+	{
+		name = "pix",
+		no_serve_automatically = false,
+		local_echo_threshold_ms = 1000,
+	},
 	{ name = "backup", no_serve_automatically = false },
 }
+
+C.default_gui_startup_args = { "connect", "pix" }
 
 C.ssh_domains = secrets.ssh_domains
 
@@ -164,6 +170,8 @@ C.scrollback_lines = 10000
 -- Terminal padding inside the window.
 C.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 C.adjust_window_size_when_changing_font_size = false
+
+C.status_update_interval = 500
 
 -- and finally, return the configuration to wezterm
 return C

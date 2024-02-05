@@ -5,7 +5,7 @@ local icons = require("icons")
 local M = {}
 
 M.slack = sbar.add("item", "slack", {
-	update_freq = 3600,
+	update_freq = 1800,
 	position = "right",
 	click_script = "sketchybar --trigger slack",
 	icon = {
@@ -15,6 +15,7 @@ M.slack = sbar.add("item", "slack", {
 		font = {
 			size = 18,
 		},
+		y_offset = 1,
 	},
 })
 
@@ -24,7 +25,6 @@ function M.status_label()
 	handle:close()
 
 	local label = string.match(status_label, '"label"="([^"]*)"')
-
 	if label ~= nil then
 		local icon_color
 		local new_label
@@ -39,21 +39,26 @@ function M.status_label()
 			icon_color = colours.rose_pallete.love
 			new_label = label
 		else
-			print("Slack exiting")
+			M.slack:set({ drawing = false })
 			return
 		end
 		if new_label == "" then
-			M.slack:set({ icon = { color = icon_color }, label = { string = new_label, drawing = false } })
+			M.slack:set({
+				drawing = true,
+				icon = { color = icon_color },
+				label = { string = new_label, drawing = false },
+			})
 		else
-			M.slack:set({ icon = { color = icon_color }, label = { string = new_label } })
+			M.slack:set({ drawing = true, icon = { color = icon_color }, label = { string = new_label } })
 		end
 	else
 		M.slack:set({ drawing = false })
-		print("Slack exiting")
-		return
 	end
 end
 
+M.slack_event = sbar.add("event", "slack")
+
+M.slack:subscribe("slack", M.status_label)
 M.slack:subscribe("routine", M.status_label)
 M.slack:subscribe("system_woke", M.status_label)
 
