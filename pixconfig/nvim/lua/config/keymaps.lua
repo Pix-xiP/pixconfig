@@ -72,5 +72,12 @@ map({ "n" }, "<leader>mw", ":w !sudo tee %<CR>", { desc = "Reopen a file with ch
 
 -- map({ "i" }, "<M-m>", "<esc>a", { desc = "Remove auto suggestions and continue typing" })
 
+-- Search current buffer looks different.
+-- map({ "n", "v" }, "<leader>sb", function()
+--   require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+--     previewer = false,
+--   }))
+-- end, { desc = "Search current buffer" })
+
 -- Nuke CTRL S for saving...
 del({ "i", "x", "n", "s" }, "<C-s>")

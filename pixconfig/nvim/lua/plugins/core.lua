@@ -1,4 +1,9 @@
 return {
+  -- I want to be able to develop my own plugins, thanks Folke!
+  {
+    "folke/neodev.nvim",
+    opts = {},
+  },
   {
     "rcarriga/nvim-notify",
     opts = {
