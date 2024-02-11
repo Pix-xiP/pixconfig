@@ -62,7 +62,7 @@ map({ "n" }, "n", "nzzzv", { desc = "Next search result" })
 map({ "n" }, "N", "Nzzzv", { desc = "Previous search result" })
 
 -- Paste without losing current copy - copy arst, paste over tsra without losing arst.
-map({ "x" }, "<leader>p", '"_dP', { desc = "Paste without overwriting register when highlighted." })
+map({ "x" }, "<leader>pp", '"_dP', { desc = "Paste without overwriting register when highlighted." })
 
 map({ "n" }, "<leader>xr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "Replace current word" })
 

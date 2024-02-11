@@ -269,6 +269,13 @@ M.hyper_plug_opts = function()
           icon = " ",
           group = "Text",
         },
+        {
+          key = "n",
+          action = "ene | startinsert",
+          desc = "New/Scratch",
+          -- icon = "T",
+          group = "Text",
+        },
         { key = "l", action = "Lazy", desc = " Lazy", icon = "󰒲 ", group = "Number" },
         { key = "q", action = "qa", desc = " Quits", icon = " " },
       },
