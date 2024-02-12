@@ -34,7 +34,8 @@ shift + lalt - s : yabai -m window --toggle split
 ## Misc
 # Open new Terminal window
 # lalt - t : alacritty msg create-window
-lalt - t : wezterm
+lalt - t : wezterm connect pix
+lalt + shift - t : wezterm
 lalt - b : open -n /Applications/Arc.app
 
 # New window in hor./ vert. splits for all applications with yabai
