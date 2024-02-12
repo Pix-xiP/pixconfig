@@ -148,6 +148,10 @@ wezterm.on("gui-startup", function(cmd)
 	mux.set_active_workspace("default")
 end)
 
+wezterm.on("mux-startup", function()
+	wezterm.mux.spawn_window({ width = 100, height = 100 })
+end)
+
 -- MULTIPLEXER
 -- Setup for different multiplex domains.
 -- TODO: Setup with the rest of the workspaces :>
@@ -160,7 +164,7 @@ C.unix_domains = {
 	{ name = "backup", no_serve_automatically = false },
 }
 
-C.default_gui_startup_args = { "connect", "pix" }
+-- C.default_gui_startup_args = { "connect", "pix" }
 
 C.ssh_domains = secrets.ssh_domains
 
