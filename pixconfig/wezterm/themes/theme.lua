@@ -14,10 +14,13 @@ T.default = "Rosé Pine Moon (base16)"
 
 if utils.os == "Linux" then
 	T.font = wez.font("FiraCode", { weight = "Bold", italic = false })
+	T.font_size = 11.0
 elseif utils.os == "Darwin" then
 	T.font = wez.font("FiraCode Nerd Font", { weight = "Regular", italic = false })
+	T.font_size = 11.0
 else
 	T.font = wez.font("JetBrains Mono", { weight = "Bold", italic = true })
+	T.font_size = 12.0
 end
 
 T.icons = {

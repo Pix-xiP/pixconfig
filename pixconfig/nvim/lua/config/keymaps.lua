@@ -62,7 +62,7 @@ map({ "n" }, "n", "nzzzv", { desc = "Next search result" })
 map({ "n" }, "N", "Nzzzv", { desc = "Previous search result" })
 
 -- Paste without losing current copy - copy arst, paste over tsra without losing arst.
-map({ "x" }, "<leader>p", '"_dP', { desc = "Paste without overwriting register when highlighted." })
+map({ "x" }, "<leader>pp", '"_dP', { desc = "Paste without overwriting register when highlighted." })
 
 map({ "n" }, "<leader>xr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "Replace current word" })
 
@@ -71,6 +71,13 @@ map({ "n" }, "<leader>mx", "<cmd>!chmod +x %<CR>", { desc = "Make file executabl
 map({ "n" }, "<leader>mw", ":w !sudo tee %<CR>", { desc = "Reopen a file with changes using sudo permissions" })
 
 -- map({ "i" }, "<M-m>", "<esc>a", { desc = "Remove auto suggestions and continue typing" })
+
+-- Search current buffer looks different.
+-- map({ "n", "v" }, "<leader>sb", function()
+--   require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+--     previewer = false,
+--   }))
+-- end, { desc = "Search current buffer" })
 
 -- Nuke CTRL S for saving...
 del({ "i", "x", "n", "s" }, "<C-s>")
