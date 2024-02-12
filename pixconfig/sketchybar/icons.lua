@@ -8,6 +8,7 @@ return {
 	discord = "󰙯",
 	mail = "󰇮",
 	slack = "󰒱",
+	nix = "󱄅",
 
 	alert = "󰀧",
 

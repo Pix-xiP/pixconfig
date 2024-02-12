@@ -27,6 +27,7 @@ return {
         "go",
         "lua",
         "markdown",
+        "nix",
         "odin",
         "swift",
         "zig",
