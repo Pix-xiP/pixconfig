@@ -21,6 +21,16 @@ return {
           filetypes = { "go", "gomod", "gowork", "gotmpl" },
           rootPatterns = { "go.work", "go.mod", ".git" },
         },
+        lua_ls = {
+          settings = {
+            -- Remove the missing 'vim' from neovim config files :>
+            Lua = {
+              diagnostics = {
+                globals = { "vim" },
+              },
+            },
+          },
+        },
         ols = {
           cmd = { "ols" },
           filetypes = { "odin" },
