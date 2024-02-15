@@ -75,6 +75,8 @@ if test (uname) = Linux
     set -gx PIXCONFIG /home/pix/AdeptusCustodes/pix_hyprland/pixconfig/
 
     abbr edit "swappy -f"
+
+    alias hw='hwinfo --short' # Hardware Info
 end
 
 # How to make zoxide run
@@ -84,7 +86,6 @@ zoxide init --cmd z fish | source
 # Alias Hours
 # ===================
 alias cat="bat --style header --style snip --style changes --style header"
-alias hw='hwinfo --short' # Hardware Info
 alias zerotier-cli="sudo zerotier-cli"
 alias df="duf"
 alias du="dust"
