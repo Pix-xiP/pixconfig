@@ -1,5 +1,19 @@
 -- Use <tab> for completion and snippets (supertab)
 -- first: disable default <tab> and <s-tab> behavior in LuaSnip
+
+local function border(hl_name)
+  return {
+    { "╭", hl_name },
+    { "─", hl_name },
+    { "╮", hl_name },
+    { "│", hl_name },
+    { "╯", hl_name },
+    { "─", hl_name },
+    { "╰", hl_name },
+    { "│", hl_name },
+  }
+end
+
 return {
   {
     "L3MON4D3/LuaSnip",
@@ -14,7 +28,7 @@ return {
       "hrsh7th/cmp-emoji",
     },
 
-    ---@param opts cmp.ConfigSchema
+    --    ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local has_words_before = function()
         unpack = unpack or table.unpack
@@ -51,9 +65,22 @@ return {
         end, { "i", "s" }),
       })
 
+      -- opts.window = {
+      --   completion = cmp.config.window.bordered(),
+      --   documentation = cmp.config.window.bordered(),
+      -- }
+
       opts.window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        completion = {
+          side_padding = 1,
+          -- winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
+          scrollbar = false,
+          border = border("CmpBorder"),
+        },
+        documentation = {
+          border = border("CmpDocBorder"),
+          winhighlight = "Normal:CmpDoc",
+        },
       }
 
       opts.sorting = {

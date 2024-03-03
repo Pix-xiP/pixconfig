@@ -71,7 +71,7 @@ local lazy_theme = {
 
 return {
   rose_pine,
-  catppuccin,
-  night_fox,
+  -- catppuccin,
+  -- night_fox,
   lazy_theme,
 }

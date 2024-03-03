@@ -7,6 +7,7 @@ local spaces = require("items.spaces")
 local front_app = require("items.front_app")
 
 --- Center:
+local media = require("items.media")
 
 --- Right:
 local calendar = require("items.calendar")
@@ -34,6 +35,7 @@ M.brew = brew
 M.calendar = calendar
 M.discord = discord
 M.front_app = front_app
+M.media = media
 M.mail = mail
 M.slack = slack
 M.spaces = spaces
