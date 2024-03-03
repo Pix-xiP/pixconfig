@@ -12,6 +12,7 @@ shit here.. lmao
 -----------------
 
 ### Colourscheme:
+- Rose Pine || Rose Pine Moon
 - Catpuccin Mocha
 - Tokyonight
 - Dracula
@@ -35,13 +36,13 @@ Lock your PC
 Screenshots
 - `grimblast`
 Screenshot Utility specifically for Hyprland.
-`sddm`
+- `sddm`
 Simple Desktop Display Manager - use for login etc.
-`hyprpicker`
+- `hyprpicker`
 Pick out colours easily!
-`waybar-hyprland` `(-git)`
+- `waybar-hyprland` `(-git)`
 Specific Waybar implementation for Hyprland.
-`hyprpaper`
+- `hyprpaper`
 Wallpapers on Hyprland!
 - `wl-clipboard`
 Clipboard manager for wayland!
@@ -90,8 +91,11 @@ Improved Screenshotting capabilities
       ilancosman/tide@v6         # Async modern shell prompt.
       patrickF1/fzf.fish         # FZF with hotkeys for fish.
       meaningful-ooo/sponge      # Cleans up typos from history
+      nickeb96/puffer-fish       # Fish-like pufferline
+- `nushell`
+Overly complicated shell with impressive builtins for data handling
 - `zsh`
-- Warp (Mac only, proprietary...)
+Just improved bash :>
 
 ### Markdown:
 Viewers:
@@ -109,6 +113,8 @@ Viewers:
       - Redone keymapping cause `Colemak` keyboard
       - Extra treesitter files for languages like `odin` and `zig` 
       - Custom formatters for C and Swift.
+- `neovide`
+A frontend GUI for neovim/vim. Has cute little animations and stuff.
 - `Sublime Text`
   Running a custom theme I made on MacOS.
 - `Zed`
@@ -116,10 +122,17 @@ Viewers:
 
 ### Terminals:
 - `wezterm`
+Crossplatform - configurable with lua
 - `foot`
+Wayland specific terminal, server to many client
 - `st`
+Compiled C terminal. Very Minimal
 - `alacritty`
+GPU acceleratted like wezterm, text to screen go brr
 - `iterm2`
+Your classic basic mac terminal.
+- ``Warp`` 
+  Mac only, proprietary... integerated AI. Am Sus of it tbqh
 
 
 ### File Conversion:
@@ -128,11 +141,13 @@ Viewers:
 - `ffmpeg`: swiss army knife for video 
 - `sox`   : swiss army knife for audio 
 
-### File Listing and Searching:
+### File Listing and Searching:c
 - `zoxide`
 A replacement for `cd`, faster, more options.
 - `eza` (`exa` is deprecated)
 A replacement for `ls` with more options available.
+- `atuin`
+Fancy syncable shell history, querieable with human language.
 - `bat`
 `cat` but with color and stuff
 - `dust`
@@ -182,7 +197,7 @@ A network monitoring tool!
 - `zerotier-one`
 Build your own network anywhere, connect to anything.
 - `axel`
-Download anything at the speed of crack.
+Download anything at the speed of threads
 - `dog`
 Better `dig`!
 - `hping3`
@@ -201,6 +216,8 @@ A helpful CI tool for creating pipelines and auto builds.
 A helpful cheatsheet about a topic, usually web tool related.
 - `procs`
 A better, coloured and more easily searched `ps`
+- `gum`
+General purpose library to improve your scripting with various functions (log, timer, loading..)
 - `fastmod`
 For making large codebase changes across multiple files at once.
 - `botan`
@@ -249,6 +266,11 @@ Competes with `xz` for compression, but always has faster Decompression
 Faster compression tool, but will not result in as small of a output.
 - `bear`
 Generates compile_commands.json files for ClandD and some other LSPs
+- `bp`
+'better paste' - optimal for chaining with pipes
+- `dos2unix`
+Remove pesky `\r\n` from files coming from windows to unix
+
 
 ### Package Managers:
 - `yay` (Arch)
@@ -257,6 +279,10 @@ Pacman standin for AUR written in Go.
 Pacman standin for AUR with features, written in Rust
 - `brew` (All)
 General purpose but slower package manager written in Ruby
+- `nix`
+Prebuilt, precached, declarative consistent packages.
+- - `home-manager`
+  A sub extennsion to nix, to further declare you packages.
 
 ### Version Control:
 - `lazygit`
@@ -273,6 +299,7 @@ Interact specifically with github, makes pr and stuff much quicker then by hand.
 Way overengineered form of git management with branches out the wazoo.
 - `git-leaks`
 Looks through repos for obvious leaks like passwords or creds or api-keys
+
 #### Version Management (GUI)
 - `Sublime Merge`
 Fantastic git manager, makes merges very simple
@@ -286,6 +313,8 @@ Easier Cmake using ninja as a backend.
 The better version of make, though its a pain
 - `ninja`
 Cmake replacement build system.
+- `remake`
+Pix's very own build system, written in C, configured via lua.
 - `zig`
 Turns out zig builds compiler is actually pretty fancy 
 
@@ -300,6 +329,10 @@ Redis in your C what joy
 Standard C building blocks, you should know / use these.
 - `xxhash`
 hehe, hash go brrrr
+- `mimalloc`
+Microsofts better implementatino of the standard library malloc.
+- `jemalloc`
+emphasis on no framgmentation and concurrency support
 
 ### Languages
 - `C`
@@ -329,5 +362,12 @@ Configuration for `neovim` and `wezterm`, small scripting language with `C` inte
 - `haskell`
 Cause everyone needs to try functional programming at least once. Good for large scale text manipulation.
 
+### Databases 
+This is honestly a massive weak point for me, so here is just some basic stuff I've used and enjoy
+
+- `sqlite` 
+Everyones favourite flatfile works with anything database
+- `surealdb`
+A mulit model database using what I think is a document system?
 
 
