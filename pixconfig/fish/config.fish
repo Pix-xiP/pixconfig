@@ -21,7 +21,12 @@ if test (uname) = Darwin
         source "$SECRETS_PATH"
     end
 
-    fish_add_path -m /opt/homebrew/bin/
+    # Nix Specific 
+    if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+        source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+    end
+
+    # fish_add_path -m /opt/homebrew/bin/
 
     set -x DOCKER_DEFAULT_PLATFORM linux/amd64
     set -gx GRAVEYARD "/Users/pix/.local/graveyard"
