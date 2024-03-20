@@ -14,4 +14,8 @@ return {
   --   "nvim-pack/nvim-spectre", -- Find and Replace
   --   enabled = false, -- Bring it back if you don't wanna use s/<pattern>/<replace>/g
   -- },
+  {
+    "echasnovski/mini.pairs", -- Its just getting in the way at this point.
+    enabled = false,
+  },
 }
