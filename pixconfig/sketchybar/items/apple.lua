@@ -58,27 +58,27 @@ M.arc = sbar.add("item", {
 })
 
 M.apple_prefs:subscribe("mouse.clicked", function(_)
-	os.execute("open -a 'System Preferences'")
+	sbar.exec("open -a 'System Preferences'")
 	M.apple_logo:set({ popup = { drawing = false } })
 end)
 
 M.apple_activity:subscribe("mouse.clicked", function(_)
-	os.execute("open -a 'Activity Monitor'")
+	sbar.exec("open -a 'Activity Monitor'")
 	M.apple_logo:set({ popup = { drawing = false } })
 end)
 
 M.lock:subscribe("mouse.clicked", function(_)
-	os.execute("pmset displaysleepnow")
+	sbar.exec("pmset displaysleepnow")
 	M.apple_logo:set({ popup = { drawing = false } })
 end)
 
 M.apple_finder:subscribe("mouse.clicked", function(_)
-	os.execute("open -a 'Finder'")
+	sbar.exec("open -a 'Finder'")
 	M.apple_logo:set({ popup = { drawing = false } })
 end)
 
 M.arc:subscribe("mouse.clicked", function(_)
-	os.execute("open -a 'Arc'")
+	sbar.exec("open -a 'Arc'")
 	M.apple_logo:set({ popup = { drawing = false } })
 end)
 

@@ -53,7 +53,7 @@ function M:brew_update_check()
 end
 
 function M:run_update()
-	os.execute("brew update && brew upgrade")
+	sbar.exec("brew update && brew upgrade")
 	sbar.trigger("brew_update") --, { PIX = "working" })
 end
 

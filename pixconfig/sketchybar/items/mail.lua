@@ -60,7 +60,7 @@ tell application "Mail"
 end tell
   ]]
 	local cmd = string.format("osascript -e '%s'", string.format(script, mailbox))
-	os.execute(cmd)
+	sbar.exec(cmd)
 end
 
 M.mailboxes = {}

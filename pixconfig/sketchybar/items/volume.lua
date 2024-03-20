@@ -8,7 +8,7 @@ local M = {}
 print("Volume running")
 
 print("Unloading the macOS screen indicator")
-os.execute("launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist >/dev/null 2>&1")
+sbar.exec("launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist >/dev/null 2>&1")
 
 M.volume_slider = sbar.add("slider", 0, {
 	position = "right",
@@ -56,7 +56,7 @@ M.volume_icon = sbar.add("item", {
 M.bracket = { M.volume_icon.name, M.volume_slider.name }
 
 M.volume_slider:subscribe("mouse.clicked", function(env)
-	os.execute("osascript -e 'set volume output volume " .. env["PERCENTAGE"] .. "'")
+	sbar.exec("osascript -e 'set volume output volume " .. env["PERCENTAGE"] .. "'")
 end)
 
 M.volume_slider:subscribe("volume_change", function(env)

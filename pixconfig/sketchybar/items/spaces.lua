@@ -6,10 +6,10 @@ local M = {}
 
 function M.mouse_click(env)
 	if env.BUTTON == "right" then
-		-- os.execute("yabai -m space --destroy " .. env.SID .. " && sketchybar --trigger space_change")
+		-- sbar.exec("yabai -m space --destroy " .. env.SID .. " && sketchybar --trigger space_change")
 		print("Unable to destroy because not true YABAI")
 	else
-		-- os.execute("yabai -m space --focus " .. env.SID)
+		-- sbar.exec("yabai -m space --focus " .. env.SID)
 		print("Unable to focus because not running true YABAI")
 	end
 end
@@ -70,7 +70,7 @@ M.space_creator = sbar.add("item", {
 
 M.space_creator:subscribe("mouse.clicked", function(_)
 	print("cannot change space due to not true YABAI")
-	-- os.execute("yabai -m space --create && sketchybar --trigger space_change")
+	-- sbar.exec("yabai -m space --create && sketchybar --trigger space_change")
 end)
 
 M.space_creator:subscribe("space_windows_change", function(env)
