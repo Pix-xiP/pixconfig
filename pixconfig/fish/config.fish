@@ -104,6 +104,7 @@ alias wz="wezterm"
 alias imgcat="wezterm imgcat"
 alias valgrind="sudo -E valgrind"
 alias tree="eza -g --icons --sort=type --tree"
+alias rustscan="docker run -it --rm --name rustscan rustscan/rustscan:2.1.1"
 
 # ===================
 # Abbr Hours
