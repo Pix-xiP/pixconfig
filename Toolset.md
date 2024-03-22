@@ -364,7 +364,7 @@ The faster debian improved 'sh' usually what sh links to on machines.
 - bit calculator with interactive setup
 
 `fjira`
-Command line Jira
+- Command line Jira
 
 `k9s`
 - Kubernetes cluster management
