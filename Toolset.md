@@ -444,9 +444,6 @@ C Heavy compression tool, usually results in very small output
 `lnav`
 - Extremely fast log viewer in C++. Tutorial at `ssh tutorial1@gdemo.lnav.org`
 
-`red`
-- Logfile analysis tool
-
 `angle-grinder`
 - Logfile analysis tool with builtin manipulations, could replace `cat grep` etc.
 
