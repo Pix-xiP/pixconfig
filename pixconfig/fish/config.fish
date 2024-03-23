@@ -31,10 +31,12 @@ if test (uname) = Darwin
     set -x DOCKER_DEFAULT_PLATFORM linux/amd64
     set -gx GRAVEYARD "/Users/pix/.local/graveyard"
     set -x ODIN_ROOT /Users/pix/AdeptusCustodes/Fenris/Odin
-    set -x PATH "/opt/homebrew:$PATH"
-    set -x PATH "/opt/homebrew/bin:$PATH"
-    set -x PATH "/opt/homebrew/opt/gnu-getopt/bin:$PATH"
+    # set -x PATH "/opt/homebrew:$PATH"
+    # set -x PATH "/opt/homebrew/bin:$PATH"
+    # set -x PATH "/opt/homebrew/opt/gnu-getopt/bin:$PATH"
     set -gx WEZTERM_CONFIG_FILE "/Users/pix/.config/wezterm/wezterm.lua"
+
+    fish_add_path -m /Users/pix/.config/go_env/bin
 
     # Go Env Setup
     set -x GOPATH /Users/pix/.config/go_env/
