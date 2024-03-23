@@ -7,9 +7,19 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
 
+  -- --
+  -- {
+  --   "apple/pkl-neovim",
+  --   opts = {},
+  -- },
+
   -- Everything else
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      "apple/pkl-neovim",
+    },
+
     opts = {
       highlight = {
         enable = true,
@@ -29,6 +39,7 @@ return {
         "markdown",
         "nix",
         "odin",
+        "pkl",
         "swift",
         "zig",
       },
