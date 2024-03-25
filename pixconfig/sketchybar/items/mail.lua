@@ -84,6 +84,10 @@ end run
 	local mailboxes = handle:read("*a")
 	handle:close()
 
+	sbar.exec("sleep 3 ", function(result)
+		M.mail:set({ drawing = false })
+	end)
+
 	local i = 0
 	for line in string.gmatch(mailboxes, "[^\n]+") do
 		local splitter = {}
@@ -133,9 +137,13 @@ M.mail:subscribe("mail_check", "routine", "system_woke", function(_)
 	M.mail_update()
 end)
 
--- M.mail:subscribe("mail_check", M.mail_update)
--- M.mail:subscribe("routine", M.mail_update)
--- M.mail:subscribe("system_woke", M.mail_update)
+M.mail:subscribe("mouse.entered", function()
+	M.mail:set({ popup = { drawing = true } })
+end)
+
+M.mail:subscribe("mouse.exited", function()
+	M.mail:set({ popup = { drawing = false } })
+end)
 
 M.bracket = { M.mail.name }
 
