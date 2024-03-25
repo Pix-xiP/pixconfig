@@ -5,9 +5,7 @@ This is like a compilation of stuff I've found that I use regularly or have
 for niche occasions along with some alternatives I've tried that you might find
 useful that I personally didn't vibe with.
 
-When the list has conflicting things that do the same, the closer to the top one is 
-usually what I'm using, though I haven't made that a strict rule, there is alot of 
-shit here.. lmao
+I'm adding a `*` next to tools I actively use on the command line! All of the listed GUI stuff I use to some extent.
 
 -----------------
 
@@ -114,7 +112,7 @@ shit here.. lmao
 -----------------------------------------------------------
 
 ### Shells:
-`fish`
+`fish` *
 - `tide` prompt configuration
 - `fisher` package manager
 
@@ -171,7 +169,7 @@ The faster debian improved 'sh' usually what sh links to on machines.
 
 ### Markdown:
 
-`glow`
+`glow` *
 - Specific markdown viewer ( has a neovim plugin )
 
 `gum format | pager`
@@ -211,10 +209,10 @@ The faster debian improved 'sh' usually what sh links to on machines.
 
 ### Terminals:
 
-`wezterm`
+`wezterm` *
 - Crossplatform - configurable with lua, GPU accelerated.
 
-`foot`
+`foot` *
 - Wayland specific terminal, quite fast! 
 
 `st`
@@ -249,13 +247,13 @@ The faster debian improved 'sh' usually what sh links to on machines.
 
 ### Command Line Tools:
 
-`eza` (`exa` is deprecated)
+`eza` (`exa` is deprecated) *
 - A replacement for `ls` with more options available.
 
-`zoxide`
+`zoxide` *
 - A replacement for `cd`, faster, more options.
 
-`atuin`
+`atuin` *
 - Fancy sync-able shell history, querieable with human language.
 
 `z`
@@ -267,19 +265,19 @@ The faster debian improved 'sh' usually what sh links to on machines.
 `fasd`
 - Another jumper! Making life easier.
 
-`bat`
+`bat` *
 - `cat` but with color and stuff
 
-`fd`
+`fd` *
 - Better `find`, easier syntax, generally faster.
 
-`ripgrep`
+`ripgrep` *
 - `grep` but faster and better on large datasets
 
-`jq`
+`jq` *
 - Json terminal formatter, very very useful
 
-`rsync`
+`rsync` *
 - `cp` / `scp` replacement, often faster when copying repeatedly
 
 `xcp`
@@ -288,7 +286,7 @@ The faster debian improved 'sh' usually what sh links to on machines.
 `rclone`
 - Sync files and folders with various cloud providers
 
-`dd`
+`dd` *
 - Disk management, `cp` replacement, disk utility Warning: Dangerous.
 
 `gd`
@@ -300,28 +298,28 @@ The faster debian improved 'sh' usually what sh links to on machines.
 `sad`
 - Space Aged seD - kind of like `sd`, easier syntax, similar to `fastmod`
 
-`fastmod`
+`fastmod` *
 - For making large codebase changes across multiple files at once.
 
-`croc`
+`croc` *
 - Easily and securely send any file from computer to computer.
 
-`rip` && `rm-improved`
+`rip` && `rm-improved` *
 - A safer, more error friendly `rm`, allows for a graveyard.
 
-`tokei`
+`tokei` *
 - Keeps track of the lines of code written in a project
 
-`dust`
+`dust` *
 - `du` with visual display
 
-`duf`
+`duf` *
 - `df` with visual display
 
 `hunspell`
 - Check the spelling of a file given an encoding.
 
-`tealdeer | tldr`
+`tealdeer | tldr` *
 - `man` but a quick and dirty version
 
 `task` || `go-task`
@@ -333,10 +331,10 @@ The faster debian improved 'sh' usually what sh links to on machines.
 `curl cheat.sh/<thing>`
 - A helpful cheatsheet about a topic, usually web tool related.
 
-`procs`
+`procs` *
 - A better, coloured and more easily searched `ps`
 
-`gum`
+`gum` *
 - General purpose library to improve your scripting with various functions (log, timer, loading..)
 
 `mutt` || ``NeoMutt``
@@ -345,7 +343,7 @@ The faster debian improved 'sh' usually what sh links to on machines.
 `navi`
 - Quick Cheatsheets that let you autofill commands and run them.
 
-`neofetch`
+`neofetch` *
 - Show information about your computer.
 
 `npm, pnpm, yarn, bun, etc..`
@@ -363,13 +361,13 @@ The faster debian improved 'sh' usually what sh links to on machines.
 `bitwise`
 - bit calculator with interactive setup
 
-`fjira`
+`fjira` *
 - Command line Jira
 
 `k9s`
 - Kubernetes cluster management
 
-`pingme`
+`pingme` *
 - Allows you to reach out to various services with a message
 
 `await`
@@ -378,7 +376,7 @@ The faster debian improved 'sh' usually what sh links to on machines.
 `glances`
 - Kind of like a way more advance `top`
 
-`htop` || `btop`
+`htop` || `btop` *
 - Better versions of top that keep its general concepts + extra
 
 `gperf`
@@ -399,10 +397,10 @@ The faster debian improved 'sh' usually what sh links to on machines.
 `hyperfine`
 - benchmarks stuff based on conditions you pick and generate.
 
-`iproute2mac`
+`iproute2mac` *
 - `ip` commands on your mac, not all, but enough to make it comfy.
 
-`shellcheck`
+`shellcheck` *
 - Make sure your scripts are written efficiently and without obvious pitfalls
 
 `xxhash`
@@ -411,7 +409,7 @@ The faster debian improved 'sh' usually what sh links to on machines.
 `brotli`
 - Compression and Decompression package. (Think tar kinda)
 
-`pixz`
+`pixz` *
 - parallised `xz` so its faster.
 
 `xz`
@@ -426,10 +424,10 @@ C Heavy compression tool, usually results in very small output
 `gzip`
 - Faster compression tool, but will not result in as small of a output.
 
-`bear`
+`bear` *
 - Generates compile_commands.json files for Clangd and some other LSPs
 
-`bp`
+`bp` *
 - 'better paste' - optimal for chaining with pipes
 
 `dos2unix`
@@ -441,10 +439,10 @@ C Heavy compression tool, usually results in very small output
 `httpie`
 - An easy way to test your API with requests from command line
 
-`lnav`
+`lnav` *
 - Extremely fast log viewer in C++. Tutorial at `ssh tutorial1@gdemo.lnav.org`
 
-`angle-grinder`
+`angle-grinder` *
 - Logfile analysis tool with builtin manipulations, could replace `cat grep` etc.
 
 `ran`
@@ -468,7 +466,7 @@ C Heavy compression tool, usually results in very small output
 `fzy`
 - A potentially faster then `fzf` fuzzy finder
 
-`hexyl`
+`hexyl` *
 - A modern newer hex viewer
 
 `skim`
@@ -480,44 +478,47 @@ C Heavy compression tool, usually results in very small output
 `map`
 - Map commands out of stdin
 
+`natls`
+- Another `ls` replacement written in `rust`
+
 `wfh`
 - Synchronise folders between machines with `rsync` and dir watching
 
-`got`
+`got` *
 - A fast downploader for the commandline in GO
 
-`axel`
+`axel` *
 - Download anything at the speed of threads
 
 -----------------------------------------------------------
 
 ### CLI Network Utilities:
 
-`netcat`
+`netcat` *
 - The network swiss army knife
 
 `rcat`
 - Netcat but in rust
 
-`tcpdump`
+`tcpdump` *
 - best way to view your network data in command line
 
-`trippy`
+`trippy` *
 - A network diagnostics tool
 
 `bmon`
 - A network monitoring tool!
 
-`bandwhich`
+`bandwhich` *
 - Watch what proccesses are using bandwidth, how many connections etc.
 
-`zerotier-one`
+`zerotier-one` *
 - Build your own network anywhere, connect to anything.
 
-`dog`
+`dog` *
 - A more friendly version of `dig`
 
-`hping3`
+`hping3` *
 - Would you like to DOS something? Wanna do it again?
 
 `unbound`
@@ -531,10 +532,10 @@ C Heavy compression tool, usually results in very small output
 
 ### Version Control:
 
-`lazygit`
+`lazygit` *
 - TUI style git client.
 
-`jujutsu` || `jj`
+`jujutsu` || `jj` *
 - Combines the features of git, mercurial and extras into one system.
 
 `gitui`
@@ -549,7 +550,7 @@ C Heavy compression tool, usually results in very small output
 `git-flow`
 - Way overengineered form of git management with branches out the wazoo.
 
-`git-leaks`
+`git-leaks` *
 - Looks through repos for obvious leaks like passwords or creds or api-keys
 
 `delta`
@@ -561,7 +562,7 @@ C Heavy compression tool, usually results in very small output
 
 #### Version Management (GUI)
 
-`Sublime Merge`
+`Sublime Merge` *
 - Fantastic git manager, makes merges very simple
 
 `git-kraken`
@@ -572,7 +573,7 @@ C Heavy compression tool, usually results in very small output
 
 ### Build Systems:
 
-`meson`
+`meson` *
 - Easier Cmake using ninja as a backend.
 
 `cmake`
@@ -581,10 +582,13 @@ C Heavy compression tool, usually results in very small output
 `ninja`
 - Cmake replacement build system.
 
-`pixbuild`
+`make`
+- The precursor to cmake.
+
+`pixbuild` *
 - Pix's very own build system, written in C, configured via lua.
 
-`zig`
+`zig` *
 - Turns out zig builds compiler is actually pretty fancy 
 
 
