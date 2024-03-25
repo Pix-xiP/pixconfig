@@ -7,9 +7,10 @@ end
 
 if status is-interactive
     # Commands to run hn interactive sessions can go here
-    fzf_configure_bindings --directory=\cf --git_log=\e\f
+    fzf_configure_bindings --directory=\cf --git_log=\e\f --history=\cg
     fish_config theme choose "Rosé Pine"
     pix_print_osc7
+    atuin init fish --disable-up-arrow | source
 end
 
 ## TODO: Make a generic PATH variable for MAC and Linux.
@@ -28,19 +29,21 @@ if test (uname) = Darwin
 
     # fish_add_path -m /opt/homebrew/bin/
 
-    set -x DOCKER_DEFAULT_PLATFORM linux/amd64
+    set -gx DOCKER_DEFAULT_PLATFORM linux/amd64
     set -gx GRAVEYARD "/Users/pix/.local/graveyard"
-    set -x ODIN_ROOT /Users/pix/AdeptusCustodes/Fenris/Odin
-    # set -x PATH "/opt/homebrew:$PATH"
-    # set -x PATH "/opt/homebrew/bin:$PATH"
-    # set -x PATH "/opt/homebrew/opt/gnu-getopt/bin:$PATH"
+    set -gx ODIN_ROOT /Users/pix/AdeptusCustodes/Fenris/Odin
+
     set -gx WEZTERM_CONFIG_FILE "/Users/pix/.config/wezterm/wezterm.lua"
 
+    # Using -m prevents it from being added multiple times.
+    fish_add_path -m /opt/homebrew
+    fish_add_path -m /opt/homebrew/bin
+    fish_add_path -m /opt/homebrew/opt/gnu-getopt/bin
     fish_add_path -m /Users/pix/.config/go_env/bin
 
     # Go Env Setup
-    set -x GOPATH /Users/pix/.config/go_env/
-    set -x GOROOT /opt/homebrew/opt/go/libexec
+    set -gx GOPATH /Users/pix/.config/go_env/
+    set -gx GOROOT /opt/homebrew/opt/go/libexec
     # FOR LIB PQ BULLSHIT
     set -gx LDFLAGS -L/opt/homebrew/opt/libpq/lib
     set -gx CPPFLAGS -I/opt/homebrew/opt/libpq/include
@@ -107,6 +110,7 @@ alias imgcat="wezterm imgcat"
 alias valgrind="sudo -E valgrind"
 alias tree="eza -g --icons --sort=type --tree"
 alias rustscan="docker run -it --rm --name rustscan rustscan/rustscan:2.1.1"
+alias pq="pueue"
 
 # ===================
 # Abbr Hours
