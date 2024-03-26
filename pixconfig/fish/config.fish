@@ -1,8 +1,7 @@
 function pix_print_osc7 --description "Prints OSC7 for the terminal to use"
-    set wez_current_dir_var (pwd)
+    set wez_curr_dir (pwd)
 
-    printf "\033]7;file://%s/%s\033\\" $hostname $wez_current_dir_var
-
+    printf "\033]7;file://%s/%s\033\\" $hostname $wez_curr_dir
 end
 
 if status is-interactive
@@ -11,86 +10,18 @@ if status is-interactive
     fish_config theme choose "Rosé Pine"
     pix_print_osc7
     atuin init fish --disable-up-arrow | source
+    zoxide init --cmd z fish | source
 end
 
-## TODO: Make a generic PATH variable for MAC and Linux.
-
-# Specific to Mac
 if test (uname) = Darwin
-    set SECRETS_PATH /Users/pix/.config/fish/secrets.fish
-    if test -e "$SECRETS_PATH"
-        source "$SECRETS_PATH"
+    if test -e "./darwin.fish"
+        source "./darwin.fish"
     end
-
-    # Nix Specific 
-    if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
-        source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
-    end
-
-    # fish_add_path -m /opt/homebrew/bin/
-
-    set -gx DOCKER_DEFAULT_PLATFORM linux/amd64
-    set -gx GRAVEYARD "/Users/pix/.local/graveyard"
-    set -gx ODIN_ROOT /Users/pix/AdeptusCustodes/Fenris/Odin
-
-    set -gx WEZTERM_CONFIG_FILE "/Users/pix/.config/wezterm/wezterm.lua"
-
-    # Using -m prevents it from being added multiple times.
-    fish_add_path -m /opt/homebrew
-    fish_add_path -m /opt/homebrew/bin
-    fish_add_path -m /opt/homebrew/opt/gnu-getopt/bin
-    fish_add_path -m /Users/pix/.config/go_env/bin
-
-    # Go Env Setup
-    set -gx GOPATH /Users/pix/.config/go_env/
-    set -gx GOROOT /opt/homebrew/opt/go/libexec
-    # FOR LIB PQ BULLSHIT
-    set -gx LDFLAGS -L/opt/homebrew/opt/libpq/lib
-    set -gx CPPFLAGS -I/opt/homebrew/opt/libpq/include
-    # For C#
-    set -gx DOTNET_ROOT /opt/homebrew/bin/dotnet
-    set -gx PIXCONFIG /Users/pix/AdeptusCustodes/pix_hyprland/pixconfig/
-
-    set -gx LUA_INIT "@/Users/pix/.config/lua/init.lua"
-
-    function zt_restart --description "Restarts the ZeroTier daemon for when you're having trouble"
-        echo "Unloading..."
-        sudo launchctl unload /Library/LaunchDaemons/com.zerotier.one.plist
-        echo "Reloading..."
-        sudo launchctl load /Library/LaunchDaemons/com.zerotier.one.plist
-        echo "Done!"
-    end
-
-    function brew --description "Wraps brew and sends a sketchybar trigger"
-        command brew $argv
-        sketchybar --trigger brew_update
-    end
-
-    function wez_update --description "Update nightly version of Wezterm"
-        echo "Running update"
-        command brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest
-        echo Updated
+else if test (uname) = Linux
+    if test -e "./linux.fish"
+        source "./linux.fish"
     end
 end
-
-# Specific to Linux
-if test (uname) = Linux
-    set SECRETS_PATH /home/pix/.config/fish/secrets.fish
-    if test -e "$SECRETS_PATH"
-        source "$SECRETS_PATH"
-    end
-    set -gx WEZTERM_CONFIG_FILE "/home/pix/.config/wezterm/wezterm.lua"
-    set -gx GRAVEYARD "/home/pix/.local/graveyard"
-    set -x ODIN_ROOT /home/pix/AdeptusCustodes/Odin
-    set -gx PIXCONFIG /home/pix/AdeptusCustodes/pix_hyprland/pixconfig/
-
-    abbr edit "swappy -f"
-
-    alias hw='hwinfo --short' # Hardware Info
-end
-
-# How to make zoxide run
-zoxide init --cmd z fish | source
 
 # ===================
 # Alias Hours
@@ -135,7 +66,11 @@ abbr trip "sudo trip"
 # EXPORTS - (Not unique to either platform)
 # ====================
 # Set X for export :: Set G for global
-set -x C_INCLUDE_PATH "/usr/local/include:$C_INCLUDE_PATH"
+set -gx C_INCLUDE_PATH "/usr/local/include:$C_INCLUDE_PATH"
+
+# ===================
+# General environment set variables
+# ===================
 set fzf_preview_dir_cmd eza --all --color=always
 
 # ===================
@@ -155,13 +90,13 @@ function peep --argument file --description "Open a file with FZF with search an
 end
 
 set -Ux FZF_DEFAULT_OPTS '--color=fg:#908caa,hl:#ea9a97 
-                        --color=border:#44415a,header:#3e8fb0,gutter:#232136
-                        --color=spinner:#f6c177,info:#9ccfd8,separator:#44415a
-                        --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa
-                        --cycle --layout=reverse --border --height=95% 
-                        --preview-window=wrap 
-                        --marker="=>" 
-                        --bind "shift-up:preview-up,shift-down:preview-down"'
+                          --color=border:#44415a,header:#3e8fb0,gutter:#232136
+                          --color=spinner:#f6c177,info:#9ccfd8,separator:#44415a
+                          --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa
+                          --cycle --layout=reverse --border --height=95% 
+                          --preview-window=wrap 
+                          --marker="=>" 
+                          --bind "shift-up:preview-up,shift-down:preview-down"'
 
 # function fzf --wraps="fzf"
 #     set -Ux FZF_DEFAULT_OPTS '
