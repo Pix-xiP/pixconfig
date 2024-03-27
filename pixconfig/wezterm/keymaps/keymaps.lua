@@ -42,7 +42,24 @@ local keys = {
 	{ key = "i", mods = LEADER, action = act.ActivatePaneDirection("Down") },
 	-- Pane Management
 	{ key = "\\", mods = LEADER, action = act.SplitHorizontal },
+	{
+		key = "|",
+		mods = SHIFT_LEADER,
+		action = wezterm.action_callback(function(window, pane)
+			local new_pane = pane:split({ direction = "Right" })
+			-- new_pane:send_text("\x06") -- Sends CTRL+F to the new pane
+			new_pane:send_text("\x06")
+		end),
+	},
 	{ key = "-", mods = LEADER, action = act.SplitVertical },
+	{
+		key = "_",
+		mods = SHIFT_LEADER,
+		action = wezterm.action_callback(function(window, pane)
+			local new_pane = pane:split({ direction = "Bottom" })
+			new_pane:send_text("\x06") -- Sends CTRL+F to the new pane
+		end),
+	},
 	{ key = "w", mods = LEADER, action = act.CloseCurrentPane({ confirm = true }) },
 	{ key = "f", mods = LEADER, action = act.TogglePaneZoomState },
 	{ key = "n", mods = SHIFT_LEADER, action = act.AdjustPaneSize({ "Left", 2 }) },
