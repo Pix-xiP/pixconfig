@@ -6,7 +6,7 @@ local M = {}
 
 M.popup_toggle = "sketchybar --set $NAME popup.drawing=toggle"
 
-M.apple_logo = sbar.add("item", "apple_logo", {
+M.apple = sbar.add("item", "apple", {
 	padding_right = 15,
 	click_script = M.popup_toggle,
 	icon = {
@@ -25,62 +25,70 @@ M.apple_logo = sbar.add("item", "apple_logo", {
 	},
 })
 
-M.bracket = { M.apple_logo.name }
+M.bracket = { M.apple.name }
 
 M.apple_prefs = sbar.add("item", {
-	position = "popup." .. M.apple_logo.name,
+	position = "popup." .. M.apple.name,
 	icon = icons.preferences,
 	label = "Preferences",
 })
 
 M.apple_activity = sbar.add("item", {
-	position = "popup." .. M.apple_logo.name,
+	position = "popup." .. M.apple.name,
 	icon = icons.activity,
 	label = "Activity",
 })
 
 M.lock = sbar.add("item", {
-	position = "popup." .. M.apple_logo.name,
+	position = "popup." .. M.apple.name,
 	icon = icons.lock,
 	label = "Lock",
 })
 
 M.apple_finder = sbar.add("item", {
-	position = "popup." .. M.apple_logo.name,
+	position = "popup." .. M.apple.name,
 	icon = icons.activity,
 	label = "Finder",
 })
 
 M.arc = sbar.add("item", {
-	position = "popup." .. M.apple_logo.name,
+	position = "popup." .. M.apple.name,
 	icon = icons.activity,
 	label = "Arc",
 })
 
 M.apple_prefs:subscribe("mouse.clicked", function(_)
 	sbar.exec("open -a 'System Preferences'")
-	M.apple_logo:set({ popup = { drawing = false } })
+	M.apple:set({ popup = { drawing = false } })
 end)
 
 M.apple_activity:subscribe("mouse.clicked", function(_)
 	sbar.exec("open -a 'Activity Monitor'")
-	M.apple_logo:set({ popup = { drawing = false } })
+	M.apple:set({ popup = { drawing = false } })
 end)
 
 M.lock:subscribe("mouse.clicked", function(_)
 	sbar.exec("pmset displaysleepnow")
-	M.apple_logo:set({ popup = { drawing = false } })
+	M.apple:set({ popup = { drawing = false } })
 end)
 
 M.apple_finder:subscribe("mouse.clicked", function(_)
 	sbar.exec("open -a 'Finder'")
-	M.apple_logo:set({ popup = { drawing = false } })
+	M.apple:set({ popup = { drawing = false } })
 end)
 
 M.arc:subscribe("mouse.clicked", function(_)
 	sbar.exec("open -a 'Arc'")
-	M.apple_logo:set({ popup = { drawing = false } })
+	M.apple:set({ popup = { drawing = false } })
 end)
+
+sbar.add("bracket", { M.apple.name }, {
+	background = {
+		color = colours.basics.transparent,
+		height = 27,
+		border_color = colours.rose_pallete.highlight_low,
+	},
+})
 
 print("Apple Prefs running")
 

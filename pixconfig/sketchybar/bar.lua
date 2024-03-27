@@ -53,17 +53,17 @@ sbar.default({
 })
 
 sbar.bar({
+	topmost = "window",
 	height = 28,
 	color = colours.rose_pallete.base,
 	border_color = colours.rose_pallete.highlight_low,
 	-- shadow = true,
 	sticky = true,
-	padding_right = 10,
-	padding_left = 10,
+	padding_right = 2,
+	padding_left = 2,
 	blur_radius = 20,
 	margin = -2,
 	position = "top",
-	topmost = "window",
 })
 
 return M

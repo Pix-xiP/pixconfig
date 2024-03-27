@@ -1,71 +1,79 @@
 local sbar = require("sketchybar")
+local icons = require("icons")
 local colours = require("colours")
--- local icons = require("icons")
 
 local M = {}
 
-M.helper_name = "git.felix.helper"
+-- Execute the event provider binary which provides the event "cpu_update" for
+-- the cpu load data, which is fired every 2.0 seconds.
+sbar.exec([[
+killall cup_load >/dev/null;
+/Users/pix/.config/sketchybar/helpers/event_providers/cpu_load/bin/cpu_load cpu_update 2.0
+]])
 
-M.cpu_top = sbar.add("item", "cpu.top", {
+M.cpu = sbar.add("graph", "widgets.cpu", 42, {
 	position = "right",
-	label = {
-		string = "CPU",
-		font = { style = "Semibold", size = 7 },
-	},
-	icon = { drawing = false },
-	width = 0,
-	padding_right = 15,
-	y_offset = 6,
-	mach_helper = M.helper_name,
-})
-
-M.cpu_percent = sbar.add("item", "cpu.percent", {
-	position = "right",
-	label = {
-		string = "CPU",
-		font = { style = "Heavy", size = 12 },
-	},
-	y_offset = -4,
-	padding_right = 15,
-	width = 55,
-	icon = {
-		drawing = false,
-	},
-	update_freq = 4,
-	mach_helper = M.helper_name,
-})
-
-M.cpu_sys = sbar.add("graph", "cpu.sys", 75, {
-	position = "right",
-	width = 0,
-	graph = {
-		color = colours.rose_pallete.love,
-		fill_color = colours.rose_pallete.love,
-	},
+	graph = { color = colours.rose_pallete.pine },
 	background = {
-		height = 30,
+		height = 22,
+		color = { alpha = 0 },
+		border_color = { alpha = 0 },
 		drawing = true,
-		color = colours.basics.transparent,
 	},
+	icon = { string = icons.cpu },
+	label = {
+		string = "cpu ??%",
+		font = {
+			family = "SF Mono",
+			style = "Bold",
+			size = 12.0,
+		},
+		align = "right",
+		padding_right = 0,
+		width = 20,
+		y_offset = 4,
+	},
+	padding_right = 9,
 })
 
-M.cpu_user = sbar.add("graph", "cpu.user", 75, {
+M.cpu:subscribe("cpu_update", function(env)
+	-- Also available: env.user_load, env.sys_load
+	local load = tonumber(env.total_load)
+	M.cpu:push({ load / 100. })
+
+	local color = colours.basics.blue
+	if load > 30 then
+		if load < 60 then
+			color = colours.basics.yellow
+		elseif load < 80 then
+			color = colours.basics.orange
+		else
+			color = colours.basics.red
+		end
+	end
+
+	M.cpu:set({
+		graph = { color = color },
+		label = "cpu " .. env.total_load .. "%",
+	})
+end)
+
+---@diagnostic disable-next-line: unused-local
+M.cpu:subscribe("mouse.clicked", function(env)
+	sbar.exec("open -a 'Activity Monitor'")
+end)
+
+-- Background around the cpu item
+M.cpu_background = sbar.add("bracket", "widgets.cpu.bracket", { M.cpu.name }, {
+	background = { color = colours.basics.bg2 },
+})
+
+-- Background around the cpu item
+M.cpu_padding = sbar.add("item", "widgets.cpu.padding", {
 	position = "right",
-	graph = {
-		color = colours.rose_pallete.pine,
-	},
-	label = { drawing = false },
-	icon = { drawing = false },
-	background = {
-		height = 30,
-		drawing = true,
-		color = colours.basics.transparent,
-	},
+	width = 5,
 })
 
--- Helper to push to the CPU
-sbar.exec("/Users/pix/AdeptusCustodes/pix_hyprland/pixconfig/sketchybar/helper/helper git.felix.helper >/dev/null 2>&1")
-
-print("CPU running")
+print("CPU Running")
 
 return M

@@ -4,6 +4,8 @@ return {
 	preferences = "􀺽",
 	activity = "􀒓",
 	lock = "􀒳",
+	cpu = "􀫥",
+	gear = "􀍟",
 
 	discord = "󰙯",
 	mail = "󰇮",
@@ -11,6 +13,11 @@ return {
 	nix = "󱄅",
 
 	alert = "󰀧",
+
+	switch = {
+		on = "􁏮",
+		off = "􁏯",
+	},
 
 	brew = {
 		box = "􀐛",
@@ -58,8 +65,11 @@ return {
 		grid = "􀧍",
 	},
 	wifi = {
+		upload = "􀄨",
+		download = "􀄩",
 		connected = "􀙇",
 		disconnected = "􀙈",
+		router = "􁓤",
 	},
 	svim = {
 		normal = "􀂯",
@@ -67,5 +77,52 @@ return {
 		visual = "􀂿",
 		cmd = "􀂙",
 		pending = "􀈏",
+	},
+	media = {
+		back = "􀊊",
+		forward = "􀊌",
+		play_pause = "􀊈",
+	},
+
+	-- Alternative NerdFont icons
+	nerdfont = {
+		plus = "",
+		loading = "",
+		apple = "",
+		gear = "",
+		cpu = "",
+		clipboard = "Missing Icon",
+
+		switch = {
+			on = "󱨥",
+			off = "󱨦",
+		},
+		volume = {
+			_100 = "",
+			_66 = "",
+			_33 = "",
+			_10 = "",
+			_0 = "",
+		},
+		battery = {
+			_100 = "",
+			_75 = "",
+			_50 = "",
+			_25 = "",
+			_0 = "",
+			charging = "",
+		},
+		wifi = {
+			upload = "",
+			download = "",
+			connected = "󰖩",
+			disconnected = "󰖪",
+			router = "Missing Icon",
+		},
+		media = {
+			back = "",
+			forward = "",
+			play_pause = "",
+		},
 	},
 }

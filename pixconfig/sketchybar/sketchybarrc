@@ -6,7 +6,7 @@ package.cpath = package.cpath .. ";/Users/" .. os.getenv("USER") .. "/.local/sha
 -- local pix_bar = require("pix.sketchybar")
 local sbar = require("sketchybar")
 
--- sbar.begin_config()
+sbar.begin_config()
 
 require("bar")
 sbar.hotload(true)
@@ -16,7 +16,7 @@ print("Setting up Sketchybar Items:")
 require("items")
 require("brackets")
 
--- sbar.end_config()
+sbar.end_config()
 
 -- Run the event loop of the sketchybar module (without this there will be no
 -- bi-directional communication between the lua module and sketchybar)
