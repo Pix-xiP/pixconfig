@@ -38,9 +38,9 @@ lalt - t : wezterm connect pix
 lalt + shift - t : wezterm
 lalt - b : open -n /Applications/Arc.app
 
-# New window in hor./ vert. splits for all applications with yabai
-lalt - s : yabai -m window --insert east; skhd -k "cmd - n"
-lalt - v : yabai -m window --insert south; skhd -k "cmd - n"
+# # New window in hor./ vert. splits for all applications with yabai
+# lalt - s : yabai -m window --insert east; skhd -k "cmd - n"
+# lalt - v : yabai -m window --insert south; skhd -k "cmd - n"
 
 # Toggle sketchybar
 shift + lalt - space : sketchybar --bar hidden=toggle
