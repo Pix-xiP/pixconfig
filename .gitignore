@@ -1,10 +1,3 @@
-## Explicitly allow!
-!pixconfig/fish/functions/fzf-match.fish
-!pixconfig/fish/functions/fzf-s.fish
-!pixconfig/fish/functions/rg-search.fish
-!pixconfig/fish/functions/peep.fish
-!pixconfig/fish/functions/rga-fzf.fish
-
 fishd.tmp*
 
 pixconfig/fish/fish_variables
@@ -14,7 +7,6 @@ pixconfig/fish/completions
 pixconfig/fish/conf.d
 pixconfig/fish/functions
 
-
 pixconfig/wezterm/secrets/servers.lua
 pixconfig/btop/btop.log
 pixconfig/btop/btop.conf
@@ -22,3 +14,10 @@ pixconfig/btop/btop.conf
 pixconfig/sketchybar/pix_lua/secrets.lua
 pixconfig/sketchybar/helper/helper
 pixconfig/sketchybar/secrets.lua
+
+## Explicitly allow!
+!pixconfig/fish/functions/fzf-match.fish
+!pixconfig/fish/functions/fzf-s.fish
+!pixconfig/fish/functions/rg-search.fish
+!pixconfig/fish/functions/peep.fish
+!pixconfig/fish/functions/rga-fzf.fish
