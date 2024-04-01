@@ -13,8 +13,6 @@ if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
     source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
 end
 
-# fish_add_path -m /opt/homebrew/bin/
-
 set -gx DOCKER_DEFAULT_PLATFORM linux/amd64
 set -gx GRAVEYARD "/Users/pix/.local/graveyard"
 set -gx ODIN_ROOT /Users/pix/AdeptusCustodes/Fenris/Odin
@@ -25,14 +23,18 @@ set -gx WEZTERM_CONFIG_FILE "/Users/pix/.config/wezterm/wezterm.lua"
 fish_add_path -m /opt/homebrew
 fish_add_path -m /opt/homebrew/bin
 fish_add_path -m /opt/homebrew/opt/gnu-getopt/bin
-fish_add_path -m /Users/pix/.config/go_env/bin
 
 # Go Env Setup
-set -gx GOPATH /Users/pix/.config/go_env/
+set -gx GOPATH /Users/pix/AdeptusCustodes/Ultramar/
 set -gx GOROOT /opt/homebrew/opt/go/libexec
+
+# Add to the general path
+contains /Users/pix/AdeptusCustodes/Ultramar/bin $PATH; or set -ga PATH /Users/pix/AdeptusCustodes/Ultramar/bin
+
 # FOR LIB PQ BULLSHIT
 set -gx LDFLAGS -L/opt/homebrew/opt/libpq/lib
 set -gx CPPFLAGS -I/opt/homebrew/opt/libpq/include
+
 # For C#
 set -gx DOTNET_ROOT /opt/homebrew/bin/dotnet
 set -gx PIXCONFIG /Users/pix/AdeptusCustodes/pix_hyprland/pixconfig/
@@ -48,13 +50,6 @@ function zt_restart --description "Restarts the ZeroTier daemon for when you're 
 end
 
 function brew --description "Wraps brew and sends a sketchybar trigger and checks for yabai"
-    if contains -- upgrade $argv
-        set outdated (brew outdated)
-        if string match -q yabai $outdated
-            echo "Found Yabai, running Yabai specific upgrade first"
-            command _brew_update_yabai
-        end
-    end
     command brew $argv
     sketchybar --trigger brew_update
 end

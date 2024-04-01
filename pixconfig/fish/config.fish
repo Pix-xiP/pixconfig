@@ -14,12 +14,13 @@ if status is-interactive
 end
 
 if test (uname) = Darwin
-    if test -e "./darwin.fish"
-        source "./darwin.fish"
+    if test -e "/Users/pix/.config/fish/darwin.fish"
+        echo "Sourcing Darwin Fish"
+        source "/Users/pix/.config/fish/darwin.fish"
     end
 else if test (uname) = Linux
-    if test -e "./linux.fish"
-        source "./linux.fish"
+    if test -e "./home/pix/.config/fish/linux.fish"
+        source "./home/pix/.config/fish/linux.fish"
     end
 end
 
@@ -43,6 +44,7 @@ alias tree="eza -g --icons --sort=type --tree"
 alias rustscan="docker run -it --rm --name rustscan rustscan/rustscan:2.1.1"
 alias pq="pueue"
 alias ls="eza -g --icons --sort=type"
+alias makego="go mod init; go mod tidy; touch main.go"
 
 
 # ===================
