@@ -5,6 +5,8 @@ local secrets = require("secrets")
 
 local M = {}
 
+-- PIXTODO: Convert io.popen calls to sbar.exec
+
 M.mail = sbar.add("item", {
 	update_freq = 360,
 	position = "right",
@@ -83,10 +85,6 @@ end run
 	local handle = assert(io.popen(cmd, "r"))
 	local mailboxes = handle:read("*a")
 	handle:close()
-
-	sbar.exec("sleep 3 ", function(result)
-		M.mail:set({ drawing = false })
-	end)
 
 	local i = 0
 	for line in string.gmatch(mailboxes, "[^\n]+") do

@@ -11,7 +11,7 @@ M.slack = sbar.add("item", "slack", {
 	icon = {
 		string = icons.slack,
 		color = colours.rose_pallete.pine,
-		drawing = true,
+		drawing = false,
 		font = {
 			size = 18,
 		},
@@ -20,45 +20,44 @@ M.slack = sbar.add("item", "slack", {
 })
 
 function M.status_label()
-	local handle = assert(io.popen("lsappinfo info -only StatusLabel 'Slack'"))
-	local status_label = handle:read("*a")
-	handle:close()
-
-	local label = string.match(status_label, '"label"="([^"]*)"')
-	if label ~= nil then
-		local icon_color
-		local new_label
-
+	sbar.exec("lsappinfo info -only StatusLabel 'Slack'", function(status_label)
+		local label = string.match(status_label, '"label"="([^"]*)"')
 		if label == "" then
-			new_label = ""
-			icon_color = colours.rose_pallete.pine
-		elseif label == "•" then
-			new_label = ""
-			icon_color = colours.rose_pallete.rose
-		elseif tonumber(label) ~= nil then
-			icon_color = colours.rose_pallete.love
-			new_label = label
+			M.slack:set({ drawing = false })
+		end
+
+		if label ~= nil then
+			local icon_color
+			local new_label
+
+			if label == "" then
+				new_label = ""
+				icon_color = colours.rose_pallete.pine
+			elseif label == "•" then
+				new_label = ""
+				icon_color = colours.rose_pallete.rose
+			elseif tonumber(label) ~= nil then
+				icon_color = colours.rose_pallete.love
+				new_label = label
+			else
+				M.slack:set({ drawing = false })
+				return
+			end
+			if new_label == "" then
+				M.slack:set({
+					drawing = true,
+					icon = { color = icon_color },
+					label = { string = new_label, drawing = false },
+				})
+			else
+				M.slack:set({ drawing = true, icon = { color = icon_color }, label = { string = new_label } })
+			end
 		else
 			M.slack:set({ drawing = false })
-			return
 		end
-		if new_label == "" then
-			M.slack:set({
-				drawing = true,
-				icon = { color = icon_color },
-				label = { string = new_label, drawing = false },
-			})
-		else
-			M.slack:set({ drawing = true, icon = { color = icon_color }, label = { string = new_label } })
-		end
-	else
-		M.slack:set({ drawing = false })
-	end
+	end)
 end
 
-M.slack_event = sbar.add("event", "slack")
-
-M.slack:subscribe("slack", M.status_label)
 M.slack:subscribe("routine", M.status_label)
 M.slack:subscribe("system_woke", M.status_label)
 
