@@ -1,4 +1,6 @@
 -- Setting the theme!
+
+-- Purrfect for pastel pleasure
 local catppuccin = {
   {
     "catppuccin/nvim",
@@ -50,6 +52,7 @@ local night_fox = {
   },
 }
 
+-- Them SOHO vibes bby
 local rose_pine = {
   "rose-pine/neovim",
   name = "rose-pine",
@@ -62,14 +65,27 @@ local rose_pine = {
   },
 }
 
+local zenbones = {
+  "mcchrish/zenbones.nvim",
+  dependencies = { "rktjmp/lush.nvim" },
+  config = function()
+    vim.g.rosebones = {
+      transparent_background = true,
+    }
+  end,
+}
+
 local lazy_theme = {
   "LazyVim/LazyVim",
   opts = {
-    colorscheme = "rose-pine",
+    colorscheme = "rosebones",
+    -- colorscheme = "rose-pine",
+    -- colorscheme = "ayu",
   },
 }
 
 return {
+  zenbones,
   rose_pine,
   -- catppuccin,
   -- night_fox,

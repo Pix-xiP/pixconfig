@@ -20,7 +20,39 @@ return {
           cmd = { "gopls" },
           filetypes = { "go", "gomod", "gowork", "gotmpl" },
           rootPatterns = { "go.work", "go.mod", ".git" },
+          gofumpt = true, -- Enable gofumpt formatting
+          settings = {
+            analyses = {
+              unusedparams = true,
+              staticcheck = true,
+            },
+            codelenses = {
+              gc_details = false,
+              generate = true,
+              regenerate_cgo = true,
+              run_govulncheck = true,
+              test = true,
+              tidy = true,
+              upgrade_dependency = true,
+              vendor = true,
+            },
+            hints = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              compositeLiteralTypes = true,
+              constantValues = true,
+              functionTypeParameters = true,
+              parameterNames = true,
+              rangeVariableTypes = true,
+            },
+            usePlaceholders = true,
+            completeUnimported = true,
+            staticcheck = true,
+            directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules", "-.nvim" },
+            semanticTokens = true,
+          },
         },
+
         lua_ls = {
           settings = {
             -- Remove the missing 'vim' from neovim config files :>
