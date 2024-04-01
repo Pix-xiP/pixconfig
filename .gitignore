@@ -1,4 +1,12 @@
+## Explicitly allow!
+!pixconfig/fish/functions/fzf-match.fish
+!pixconfig/fish/functions/fzf-s.fish
+!pixconfig/fish/functions/rg-search.fish
+!pixconfig/fish/functions/peep.fish
+!pixconfig/fish/functions/rga-fzf.fish
+
 fishd.tmp*
+
 pixconfig/fish/fish_variables
 pixconfig/nvim/lazy-lock.json
 pixconfig/fish/secrets.fish
@@ -6,10 +14,7 @@ pixconfig/fish/completions
 pixconfig/fish/conf.d
 pixconfig/fish/functions
 
-!pixconfig/fish/functions/fzf-match.fish
-!pixconfig/fish/functions/fzf-s.fish
-!pixconfig/fish/functions/rg-search.fish
-!pixconfig/fish/functions/peep.fish
+
 pixconfig/wezterm/secrets/servers.lua
 pixconfig/btop/btop.log
 pixconfig/btop/btop.conf
