@@ -69,17 +69,17 @@ local zenbones = {
   "mcchrish/zenbones.nvim",
   dependencies = { "rktjmp/lush.nvim" },
   config = function()
-    vim.g.rosebones = {
-      transparent_background = true,
-    }
+    -- vim.g.rosebones = {
+    --   transparent_background = true,
+    -- }
   end,
 }
 
 local lazy_theme = {
   "LazyVim/LazyVim",
   opts = {
-    colorscheme = "rosebones",
-    -- colorscheme = "rose-pine",
+    -- colorscheme = "rosebones",
+    colorscheme = "rose-pine",
     -- colorscheme = "ayu",
   },
 }

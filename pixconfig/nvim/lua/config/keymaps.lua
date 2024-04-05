@@ -81,3 +81,10 @@ map({ "n" }, "<leader>mw", ":w !sudo tee %<CR>", { desc = "Reopen a file with ch
 
 -- Nuke CTRL S for saving...
 del({ "i", "x", "n", "s" }, "<C-s>")
+
+map(
+  { "n" },
+  "<leader>pn",
+  "iif err != nil {<CR> return err<CR>}<Esc>kk",
+  { desc = "Automatically place a if err = nil check in for Go" }
+)
