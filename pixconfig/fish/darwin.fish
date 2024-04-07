@@ -31,6 +31,7 @@ set -gx GOROOT /opt/homebrew/opt/go/libexec
 # Add to the general path
 contains /Users/pix/AdeptusCustodes/Ultramar/bin $PATH; or set -ga PATH /Users/pix/AdeptusCustodes/Ultramar/bin
 
+
 # FOR LIB PQ BULLSHIT
 set -gx LDFLAGS -L/opt/homebrew/opt/libpq/lib
 set -gx CPPFLAGS -I/opt/homebrew/opt/libpq/include
