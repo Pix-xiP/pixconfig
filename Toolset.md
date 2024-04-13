@@ -85,7 +85,7 @@ I'm adding a `*` next to tools I actively use on the command line! All of the li
 - Modern secure password vault / manager.
 
 `keepassx`
-- Older password vault, probably just use bitwarden.
+- Older password vault
 
 `tiger-vnc`
 - Decent VNC client for when you need GUI remote access.
