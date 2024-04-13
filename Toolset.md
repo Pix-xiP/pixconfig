@@ -10,10 +10,10 @@ I'm adding a `*` next to tools I actively use on the command line! All of the li
 -----------------
 
 ### Colourschemes:
+- Rosebones
 - Rose Pine || Rose Pine Moon
 - Catpuccin Mocha
 - Tokyonight
-- Dracula
 
 ### Window Managers:
 - Hyprland (Hybrid Tiling Floating.)
@@ -194,6 +194,13 @@ The faster debian improved 'sh' usually what sh links to on machines.
   `formatters` - Custom ones for C and Swift
   `LLM` - Experimental LM Studio Plugin for local AI Codegen
   `fish` - Added to make editing my shell easier
+  
+  ## Disabled:
+  - neotree
+  - mini.pairs
+  - spectre
+  - flit
+  - LuaSnip
 ```
 
 `neovide`
@@ -225,7 +232,7 @@ The faster debian improved 'sh' usually what sh links to on machines.
 - Your classic basic mac terminal upgrade.
 
 ``Warp`` 
--   Mac only, proprietary... integrated AI. Am Sus of it tbqh
+- Mac only, proprietary... integrated AI. Am Sus of it tbqh
 
 -----------------------------------------------------------
 
@@ -280,9 +287,6 @@ The faster debian improved 'sh' usually what sh links to on machines.
 `rsync` *
 - `cp` / `scp` replacement, often faster when copying repeatedly
 
-`xcp`
-- Beta improvement on cp - mostly linux focused.
-
 `rclone`
 - Sync files and folders with various cloud providers
 
@@ -295,7 +299,7 @@ The faster debian improved 'sh' usually what sh links to on machines.
 `sd`
 - Better `sed`, easier syntax
 
-`sad`
+`sad` *
 - Space Aged seD - kind of like `sd`, easier syntax, similar to `fastmod`
 
 `fastmod` *
@@ -319,7 +323,7 @@ The faster debian improved 'sh' usually what sh links to on machines.
 `hunspell`
 - Check the spelling of a file given an encoding.
 
-`tealdeer | tldr` *
+`tealdeer || tldr` *
 - `man` but a quick and dirty version
 
 `task` || `go-task`
@@ -350,7 +354,7 @@ The faster debian improved 'sh' usually what sh links to on machines.
 - The Javascript ecosystem...
 
 `choose`
-- TUI style option picker, good for interactive scripts. ( Replacement for cut)
+- Replacement for `cut`
 
 `flex`
 - Program for generating scanners for lexical pattern matching faster.
@@ -585,7 +589,7 @@ C Heavy compression tool, usually results in very small output
 `make`
 - The precursor to cmake.
 
-`pixbuild` *
+`pixbuild` || `remake` *
 - Pix's very own build system, written in C, configured via lua.
 
 `zig` *
@@ -672,9 +676,9 @@ This is honestly a massive weak point for me, so here is just some basic stuff I
 --- 
 
 `sqlite`
-- Everyones favourite flatfile works with anything database
+- Everyone's favourite flat-file works with anything database
 
 `surealdb`
-- A mulit model database using what I think is a document system?
+- A multi model database using what I think is a document system?
 
 
