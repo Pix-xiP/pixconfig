@@ -28,6 +28,9 @@ fish_add_path -m /opt/homebrew/opt/gnu-getopt/bin
 set -gx GOPATH /Users/pix/AdeptusCustodes/Ultramar/
 set -gx GOROOT /opt/homebrew/opt/go/libexec
 
+# Cargo bin 
+fish_add_path -m /Users/pix/.cargo/bin
+
 # Add to the general path
 contains /Users/pix/AdeptusCustodes/Ultramar/bin $PATH; or set -ga PATH /Users/pix/AdeptusCustodes/Ultramar/bin
 

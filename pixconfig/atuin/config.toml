@@ -195,6 +195,7 @@ common_prefix = ["sudo"]
 ## Set commands that will be completely ignored from stats
 ignored_commands = [
   "eza",
+  "xit",
 ]
 
 [keys]

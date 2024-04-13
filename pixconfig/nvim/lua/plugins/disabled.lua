@@ -18,4 +18,8 @@ return {
     "echasnovski/mini.pairs", -- Its just getting in the way at this point.
     enabled = false,
   },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    enabled = false,
+  },
 }
