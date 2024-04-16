@@ -55,6 +55,7 @@ abbr ssh-config "nvim ~/.ssh/config"
 abbr nvim-config "nvim ~/.config/nvim/init.lua"
 abbr hypr-config "nvim ~/.config/hypr/hyprland.conf"
 abbr wz-config "nvim ~/.config/wezterm/wezterm.lua"
+abbr ghost-config "nvim ~/.config/ghostty/config"
 abbr re-src "source ~/.config/fish/config.fish"
 abbr rg "rg --color=auto"
 abbr rgc "rg --color=always --column --line-number --smart-case --no-heading"
@@ -112,7 +113,7 @@ set -Ux FZF_DEFAULT_OPTS '--color=fg:#908caa,hl:#ea9a97
 #       --border
 #       --height=95%
 #       --preview-window=wrap
-#       --marker="=>"
+#       --marker="= >"
 #       --bind "shift-up:preview-up,shift-down:preview-down"
 #       '
 #     command fzf
