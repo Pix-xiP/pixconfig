@@ -216,6 +216,9 @@ The faster debian improved 'sh' usually what sh links to on machines.
 
 ### Terminals:
 
+`ghostty` *
+- Crossplatform - simple configuraition very fast Zig terminal
+
 `wezterm` *
 - Crossplatform - configurable with lua, GPU accelerated.
 
