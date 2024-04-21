@@ -49,6 +49,7 @@ alias go_get_all="go get -u -v -f all"
 # ===================
 # Abbr Hours
 # ===================
+abbr nb goread
 abbr rsync "rsync -avP --progress --verbose"
 abbr fish-config "nvim ~/.config/fish/config.fish"
 abbr ssh-config "nvim ~/.ssh/config"
