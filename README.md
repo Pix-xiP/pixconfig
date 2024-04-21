@@ -1,22 +1,40 @@
-# pix_hyprland
-My Hyprland Setup and Config Files 
+# Pix Config!
+
+My various configuration files for all the fun tools I use!
 
 ## What do you use?
 
-Checkout the Toolset.md file for the long list of tools and stuff that I use. There is also the setup_env script that can give you an idea of what I install in most setups.
+Checkout the Toolset.md file for a list of tools that I have found that I find useful, interesting novel or otherwise caught my attention! I update this from time to time as I find more cool things!
 
-The quick and dirty breakdown is:
+If you have any suggestions of cool tools to checkout send them my way!
 
-**Terminal**: WezTerm
+TL;DR - 
+
+### MacOS
+
+**Terminal**: Ghostty
 **Shell**: Fish
 **Editor**: Neovim
-**WM**: Hyprland 
-**Launcher**: Rofi 
+**WM**: Yabai
+**Launcher**: Alfred
+**Bar**: Sketchybar
+**Notifications**: Native
+**Pager**: Bat
+**PKG Manager**: Homebrew // Nix
+
+### Linux
+
+**Terminal**: Wezterm
+**Shell**: Fish
+**Editor**: Neovim
+**WM**: Hyprland
+**Launcher**: Rofi
 **Bar**: Waybar
 **Notifications**: Dunst
 **Pager**: Bat
-**AUR-Helper**: yay || paru
+**PKG Manager**: yay
 
-### Note:
 
-This has semi devolved into just where I put all my config, hyprland related or not, so there are things like Sketchybar and Yabai from the Mac setup that are also included here.
+#### TODOS:
+
+Add some screenshots :>
