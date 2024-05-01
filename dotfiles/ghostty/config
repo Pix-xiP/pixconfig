@@ -14,7 +14,7 @@ unfocused-split-opacity = 0.95
 # Font
 # font-family = "FiraCode Nerd Font Mono" # Oldfaithful
 font-family = "JetBrainsMono Nerd Font" # Lets roll this for awhile.
-font-size = 13
+font-size = 11
 minimum-contrast = 1.1
 
 # Only works on macos. Seems to look good?
