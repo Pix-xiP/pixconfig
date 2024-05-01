@@ -24,6 +24,12 @@ else if test (uname) = Linux
 end
 
 # ===================
+# Set / Export Hours 
+# ===================
+set EDITOR -gx nvim
+set VISUAL -gx $EDITOR
+
+# ===================
 # Alias Hours
 # ===================
 alias cat="bat --style header --style snip --style changes --style header"
