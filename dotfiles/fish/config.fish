@@ -26,8 +26,8 @@ end
 # ===================
 # Set / Export Hours 
 # ===================
-set EDITOR -gx nvim
-set VISUAL -gx $EDITOR
+set -gx EDITOR nvim
+set -gx VISUAL $EDITOR
 
 # ===================
 # Alias Hours
