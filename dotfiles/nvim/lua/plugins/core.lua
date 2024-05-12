@@ -116,4 +116,15 @@ return {
     config = true,
     cmd = "Glow",
   },
+  -- Turn off the animation on mini indent scope
+  {
+    "echasnovski/mini.indentscope",
+    version = "*",
+    opts = {
+      draw = {
+        delay = 100,
+        animation = require("mini.indentscope").gen_animation.none(),
+      },
+    },
+  },
 }

@@ -7,15 +7,17 @@
 # Theme:
 theme = rose-pine
  
-background-opacity = 0.85
+# background-opacity = 0.85
+background-opacity = 1
 background-blur-radius = 30
-unfocused-split-opacity = 0.95
+unfocused-split-opacity = 1
 
 # Font
 # font-family = "FiraCode Nerd Font Mono" # Oldfaithful
-font-family = "JetBrainsMono Nerd Font" # Lets roll this for awhile.
+# font-family = "JetBrainsMono Nerd Font" # Lets roll this for awhile.
+font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 11
-minimum-contrast = 1.1
+# minimum-contrast = 1.1
 
 # Only works on macos. Seems to look good?
 font-thicken = true
@@ -25,7 +27,7 @@ cursor-style = block
 cursor-style-blink = false
 
 # Window 
-window-padding-x = 2 
+window-padding-x = 5
 window-padding-y = 2
 
 ## NOTE: This breaks Mac.
