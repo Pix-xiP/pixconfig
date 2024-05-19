@@ -4,6 +4,7 @@
 -- package.cpath = package.cpath .. ";/Users/" .. os.getenv("USER") .. "/.local/share/sketchybar_lua/?.so"
 
 print(package.cpath)
+package.cpath = package.cpath .. ";/Users/" .. os.getenv("USER") .. "/.local/share/sketchybar_lua/?.so"
 
 print("Requiring sketchybar")
 local sbar = require("sketchybar")

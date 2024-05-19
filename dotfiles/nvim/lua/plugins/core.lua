@@ -116,15 +116,19 @@ return {
     config = true,
     cmd = "Glow",
   },
-  -- Turn off the animation on mini indent scope
+  -- Potential replacement to indentscope, with less features.
   {
-    "echasnovski/mini.indentscope",
-    version = "*",
-    opts = {
-      draw = {
-        delay = 100,
-        animation = require("mini.indentscope").gen_animation.none(),
-      },
-    },
+    "nvimdev/indentmini.nvim",
   },
+  -- Turn off the animation on mini indent scope
+  -- {
+  --   "echasnovski/mini.indentscope",
+  --   opts = {
+  --     draw = {
+  --       delay = 100,
+  --       animation = require("mini.indentscope").gen_animation.none(),
+  --       -- animation = require("mini.indentscope").gen_animation.none(),
+  --     },
+  --   },
+  -- },
 }

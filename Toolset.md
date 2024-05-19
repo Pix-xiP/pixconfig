@@ -513,6 +513,9 @@ C Heavy compression tool, usually results in very small output
 `trippy` *
 - A network diagnostics tool
 
+`sntop`
+- uses fping to determine connectivity of hosts based on a config file.
+
 `bmon`
 - A network monitoring tool!
 
@@ -534,7 +537,21 @@ C Heavy compression tool, usually results in very small output
 `rustscan`
 - `nmap` written in `rust` run from `docker` usually
 
+`ugm`
+- A TUI for viewing information about UNIX users and groups.
+
+`tailspin` || `tpin`
+- A log file highlighter in Rust, can be used as a drop in for `less` and `tail`
+
 -----------------------------------------------------------
+
+### Debugging:
+
+`gdb` *
+- The tried and true debugger most commonly associated with C 
+
+`cgdb` *
+- GDB featuring a split view that shows source code among other things.
 
 
 ### Version Control:
