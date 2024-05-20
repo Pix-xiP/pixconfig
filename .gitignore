@@ -20,3 +20,4 @@ dotfiles/sketchybar/helpers/event_providers/cpu_load/bin/cpu_load
 dotfiles/sketchybar/helpers/event_providers/network_load/bin/network_load
 dotfiles/sketchybar/helpers/menus/bin
 dotfiles/sketchybar/pix_shell/helper/helper
+dotfiles/config.toml
