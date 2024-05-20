@@ -108,11 +108,11 @@ return {
             },
           },
         },
-        sourcekit = {
-          cmd = { "sourcekit-lsp" },
-          filetypes = { "swift" },
-          rootPatterns = { "Package.swift", ".git" },
-        },
+        -- sourcekit = {
+        --   cmd = { "sourcekit-lsp" },
+        --   filetypes = { "swift" },
+        --   rootPatterns = { "Package.swift", ".git" },
+        -- },
         zls = {
           cmd = { "zls" },
           filetypes = { "zig" },

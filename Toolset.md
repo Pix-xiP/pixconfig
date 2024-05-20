@@ -497,6 +497,21 @@ C Heavy compression tool, usually results in very small output
 `axel` *
 - Download anything at the speed of threads
 
+`ugm`
+- A TUI for viewing information about UNIX users and groups.
+
+`tailspin` || `tspin`
+- A log file highlighter in Rust, can be used as a drop in for `less` and `tail`
+
+`keyb`
+- A selfmade cheatsheet for keybindings with fuzzy lookup
+
+`sttr`
+- A tool for performing string manipulation from the command line
+
+`superfile` || `spf`
+- A file manager in your terminal
+
 -----------------------------------------------------------
 
 ### CLI Network Utilities:
@@ -537,11 +552,11 @@ C Heavy compression tool, usually results in very small output
 `rustscan`
 - `nmap` written in `rust` run from `docker` usually
 
-`ugm`
-- A TUI for viewing information about UNIX users and groups.
+`doggo`
+- DNS client similar to `dog` or `dig`
 
-`tailspin` || `tpin`
-- A log file highlighter in Rust, can be used as a drop in for `less` and `tail`
+`stu`
+- CLI AWS S3 interactive tool
 
 -----------------------------------------------------------
 
