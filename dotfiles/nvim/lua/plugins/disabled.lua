@@ -19,7 +19,7 @@ return {
     enabled = false,
   },
   {
-    "nvim-neo-tree/neo-tree.nvim",
+    "nvim-neo-tree/neo-tree.nvim", -- I don't use a file tree to navigate anymore
     enabled = false,
   },
 }
