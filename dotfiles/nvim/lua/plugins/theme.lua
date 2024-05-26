@@ -176,11 +176,3 @@ return {
     },
   },
 }
-
--- return {
---   zenbones,
---   rose_pine,
---   -- catppuccin,
---   -- night_fox,
---   lazy_theme,
--- }
