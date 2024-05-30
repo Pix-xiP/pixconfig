@@ -37,13 +37,6 @@ return {
       background_colour = "#000000",
     },
   },
-  -- If I want to play around with smooth scrolling..
-  -- {
-  --   "karb94/neoscroll.nvim",
-  --   config = function()
-  --     require("neoscroll").setup()
-  --   end,
-  -- },
   {
     "L3MON4D3/LuaSnip",
     opts = {
@@ -70,6 +63,8 @@ return {
     opts = {},
   },
   {
+    -- How to have your own highlight groups in code ^-^
+    -- PIXTODO: Implement a few more useful ones with various colours
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
