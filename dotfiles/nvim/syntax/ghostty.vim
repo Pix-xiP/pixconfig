@@ -85,6 +85,7 @@ syn keyword ghosttyConfigKeyword
 	\ window-save-state
 	\ window-step-resize
 	\ window-new-tab-position
+  \ window-vsync
 	\ gtk-titlebar
 	\ clipboard-read
 	\ clipboard-write
@@ -120,8 +121,6 @@ hi def link ghosttyConfigComment Comment
 hi def link ghosttyConfigKeyword Keyword
 
 " Pix Addons to make my highlight experience nicer :>
-syn match smarter /\v(\S+)\s*=\s*(\S+)/
-hi def link smarter Error 
 syn match ghost_leader /ctrl+super+\K*[a-zA-Z0-9_][^=]*/
 syn match ghost_leader_alt /ctrl+super+shift+./ 
 syn match ghost_action_variable /:.*/ 
