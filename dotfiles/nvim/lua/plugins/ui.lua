@@ -103,47 +103,44 @@ return {
   --     require("neomodern").load()
   --   end,
   -- },
-  -- Purrfect for pastel pleasure
   {
-    {
-      "catppuccin/nvim",
-      name = "catppuccin",
-      opts = {
-        lazy = true,
-        flavour = "mocha", -- latte, frappe, macchiato, mocha
-        --term_colors = true,
-        transparent_background = true,
-        no_italic = false,
-        no_bold = false,
-        styles = {
-          comments = {},
-          conditionals = {},
-          loops = {},
-          functions = {},
-          keywords = {},
-          strings = {},
-          variables = {},
-          numbers = {},
-          booleans = {},
-          properties = {},
-          types = {},
-        },
-        highlight_overrides = {
-          mocha = function(C)
-            return {
-              TabLineSel = { bg = C.pink },
-              NvimTreeNormal = { bg = C.none },
-              CmpBorder = { fg = C.surface2 },
-              Pmenu = { bg = C.none },
-              NormalFloat = { bg = C.none },
-              TelescopeBorder = { link = "FloatBorder" },
-            }
-          end,
-        },
+    -- Purrfect for pastel pleasure
+    "catppuccin/nvim",
+    name = "catppuccin",
+    opts = {
+      lazy = true,
+      flavour = "mocha", -- latte, frappe, macchiato, mocha
+      --term_colors = true,
+      transparent_background = true,
+      no_italic = false,
+      no_bold = false,
+      styles = {
+        comments = {},
+        conditionals = {},
+        loops = {},
+        functions = {},
+        keywords = {},
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = {},
+      },
+      highlight_overrides = {
+        mocha = function(C)
+          return {
+            TabLineSel = { bg = C.pink },
+            NvimTreeNormal = { bg = C.none },
+            CmpBorder = { fg = C.surface2 },
+            Pmenu = { bg = C.none },
+            NormalFloat = { bg = C.none },
+            TelescopeBorder = { link = "FloatBorder" },
+          }
+        end,
       },
     },
   },
-
   {
     -- Them SOHO vibes bby
     "rose-pine/neovim",
@@ -174,5 +171,13 @@ return {
       colorscheme = "rose-pine",
       -- colorscheme = "neomodern",
     },
+  },
+  {
+    "shmerl/neogotham",
+    lazy = false, -- to make sure it's loaded on startup
+    priority = 1000, -- to load before other plugins
+    config = function()
+      vim.cmd.colorscheme("neogotham")
+    end,
   },
 }
