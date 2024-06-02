@@ -1,9 +1,4 @@
 return {
-  -- I want to be able to develop my own plugins, thanks Folke!
-  {
-    "folke/neodev.nvim",
-    opts = {},
-  },
   -- Which key for multi menu
   {
     "folke/which-key.nvim",
