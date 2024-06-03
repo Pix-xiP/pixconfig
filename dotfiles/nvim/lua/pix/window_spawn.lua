@@ -23,6 +23,22 @@ local M = {}
 -- end
 M.exists = false
 
+M.ExistsGroup = vim.api.nvim_create_augroup("PixExistsGroup", {})
+
+vim.api.nvim_create_autocmd("WinClosed", {
+  command = "lua require('pix.window_spawn').unexists()",
+  group = M.ExistsGroup,
+})
+-- vim.api.nvim_exec( [[ augroup PixExistsGroup autocmd!  autocmd WinClosed * lua M.toggle_window() augroup END ]], false)
+
+-- This function is for explicitly setting the exists flag to
+-- be false, in the case the window shuts with ':q' or 'esc'
+function M:unexists()
+  if M.exists then
+    M.exists = false
+  end
+end
+
 function M:run_command(command)
   local file = io.popen(command, "r")
   if file == nil then
