@@ -32,11 +32,11 @@ window-padding-x = 5
 window-padding-y = 2
 
 # To fix latency problems on Wavlink
-window-vsync = true
+#window-vsync = true
 
 ## NOTE: This breaks Mac.
 ## It is potentially Yabai?
-# window-decoration = false
+ window-decoration = false
 
 # QoL || Misc
 copy-on-select = clipboard
@@ -45,12 +45,7 @@ quit-after-last-window-closed = true
 
 window-inherit-working-directory = true
 window-inherit-font-size = true
-# Because I launch from SKHD -> This will default to '/' if "inherit"
 working-directory = home 
-
-# Macos specific
-macos-titlebar-tabs = true
-macos-option-as-alt = true
 
 # Shell specifics
 shell-integration = fish
@@ -65,27 +60,27 @@ keybind = shift+page_up=scroll_page_up
 keybind = shift+page_down=scroll_page_down
 
 ## Pane Control
-keybind = ctrl+super+backslash=new_split:right
-keybind = ctrl+super+minus=new_split:down
+keybind = ctrl+alt+backslash=new_split:right
+keybind = ctrl+alt+minus=new_split:down
 
 ## Pane Movement
-keybind = ctrl+super+n=goto_split:left
-keybind = ctrl+super+e=goto_split:top
-keybind = ctrl+super+i=goto_split:bottom
-keybind = ctrl+super+o=goto_split:right
+keybind = ctrl+alt+n=goto_split:left
+keybind = ctrl+alt+e=goto_split:top
+keybind = ctrl+alt+i=goto_split:bottom
+keybind = ctrl+alt+o=goto_split:right
 
 ## Pane Maximize 
-keybind = ctrl+super+f=unbind
-keybind = ctrl+super+f=toggle_split_zoom
+keybind = ctrl+alt+f=unbind
+keybind = ctrl+alt+f=toggle_split_zoom
 
 ## Pane Resize
-keybind = ctrl+super+shift+n=resize_split:left,10
-keybind = ctrl+super+shift+e=resize_split:up,10
-keybind = ctrl+super+shift+i=resize_split:down,10
-keybind = ctrl+super+shift+o=resize_split:right,10
+keybind = ctrl+alt+shift+n=resize_split:left,10
+keybind = ctrl+alt+shift+e=resize_split:up,10
+keybind = ctrl+alt+shift+i=resize_split:down,10
+keybind = ctrl+alt+shift+o=resize_split:right,10
 
 ## Pane Equalising 
-keybind = ctrl+super+shift+m=equalize_splits
+keybind = ctrl+alt+shift+m=equalize_splits
 
 ## Pane Close
-keybind = ctrl+super+w=close_surface
+keybind = ctrl+alt+w=close_surface
