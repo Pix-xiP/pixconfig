@@ -14,18 +14,18 @@ api.nvim_create_autocmd("FileType", {
   pattern = { "odin", "swift" },
 })
 
-api.nvim_create_autocmd("FileType", {
-  group = api.nvim_create_augroup("KillSwiftTSContext", { clear = true }),
-  callback = function()
-    local tsc = require("treesitter-context")
-    if vim.bo.filetype == "swift" then
-      tsc.disable()
-    else
-      tsc.enable()
-    end
-  end,
-  pattern = { "swift" },
-})
+-- api.nvim_create_autocmd("FileType", {
+--   group = api.nvim_create_augroup("KillSwiftTSContext", { clear = true }),
+--   callback = function()
+--     local tsc = require("treesitter-context")
+--     if vim.bo.filetype == "swift" then
+--       tsc.disable()
+--     else
+--       tsc.enable()
+--     end
+--   end,
+--   pattern = { "swift" },
+-- })
 
 filetype.add({
   pattern = { [".*/hyprland%.conf"] = "hyprlang" },

@@ -1,4 +1,5 @@
-# 
+# vim: set filetype=ghostty :
+#
 # Ghostty config :D
 #
 # Pix's Config
@@ -14,8 +15,8 @@ unfocused-split-opacity = 1
 
 # Font
 # font-family = "FiraCode Nerd Font Mono" # Oldfaithful
-# font-family = "JetBrainsMono Nerd Font" # Lets roll this for awhile.
-font-family = "JetBrainsMono Nerd Font Mono"
+#font-family = "JetBrainsMono Nerd Font Mono"
+font-family = "Maple Mono"
 font-size = 11
 # minimum-contrast = 1.1
 
@@ -39,7 +40,7 @@ window-vsync = true
 
 # QoL || Misc
 copy-on-select = clipboard
-mouse-hide-while-typing = true
+#mouse-hide-while-typing = true
 quit-after-last-window-closed = true
 
 window-inherit-working-directory = true

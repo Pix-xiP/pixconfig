@@ -19,7 +19,6 @@ return {
     dependencies = {
       "apple/pkl-neovim",
     },
-
     opts = {
       highlight = {
         enable = true,
@@ -28,11 +27,9 @@ return {
         enable = true,
         disable = { "odin" },
       },
-
       ensure_installed = {
         "bash",
         "c",
-        "c_sharp",
         "fish",
         "go",
         "lua",
