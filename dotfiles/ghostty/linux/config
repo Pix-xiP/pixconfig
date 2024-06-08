@@ -34,9 +34,8 @@ window-padding-y = 2
 # To fix latency problems on Wavlink
 #window-vsync = true
 
-## NOTE: This breaks Mac.
-## It is potentially Yabai?
- window-decoration = false
+window-decoration = false
+gtk-titlebar = false
 
 # QoL || Misc
 copy-on-select = clipboard
