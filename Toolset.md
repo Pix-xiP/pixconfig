@@ -512,6 +512,9 @@ C Heavy compression tool, usually results in very small output
 `superfile` || `spf`
 - A file manager in your terminal
 
+`yazi` *
+- A *blazingly* fast TUI file manager with plugins!
+
 -----------------------------------------------------------
 
 ### CLI Network Utilities:
@@ -716,4 +719,6 @@ This is honestly a massive weak point for me, so here is just some basic stuff I
 `surealdb`
 - A multi model database using what I think is a document system?
 
+`manticore`
+- C++ Elastic Search esque document data base.
 
