@@ -1,45 +1,4 @@
--- Setting the theme!
-
--- Purrfect for pastel pleasure
--- local catppuccin = {
---   {
---     "catppuccin/nvim",
---     name = "catppuccin",
---     opts = {
---       lazy = true,
---       flavour = "mocha", -- latte, frappe, macchiato, mocha
---       --term_colors = true,
---       transparent_background = true,
---       no_italic = false,
---       no_bold = false,
---       styles = {
---         comments = {},
---         conditionals = {},
---         loops = {},
---         functions = {},
---         keywords = {},
---         strings = {},
---         variables = {},
---         numbers = {},
---         booleans = {},
---         properties = {},
---         types = {},
---       },
---       highlight_overrides = {
---         mocha = function(C)
---           return {
---             TabLineSel = { bg = C.pink },
---             NvimTreeNormal = { bg = C.none },
---             CmpBorder = { fg = C.surface2 },
---             Pmenu = { bg = C.none },
---             NormalFloat = { bg = C.none },
---             TelescopeBorder = { link = "FloatBorder" },
---           }
---         end,
---       },
---     },
---   },
--- }
+-- Setting UI elements!
 
 return {
   -- {
@@ -103,64 +62,155 @@ return {
   --     require("neomodern").load()
   --   end,
   -- },
+  -- {
+  --   -- Purrfect for pastel pleasure
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   opts = {
+  --     lazy = true,
+  --     flavour = "mocha", -- latte, frappe, macchiato, mocha
+  --     --term_colors = true,
+  --     transparent_background = true,
+  --     no_italic = false,
+  --     no_bold = false,
+  --     styles = {
+  --       comments = {},
+  --       conditionals = {},
+  --       loops = {},
+  --       functions = {},
+  --       keywords = {},
+  --       strings = {},
+  --       variables = {},
+  --       numbers = {},
+  --       booleans = {},
+  --       properties = {},
+  --       types = {},
+  --     },
+  --     highlight_overrides = {
+  --       mocha = function(C)
+  --         return {
+  --           TabLineSel = { bg = C.pink },
+  --           NvimTreeNormal = { bg = C.none },
+  --           CmpBorder = { fg = C.surface2 },
+  --           Pmenu = { bg = C.none },
+  --           NormalFloat = { bg = C.none },
+  --           TelescopeBorder = { link = "FloatBorder" },
+  --         }
+  --       end,
+  --     },
+  --   },
+  -- },
+  -- {
+  --   -- Them SOHO vibes bby
+  --   "rose-pine/neovim",
+  --   name = "rose-pine",
+  --   priority = 1000,
+  --   opts = {
+  --     lazy = true,
+  --     variant = "main", -- moon
+  --     dark_varient = "main", -- moon
+  --     disable_background = true,
+  --     disable_float_background = true,
+  --   },
+  -- },
+  -- {
+  --   "mcchrish/zenbones.nvim",
+  --   dependencies = { "rktjmp/lush.nvim" },
+  --   config = function()
+  --     -- vim.g.rosebones = {
+  --     --   transparent_background = true,
+  --     -- }
+  --   end,
+  -- },
+  -- {
+  --   "shmerl/neogotham",
+  --   lazy = false, -- to make sure it's loaded on startup
+  --   priority = 1000, -- to load before other plugins
+  --   config = function()
+  --     vim.cmd.colorscheme("neogotham")
+  --   end,
+  -- },
+  -- {
+  --   -- Bayonetta insprised theme *chefs kiss*
+  --   "LZDQ/umbra.nvim",
+  --   name = "umbra",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = {
+  --     -- local umbra = require('umbra')
+  --
+  --     -- Main options --
+  --     -- Default theme style. Choose between 'bloodmoon', 'moonlight', 'darkest', 'dark', 'darker',
+  --     --                                     'cool', 'deep', 'warm', 'warmer' and 'light'
+  --     style = "moonlight",
+  --     transparent = false, -- Show/hide background
+  --     term_colors = true, -- Change terminal color as per the selected theme style
+  --     ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
+  --     cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+  --
+  --     -- toggle theme style ---
+  --     toggle_style_key = nil,
+  --     toggle_style_list = {},
+  --     -- toggle_style_key = "!", -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
+  --     -- toggle_style_list = {
+  --     --   "moonlight",
+  --     --   "darkest",
+  --     --   "bloodmoon",
+  --     --   -- 'deep',
+  --     --   -- 'warm',
+  --     --   "warmer",
+  --     --   -- 'dark',
+  --     --   -- 'darker',
+  --     --   "cool",
+  --     --   "light",
+  --     -- }, -- List of styles to toggle between
+  --
+  --     -- Change code style ---
+  --     -- Options are italic, bold, underline, none
+  --     -- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'
+  --     code_style = {
+  --       comments = "italic",
+  --       keywords = "none",
+  --       functions = "bold",
+  --       strings = "none",
+  --       variables = "none",
+  --     },
+  --
+  --     -- Lualine options --
+  --     lualine = {
+  --       transparent = false, -- lualine center bar transparency
+  --     },
+  --
+  --     -- Custom Highlights --
+  --     colors = {}, -- Override default colors
+  --     highlights = { -- Override highlight groups
+  --     },
+  --
+  --     -- Plugins Config --
+  --     diagnostics = {
+  --       darker = true, -- darker colors for diagnostic
+  --       undercurl = true, -- use undercurl instead of underline for diagnostics
+  --       background = true, -- use background color for virtual text
+  --     },
+  --   },
+  -- },
   {
-    -- Purrfect for pastel pleasure
-    "catppuccin/nvim",
-    name = "catppuccin",
-    opts = {
-      lazy = true,
-      flavour = "mocha", -- latte, frappe, macchiato, mocha
-      --term_colors = true,
-      transparent_background = true,
-      no_italic = false,
-      no_bold = false,
-      styles = {
-        comments = {},
-        conditionals = {},
-        loops = {},
-        functions = {},
-        keywords = {},
-        strings = {},
-        variables = {},
-        numbers = {},
-        booleans = {},
-        properties = {},
-        types = {},
-      },
-      highlight_overrides = {
-        mocha = function(C)
-          return {
-            TabLineSel = { bg = C.pink },
-            NvimTreeNormal = { bg = C.none },
-            CmpBorder = { fg = C.surface2 },
-            Pmenu = { bg = C.none },
-            NormalFloat = { bg = C.none },
-            TelescopeBorder = { link = "FloatBorder" },
-          }
-        end,
-      },
-    },
+    "Shadorain/shadotheme",
+    lazy = false, -- to make sure it's loaded on startup
+    priority = 1000, -- to load before other plugins
   },
+  -- {
+  --   "water-sucks/darkrose.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  -- },
   {
-    -- Them SOHO vibes bby
-    "rose-pine/neovim",
-    name = "rose-pine",
-    priority = 1000,
-    opts = {
-      lazy = true,
-      variant = "main", -- moon
-      dark_varient = "main", -- moon
-      disable_background = true,
-      disable_float_background = true,
-    },
-  },
-  {
-    "mcchrish/zenbones.nvim",
-    dependencies = { "rktjmp/lush.nvim" },
-    config = function()
-      -- vim.g.rosebones = {
-      --   transparent_background = true,
-      -- }
+    "norcalli/nvim-colorizer.lua",
+    lazy = true,
+    opts = function()
+      require("colorizer").setup({
+        "*",
+      })
     end,
   },
   {
@@ -170,79 +220,18 @@ return {
       -- colorscheme = "rosebones",
       -- colorscheme = "rose-pine",
       -- colorscheme = "neomodern",
-      colorscheme = "umbra",
-    },
-  },
-  -- {
-  --   "shmerl/neogotham",
-  --   lazy = false, -- to make sure it's loaded on startup
-  --   priority = 1000, -- to load before other plugins
-  --   config = function()
-  --     vim.cmd.colorscheme("neogotham")
-  --   end,
-  -- },
-  {
-    -- Bayonetta insprised theme *chefs kiss*
-    "LZDQ/umbra.nvim",
-    name = "umbra",
-    lazy = false,
-    priority = 1000,
-    config = {
-      -- local umbra = require('umbra')
+      -- colorscheme = "umbra",
+      -- colorscheme = "darkrose",
+      -- colorscheme = "shado",
+      colorscheme = function()
+        vim.cmd.colorscheme("shado")
+        local function hl(...)
+          vim.api.nvim_set_hl(0, ...)
+        end
 
-      -- Main options --
-      -- Default theme style. Choose between 'bloodmoon', 'moonlight', 'darkest', 'dark', 'darker',
-      --                                     'cool', 'deep', 'warm', 'warmer' and 'light'
-      style = "moonlight",
-      transparent = false, -- Show/hide background
-      term_colors = true, -- Change terminal color as per the selected theme style
-      ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
-      cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
-
-      -- toggle theme style ---
-      toggle_style_key = nil,
-      toggle_style_list = {},
-      -- toggle_style_key = "!", -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
-      -- toggle_style_list = {
-      --   "moonlight",
-      --   "darkest",
-      --   "bloodmoon",
-      --   -- 'deep',
-      --   -- 'warm',
-      --   "warmer",
-      --   -- 'dark',
-      --   -- 'darker',
-      --   "cool",
-      --   "light",
-      -- }, -- List of styles to toggle between
-
-      -- Change code style ---
-      -- Options are italic, bold, underline, none
-      -- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'
-      code_style = {
-        comments = "italic",
-        keywords = "none",
-        functions = "bold",
-        strings = "none",
-        variables = "none",
-      },
-
-      -- Lualine options --
-      lualine = {
-        transparent = false, -- lualine center bar transparency
-      },
-
-      -- Custom Highlights --
-      colors = {}, -- Override default colors
-      highlights = { -- Override highlight groups
-      },
-
-      -- Plugins Config --
-      diagnostics = {
-        darker = true, -- darker colors for diagnostic
-        undercurl = true, -- use undercurl instead of underline for diagnostics
-        background = true, -- use background color for virtual text
-      },
+        hl("Normal", { bg = "#090917" })
+        hl("Comment", { fg = "#6260a2", italic = true })
+      end,
     },
   },
 }
