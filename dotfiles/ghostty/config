@@ -7,7 +7,7 @@
 
 # Theme:
 theme = rose-pine
- 
+
 # background-opacity = 0.85
 background-opacity = 1
 background-blur-radius = 30
@@ -34,12 +34,10 @@ window-padding-y = 2
 # To fix latency problems on Wavlink
 window-vsync = true
 
-## NOTE: This breaks Mac.
-## It is potentially Yabai?
-# window-decoration = false
 
 # QoL || Misc
 copy-on-select = clipboard
+## Turn this off to stop losing cursors full time on mac atm.
 #mouse-hide-while-typing = true
 quit-after-last-window-closed = true
 
@@ -47,10 +45,14 @@ window-inherit-working-directory = true
 window-inherit-font-size = true
 # Because I launch from SKHD -> This will default to '/' if "inherit"
 working-directory = home 
-
-# Macos specific
+#
+## Macos specific
 macos-titlebar-tabs = true
 macos-option-as-alt = true
+
+# You cannot have this and titlebar tabs enabled at the same time.
+# Because you cannot have tabs without window decorations on mac.
+# window-decoration = false
 
 # Shell specifics
 shell-integration = fish
