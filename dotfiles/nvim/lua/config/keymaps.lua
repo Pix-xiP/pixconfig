@@ -88,3 +88,5 @@ map(
   "iif err != nil {<CR> return err<CR>}<Esc>kk",
   { desc = "Automatically place a if err = nil check in for Go" }
 )
+
+map({ "v" }, "<leader>psc", ":s/[a-z]\\@<=[A-Z]/\\_\\l\\0/g<CR>", { desc = "This converts camelCase to snake_case" })

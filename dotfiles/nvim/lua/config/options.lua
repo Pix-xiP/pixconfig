@@ -9,3 +9,5 @@ vim.opt.scrolloff = 10 -- Number of lines to keep above and below the cursor
 vim.opt.signcolumn = "yes"
 
 vim.opt.colorcolumn = "100"
+
+vim.opt.termguicolors = true

@@ -73,11 +73,26 @@ return {
         pix_todo = { "#3e8fb0" },
         pix_note = { "#c4a7e7" },
         pix_hack = { "#eb6f92" },
+        pix_improve = { "#ea9d34" },
       },
       keywords = {
-        PIXNOTE = { icon = "N", color = "pix_note", alt = { "THOUGHT" } },
-        PIXHACK = { icon = "? ", color = "pix_hack", alt = { "HACKFIX" } },
-        PIXTODO = { icon = "P", color = "pix_todo", alt = { "TODO: (Pix):" } },
+        PIXNOTE = { icon = "", color = "pix_note", alt = { "THOUGHT" } },
+        PIXHACK = { icon = "", color = "pix_hack", alt = { "HACKFIX" } },
+        PIXTODO = { icon = "", color = "pix_todo", alt = { "" } },
+        IMPROVEMENT = { icon = "󰟶", color = "pix_improve", alt = { "IMPROVE", "IDEA" } },
+        -- Preview:
+        -- PIXTODO:     Some long text for testing with
+        -- TODO:        Some long text for testing with
+        -- IMPROVEMENT: Some long text for testing with
+        -- IDEA:        Some long text for testing with
+        -- PIXHACK:     Some long text for testing with
+        -- HACKFIX:     Some long text for testing with
+        -- THOUGHT:     Some long text for testing with
+        -- PIXNOTE:     Some long text for testing with
+        -- NOTE:        Some long text for testing with
+        -- HACK:        Some long text for testing with
+        -- WARN:        Some long text for testing with
+        -- FIXME:       Some long text for testing with
       },
     },
   },

@@ -179,7 +179,8 @@ M.doom_plug_opts = function()
         --   key = "g",
         -- },
         {
-          action = [[lua require("lazyvim.util").telescope.config_files()()]],
+          -- action = [[lua require("lazyvim").pick.telescope.config_files()()]],
+          action = [[lua LazyVim.pick.config_files()()]],
           desc = " Config",
           icon = " ",
           key = "c",
@@ -264,7 +265,8 @@ M.hyper_plug_opts = function()
         },
         {
           key = "c",
-          action = [[lua require("lazyvim.util").telescope.config_files()()]],
+          -- action = [[lua require("lazyvim.util").telescope.config_files()()]],
+          action = [[lua LazyVim.pick.config_files()()]],
           desc = " Config",
           icon = " ",
           group = "Text",
