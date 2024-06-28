@@ -65,6 +65,12 @@ map({ "n" }, "N", "Nzzzv", { desc = "Previous search result" })
 map({ "x" }, "<leader>pp", '"_dP', { desc = "Paste without overwriting register when highlighted." })
 
 map({ "n" }, "<leader>xr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "Replace current word" })
+map(
+  { "v" },
+  "<leader>xr",
+  ":s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
+  { desc = "replace current word in scope" }
+)
 
 map({ "n" }, "<leader>mx", "<cmd>!chmod +x %<CR>", { desc = "Make file executable" })
 

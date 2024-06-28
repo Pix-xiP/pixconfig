@@ -114,6 +114,7 @@ syn keyword ghosttyConfigKeyword
 	\ desktop-notifications
 	\ term
 	\ enquiry-response
+  \ macos-titlebar-style 
 
 syn match ghosttyConfigComment /#.*/ contains=@Spell
 

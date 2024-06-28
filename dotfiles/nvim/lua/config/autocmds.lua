@@ -30,3 +30,14 @@ api.nvim_create_autocmd("FileType", {
 filetype.add({
   pattern = { [".*/hyprland%.conf"] = "hyprlang" },
 })
+
+filetype.add({
+  pattern = { ["*.modulemap"] = "modulemap" },
+})
+
+--   au BufRead,BufNewFile *.modulemap setlocal filetype=modulemap
+--
+-- api.nvim_create_autocmd("BufRead,BufNewFile", {
+--
+--
+-- })
