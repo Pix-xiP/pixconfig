@@ -4,19 +4,9 @@ set -e # Exit on error
 
 LOG="pix_install.log"
 
-echo "Running quick bootstrap..."
-# For some reason arch gum doesn't come with log -_-
-sudo pacman -Sy gum --noconfirm
-# May need to do this method..
-# sudo pacman -Sy git go --noconfirm
-# git clone https://github.com/charbracelet/gum.git
-# cd gum || return
-# go build
-# sudo cp ./gum /usr/bin
-# cd .. || return
-
 if ! command -v gum log; then
-	echo "Uncomment the extended bootstrap"
+	echo "Running quick bootstrap..."
+	sudo pacman -Sy gum --noconfirm
 	exit 1
 fi
 
@@ -69,7 +59,7 @@ else
 		exit 1
 	else
 		info "Installing YAY"
-		git clone https://aur.archlinux.org/yay.git | tree -a "$LOG"
+		git clone https://aur.archlinux.org/yay.git | tee -a "$LOG"
 		cd yay
 		makepkg -si --noconfirm 2>&1 | tee -a "$LOG"
 		cd ..
@@ -102,6 +92,8 @@ else
 
 	TERM_PKGS="alacritty axel bat bear btop croc curl duf dust eza fastmod fd fish fzf glow go go-task gum htop jq jujutsu lazygit less lua meson navi neofetch neovim pixz procs ripgrep rm-improved rsync sd tealdeer tokei trippy unzip vim wezterm wget zerotier-one zoxide pacman-contrib"
 
+	STREAMLINED_PKGS="axel bat bear croc curl duf dust eza fastmod fd fish fzf glow go gum htop jq lazygit less lua neovim pixz procs ripgrep rm-improved rsync tealdeer tokei trippy unzip vim wezterm wget zerotier-one zoxide pacman-contrib"
+
 	if ! yay -S --noconfirm "$GIT_PKGS" "$HYPR_PKGS" "$FONT_PKGS" "$APP_PKGS" "$TERM_PKGS" "$THEME_PKGS" 2>&1 | tee -a "$LOG"; then
 		error "Failed to install additional packages - please check the install log\n"
 		exit 1
@@ -112,7 +104,7 @@ fi
 USER_IN=""
 
 p "====================="
-p "Whad would you like to do with config files?"
+p "What would you like to do with config files?"
 p "====================="
 USER_IN=$(gum choose "Copy" "Symlink" "Skip")
 if [[ $USER_IN == "Skip" ]]; then
