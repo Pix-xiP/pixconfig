@@ -47,7 +47,7 @@ window-inherit-font-size = true
 working-directory = home 
 #
 ## Macos specific
-macos-titlebar-tabs = true
+macos-titlebar-style = tabs 
 macos-option-as-alt = true
 
 # You cannot have this and titlebar tabs enabled at the same time.
