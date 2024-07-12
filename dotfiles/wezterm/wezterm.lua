@@ -117,41 +117,41 @@ C.window_background_image_hsb = bg_config.window_hsb
 
 -- Workspaces
 ---- Startup Specific.
-local mux = wezterm.mux
+-- local mux = wezterm.mux
 
-wezterm.on("gui-startup", function(cmd)
-	local args = {}
-	if cmd then
-		args = cmd.args
-	end
+-- wezterm.on("gui-startup", function(cmd)
+-- 	local args = {}
+-- 	if cmd then
+-- 		args = cmd.args
+-- 	end
+--
+-- 	---@diagnostic disable-next-line: unused-local
+-- 	local tab, monitor_pane, window = mux.spawn_window({
+-- 		workspace = "monitoring",
+-- 		cwd = "~",
+-- 		args = args,
+-- 	})
+-- 	monitor_pane:send_text("btop\n")
+--
+-- 	---@diagnostic disable-next-line: unused-local, redefined-local
+-- 	local tab, pane, window = mux.spawn_window({
+-- 		workspace = "default",
+-- 		args = args,
+-- 	})
+--
+-- 	---@diagnostic disable-next-line: unused-local
+-- 	local splitter = pane:split({
+-- 		direction = "Right",
+-- 		size = 0.5,
+-- 	})
+-- 	pane:send_text("ls\n")
+--
+-- 	mux.set_active_workspace("default")
+-- end)
 
-	---@diagnostic disable-next-line: unused-local
-	local tab, monitor_pane, window = mux.spawn_window({
-		workspace = "monitoring",
-		cwd = "~",
-		args = args,
-	})
-	monitor_pane:send_text("btop\n")
-
-	---@diagnostic disable-next-line: unused-local, redefined-local
-	local tab, pane, window = mux.spawn_window({
-		workspace = "default",
-		args = args,
-	})
-
-	---@diagnostic disable-next-line: unused-local
-	local splitter = pane:split({
-		direction = "Right",
-		size = 0.5,
-	})
-	pane:send_text("ls\n")
-
-	mux.set_active_workspace("default")
-end)
-
-wezterm.on("mux-startup", function()
-	wezterm.mux.spawn_window({ width = 100, height = 100 })
-end)
+-- wezterm.on("mux-startup", function()
+-- 	wezterm.mux.spawn_window({ width = 100, height = 100 })
+-- end)
 
 -- MULTIPLEXER
 -- Setup for different multiplex domains.
