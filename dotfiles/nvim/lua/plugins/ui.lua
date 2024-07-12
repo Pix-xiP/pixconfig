@@ -286,4 +286,40 @@ return {
       end,
     },
   },
+
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = {
+      sections = {
+        lualine_a = {
+          {
+            "mode",
+            icons_enabled = true,
+            separator = {
+              -- left = "",
+              -- right = "",
+              right = "",
+            },
+            fmt = function()
+              local mode_map = {
+                n = "N (ᴗ_ ᴗ。)",
+                nt = "N (ᴗ_ ᴗ。)",
+                i = "I (•̀ - •́ )",
+                R = "R ( •̯́ ₃ •̯̀)",
+                v = "V (⊙ _ ⊙ )",
+                V = "V (⊙ _ ⊙ )",
+                no = "C Σ(°△°||)",
+                ["\22"] = "V (⊙ _ ⊙ )",
+                t = "T (⌐■_■)",
+                ["!"] = "C Σ(°△°||)",
+                c = "C Σ(°△°||)",
+                s = "S SUB",
+              }
+              return mode_map[vim.api.nvim_get_mode().mode] or vim.api.nvim_get_mode().mode
+            end,
+          },
+        },
+      },
+    },
+  },
 }
