@@ -27,6 +27,15 @@ return {
     },
   },
   {
+    "kevinhwang91/nvim-bqf", -- better quickfix
+    --- later in the config
+    lazy = true,
+    keys = {
+      { "<leader>cn", ":cnext<cr>", desc = "Next in the quickfix list" },
+      { "<leader>cb", ":cprevious<cr>", desc = "Previous in the quickfix list" },
+    },
+  },
+  {
     "rcarriga/nvim-notify",
     opts = {
       background_colour = "#000000",
