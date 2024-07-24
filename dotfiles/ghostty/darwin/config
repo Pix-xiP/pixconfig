@@ -15,8 +15,8 @@ unfocused-split-opacity = 1
 
 # Font
 # font-family = "FiraCode Nerd Font Mono" # Oldfaithful
-font-family = "JetBrainsMono Nerd Font Mono"
-#font-family = "Maple Mono"
+#font-family = "JetBrainsMono Nerd Font Mono"
+font-family = "Maple Mono"
 font-size = 11
 # minimum-contrast = 1.1
 
