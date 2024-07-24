@@ -34,6 +34,17 @@ TL;DR -
 **Pager**: Bat
 **PKG Manager**: yay
 
+### Nix WIP
+
+**Terminal**: Ghostty 
+**Shell**: Fish
+**Editor**: Neovim
+**WM**: Hyprland
+**Launcher**: Rofi
+**Bar**: Waybar
+**Notifications**: Dunst
+**Pager**: Bat
+**PKG Manager**: nix
 
 #### TODOS:
 

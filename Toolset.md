@@ -287,6 +287,9 @@ The faster debian improved 'sh' usually what sh links to on machines.
 `jq` *
 - Json terminal formatter, very very useful
 
+`jqp`
+- A TUI playground for `jq` lets you visualise and explore JSON objects.
+
 `rsync` *
 - `cp` / `scp` replacement, often faster when copying repeatedly
 
@@ -536,6 +539,9 @@ C Heavy compression tool, usually results in very small output
 
 `bmon`
 - A network monitoring tool!
+
+`cidr`
+- Classless Inter-Domain Routindg tool for performing various actions on, around and about them.
 
 `bandwhich` *
 - Watch what proccesses are using bandwidth, how many connections etc.
