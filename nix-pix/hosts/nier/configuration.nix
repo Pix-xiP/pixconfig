@@ -96,17 +96,136 @@
       extraGroups = [ "wheel" "networkmanager" "docker" ];
       packages = with pkgs; [
         ## Packages not going to be handled from Home-manaeger?
-        git 
-        home-manager
-        neovim
-        wget
-        axel
-        dig
-        vim
-        hyprland
-        zoxide
+        angle-grinder
         atuin
+        axel
+        bandwhich
+        bat
+        bear
+        bitwise
+        btop
+        choose
+        cmake
+        croc
+        ctop
+        curlie
+        darwin.iproute2mac
+        delta
+        dig
+        dogdns
+        dos2unix
+        dotnet-sdk_8
+        doxygen
+        duf
+        dust
+        eza
+        fastmod
+        fd
+        fish
+        fzf
+        fzy
+        getopt
+        gh
+        git 
+        gitleaks
+        gitui
+        glow
+        gnupg
+        go
+        go-task
+        gum
+        hexyl
+        hiredis
+        home-manager
+        hping
+        htop
+        hyperfine
+        hyprland
+        icdiff
+        jemalloc
+        jq
+        jujutsu
+        lazydocker
+        lazygit
+        lnav
+        lua
+        meson
+        mimalloc
+        mutt
+        navi
+        neofetch
+        neovide
+        neovim
+        ninja
+        nmap
+        noti
+        nowplaying-cli
+        nushell
+        onefetch
+        p7zip
+        pandoc
+        pingme
+        pixz
+        procs
+        pueue
+        python312
+        qemu
+        rclone
+        ripgrep
+        ripgrep-all
+        rm-improved
+        rsync
+        rustc
+        rustup
+        sad
+        sd 
+        shellcheck
+        sketchybar
+        sqlite
+        swift-format
+        tart
+        tcpdump
+        tcpreplay
+        tealdeer
+        tigervnc
+        tokei
+        tree-sitter
+        trippy
+        vim
+        wget
+        wtf
+        xz
+        yq
+        zoxide
+        zstd
+
+## GUIS
+        alacritty
+        docker
+        flameshot
+        # pkgs.hammerspoon # Cannot be done?
+        keepassxc
+        # heaptrack # Pending merge from emily <3
+        meld
+        rectangle
+        # pkgs.sublime-merge # Stopped using
+        # pkgs.shotcut # Pending Darwin Allowed.
+        wezterm
+        yabai
+        # pkgs.zerotierone # Pending Darwin Allowed.
+
+## Libraries
+        libevent
+        libpcap
+        libuv
+
+## Fonts?
+        nerdfonts
+
+# MISSING:
+        #pkgs.svim
       ]
+
     };
   };
 
