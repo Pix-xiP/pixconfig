@@ -1,14 +1,14 @@
 local colours = require("colours")
-local sbar = require("sketchybar")
 local icons = require("icons")
+local sbar = require("sketchybar")
 
 local M = {}
 
 -- Execute the event provider binary which provides the event "network_update"
 -- for the network interface "en0", which is fired every 2.0 seconds.
 sbar.exec([[
-killall network_load >/dev/null;
-/Users/pix/.config/sketchybar/helpers/event_providers/network_load/bin/network_load en0 network_update 2.0
+  killall network_load >/dev/null;
+  /Users/pix/.config/sketchybar/helpers/event_providers/network_load/bin/network_load en0 network_update 2.0
 ]])
 
 local popup_width = 250

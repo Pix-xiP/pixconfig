@@ -3,20 +3,16 @@
 -- Shouldn't need this due to having it in an init.lua but leaving in case of migration later.
 -- package.cpath = package.cpath .. ";/Users/" .. os.getenv("USER") .. "/.local/share/sketchybar_lua/?.so"
 
-print(package.cpath)
 package.cpath = package.cpath .. ";/Users/" .. os.getenv("USER") .. "/.local/share/sketchybar_lua/?.so"
 
-print("Requiring sketchybar")
 local sbar = require("sketchybar")
 
-print("Config")
 sbar.begin_config()
 
 require("bar")
 sbar.hotload(true)
 -- Load Items: This calls the items/init.lua which requires all other items.
 
-print("Setting up Sketchybar Items:")
 require("items")
 require("brackets")
 

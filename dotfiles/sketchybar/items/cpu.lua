@@ -16,8 +16,8 @@ M.cpu = sbar.add("graph", "widgets.cpu", 42, {
 	graph = { color = colours.rose_pallete.pine },
 	background = {
 		height = 22,
-		color = { alpha = 0 },
-		border_color = { alpha = 0 },
+		color = colours.rose_pallete.surface, -- { color = colours.rose_pallete.gold, alpha = 0 },
+		border_color = colours.rose_pallete.surface, --{ alpha = 0 },
 		drawing = true,
 	},
 	icon = { string = icons.cpu },
@@ -32,6 +32,7 @@ M.cpu = sbar.add("graph", "widgets.cpu", 42, {
 		padding_right = 0,
 		width = 20,
 		y_offset = 4,
+		color = colours.rose_pallete.gold,
 	},
 	padding_right = 9,
 })
