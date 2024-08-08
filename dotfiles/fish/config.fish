@@ -7,7 +7,9 @@ end
 if status is-interactive
     # Commands to run hn interactive sessions can go here
     fzf_configure_bindings --directory=\cf --git_log=\e\f --history=\cg
-    fish_config theme choose "Rosé Pine"
+    # fish_config theme choose "Rosé Pine"
+    # fish_config theme choose PixShadoTwo
+    fish_config theme choose PixTheme
     pix_print_osc7
     atuin init fish --disable-up-arrow | source
     zoxide init --cmd z fish | source
@@ -50,6 +52,7 @@ alias pq="pueue"
 alias ls="eza -g --icons --sort=type"
 alias makego="go mod init; go mod tidy; touch main.go"
 alias go_get_all="go get -u -v -f all"
+alias fm="fastmod"
 
 
 # ===================
@@ -77,6 +80,8 @@ abbr trip "sudo trip"
 # ====================
 # Set X for export :: Set G for global
 set -gx C_INCLUDE_PATH "/usr/local/include:$C_INCLUDE_PATH"
+set -gx ZEIT_DB "$HOME/.config/zeit/zeit.db"
+fish_add_path -m "$HOME/.local/bin"
 
 # ===================
 # General environment set variables
@@ -98,6 +103,9 @@ end
 function peep --argument file --description "Open a file with FZF with search and preview"
     cat $file | fzf --preview "echo {} | fish_indent --ansi" --preview-window="top:5:wrap"
 end
+
+set -Ux LS_COLORS "rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.md=38;5;68:*.log=38;5;68:*.c=38;5;169:*.h=38;5;135:*.o=38;5;97:*.y=38;5;99:*.l=38;5;99:*.sh=38;5;104"
+set -Ux EXA_COLORS "*.md=38;5;68:*.log=38;5;68:*.c=38;5;169:*.h=38;5;135:*.o=38;5;97:*.y=38;5;99:*.l=38;5;99:*.sh=38;5;104"
 
 set -Ux FZF_DEFAULT_OPTS '--color=fg:#908caa,hl:#ea9a97 
                           --color=border:#44415a,header:#3e8fb0,gutter:#232136

@@ -1,0 +1,41 @@
+# syntax highlighting variables
+# https://fishshell.com/docs/current/interactive.html#syntax-highlighting-variables
+fish_color_normal       f1c4e0 #f1c4e0
+fish_color_command      E9729D #E9729D
+fish_color_keyword      bd93f9 #bd93f9
+fish_color_quote        8897F4 #8897F4
+fish_color_redirection  FF4971 #FF4971
+fish_color_end          A8899C #A8899C
+fish_color_error        eb6f92 #eb6f92
+fish_color_param        f18fb0 #f18fb0
+fish_color_comment      A8899C #A8899C
+#fish_color_match --background=brblue
+fish_color_selection --reverse
+#fish_color_history_current --bold
+fish_color_operator       f1c4e0 #f1c4e0
+fish_color_escape         FF4971 #FF4971
+fish_color_autosuggestion A8899C #A8899C
+#fish_color_cwd           f18fb0 #f18fb0
+fish_color_cwd_root red
+fish_color_user           8897F4 #8897F4
+fish_color_host           bd93f9 #bd93f9
+fish_color_host_remote    E9729D #E9729D
+fish_color_cancel         f1c4e0 #f1c4e0
+fish_color_search_match --background=191724 #191724
+fish_color_valid_path
+
+# pager color variables
+# https://fishshell.com/docs/current/interactive.html#pager-color-variables
+fish_pager_color_progress f18fb0 #f18fb0
+fish_pager_color_background --background=1f1d2e #1f1d2e
+fish_pager_color_prefix bd93f9 #bd93f9
+fish_pager_color_completion A8899C #A8899C
+fish_pager_color_description A8899C #A8899C
+fish_pager_color_secondary_background
+fish_pager_color_secondary_prefix
+fish_pager_color_secondary_completion
+fish_pager_color_secondary_description
+fish_pager_color_selected_background --background=26233a #26233a
+fish_pager_color_selected_prefix bd93f9 #bd93f9
+fish_pager_color_selected_completion f1c4e0 #f1c4e0
+fish_pager_color_selected_description f1c4e0 #f1c4e0
