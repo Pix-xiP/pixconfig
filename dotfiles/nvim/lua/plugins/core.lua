@@ -88,12 +88,13 @@ return {
         PIXNOTE = { icon = "", color = "pix_note", alt = { "THOUGHT" } },
         PIXHACK = { icon = "", color = "pix_hack", alt = { "HACKFIX" } },
         PIXTODO = { icon = "", color = "pix_todo", alt = { "" } },
-        IMPROVEMENT = { icon = "󰟶", color = "pix_improve", alt = { "IMPROVE", "IDEA" } },
+        IMPROVEMENT = { icon = "󰟶", color = "pix_improve", alt = { "IMPROVE", "IDEA", "IMPROV" } },
         -- Preview:
         -- PIXTODO:     Some long text for testing with
         -- TODO:        Some long text for testing with
         -- IMPROVEMENT: Some long text for testing with
         -- IDEA:        Some long text for testing with
+        -- IMPROV:      Some long text for testing with
         -- PIXHACK:     Some long text for testing with
         -- HACKFIX:     Some long text for testing with
         -- THOUGHT:     Some long text for testing with
