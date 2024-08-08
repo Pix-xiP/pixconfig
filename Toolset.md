@@ -253,9 +253,14 @@ The faster debian improved 'sh' usually what sh links to on machines.
 `sox`
 - For audio
 
+`blink` || `blink-emulator` && `blinkenlights`
+- Smol virtual machine for running linux posix binaries.
+
 -----------------------------------------------------------
 
 ### Command Line Tools:
+
+{{
 
 `eza` (`exa` is deprecated) *
 - A replacement for `ls` with more options available.
@@ -354,7 +359,13 @@ The faster debian improved 'sh' usually what sh links to on machines.
 - Quick Cheatsheets that let you autofill commands and run them.
 
 `neofetch` *
-- Show information about your computer.
+- Show information about your computer, inactive.
+
+`fastfetch`
+- Shows information about your computer, active.
+
+`onefetch`
+- Like `neofetch` or `fastfetch` except for git repositories
 
 `npm, pnpm, yarn, bun, etc..`
 - The Javascript ecosystem...
@@ -503,7 +514,7 @@ C Heavy compression tool, usually results in very small output
 `ugm`
 - A TUI for viewing information about UNIX users and groups.
 
-`tailspin` || `tspin`
+`tailspin` || `tspin` *
 - A log file highlighter in Rust, can be used as a drop in for `less` and `tail`
 
 `keyb`
@@ -518,9 +529,88 @@ C Heavy compression tool, usually results in very small output
 `yazi` *
 - A *blazingly* fast TUI file manager with plugins!
 
+`hwatch`
+- Alternative of the `watch` command, keeps track of command execution and changes etc.
+
+`mdtt`
+- Markdown table editor with `vim` like keybinds, good if you use alot of `markdown` tables.
+
+`jnv`
+- Interative JSON viewer that executes `jq` queries to filter.
+
+`lemmeknow`
+- Identifies strings through signature detection.
+
+`typocia`
+- Cozy little terminal typer, lets you practice so you to can be Blazingly Fast!~
+
+`sig`
+- Interactive grep, good over streamed data, such as websocket outputs.
+
+`diskonaut`
+- Treemap style viewer of your filesystem.
+
+`pastel`
+- Generate, convert and manipulate colours and colourcodes!
+
+`ghq`
+- A go tool for managing git repositories.
+
+`gdu`
+- Go Disk Usage, little TUI for seeing where your disk has been filled up.
+
+`ouch`
+- Obvious Unified Compression Helper! A tool for doing all sorts of compression and detection.
+
+`atop`
+- TUI for linux performance monitoring.
+
+`jless`
+- JSON viewer written in rust.
+
+`jqp`
+- Playground for interacting with `jq` and seeing what commands do in realtime.
+
+`sshs`
+- TUI for SSH sessions, using your ssh config, useful for those one off ones you forget, or if you need to figure out an ip quickly.
+
+`yt-dlp`
+- Youtube downloader with extended features and other uses.
+
+`zeit`
+- Time tracker for your terminal :>
+
+`clx` || `circumflex`
+- Hacker news browser in your terminal.
+
+`dua` || `dua-cli`
+- Interactive TUI for seeing space used by files on system.
+
+`dive`
+- Tool for going through `docker` containers.
+
+`nemu`
+- Basic TUI for managing `qemu` vm's
+
+`cotp`
+- Terminal tool for managing OTP's
+
+`tran`
+- Send files to other computers with a nice TUI.
+
+`portal`
+- Another way to send files via a relay system, similar to `croc`
+
+`miller`
+- A multi-purpose parser for TOML, YAML, JSON, CSV etc.
+
+}}
+
 -----------------------------------------------------------
 
 ### CLI Network Utilities:
+
+{{
 
 `netcat` *
 - The network swiss army knife
@@ -566,6 +656,26 @@ C Heavy compression tool, usually results in very small output
 
 `stu`
 - CLI AWS S3 interactive tool
+
+`updo`
+- Monitor the uptime of the various websites with alerts and metrics
+
+`havn`
+- Port scanner similar to `nmap` with some decent defaults.
+
+`eget`
+- Kind of like a package manager for github, allows installing of simple already compiled binaries. ( Use at your own risk for obvious reasons. )
+
+`wg-cmd`
+- Wireguard TUI for managing connections.
+
+`pvw`
+- Port viewer TUI written in Go.
+
+`tcpterm`
+- TUI for `tcpdump`
+
+}}
 
 -----------------------------------------------------------
 
@@ -672,6 +782,7 @@ C Heavy compression tool, usually results in very small output
 -----------------------------------------------------------
 
 ### Languages
+
 `C`
 - Need I say more.
 
@@ -703,7 +814,7 @@ C Heavy compression tool, usually results in very small output
 - Like bash, but if you use that shell, handy to know. (not posix compliant)
 
 `C#`
-- Microsoft flavour Java, good for distributed systems.
+- Microsoft flavour Java, good for distributed systems in my experience
 
 `perl` || `raku`
 - If you really just need to golf something..
@@ -713,7 +824,7 @@ C Heavy compression tool, usually results in very small output
 
 -----------------------------------------------------------
 
-### Databases 
+### Databases && Tools
 
 This is honestly a massive weak point for me, so here is just some basic stuff I've used and enjoy
 
@@ -728,3 +839,5 @@ This is honestly a massive weak point for me, so here is just some basic stuff I
 `manticore`
 - C++ Elastic Search esque document data base.
 
+`gobang`
+- TUI for interacting with various databases.
