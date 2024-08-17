@@ -1,7 +1,7 @@
 #!/bin/sh
 
-yabai -m config external_bar               all:27:0      \
-                top_padding                27           \
+yabai -m config external_bar               all:29:0      \
+                top_padding                29           \
                 mouse_follows_focus        on           \
                 focus_follows_mouse        off          \
                 window_placement           second_child \
