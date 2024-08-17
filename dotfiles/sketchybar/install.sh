@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if ! command -v brew >/dev/null 2>&1; then
+  echo "'brew' is missing, giving a chance to cancel before auto-installing."
+  sleep 5
+  mkdir /tmp/homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip-components 1 -C homebrew
+fi
+
 # Packages
 brew install lua
 brew install switchaudio-osx
