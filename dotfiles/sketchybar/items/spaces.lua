@@ -1,7 +1,3 @@
-local sbar = require("sketchybar")
-local colours = require("colours")
-local app_icons = require("app_icons")
-
 local M = {}
 
 function M.mouse_click(env)
@@ -15,7 +11,7 @@ function M.mouse_click(env)
 end
 
 function M.space_selection(env)
-	local colour = env.SELECTED == "true" and colours.rose_pallete.highlight_high
+	local colour = env.SELECTED == "true" and colours.rosepine.main.highlight_high
 	sbar.set(env.NAME, {
 		icon = { highlight = env.SELECTED },
 		label = { highlight = env.SELECETD },
@@ -31,15 +27,15 @@ for i = 1, 10, 1 do
 			string = i,
 			padding_left = 7,
 			padding_right = 7,
-			color = colours.rose_pallete.text,
-			highlight_color = colours.rose_pallete.love,
+			color = colours.rosepine.main.text,
+			highlight_color = colours.rosepine.main.love,
 		},
 		padding_left = 1,
 		padding_right = 1,
 		label = {
 			padding_right = 20,
-			color = colours.rose_pallete.text,
-			highlight_color = colours.rose_pallete.love,
+			color = colours.rosepine.main.text,
+			highlight_color = colours.rosepine.main.love,
 			font = "sketchybar-app-font:Regular:16.0",
 			y_offset = -1,
 			drawing = true,
@@ -53,7 +49,10 @@ end
 
 -- This is the bracket around the spaces?
 sbar.add("bracket", M.spaces, {
-	background = { color = colours.rose_pallete.surface, border_color = colours.rose_pallete.overlay },
+	background = {
+		color = colours.rosepine.main.base,
+		border_color = colours.rosepine.main.surface,
+	},
 })
 
 M.space_creator = sbar.add("item", {
@@ -88,7 +87,7 @@ M.space_creator:subscribe("space_windows_change", function(env)
 
 	sbar.animate("tanh", 10, function()
 		sbar.set(M.spaces[env.INFO.space], {
-			label = { string = icon_line, color = colours.rose_pallete.iris },
+			label = { string = icon_line, color = colours.rosepine.main.iris },
 		})
 	end)
 end)

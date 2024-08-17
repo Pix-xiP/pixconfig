@@ -2,14 +2,14 @@ local M = {}
 
 -- Imports:
 --- Left:
-local apple = require("items.apple")
+-- local apple = require("items.apple")
 local spaces = require("items.spaces")
 local front_app = require("items.front_app")
-
---- Center:
+--
+-- --- Center:
 local media = require("items.media")
-
---- Right:
+--
+-- --- Right:
 local calendar = require("items.calendar")
 local battery = require("items.battery")
 local volume = require("items.volume")
@@ -29,7 +29,7 @@ local cpu = require("items.cpu")
 -- local cpu_graph = require("items.cpu_graph
 
 -- Attaching to Module:
-M.apple = apple
+-- M.apple = apple
 M.battery = battery
 M.brew = brew
 M.calendar = calendar

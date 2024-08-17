@@ -1,6 +1,3 @@
-local sbar = require("sketchybar")
-local colours = require("colours")
-
 local M = {}
 
 local whitelist = {
@@ -44,12 +41,22 @@ function M.play_pause()
 	sbar.exec("nowplaying-cli togglePlayPause")
 end
 
+-- Helper to make sure media doesn't take up too much room in bar.
+local function shorten(s)
+	local dots = "..."
+	if string.len(s) > 40 then
+		return s:sub(1, 40) .. dots
+	end
+	return s
+end
+
 M.media:subscribe("media_change", function(env)
 	sbar.exec("nowplaying-cli get artworkData | base64 -d > /tmp/album_cover.jpg")
 	if whitelist[env.INFO.app] then
+		local label = shorten(env.INFO.title .. " - " .. env.INFO.artist)
 		M.media:set({
 			drawing = (env.INFO.state == "playing") and true or false,
-			label = env.INFO.artist .. " - " .. env.INFO.title,
+			label = label,
 		})
 		M.cover:set({
 			background = {

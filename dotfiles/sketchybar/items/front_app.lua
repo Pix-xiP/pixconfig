@@ -1,6 +1,3 @@
-local sbar = require("sketchybar")
-local colours = require("colours")
-
 local M = {}
 
 M.front_app = sbar.add("item", {
@@ -14,7 +11,7 @@ M.front_app = sbar.add("item", {
 			style = "Black",
 			size = 12.0,
 		},
-		color = colours.rose_pallete.foam,
+		color = colours.rosepine.main.foam,
 	},
 	updates = true,
 })

@@ -1,5 +1,3 @@
-local sbar = require("sketchybar")
-local colours = require("colours")
 local items = require("items")
 
 local M = {}
@@ -21,20 +19,18 @@ end
 -- local total = M.merge_lists(temp2, items.wifi.bracket)
 --
 -- instead why not just add the first and last items? Does look abit odd, but /shrug
-local total = { items.brew.brew.name, items.battery.battery.name }
+local total = { items.brew.brew.name, items.discord.discord.name }
 
 sbar.add("bracket", total, {
-	background = { color = colours.rose_pallete.overlay, border_color = colours.rose_pallete.muted },
+	padding_left = 5,
+	padding_right = 5,
+
+	background = {
+		color = colours.rosepine.main.base,
+		-- border_color = colours.rosepine.main.muted,
+	},
 })
 
--- sbar.add("bracket", items.volume.bracket, {
--- 	background = { color = colours.grey, border_color = colours.magenta },
--- })
---
--- sbar.add("bracket", { items.brew.brew.name, items.wifi.wifi.name }, {
--- 	background = { color = colours.magenta, border_color = colours.red },
--- })
-
-print("Setting up brackets")
+print("Brackets loaded")
 
 return M

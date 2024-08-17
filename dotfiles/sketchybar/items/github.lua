@@ -16,7 +16,7 @@ M.github_bell = sbar.add("item", {
 		string = icons.git.bell,
 		-- width = 0,
 		-- align = "left",
-		color = colours.rose_pallete.foam,
+		color = colours.rosepine.main.foam,
 		font = {
 			style = "Bold",
 			size = 15.0,
@@ -24,7 +24,7 @@ M.github_bell = sbar.add("item", {
 	},
 	label = {
 		string = icons.loading,
-		highlight_color = colours.rose_pallete.foam,
+		highlight_color = colours.rosepine.main.foam,
 	},
 	popup = {
 		align = "right",
@@ -88,7 +88,7 @@ function M:update()
 	-- args remove github notif here.
 
 	local counter = 0
-	args.icon.color = colours.rose_pallete.foam
+	args.icon.color = colours.rosepine.main.foam
 end
 
 M.github_bell:subscribe("mouse.entered", function()

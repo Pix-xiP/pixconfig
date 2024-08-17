@@ -1,7 +1,3 @@
-local sbar = require("sketchybar")
-local colours = require("colours")
-local icons = require("icons")
-
 local M = {}
 
 M.discord = sbar.add("item", "discord", {
@@ -9,7 +5,7 @@ M.discord = sbar.add("item", "discord", {
 	position = "right",
 	icon = {
 		string = icons.discord,
-		color = colours.rose_pallete.pine,
+		color = colours.rosepine.main.pine,
 		drawing = true,
 		font = {
 			size = 18,
@@ -18,6 +14,7 @@ M.discord = sbar.add("item", "discord", {
 })
 
 function M.status_label()
+	-- sbar.exec("lsappinfo info -only StatusLabel 'Discord'", function(status_label)
 	sbar.exec("lsappinfo info -only StatusLabel 'Discord'", function(status_label)
 		local label = string.match(status_label, '"label"="([^"]*)"')
 
@@ -27,12 +24,12 @@ function M.status_label()
 
 			if label == "" then
 				new_label = ""
-				icon_color = colours.rose_pallete.pine
+				icon_color = colours.rosepine.main.pine
 			elseif label == "•" then
 				new_label = ""
-				icon_color = colours.rose_pallete.rose
+				icon_color = colours.rosepine.main.rose
 			elseif tonumber(label) ~= nil then
-				icon_color = colours.rose_pallete.love
+				icon_color = colours.rosepine.main.love
 				new_label = label
 			else
 				M.discord:set({ drawing = false })

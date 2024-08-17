@@ -10,7 +10,7 @@ M.slack = sbar.add("item", "slack", {
 	click_script = "sketchybar --trigger slack",
 	icon = {
 		string = icons.slack,
-		color = colours.rose_pallete.pine,
+		color = colours.rosepine.main.pine,
 		drawing = false,
 		font = {
 			size = 18,
@@ -32,12 +32,12 @@ function M.status_label()
 
 			if label == "" then
 				new_label = ""
-				icon_color = colours.rose_pallete.pine
+				icon_color = colours.rosepine.main.pine
 			elseif label == "•" then
 				new_label = ""
-				icon_color = colours.rose_pallete.rose
+				icon_color = colours.rosepine.main.rose
 			elseif tonumber(label) ~= nil then
-				icon_color = colours.rose_pallete.love
+				icon_color = colours.rosepine.main.love
 				new_label = label
 			else
 				M.slack:set({ drawing = false })

@@ -1,6 +1,4 @@
-local sbar = require("sketchybar")
 local icons = require("icons")
-local colours = require("colours")
 
 print("Battery running")
 
@@ -12,7 +10,7 @@ M.battery = sbar.add("item", {
 	position = "right",
 	icon = {
 		font = {
-			style = "Regular",
+			style = settings.font.style.regular,
 			size = 19.0,
 		},
 	},
@@ -36,13 +34,16 @@ M.remaining_time = sbar.add("item", {
 })
 
 function M.battery_update()
-	sbar.exec("pmset -g batt", function(battery)
+	sbar.exec("pmset -g batt", function(battery, exit_code)
+		if exit_code ~= 0 then
+			print("Non-Zero exit code:", exit_code)
+		end
 		local icon = "!"
 		local charge_str
 		local colour
 
 		if battery:find("AC Power") then
-			colour = colours.rose_pallete.pine
+			colour = colours.rosepine.main.pine
 			icon = icons.battery.charging
 			charge_str = ""
 		else
@@ -53,19 +54,19 @@ function M.battery_update()
 			end
 
 			if found and charge > 80 then
-				colour = colours.rose_pallete.pine
+				colour = colours.rosepine.main.pine
 				icon = icons.battery._100
 			elseif found and charge > 60 then
-				colour = colours.rose_pallete.foam
+				colour = colours.rosepine.main.foam
 				icon = icons.battery._75
 			elseif found and charge > 40 then
-				colour = colours.rose_pallete.gold
+				colour = colours.rosepine.main.gold
 				icon = icons.battery._50
 			elseif found and charge > 20 then
-				colour = colours.rose_pallete.rose
+				colour = colours.rosepine.main.rose
 				icon = icons.battery._25
 			else
-				colour = colours.rose_pallete.love
+				colour = colours.rosepine.main.love
 				icon = icons.battery._0
 			end
 		end
@@ -110,7 +111,7 @@ end)
 M.battery:subscribe({ "routine", "power_source_change", "system_woke" }, M.battery_update)
 
 sbar.add("bracket", "widgets.battery.bracket", { M.battery.name }, {
-	background = { color = colours.rose_pallete.muted },
+	background = { color = colours.rosepine.main.base },
 })
 
 sbar.add("item", "widgets.battery.padding", {

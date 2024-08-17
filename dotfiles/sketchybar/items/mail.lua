@@ -1,11 +1,7 @@
-local sbar = require("sketchybar")
 local icons = require("icons")
-local colours = require("colours")
 local secrets = require("secrets")
 
 local M = {}
-
--- PIXTODO: Convert io.popen calls to sbar.exec
 
 M.mail = sbar.add("item", {
 	update_freq = 360,
@@ -13,9 +9,14 @@ M.mail = sbar.add("item", {
 	click_script = "sketchybar --set $NAME popup.drawing=toggle",
 	icon = {
 		string = icons.mail,
-		color = colours.rose_pallete.foam,
+		color = colours.rosepine.main.foam,
 		drawing = true,
-		font = "sketchybar-app-font:Regular:18.0",
+		-- font = "sketchybar-app-font:Regular:18.0",
+		font = {
+			family = settings.font.text,
+			style = settings.font.style.regular,
+			size = 17.0,
+		},
 	},
 })
 
@@ -29,28 +30,30 @@ tell application "Mail"
 end tell
   ]]
 	local cmd = string.format("osascript -e '%s'", string.format(script, acc))
-	local handle = assert(io.popen(cmd, "r"))
-	local count = handle:read("*a")
-	handle:close()
-	local colour
 
-	if tonumber(count) == 0 then
-		colour = colours.rose_pallete.iris
-	elseif tonumber(count) > 0 and tonumber(count) < 10 then
-		colour = colours.rose_pallete.rose
-	else
-		colour = colours.rose_pallete.love
-	end
+	sbar.exec(cmd, function(count, exit_code)
+		local colour
+		if exit_code ~= 0 then
+			print("Non-Zero exit code:", exit_code)
+		end
+		if tonumber(count) == 0 then
+			colour = colours.rosepine.main.iris
+		elseif tonumber(count) > 0 and tonumber(count) < 10 then
+			colour = colours.rosepine.main.rose
+		else
+			colour = colours.rosepine.main.love
+		end
 
-	M.mail:set({
-		icon = {
-			color = colour,
-		},
-		label = {
-			string = count,
-			color = colour,
-		},
-	})
+		M.mail:set({
+			icon = {
+				color = colour,
+			},
+			label = {
+				string = count,
+				color = colour,
+			},
+		})
+	end)
 end
 
 function M.mailbox_clicked(env)
@@ -82,46 +85,48 @@ end run
   ]]
 
 	local cmd = string.format("osascript -e '%s'", string.format(script))
-	local handle = assert(io.popen(cmd, "r"))
-	local mailboxes = handle:read("*a")
-	handle:close()
 
-	local i = 0
-	for line in string.gmatch(mailboxes, "[^\n]+") do
-		local splitter = {}
-		for word in string.gmatch(line, "%S+") do
-			table.insert(splitter, word)
+	sbar.exec(cmd, function(mailboxes, exit_code)
+		if exit_code ~= 0 then
+			print("Non-Zero exit code:", exit_code)
 		end
-		local name = "mailbox." .. splitter[2]
-		local box = sbar.add("item", name, {
-			position = "popup." .. M.mail.name,
-			icon = {
-				string = icons.mail .. "  " .. splitter[1],
-				color = colours.rose_pallete.iris,
-				drawing = true,
-				font = { size = "18", style = "Bold" },
-			},
-			label = {
-				string = splitter[2],
-				color = colours.rose_pallete.text,
-				drawing = true,
-			},
-		})
+		local i = 0
+		for line in string.gmatch(mailboxes, "[^\n]+") do
+			local splitter = {}
+			for word in string.gmatch(line, "%S+") do
+				table.insert(splitter, word)
+			end
+			local name = "mailbox." .. tostring(splitter[2])
+			local box = sbar.add("item", name, {
+				position = "popup." .. M.mail.name,
+				icon = {
+					string = icons.mail .. "  " .. splitter[1],
+					color = colours.rosepine.main.iris,
+					drawing = true,
+					font = { size = "18", style = "Bold" },
+				},
+				label = {
+					string = splitter[2],
+					color = colours.rosepine.main.text,
+					drawing = true,
+				},
+			})
 
-		M.mailboxes[i] = box
-		box:subscribe("mouse.clicked", function(env)
-			M.mailbox_clicked(env)
-		end)
-		i = i + 1
-	end
-	return mailbox
+			M.mailboxes[i] = box
+			box:subscribe("mouse.clicked", function(env)
+				M.mailbox_clicked(env)
+			end)
+			i = i + 1
+		end
+		return mailbox
+	end)
 end
 
 M.title = sbar.add("item", "mail_title", {
 	position = "popup." .. M.mail.name,
 	icon = {
 		string = icons.alert,
-		color = colours.rose_pallete.pine,
+		color = colours.rosepine.main.pine,
 		drawing = true,
 		font = "sketchybar-app-font:Regular:18.0",
 	},
@@ -146,6 +151,8 @@ end)
 M.bracket = { M.mail.name }
 
 sbar.trigger("mail_check")
+
+M.get_mail()
 
 print("Mail running")
 

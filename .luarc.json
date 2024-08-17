@@ -1,5 +1,10 @@
 {
-    "diagnostics.globals": [
-        "get_os"
-    ]
+  "diagnostics.globals": [
+    "get_os",
+    "sbar",
+        "settings",
+        "colours",
+        "app_icons",
+        "icons"
+  ]
 }

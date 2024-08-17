@@ -71,7 +71,7 @@ M.wifi_bracket = sbar.add("bracket", "widgets.wifi.bracket", {
 	M.wifi_up.name,
 	M.wifi_down.name,
 }, {
-	background = { color = colours.rose_pallete.muted },
+	background = { color = colours.rosepine.main.base },
 	popup = { align = "center", height = 30 },
 })
 
@@ -95,7 +95,7 @@ M.ssid = sbar.add("item", {
 	},
 	background = {
 		height = 2,
-		color = colours.rose_pallete.overlay,
+		color = colours.rosepine.main.overlay,
 		y_offset = -15,
 	},
 })
