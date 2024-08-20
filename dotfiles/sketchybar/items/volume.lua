@@ -27,7 +27,7 @@ M.volume_icon = sbar.add("item", "widgets.volmume2", {
 		string = icons.volume._100,
 		width = 0,
 		align = "left",
-		color = colours.rose_pallete.muted,
+		color = colours.rosepine.main.muted,
 		font = {
 			style = "Regular",
 			size = 14.0,
@@ -47,18 +47,18 @@ M.volume_bracket = sbar.add("bracket", "widgets.volume.bracket", {
 	M.volume_icon.name,
 	M.volume_percent.name,
 }, {
-	background = { color = colours.rose_pallete.muted },
+	background = { color = colours.rosepine.main.base },
 	popup = { align = "center" },
 })
 
 M.volume_slider = sbar.add("slider", popup_width, {
 	position = "popup." .. M.volume_bracket.name,
 	slider = {
-		highlight_color = colours.rose_pallete.pine,
+		highlight_color = colours.rosepine.main.pine,
 		background = {
 			height = 6,
 			corner_radius = 3,
-			color = colours.rose_pallete.overlay,
+			color = colours.rosepine.main.overlay,
 		},
 		knob = {
 			string = "􀀁",
@@ -66,7 +66,7 @@ M.volume_slider = sbar.add("slider", popup_width, {
 		},
 	},
 	background = {
-		color = colours.rose_pallete.muted,
+		color = colours.rosepine.main.muted,
 		height = 2,
 		y_offset = -20,
 	},

@@ -141,7 +141,7 @@ return {
       },
     },
     opts = {
-      format = {
+      default_format_opts = {
         timeout_ms = 5000,
         async = false,
         quiet = false,

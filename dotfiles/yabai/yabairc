@@ -1,6 +1,7 @@
 #!/bin/sh
 
-yabai -m config external_bar               all:1:0      \
+yabai -m config external_bar               all:29:0      \
+                top_padding                29           \
                 mouse_follows_focus        on           \
                 focus_follows_mouse        off          \
                 window_placement           second_child \
@@ -24,12 +25,22 @@ yabai -m config external_bar               all:1:0      \
                 window_gap                 1            \
                 layout                     bsp
 
-                #top_padding                27           \
 
 yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
+yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
 yabai -m rule --add label="Alfred" app="Alfred" title="Alfred" manage=off
+yabai -m rule --add label="App Store" app="^App Store$" manage=off
+yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
+yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
+yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add label="Kap" app="^Kap$" manage=off
 yabai -m rule --add label="Mail" app="Mail" title="Email" manage=off
 yabai -m rule --add label="Raycast" app="Raycast" title="Raycast" manage=off
+yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
+yabai -m rule --add label="Settings" app="^Settings$" title=".*" manage=off
+yabai -m rule --add label="Software Update" title="Software Update" manage=off
+yabai -m rule --add label="System Information" app="System Information" title="System Information" manage=off
+yabai -m rule --add label="mpv" app="^mpv$" manage=off
 yabai -m rule --add label="qFlipper" app="qFlipper" title="qFlipper" manage=off
 
 echo "yabai configuration loaded.."

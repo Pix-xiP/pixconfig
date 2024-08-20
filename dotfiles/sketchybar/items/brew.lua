@@ -1,5 +1,3 @@
-local sbar = require("sketchybar")
-local colours = require("colours")
 local icons = require("icons")
 
 local M = {}
@@ -8,7 +6,7 @@ M.brew = sbar.add("item", {
 	position = "right",
 	icon = {
 		string = icons.brew.box,
-		color = colours.rose_pallete.rose,
+		color = colours.rosepine.main.rose,
 	},
 	-- padding_right = 10,
 	label = {
@@ -27,13 +25,13 @@ function M:brew_update_check()
 		local colour
 
 		if count > 0 and count < 10 then
-			colour = colours.rose_pallete.iris
+			colour = colours.rosepine.main.iris
 		elseif count >= 10 and count < 30 then
-			colour = colours.rose_pallete.gold
+			colour = colours.rosepine.main.gold
 		elseif count >= 30 then
 			colour = colours.basics.love
 		else
-			colour = colours.rose_pallete.pine
+			colour = colours.rosepine.main.pine
 			count_str = icons.brew.count
 		end
 
@@ -55,6 +53,9 @@ end
 
 M.brew:subscribe("routine", M.brew_update_check)
 M.brew:subscribe("mouse.clicked", M.run_update)
+
+-- Kick start bar so that we don't have to wait for routine to kick in.
+M:brew_update_check()
 
 print("Brew running")
 

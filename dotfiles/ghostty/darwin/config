@@ -14,9 +14,9 @@ background-blur-radius = 30
 unfocused-split-opacity = 1
 
 # Font
-# font-family = "FiraCode Nerd Font Mono" # Oldfaithful
-font-family = "JetBrainsMono Nerd Font Mono"
-#font-family = "Maple Mono"
+#font-family = "FiraCode Nerd Font Mono" # Oldfaithful
+#font-family = "JetBrainsMono Nerd Font Mono"
+font-family = "Maple Mono"
 font-size = 11
 # minimum-contrast = 1.1
 
@@ -47,7 +47,7 @@ window-inherit-font-size = true
 working-directory = home 
 #
 ## Macos specific
-macos-titlebar-tabs = true
+macos-titlebar-style = tabs 
 macos-option-as-alt = true
 
 # You cannot have this and titlebar tabs enabled at the same time.

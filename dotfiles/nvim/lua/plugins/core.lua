@@ -4,7 +4,7 @@ return {
     "folke/which-key.nvim",
     opts = {
       plugins = { spelling = true },
-      defaults = {
+      spec = {
         mode = { "n", "v" },
         ["g"] = { name = "+goto" },
         ["gs"] = { name = "+surround" },
@@ -24,6 +24,15 @@ return {
         ["<leader>m"] = { name = "+modify_buffer" },
         ["<leader>p"] = { name = "+pix_fn" },
       },
+    },
+  },
+  {
+    "kevinhwang91/nvim-bqf", -- better quickfix
+    --- later in the config
+    lazy = true,
+    keys = {
+      { "<leader>cn", ":cnext<cr>", desc = "Next in the quickfix list" },
+      { "<leader>cb", ":cprevious<cr>", desc = "Previous in the quickfix list" },
     },
   },
   {
@@ -79,12 +88,13 @@ return {
         PIXNOTE = { icon = "", color = "pix_note", alt = { "THOUGHT" } },
         PIXHACK = { icon = "", color = "pix_hack", alt = { "HACKFIX" } },
         PIXTODO = { icon = "", color = "pix_todo", alt = { "" } },
-        IMPROVEMENT = { icon = "󰟶", color = "pix_improve", alt = { "IMPROVE", "IDEA" } },
+        IMPROVEMENT = { icon = "󰟶", color = "pix_improve", alt = { "IMPROVE", "IDEA", "IMPROV" } },
         -- Preview:
         -- PIXTODO:     Some long text for testing with
         -- TODO:        Some long text for testing with
         -- IMPROVEMENT: Some long text for testing with
         -- IDEA:        Some long text for testing with
+        -- IMPROV:      Some long text for testing with
         -- PIXHACK:     Some long text for testing with
         -- HACKFIX:     Some long text for testing with
         -- THOUGHT:     Some long text for testing with

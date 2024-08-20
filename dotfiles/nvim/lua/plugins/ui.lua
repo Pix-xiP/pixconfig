@@ -286,4 +286,78 @@ return {
       end,
     },
   },
+
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = {
+      sections = {
+        lualine_a = {
+          {
+            "mode",
+            icons_enabled = true,
+            separator = {
+              -- left = "",
+              -- right = "",
+              right = "",
+            },
+            fmt = function()
+              local mode_map = {
+                n = "N (ᴗ_ ᴗ。)",
+                nt = "N (ᴗ_ ᴗ。)",
+                i = "I (•̀ - •́ )",
+                R = "R ( •̯́ ₃ •̯̀)",
+                v = "V (⊙ _ ⊙ )",
+                V = "V (⊙ _ ⊙ )",
+                no = "C Σ(°△°||)",
+                ["\22"] = "V (⊙ _ ⊙ )",
+                t = "T (⌐■_■)",
+                ["!"] = "C Σ(°△°||)",
+                c = "C Σ(°△°||)",
+                s = "S SUB",
+              }
+              return mode_map[vim.api.nvim_get_mode().mode] or vim.api.nvim_get_mode().mode
+            end,
+          },
+        },
+      },
+    },
+  },
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+  },
+  -- {
+  --   "tris203/precognition.nvim",
+  --   --event = "VeryLazy",
+  --   opts = {
+  --     startVisible = true,
+  --     showBlankVirtLine = true,
+  --     highlightColor = { link = "Comment" },
+  --     hints = {
+  --       Caret = { text = "^", prio = 2 },
+  --       Dollar = { text = "$", prio = 1 },
+  --       MatchingPair = { text = "%", prio = 5 },
+  --       Zero = { text = "0", prio = 1 },
+  --       w = { text = "w", prio = 10 },
+  --       b = { text = "b", prio = 9 },
+  --       e = { text = "e", prio = 8 },
+  --       W = { text = "W", prio = 7 },
+  --       B = { text = "B", prio = 6 },
+  --       E = { text = "E", prio = 5 },
+  --     },
+  --     gutterHints = {
+  --       G = { text = "G", prio = 10 },
+  --       gg = { text = "gg", prio = 9 },
+  --       PrevParagraph = { text = "{", prio = 8 },
+  --       NextParagraph = { text = "}", prio = 8 },
+  --     },
+  --     disabled_fts = {
+  --       "startify",
+  --     },
+  --   },
+  -- },
 }

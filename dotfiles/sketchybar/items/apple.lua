@@ -15,7 +15,7 @@ M.apple = sbar.add("item", "apple", {
 			style = "Black",
 			size = 16.0,
 		},
-		color = colours.rose_pallete.pine,
+		color = colours.rosepine.main.pine,
 	},
 	label = {
 		drawing = false,
@@ -86,7 +86,7 @@ sbar.add("bracket", { M.apple.name }, {
 	background = {
 		color = colours.basics.transparent,
 		height = 27,
-		border_color = colours.rose_pallete.highlight_low,
+		border_color = colours.rosepine.main.highlight_low,
 	},
 })
 

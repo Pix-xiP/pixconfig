@@ -71,3 +71,13 @@ function _brew_update_yabai --description "Does the extra steps needed for yabai
     yabai --start-service
     yabai --restart-service
 end
+
+function update_ghostty --description "Automatically updates the Ghostty Terminal"
+    pushd ~/AdeptusCustodes/Talassar/ghostty
+    echo "Running ghostty build."
+    git pull
+    zig build -Doptimize=ReleaseFast
+    cd macos && xcodebuild
+    echo "Done building"
+    popd
+end
