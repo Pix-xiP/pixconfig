@@ -18,8 +18,8 @@ if test (uname) = Darwin
         source "/Users/pix/.config/fish/darwin.fish"
     end
 else if test (uname) = Linux
-    if test -e "./home/pix/.config/fish/linux.fish"
-        source "./home/pix/.config/fish/linux.fish"
+    if test -e "/home/pix/.config/fish/linux.fish"
+        source "/home/pix/.config/fish/linux.fish"
     end
 end
 
