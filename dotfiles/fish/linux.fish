@@ -16,3 +16,4 @@ set -gx PIXCONFIG /home/pix/AdeptusCustodes/pix_hyprland/pixconfig/
 abbr edit "swappy -f"
 
 alias hw='hwinfo --short' # Hardware Info
+alias ip='ip -c'
