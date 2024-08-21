@@ -81,7 +81,10 @@ abbr trip "sudo trip"
 # Set X for export :: Set G for global
 set -gx C_INCLUDE_PATH "/usr/local/include:$C_INCLUDE_PATH"
 set -gx ZEIT_DB "$HOME/.config/zeit/zeit.db"
-fish_add_path -m "$HOME/.local/bin"
+
+contains "$HOME/.local/bin" $PATH; or set -ga PATH "$HOME/.local/bin"
+
+set -x LLVM_CONFIG /opt/homebrew/Cellar/llvm/18.1.8/bin/llvm-config
 
 # ===================
 # General environment set variables

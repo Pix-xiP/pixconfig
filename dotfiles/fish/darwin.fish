@@ -19,20 +19,18 @@ set -gx ODIN_ROOT /Users/pix/AdeptusCustodes/Fenris/Odin
 
 set -gx WEZTERM_CONFIG_FILE "/Users/pix/.config/wezterm/wezterm.lua"
 
-# Using -m prevents it from being added multiple times.
-fish_add_path -m /opt/homebrew
-fish_add_path -m /opt/homebrew/bin
-fish_add_path -m /opt/homebrew/opt/gnu-getopt/bin
-
 # Go Env Setup
 set -gx GOPATH /Users/pix/AdeptusCustodes/Ultramar/
 set -gx GOROOT /opt/homebrew/opt/go/libexec
 
-# Cargo bin 
-fish_add_path -m /Users/pix/.cargo/bin
-
 # Add to the general path
 contains /Users/pix/AdeptusCustodes/Ultramar/bin $PATH; or set -ga PATH /Users/pix/AdeptusCustodes/Ultramar/bin
+contains /opt/homebrew $PATH; or set -ga PATH /opt/homebrew
+contains /opt/homebrew/bin $PATH; or set -ga PATH /opt/homebrew/bin
+contains /opt/homebrew/opt/gnu-getopt/bin $PATH; or set -ga PATH /opt/homebrew/opt/gnu-getopt/bin
+
+# Cargo Bin
+contains /Users/pix/.cargo/bin $PATH; or set -ga PATH /Users/pix/.cargo/bin
 
 
 # FOR LIB PQ BULLSHIT
