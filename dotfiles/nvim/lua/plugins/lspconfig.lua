@@ -1,6 +1,18 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    config = function()
+      require("lspconfig").sourcekit.setup({
+        capabilities = {
+          workspace = {
+            didChangeWatchedFiles = {
+              dynamicRegistration = true,
+            },
+          },
+        },
+      })
+    end,
+
     opts = {
       inlay_hints = { enabled = false },
       servers = {
@@ -112,7 +124,7 @@ return {
         sourcekit = {
           cmd = { "sourcekit-lsp" },
           filetypes = { "swift" },
-          rootPatterns = { "Package.swift", ".git" },
+          rootPatterns = { "compile_commands.json", "Package.swift", ".git" },
         },
         zls = {
           cmd = { "zls" },
