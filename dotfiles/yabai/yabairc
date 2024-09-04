@@ -18,11 +18,11 @@ yabai -m config external_bar               all:29:0      \
                 mouse_action2              resize       \
                 mouse_drop_action          swap         \
                                                         \
-                top_padding                1            \
-                bottom_padding             0            \
-                left_padding               1            \
-                right_padding              1            \
-                window_gap                 1            \
+                top_padding                2            \
+                bottom_padding             4            \
+                left_padding               4            \
+                right_padding              4            \
+                window_gap                 4            \
                 layout                     bsp
 
 

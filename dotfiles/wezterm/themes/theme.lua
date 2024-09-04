@@ -13,10 +13,16 @@ T.themes = theme_list
 T.default = "Rosé Pine Moon (base16)"
 
 if utils.os == "Linux" then
+	-- T.font = wez.font("Maple Mono", { weight = "Regular", italic = false})
 	T.font = wez.font("FiraCode", { weight = "Bold", italic = false })
 	T.font_size = 11.0
 elseif utils.os == "Darwin" then
-	T.font = wez.font("FiraCode Nerd Font", { weight = "Regular", italic = false })
+	-- T.font = wez.font("FiraCode Nerd Font", { weight = "Regular", italic = false })
+	T.font = wez.font("Maple Mono", {
+		weight = "Regular",
+		italic = false,
+		harfbuzz_features = { "ss01=1", "ss02=1", "ss03=1", "ss04=1", "ss05=1", "cv01=1" },
+	})
 	T.font_size = 11.0
 else
 	T.font = wez.font("JetBrains Mono", { weight = "Bold", italic = true })

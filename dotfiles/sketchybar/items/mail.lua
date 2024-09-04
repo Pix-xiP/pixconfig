@@ -124,6 +124,7 @@ end
 
 M.title = sbar.add("item", "mail_title", {
 	position = "popup." .. M.mail.name,
+	background = { color = colours.rosepine.main.base },
 	icon = {
 		string = icons.alert,
 		color = colours.rosepine.main.pine,
