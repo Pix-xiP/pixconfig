@@ -33,3 +33,7 @@ keybind = ctrl+super+shift+m=equalize_splits
 ## Pane Close
 keybind = ctrl+super+w=close_surface
 
+## Visor Mode
+#keybind = super+grave_accent=toggle_quick_terminal 
+keybind = global:ctrl+super+u=toggle_quick_terminal 
+

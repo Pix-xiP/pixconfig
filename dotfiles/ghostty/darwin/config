@@ -13,8 +13,8 @@ theme = pink-n-purple-pix
 # Keymaps
 config-file = keybinds
 
-# background-opacity = 0.85
-background-opacity = 1
+background-opacity = 0.80
+#background-opacity = 1
 background-blur-radius = 30
 unfocused-split-opacity = 1
 
@@ -22,14 +22,15 @@ unfocused-split-opacity = 1
 #font-family = "FiraCode Nerd Font Mono" # Oldfaithful
 #font-family = "JetBrainsMono Nerd Font Mono"
 
-font-family = "Maple Mono"
-font-feature = cv01
-#font-feature = cv02
-font-feature = ss01
-font-feature = ss02
-font-feature = ss03
-font-feature = ss04
-font-feature = ss05
+## FONT:
+#font-family = "Maple Mono"
+#font-feature = cv01
+##font-feature = cv02
+#font-feature = ss01
+#font-feature = ss02
+#font-feature = ss03
+#font-feature = ss04
+#font-feature = ss05
 
 ## Maple Mono v7 when it drops.
 #font-feature = zero #: dot style 0
@@ -44,9 +45,13 @@ font-feature = ss05
 #font-feature = ss03 #: Ignore cases on all tags
 #font-feature = ss04 #: Disable ligatures on __, #__, ***, \n
 
-#font-family = "Departure Mono"
 
-font-size = 11
+#Experimental Font
+#font-family = "Departure Mono"
+font-family = "Pixel Code"
+font-size = 11.3
+
+#font-size = 11
 # minimum-contrast = 1.1
 
 # Only works on macos. Seems to look good?
