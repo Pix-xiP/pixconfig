@@ -96,3 +96,6 @@ map(
 )
 
 map({ "v" }, "<leader>psc", ":s/[a-z]\\@<=[A-Z]/\\_\\l\\0/g<CR>", { desc = "This converts camelCase to snake_case" })
+
+map({ "n", "v" }, "<leader>pcc", "<cmd>:Compile 13<CR>", { desc = "Runs compile command for compilation mode" })
+map({ "n", "v" }, "<leader>pcr", "<cmd>:Recompile 13<CR>", { desc = "Runs compile command for compilation mode" })

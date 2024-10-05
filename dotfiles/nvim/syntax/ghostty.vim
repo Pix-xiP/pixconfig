@@ -123,6 +123,7 @@ hi def link ghosttyConfigKeyword Keyword
 
 " Pix Addons to make my highlight experience nicer :>
 syn match ghost_leader /ctrl+super+\K*[a-zA-Z0-9_][^=]*/
+syn match ghost_more /super+\K*[a-zA-Z0-9_][^=]*/
 syn match ghost_leader_alt /ctrl+super+shift+./ 
 syn match ghost_action_variable /:.*/ 
 syn match ghost_shift_cmd /shift+\K*[a-zA-Z0-9_][^=]*/
@@ -139,9 +140,11 @@ syn keyword ghost_actions
   \ equalize_splits
   \ close_surface
   \ toggle_split_zoom
+  \ toggle_quick_terminal
 
 hi def link ghost_actions Constant
 hi def link ghost_leader Define
+hi def link ghost_more Define
 hi def link ghost_leader_alt Define
 hi def link ghost_shift_cmd Define
 hi def link ghost_action_variable Ignore

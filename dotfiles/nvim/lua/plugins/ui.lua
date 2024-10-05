@@ -2,67 +2,6 @@
 
 return {
   -- {
-  --   "cdmill/neomodern.nvim",
-  --   name = "neomodern",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require("neomodern").setup({
-  --       -- Main options --
-  --       style = "iceclimber", -- choose between 'iceclimber', 'coffeecat', 'darkforest', 'campfire', 'roseprime', 'daylight'
-  --       toggle_style_key = nil, -- keymap to cycle between styles
-  --       toggle_style_list = { -- a table of which styles to cycle through, by default all styles are included
-  --         "iceclimber",
-  --         "coffeecat",
-  --         "darkforest",
-  --         "campfire",
-  --         "roseprime",
-  --         "daylight",
-  --       },
-  --       transparent = false, -- don't set background
-  --       term_colors = true, -- if true enable the terminal
-  --
-  --       -- Formatting --
-  --       code_style = {
-  --         comments = "italic",
-  --         conditionals = "none",
-  --         functions = "none",
-  --         keywords = "none",
-  --         headings = "bold", -- markdown headings
-  --         operators = "none",
-  --         keyword_return = "none",
-  --         strings = "none",
-  --         variables = "none",
-  --       },
-  --
-  --       -- UI options --
-  --       ui = {
-  --         cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
-  --         colored_docstrings = true, -- if true, docstrings will be highlighted like strings, otherwise they will be highlighted like comments
-  --         plain = false, -- don't set background for search
-  --         show_eob = true, -- show the end-of-buffer tildes
-  --
-  --         -- Plugins Related --
-  --         lualine = {
-  --           bold = true,
-  --           plain = false, -- use a less distracting lualine. note: works best when no lualine separators are used
-  --         },
-  --         telescope = "bordered", -- choose between 'borderless' or 'bordered'
-  --         diagnostics = {
-  --           darker = true, -- darker colors for diagnostic
-  --           undercurl = true, -- use undercurl for diagnostics
-  --           background = true, -- use background color for virtual text
-  --         },
-  --       },
-  --
-  --       -- Custom Highlights --
-  --       colors = {}, -- Override default colors
-  --       highlights = {}, -- Override highlight groups
-  --     })
-  --     require("neomodern").load()
-  --   end,
-  -- },
-  -- {
   --   -- Purrfect for pastel pleasure
   --   "catppuccin/nvim",
   --   name = "catppuccin",
@@ -112,23 +51,6 @@ return {
   --     disable_background = true,
   --     disable_float_background = true,
   --   },
-  -- },
-  -- {
-  --   "mcchrish/zenbones.nvim",
-  --   dependencies = { "rktjmp/lush.nvim" },
-  --   config = function()
-  --     -- vim.g.rosebones = {
-  --     --   transparent_background = true,
-  --     -- }
-  --   end,
-  -- },
-  -- {
-  --   "shmerl/neogotham",
-  --   lazy = false, -- to make sure it's loaded on startup
-  --   priority = 1000, -- to load before other plugins
-  --   config = function()
-  --     vim.cmd.colorscheme("neogotham")
-  --   end,
   -- },
   -- {
   --   -- Bayonetta insprised theme *chefs kiss*
@@ -199,11 +121,6 @@ return {
     lazy = false, -- to make sure it's loaded on startup
     priority = 1000, -- to load before other plugins
   },
-  -- {
-  --   "water-sucks/darkrose.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  -- },
   {
     "brenoprata10/nvim-highlight-colors",
     lazy = true,
@@ -281,8 +198,14 @@ return {
           vim.api.nvim_set_hl(0, ...)
         end
 
-        hl("Normal", { bg = "#090917" })
-        hl("Comment", { fg = "#6260a2", italic = true })
+        -- No Transparent:
+        -- hl("Normal", { bg = "#090917" })
+        -- hl("Comment", { fg = "#6260a2", italic = true })
+        -- For transparent:
+        hl("Normal", { bg = "none" })
+        hl("NormalFloat", { bg = "none" })
+        hl("Comment", { bg = "none", fg = "#6260a2", italic = true })
+        hl("LineNr", { fg = "#505079", bg = "none" })
       end,
     },
   },
