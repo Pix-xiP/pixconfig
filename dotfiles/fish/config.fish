@@ -74,6 +74,7 @@ abbr ll "eza -g --icons --sort=type -lah"
 abbr zt zerotier-cli
 abbr lg lazygit
 abbr trip "sudo trip"
+abbr mkdir "mkdir -p"
 
 # ====================
 # EXPORTS - (Not unique to either platform)
