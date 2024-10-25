@@ -18,38 +18,34 @@ background-opacity = 0.80
 background-blur-radius = 30
 unfocused-split-opacity = 1
 
-# Font
-#font-family = "FiraCode Nerd Font Mono" # Oldfaithful
-#font-family = "JetBrainsMono Nerd Font Mono"
-
 ## FONT:
-#font-family = "Maple Mono"
-#font-feature = cv01
-##font-feature = cv02
-#font-feature = ss01
-#font-feature = ss02
-#font-feature = ss03
-#font-feature = ss04
-#font-feature = ss05
+font-family = "Maple Mono"
+font-feature = cv01
+#font-feature = cv02
+font-feature = ss01
+font-feature = ss02
+font-feature = ss03
+font-feature = ss04
+font-feature = ss05
 
-## Maple Mono v7 when it drops.
-#font-feature = zero #: dot style 0
-#font-feature = cv01 #: Classic @ / $ / & / Q / => / ->
-#font-feature = cv02 #: Alternative a (with top alarm)
-#font-feature = cv03 #: Alternative i (without bottom left bar)
-#font-feature = cv04 #: Alternative l (with bottom left bar) and 1 (without bottom bar)
-#font-feature = cv98 #: Full width …(ellipsis) and —(emdash) support for Maple Mono NF CN
-#font-feature = cv99 #: Traditional punctuations support for Maple Mono NF CN
-#font-feature = ss01 #: Non-cursive italic style l i j k x
-#font-feature = ss02 #: Disable ligautures on equals like == / != / <=
-#font-feature = ss03 #: Ignore cases on all tags
-#font-feature = ss04 #: Disable ligatures on __, #__, ***, \n
+# Maple Mono v7 when it drops.
+font-feature = zero #: dot style 0
+font-feature = cv01 #: Classic @ / $ / & / Q / => / ->
+font-feature = cv02 #: Alternative a (with top alarm)
+font-feature = cv03 #: Alternative i (without bottom left bar)
+font-feature = cv04 #: Alternative l (with bottom left bar) and 1 (without bottom bar)
+font-feature = cv98 #: Full width …(ellipsis) and —(emdash) support for Maple Mono NF CN
+font-feature = cv99 #: Traditional punctuations support for Maple Mono NF CN
+font-feature = ss01 #: Non-cursive italic style l i j k x
+font-feature = ss02 #: Disable ligautures on equals like == / != / <=
+font-feature = ss03 #: Ignore cases on all tags
+font-feature = ss04 #: Disable ligatures on __, #__, ***, \n
 
 
 #Experimental Font
 #font-family = "Departure Mono"
-font-family = "Pixel Code"
-font-size = 11.3
+#font-family = "Pixel Code"
+#font-size = 11.3
 
 #font-size = 11
 # minimum-contrast = 1.1
@@ -67,6 +63,9 @@ window-padding-y = 2
 
 # To fix latency problems on Wavlink
 window-vsync = true
+
+# Scrollback limit default is 1Mb. Make it 10Mb.
+scrollback-limit = 100000000
 
 # QoL || Misc
 copy-on-select = clipboard

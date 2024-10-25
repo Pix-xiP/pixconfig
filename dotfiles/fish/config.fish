@@ -142,3 +142,7 @@ set -Ux FZF_DEFAULT_OPTS '--color=fg:#908caa,hl:#ea9a97
 function get_pub_key --description "Quickly cat out public file"
     /bin/cat "$KEY_PATH"
 end
+
+function sync_folder --description "Syncs a folder with a remote server" -a FOLDER REMOTE REMOTE_PATH
+    rsync -azuvP $FOLDER $REMOTE:$REMOTE_PATH
+end

@@ -1,5 +1,4 @@
 -- A file containied plugins I want turned off.
---
 
 return {
   {
@@ -20,6 +19,12 @@ return {
   },
   {
     "nvim-neo-tree/neo-tree.nvim", -- I don't use a file tree to navigate anymore
+    enabled = false,
+  },
+
+  --- Causing errors in zig atm..
+  {
+    "garymjr/nvim-snippets",
     enabled = false,
   },
 }
