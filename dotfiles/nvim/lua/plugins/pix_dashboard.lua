@@ -317,9 +317,83 @@ M.hyper_plug_opts = function()
 end
 
 return {
-  "nvimdev/dashboard-nvim",
-  event = "VimEnter",
-  -- opts = M.doom_plug_opts,
-  opts = M.hyper_plug_opts,
+  "folke/snacks.nvim",
+  opts = {
+    bigfile = { enabled = true },
+    notifier = { enabled = true },
+    statuscolumn = { enabled = true },
+    win = { enabled = true },
+    dashboard = {
+      preset = {
+        header = M.two_b_i
+          .. "\n"
+          .. [[
+██████╗ ██╗██╗  ██╗██╗   ██╗██╗███╗   ███╗
+██╔══██╗██║╚██╗██╔╝██║   ██║██║████╗ ████║
+██████╔╝██║ ╚███╔╝ ██║   ██║██║██╔████╔██║
+██╔═══╝ ██║ ██╔██╗ ╚██╗ ██╔╝██║██║╚██╔╝██║
+██║     ██║██╔╝ ██╗ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═╝     ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
+  ]],
+      },
+      sections = {
+        {
+          section = "terminal",
+          cmd = "chafa ~/Pictures/toobs.jpeg --format symbols  --stretch; sleep .1",
+          height = 20,
+          padding = 1,
+        },
+        {
+          pane = 2,
+          {
+            -- section = "keys",
+            -- title = "Keymaps",
+            -- gap = 1,
+            -- padding = 1,
+            -- keys = {
+            { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+            -- { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+            -- { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+            {
+              icon = " ",
+              key = "c",
+              desc = "Config",
+              action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+            },
+            { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+            -- },
+          },
+          { section = "startup" },
+          {
+            section = "recent_files",
+            title = "Recent Files",
+            indent = 2,
+            padding = 1,
+          },
+          {
+            pane = 2,
+            icon = " ",
+            title = "Git Status",
+            section = "terminal",
+            -- enabled = Snacks.git.get_root() ~= nil,
+            cmd = "git status --short --branch --renames",
+            height = 5,
+            padding = 1,
+            ttl = 5 * 60,
+            indent = 3,
+          },
+        },
+      },
+    },
+  },
 }
--- return {}
+
+-- return {
+--
+--   "nvimdev/dashboard-nvim",
+--   event = "VimEnter",
+--   -- opts = M.doom_plug_opts,
+--   opts = M.hyper_plug_opts,
+-- }

@@ -135,15 +135,4 @@ return {
   {
     "nvimdev/indentmini.nvim",
   },
-  -- Turn off the animation on mini indent scope
-  -- {
-  --   "echasnovski/mini.indentscope",
-  --   opts = {
-  --     draw = {
-  --       delay = 100,
-  --       animation = require("mini.indentscope").gen_animation.none(),
-  --       -- animation = require("mini.indentscope").gen_animation.none(),
-  --     },
-  --   },
-  -- },
 }

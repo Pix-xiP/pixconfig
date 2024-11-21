@@ -51,7 +51,7 @@ alias tree="eza -g --icons --sort=type --tree"
 alias pq="pueue"
 alias ls="eza -g --icons --sort=type"
 alias makego="go mod init; go mod tidy; touch main.go"
-alias go_get_all="go get -u -v -f all"
+alias go-get-all="go get -u -v all"
 alias fm="fastmod"
 
 

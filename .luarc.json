@@ -2,9 +2,9 @@
   "diagnostics.globals": [
     "get_os",
     "sbar",
-        "settings",
-        "colours",
-        "app_icons",
-        "icons"
+    "settings",
+    "colours",
+    "app_icons",
+    "icons"
   ]
 }
