@@ -318,36 +318,42 @@ end
 
 return {
   "folke/snacks.nvim",
+
+  ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
     notifier = { enabled = true },
-    statuscolumn = { enabled = true },
+    -- statuscolumn = { enabled = true },
     win = { enabled = true },
+    words = { enabled = true },
     dashboard = {
       preset = {
         header = M.two_b_i
           .. "\n"
           .. [[
-██████╗ ██╗██╗  ██╗██╗   ██╗██╗███╗   ███╗
-██╔══██╗██║╚██╗██╔╝██║   ██║██║████╗ ████║
-██████╔╝██║ ╚███╔╝ ██║   ██║██║██╔████╔██║
-██╔═══╝ ██║ ██╔██╗ ╚██╗ ██╔╝██║██║╚██╔╝██║
-██║     ██║██╔╝ ██╗ ╚████╔╝ ██║██║ ╚═╝ ██║
-╚═╝     ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
-  ]],
+       ██████╗ ██╗██╗  ██╗██╗   ██╗██╗███╗   ███╗
+       ██╔══██╗██║╚██╗██╔╝██║   ██║██║████╗ ████║
+       ██████╔╝██║ ╚███╔╝ ██║   ██║██║██╔████╔██║
+       ██╔═══╝ ██║ ██╔██╗ ╚██╗ ██╔╝██║██║╚██╔╝██║
+       ██║     ██║██╔╝ ██╗ ╚████╔╝ ██║██║ ╚═╝ ██║
+       ╚═╝     ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
+         ]],
       },
       sections = {
         {
-          section = "terminal",
-          cmd = "chafa ~/Pictures/toobs.jpeg --format symbols  --stretch; sleep .1",
-          height = 20,
-          padding = 1,
+          section = "header",
         },
+        -- {
+        --   section = "terminal",
+        --   cmd = "chafa ~/Pictures/toobs.jpeg --format symbols  --stretch; sleep .1",
+        --   height = 20,
+        --   padding = 1,
+        -- },
         {
           pane = 2,
           {
             -- section = "keys",
-            -- title = "Keymaps",
+            title = "Keymaps",
             -- gap = 1,
             -- padding = 1,
             -- keys = {
@@ -377,7 +383,6 @@ return {
             icon = " ",
             title = "Git Status",
             section = "terminal",
-            -- enabled = Snacks.git.get_root() ~= nil,
             cmd = "git status --short --branch --renames",
             height = 5,
             padding = 1,
