@@ -13,8 +13,8 @@ theme = pink-n-purple-pix
 # Keymaps
 config-file = keybinds
 
-background-opacity = 0.80
-#background-opacity = 1
+#background-opacity = 0.80
+background-opacity = 1
 background-blur-radius = 30
 unfocused-split-opacity = 1
 
@@ -60,12 +60,14 @@ cursor-style-blink = false
 # Window 
 window-padding-x = 5
 window-padding-y = 2
+window-theme = ghostty
 
 # To fix latency problems on Wavlink
 window-vsync = true
 
-# Scrollback limit default is 1Mb. Make it 10Mb.
-scrollback-limit = 100000000
+# Scrollback limit default is 1Mb. Make it 100Mb.
+scrollback-limit = 1000000000
+image-storage-limit = 1280000000
 
 # QoL || Misc
 copy-on-select = clipboard
