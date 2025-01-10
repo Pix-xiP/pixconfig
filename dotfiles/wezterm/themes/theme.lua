@@ -21,7 +21,7 @@ elseif utils.os == "Darwin" then
 	T.font = wez.font("Maple Mono", {
 		weight = "Regular",
 		italic = false,
-		harfbuzz_features = { "ss01=1", "ss02=1", "ss03=1", "ss04=1", "ss05=1", "cv01=1" },
+		-- harfbuzz_features = { "ss01=1", "ss02=1", "ss03=1", "ss04=1", "ss05=1", "cv01=1" },
 	})
 	T.font_size = 11.0
 else
