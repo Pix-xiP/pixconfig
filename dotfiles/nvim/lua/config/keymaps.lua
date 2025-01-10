@@ -1,6 +1,9 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Add any additional keymaps here
 
+local pix_buffer = require("pix.buffer_helpers")
+
+-- Keymaps
 local map = vim.keymap.set
 local del = vim.keymap.del
 
@@ -99,3 +102,10 @@ map({ "v" }, "<leader>psc", ":s/[a-z]\\@<=[A-Z]/\\_\\l\\0/g<CR>", { desc = "This
 
 map({ "n", "v" }, "<leader>pcc", "<cmd>:Compile 13<CR>", { desc = "Runs compile command for compilation mode" })
 map({ "n", "v" }, "<leader>pcr", "<cmd>:Recompile 13<CR>", { desc = "Runs compile command for compilation mode" })
+
+map(
+  { "n", "v" },
+  "<leader>pmc",
+  pix_buffer.switch_case,
+  { desc = "Changes current line from camelCase to snake_case or back again" }
+)
