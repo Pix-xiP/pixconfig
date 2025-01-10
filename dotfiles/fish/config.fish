@@ -13,6 +13,8 @@ if status is-interactive
     pix_print_osc7
     atuin init fish --disable-up-arrow | source
     zoxide init --cmd z fish | source
+    contains /Users/pix/AdeptusCustodes/Ultramar/bin $PATH; or set -ga PATH /Users/pix/AdeptusCustodes/Ultramar/bin
+    cod init %self fish | source
 end
 
 if test (uname) = Darwin
@@ -53,6 +55,7 @@ alias ls="eza -g --icons --sort=type"
 alias makego="go mod init; go mod tidy; touch main.go"
 alias go-get-all="go get -u -v all"
 alias fm="fastmod"
+alias scratch="nvim /tmp/scratchie"
 
 
 # ===================
