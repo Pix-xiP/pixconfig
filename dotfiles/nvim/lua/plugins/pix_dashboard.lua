@@ -321,6 +321,7 @@ return {
 
   ---@type snacks.Config
   opts = {
+    scroll = { enabled = false },
     bigfile = { enabled = true },
     notifier = { enabled = true },
     -- statuscolumn = { enabled = true },

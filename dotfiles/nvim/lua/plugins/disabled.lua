@@ -3,7 +3,7 @@
 return {
   {
     "folke/tokyonight.nvim",
-    enabled = false, -- Colorscheme :>
+    enabled = true, -- Colorscheme :>
   },
   {
     "ggandor/flit.nvim", -- This is basically small leap
