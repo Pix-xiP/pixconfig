@@ -17,3 +17,4 @@ abbr edit "swappy -f"
 
 alias hw='hwinfo --short' # Hardware Info
 alias ip='ip -c'
+alias valgrind="sudo -E valgrind"
