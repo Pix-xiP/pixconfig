@@ -184,7 +184,6 @@ programs = {
     shellcheck
     sketchybar
     sqlite
-    swift-format
     tart
     tcpdump
     tcpreplay

@@ -54,9 +54,6 @@ map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
--- -- Run Pix Autoformatter on current buffer
--- map({ "n" }, "<leader>pf", ":!pix-af -i -f %<enter>", { desc = "Format currently open Swift buffer" })
-
 -- J but cursor stays in current location.
 map({ "n" }, "J", "mzJ`z", { desc = "Join lines without moving cursor" })
 

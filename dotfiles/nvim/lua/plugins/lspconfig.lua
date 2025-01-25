@@ -109,20 +109,20 @@ return {
         --     },
         --   },
         -- },
-        sourcekit = {
-          cmd = { "sourcekit-lsp" },
-          filetypes = { "swift" },
-          rootPatterns = { "compile_commands.json", "Package.swift", ".git" },
-          opts = {
-            capabilities = {
-              workspace = {
-                didChangeWatchedFiles = {
-                  dynamicRegistration = true,
-                },
-              },
-            },
-          },
-        },
+        -- sourcekit = {
+        --   cmd = { "sourcekit-lsp" },
+        --   filetypes = { "swift" },
+        --   rootPatterns = { "compile_commands.json", "Package.swift", ".git" },
+        --   opts = {
+        --     capabilities = {
+        --       workspace = {
+        --         didChangeWatchedFiles = {
+        --           dynamicRegistration = true,
+        --         },
+        --       },
+        --     },
+        --   },
+        -- },
         zls = {
           cmd = { "zls" },
           filetypes = { "zig" },
@@ -133,7 +133,6 @@ return {
   },
   --  --  To make omnisharp not trash
   --  { "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
-
   {
     "stevearc/conform.nvim",
     dependencies = { "neovim/nvim-lspconfig" },
@@ -161,17 +160,18 @@ return {
         fish = { "fish_indent" },
         sh = { "shfmt" },
         c = { "clang-format" },
-        odin = { "odinfmt" },
-        swift = { "swift_format" },
+        zig = { "zigfmt" },
+        -- odin = { "odinfmt" },
+        -- swift = { "swift_format" },
       },
       formatters = {
         injected = { options = { ignore_errors = true } },
-        -- Formatting for Swift since nothing built in x(
-        swift_format = {
-          command = "swift-format",
-          args = { "--configuration", "/Users/pix/.config/formatting/swift-config.json" },
-          stdin = true,
-        },
+        -- -- Formatting for Swift since nothing built in x(
+        -- swift_format = {
+        --   command = "swift-format",
+        --   args = { "--configuration", "/Users/pix/.config/formatting/swift-config.json" },
+        --   stdin = true,
+        -- },
       },
     },
   },

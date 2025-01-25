@@ -37,8 +37,6 @@ return {
         "markdown",
         "nix",
         "odin",
-        "pkl",
-        "swift",
         "tmux",
         "zig",
       },
