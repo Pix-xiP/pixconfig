@@ -8,10 +8,8 @@ if test -e "$SECRETS_PATH"
     source "$SECRETS_PATH"
 end
 
-set -gx WEZTERM_CONFIG_FILE "/home/pix/.config/wezterm/wezterm.lua"
 set -gx GRAVEYARD "/home/pix/.local/graveyard"
-set -x ODIN_ROOT /home/pix/AdeptusCustodes/Odin
-set -gx PIXCONFIG /home/pix/AdeptusCustodes/pix_hyprland/pixconfig/
+set -gx PIXCONFIG /home/pix/AdeptusCustodes/pixconfig
 
 abbr edit "swappy -f"
 

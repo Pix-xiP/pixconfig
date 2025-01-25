@@ -1,19 +1,10 @@
-function pix_print_osc7 --description "Prints OSC7 for the terminal to use"
-    set wez_curr_dir (pwd)
-
-    printf "\033]7;file://%s/%s\033\\" $hostname $wez_curr_dir
-end
-
+# IF ITS GONNA BE USED NOT JUST INVOKED
 if status is-interactive
     # Commands to run hn interactive sessions can go here
-    fzf_configure_bindings --directory=\cf --git_log=\e\f --history=\cg
-    # fish_config theme choose "Rosé Pine"
     fish_config theme choose PinkNPurplePix
-    # fish_config theme choose PixTheme
-    pix_print_osc7
     atuin init fish --disable-up-arrow | source
     zoxide init --cmd z fish | source
-    contains /Users/pix/AdeptusCustodes/Ultramar/bin $PATH; or set -ga PATH /Users/pix/AdeptusCustodes/Ultramar/bin
+    contains /home/pix/go/bin $PATH; or set -ga PATH /home/pix/go/bin
     cod init %self fish | source
 end
 
@@ -44,18 +35,13 @@ alias diff="icdiff"
 alias vim="nvim"
 alias docker="sudo docker"
 alias gg="git pull"
-alias md="gum format"
 alias n="nvim"
-alias wz="wezterm"
-alias imgcat="wezterm imgcat"
 alias tree="eza -g --icons --sort=type --tree"
 alias pq="pueue"
 alias ls="eza -g --icons --sort=type"
-alias makego="go mod init; go mod tidy; touch main.go"
 alias go-get-all="go get -u -v all"
 alias fm="fastmod"
 alias scratch="nvim /tmp/scratchie"
-
 
 # ===================
 # Abbr Hours
@@ -66,7 +52,6 @@ abbr fish-config "nvim ~/.config/fish/config.fish"
 abbr ssh-config "nvim ~/.ssh/config"
 abbr nvim-config "nvim ~/.config/nvim/init.lua"
 abbr hypr-config "nvim ~/.config/hypr/hyprland.conf"
-abbr wz-config "nvim ~/.config/wezterm/wezterm.lua"
 abbr ghost-config "nvim ~/.config/ghostty/config"
 abbr re-src "source ~/.config/fish/config.fish"
 abbr rg "rg --color=auto"
