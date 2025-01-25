@@ -48,4 +48,11 @@ return {
       }
     end,
   },
+  {
+    "Kicamon/markdown-table-mode.nvim",
+    opts = {
+      insert = true,
+      insert_leave = true,
+    },
+  },
 }
