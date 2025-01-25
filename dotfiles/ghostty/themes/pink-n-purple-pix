@@ -1,7 +1,9 @@
 # Main colours
 palette = 0=#140a1d 
-palette = 1=#B52A5B 
-palette = 2=#DD4371 
+#palette = 1=#B52A5B 
+#palette = 2=#DD4371 
+palette = 1=#DD4371
+palette = 2=#ffcc59
 palette = 3=#8897F4 
 palette = 4=#9a63d9 
 palette = 5=#E9729D 

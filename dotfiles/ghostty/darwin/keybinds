@@ -37,3 +37,5 @@ keybind = ctrl+super+w=close_surface
 #keybind = super+grave_accent=toggle_quick_terminal 
 keybind = global:ctrl+super+u=toggle_quick_terminal 
 
+keybind = ctrl+super+j=jump_to_prompt:-1
+keybind = ctrl+super+k=jump_to_prompt:1
