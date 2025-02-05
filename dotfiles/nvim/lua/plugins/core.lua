@@ -87,7 +87,7 @@ return {
       keywords = {
         PIXNOTE = { icon = "", color = "pix_note", alt = { "THOUGHT" } },
         PIXHACK = { icon = "", color = "pix_hack", alt = { "HACKFIX" } },
-        PIXTODO = { icon = "", color = "pix_todo", alt = { "" } },
+        PIXTODO = { icon = "", color = "pix_todo", alt = { "PIXTODO" } },
         IMPROVEMENT = { icon = "󰟶", color = "pix_improve", alt = { "IMPROVE", "IDEA", "IMPROV" } },
         -- Preview:
         -- PIXTODO:     Some long text for testing with
