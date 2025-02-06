@@ -18,6 +18,10 @@ else if test (uname) = Linux
     end
 end
 
+if test -e "/Users/pix/.config/fish/work.fish"
+    source "/Users/pix/.config/fish/work.fish"
+end
+
 # ===================
 # Set / Export Hours 
 # ===================
