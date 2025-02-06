@@ -53,7 +53,10 @@ return {
             semanticTokens = true,
           },
         },
-
+        hyprls = {
+          cmd = { "hyprls", "--stdio" },
+          filetypes = { "hyprlang" },
+        },
         lua_ls = {
           settings = {
             -- Remove the missing 'vim' from neovim config files :>
