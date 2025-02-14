@@ -5,6 +5,7 @@ if status is-interactive
     atuin init fish --disable-up-arrow | source
     zoxide init --cmd z fish | source
     contains /home/pix/go/bin $PATH; or set -ga PATH /home/pix/go/bin
+    contains /home/pix/.cargo/bin $PATH; or set -ga PATH /home/pix/.cargo/bin
     cod init %self fish | source
 end
 
