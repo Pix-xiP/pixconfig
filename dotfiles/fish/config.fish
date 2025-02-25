@@ -65,7 +65,7 @@ alias scratch="nvim /tmp/scratchie"
 # Abbr Hours
 # ===================
 abbr nb goread
-abbr rsync "rsync -avP --progress --verbose"
+abbr rsync "rsync -avP"
 abbr fish-config "nvim ~/.config/fish/config.fish"
 abbr ssh-config "nvim ~/.ssh/config"
 abbr nvim-config "nvim ~/.config/nvim/init.lua"
