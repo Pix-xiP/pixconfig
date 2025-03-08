@@ -40,3 +40,36 @@ function toggle-loopback --description "Toggle microphone loopback to speakers"
         set -g PIX_PA_LOOP_ENABLED true
     end
 end
+
+function toggle-keyboard --description "Toggles keyboard between colemak && qwerty"
+    # Define the configuration directory and files
+    set target_link ~/.config/hypr/input.conf
+    set colemak_source ~/.config/hypr/colemak.input.conf
+    set qwerty_source ~/.config/hypr/qwerty.input.conf
+
+    # Check if the symlink exists
+    if test -L $target_link
+        # Get where the symlink points to
+        set current_target (readlink $target_link)
+        # echo "colemak: $colemak_source"
+        # echo "qwerty: $qwerty_source"
+
+        # Check current target and switch accordingly
+        if test "$current_target" = "$colemak_source"
+            echo "Switching from Colemak to QWERTY..."
+            rm $target_link
+            ln -s $qwerty_source $target_link
+        else if test "$current_target" = "$qwerty_source"
+            echo "Switching from QWERTY to Colemak..."
+            rm $target_link
+            ln -s $colemak_source $target_link
+        end
+    else
+        # No symlink exists, default to Colemak \o/
+        echo "Setting up Colemak layout..."
+        ln -s $colemak_source $target_link
+    end
+
+    # Verify the final state
+    echo "Current layout: " (readlink $target_link)
+end
