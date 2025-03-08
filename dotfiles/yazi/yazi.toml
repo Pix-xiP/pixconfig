@@ -15,6 +15,11 @@ show_hidden    = false
 show_symlink   = true
 scrolloff      = 5
 
+[[manager.prepend_keymaps]]
+  on = [ "c", "m" ]
+  run = "plugin chmod"
+  desc = "chmod on selected files"
+
 [preview]
 tab_size        = 2
 max_width       = 600
@@ -78,12 +83,14 @@ suppress_preload = false
 [plugin]
 
 prepend_previewers = [
-  # Marskdown
-  { name = "*.md", run = "glow" },
+  # Audio 
+  { name = "audio/*",   run = "exifaudio"}
 ]
 
 # After everything else it will default to hexyl
 append_previewers = [
+  # markdown 
+  { name = "*.md", run = "glow" },
   # Binary
   { name = "*", run = "hexyl" },
 ]
@@ -99,6 +106,10 @@ preloaders = [
 
 previewers = [
 	{ name = "*/", run = "folder", sync = true },
+
+  { name = "*.md",  run = "preview" },
+  { name = "*.csv", run = "preview" },
+  
 	# Code
 	{ mime = "text/*", run = "code" },
 	{ mime = "*/{xml,javascript,x-wine-extension-ini}", run = "code" },
@@ -116,6 +127,7 @@ previewers = [
 	{ mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", run = "archive" },
 	# Fallback
 	{ name = "*", run = "file" },
+	# { name = "*", run = "preview" },
 ]
 
 [input]

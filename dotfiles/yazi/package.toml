@@ -1,0 +1,17 @@
+[[plugin.deps]]
+use = "Reledia/hexyl"
+rev = "228a9ef"
+hash = "cdc65cfe4e60e1bf5afe5769d074fa9c"
+
+[[plugin.deps]]
+use = "Sonico98/exifaudio"
+rev = "4379fcf"
+hash = "a8e15d3c21c02a5af41d46ed04778a02"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:chmod"
+rev = "3d0c7c6"
+hash = "2f1053f89d1a301a648ab181d0948e38"
+
+[flavor]
+deps = []
