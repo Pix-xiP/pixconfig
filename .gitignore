@@ -24,3 +24,4 @@ dotfiles/config.toml
 dotfiles/ghostty/config
 dotfiles/fish/work.fish
 dotfiles/ghostty/keybinds
+dotfiles/yazi/plugins/preview.yazi
