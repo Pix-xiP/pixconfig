@@ -4,10 +4,10 @@
 ## Hyper == lctrl + lalt + shift + lcmd
 
 # Window Navigation (through display borders): lalt - {n, i, e, o}
-lalt - n : yabai -m window --focus west || yabai -m display --focus west
+lalt - n : yabai -m window --focus west  || yabai -m display --focus west
 lalt - i : yabai -m window --focus south || yabai -m display --focus south
 lalt - e : yabai -m window --focus north || yabai -m display --focus north
-lalt - o : yabai -m window --focus east || yabai -m display --focus east
+lalt - o : yabai -m window --focus east  || yabai -m display --focus east
 
 # Extended Window Navigation: lalt - {b, k}
 lctrl + lalt - b : yabai -m window --focus first
@@ -18,7 +18,7 @@ lcmd + shift - v : yabai -m window --toggle float; sketchybar --trigger window_f
 
 # Make window zoom to fullscreen: lctrl + lalt - f
 # lctrl + shift + lalt - f : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
-lctrl + lalt - f : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
+meh - f : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
 
 # Toggle split orientation of the selected windows node: shift + lalt - s
 shift + lalt - s : yabai -m window --toggle split
@@ -82,10 +82,10 @@ shift + lalt - o : yabai -m window --warp east || yabai -m window --display east
 
 ## Stacks (shift + ctrl - ...)
 # Add the active window to the window or stack to the {direction}: shift + ctrl - {j, k, l, ö}
-shift + ctrl - n : yabai -m window west --stack $(yabai -m query --windows --window | jq -r '.id'); sketchybar --trigger window_focus
-shift + ctrl - i : yabai -m window south --stack $(yabai -m query --windows --window | jq -r '.id'); sketchybar --trigger window_focus
-shift + ctrl - e : yabai -m window north --stack $(yabai -m query --windows --window | jq -r '.id'); sketchybar --trigger window_focus
-shift + ctrl - o : yabai -m window east --stack $(yabai -m query --windows --window | jq -r '.id'); sketchybar --trigger window_focus
+# shift + ctrl - n : yabai -m window west --stack $(yabai -m query --windows --window | jq -r '.id'); sketchybar --trigger window_focus
+# shift + ctrl - i : yabai -m window south --stack $(yabai -m query --windows --window | jq -r '.id'); sketchybar --trigger window_focus
+# shift + ctrl - e : yabai -m window north --stack $(yabai -m query --windows --window | jq -r '.id'); sketchybar --trigger window_focus
+# shift + ctrl - o : yabai -m window east --stack $(yabai -m query --windows --window | jq -r '.id'); sketchybar --trigger window_focus
 
 # Stack Navigation: shift + ctrl - {n, p}
 shift + ctrl - n : yabai -m window --focus stack.next
@@ -95,8 +95,13 @@ shift + ctrl - p : yabai -m window --focus stack.prev
 
 ## Insertion (shift + ctrl + lalt - ...)
 # Set insertion point for focused container: shift + ctrl + lalt - {n, e, i, o, s}
-meh - n : yabai -m window --insert west
-meh - i : yabai -m window --insert south
-meh - e : yabai -m window --insert north
-meh - o : yabai -m window --insert east
-meh - s : yabai -m window --insert stack
+# meh - n : yabai -m window --insert west
+# meh - i : yabai -m window --insert south
+# meh - e : yabai -m window --insert north
+# meh - o : yabai -m window --insert east
+# meh - s : yabai -m window --insert stack
+
+
+
+
+
