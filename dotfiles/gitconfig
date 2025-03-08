@@ -1,0 +1,70 @@
+[user]
+	name = 
+	email = 
+
+[core]
+	editor = nvim
+  pager = delta
+	ignorecase = false
+  excludesfile = ~/.gitignore
+
+[branch]
+  sort = -committerdate
+
+[commit]
+  verbose = true
+
+[tag]
+  sort = version:refname
+
+[merge]
+	tool = nvimdiff2
+	conflictstyle = zdiff3
+
+[mergetool]
+	prompt = true
+
+[column]
+  ui = auto
+
+[init]
+  defaultBranch = main
+
+[alias]
+    c = commit
+    co = checkout
+    st = status
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    side-by-side = true
+    hyperlinks = true
+    syntax-theme = Rose-Pine
+
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+
+[push]
+  default = simple 
+  autoSetupRemote = true
+  followTags = true
+
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
+
+[rerere]
+  enabled = true
+  autoupdate = true
+
+[pull]
+  rebase = true
+
+
