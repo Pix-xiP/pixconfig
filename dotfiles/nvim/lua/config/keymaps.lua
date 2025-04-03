@@ -76,15 +76,6 @@ map({ "n" }, "<leader>mx", "<cmd>!chmod +x %<CR>", { desc = "Make file executabl
 
 map({ "n" }, "<leader>mw", ":w !sudo tee %<CR>", { desc = "Reopen a file with changes using sudo permissions" })
 
--- map({ "i" }, "<M-m>", "<esc>a", { desc = "Remove auto suggestions and continue typing" })
-
--- Search current buffer looks different.
--- map({ "n", "v" }, "<leader>sb", function()
---   require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
---     previewer = false,
---   }))
--- end, { desc = "Search current buffer" })
-
 -- Nuke CTRL S for saving...
 del({ "i", "x", "n", "s" }, "<C-s>")
 
@@ -106,3 +97,6 @@ map(
   pix_buffer.switch_case,
   { desc = "Changes current line from camelCase to snake_case or back again" }
 )
+
+-- Remove leader quit keybind from LazyVim
+-- del({ "n", "x", "n", "s", "i" }, "<leader>q")

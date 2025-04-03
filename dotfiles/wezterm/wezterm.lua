@@ -16,7 +16,7 @@ end
 
 local theme = require("themes.theme")
 local keys = require("keymaps.keymaps")
-local utils = require("utils.utils") -- TODO: Put a global helper utils into the lua path.
+-- local utils = require("utils.utils") -- TODO: Put a global helper utils into the lua path.
 local bg_config = require("background.wallpaper")
 local secrets = require("secrets.servers") -- For stuff I don't want on the hub
 -- ===============
