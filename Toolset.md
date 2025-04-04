@@ -878,6 +878,10 @@ C Heavy compression tool, usually results in very small output
 
 - Generate autocompletes based off running `--help` for your shell.
 
+`rust-stakeholder`
+
+- Fill your screen with all sorts of jargon and nonsense to impress the shareholders!
+
 }}
 
 -----------------
