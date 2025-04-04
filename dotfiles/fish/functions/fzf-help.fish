@@ -1,4 +1,4 @@
-function fzf-match
+function fzf-help
     echo "\
 Quick View of how to search in FZF 
 

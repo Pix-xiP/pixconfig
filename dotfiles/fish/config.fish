@@ -57,7 +57,6 @@ abbr rsync "rsync -avP"
 abbr fish-config "nvim ~/.config/fish/config.fish"
 abbr ssh-config "nvim ~/.ssh/config"
 abbr nvim-config "nvim ~/.config/nvim/init.lua"
-abbr hypr-config "nvim ~/.config/hypr/hyprland.conf"
 abbr ghost-config "nvim ~/.config/ghostty/config"
 abbr re-src "source ~/.config/fish/config.fish"
 abbr rg "rg --color=auto"
@@ -74,11 +73,9 @@ abbr mkdir "mkdir -p"
 # ====================
 # Set X for export :: Set G for global
 set -gx C_INCLUDE_PATH "/usr/local/include:$C_INCLUDE_PATH"
-set -gx ZEIT_DB "$HOME/.config/zeit/zeit.db"
 
+# Add a follow up localised bin
 contains "$HOME/.local/bin" $PATH; or set -ga PATH "$HOME/.local/bin"
-
-set -x LLVM_CONFIG /opt/homebrew/Cellar/llvm/18.1.8/bin/llvm-config
 
 # ===================
 # General environment set variables
@@ -93,16 +90,9 @@ function xtar --argument filename
 end
 
 # Quick backup!
-function bak --argument filename --description "Makes a very quick in place backup of a file or directory"
+function qbackup --argument filename --description "Makes a very quick in place backup of a file or directory"
     cp -vr $filename $filename.bak
 end
-
-function peep --argument file --description "Open a file with FZF with search and preview"
-    cat $file | fzf --preview "echo {} | fish_indent --ansi" --preview-window="top:5:wrap"
-end
-
-# set -Ux LS_COLORS "rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.md=38;5;68:*.log=38;5;68:*.c=38;5;169:*.h=38;5;135:*.o=38;5;97:*.y=38;5;99:*.l=38;5;99:*.sh=38;5;104"
-# set -Ux EXA_COLORS "*.md=38;5;68:*.log=38;5;68:*.c=38;5;169:*.h=38;5;135:*.o=38;5;97:*.y=38;5;99:*.l=38;5;99:*.sh=38;5;104"
 
 set -Ux FZF_DEFAULT_OPTS '--color=fg:#908caa,hl:#ea9a97 
                           --color=border:#44415a,header:#3e8fb0,gutter:#232136
@@ -112,24 +102,6 @@ set -Ux FZF_DEFAULT_OPTS '--color=fg:#908caa,hl:#ea9a97
                           --preview-window=wrap 
                           --marker="=>" 
                           --bind "shift-up:preview-up,shift-down:preview-down"'
-
-# function fzf --wraps="fzf"
-#     set -Ux FZF_DEFAULT_OPTS '
-#       --color=fg:#908caa,bg:#232136,hl:#ea9a97
-#       --color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97
-#       --color=border:#44415a,header:#3e8fb0,gutter:#232136
-#       --color=spinner:#f6c177,info:#9ccfd8,separator:#44415a
-#       --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa
-#       --cycle
-#       --layout=reverse
-#       --border
-#       --height=95%
-#       --preview-window=wrap
-#       --marker="= >"
-#       --bind "shift-up:preview-up,shift-down:preview-down"
-#       '
-#     command fzf
-# end
 
 # Ez cat SSH pub key
 function get_pub_key --description "Quickly cat out public file"

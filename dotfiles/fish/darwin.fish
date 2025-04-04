@@ -1,4 +1,3 @@
-
 # This file is to be loaded when inside a Darwin based system.
 # Contains setups, functions and aliases specific to this environment.
 
@@ -32,6 +31,7 @@ contains /opt/homebrew/opt/gnu-getopt/bin $PATH; or set -ga PATH /opt/homebrew/o
 # Cargo Bin
 contains /Users/pix/.cargo/bin $PATH; or set -ga PATH /Users/pix/.cargo/bin
 
+set -x LLVM_CONFIG /opt/homebrew/Cellar/llvm/18.1.8/bin/llvm-config
 
 # FOR LIB PQ BULLSHIT
 set -gx LDFLAGS -L/opt/homebrew/opt/libpq/lib
