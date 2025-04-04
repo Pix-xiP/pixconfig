@@ -8,6 +8,7 @@
 # Theme:
 #theme = rose-pine
 theme = pink-n-purple-pix
+#theme = RainDark.theme
 
 config-file = keybinds
  
