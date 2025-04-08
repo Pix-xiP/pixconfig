@@ -1,7 +1,8 @@
 # IF ITS GONNA BE USED NOT JUST INVOKED
 if status is-interactive
     # Commands to run hn interactive sessions can go here
-    fish_config theme choose PinkNPurplePix
+    # fish_config theme choose PinkNPurplePix
+    fish_config theme choose Umbral
     atuin init fish --disable-up-arrow | source
     zoxide init --cmd z fish | source
     contains /home/pix/AdeptusCustodes/Ultramar/bin $PATH; or set -ga PATH /home/pix/AdeptusCustodes/Ultramar/bin

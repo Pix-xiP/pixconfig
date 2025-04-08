@@ -169,7 +169,6 @@ danhper/fish-ssh-agent     # SSH agent using fish.
 jorgebucaran/autopair.fish # Auto [] {} () etc.
 ilancosman/tide@v6         # Async modern shell prompt.
 meaningful-ooo/sponge      # Cleans up typos from history
-nickeb96/puffer-fish       # Fish-like pufferline
 pink-n-purple-pix          # My colourscheme
 
 ## Outdated / Not in use

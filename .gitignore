@@ -25,3 +25,4 @@ dotfiles/ghostty/config
 dotfiles/fish/work.fish
 dotfiles/ghostty/keybinds
 dotfiles/yazi/plugins/preview.yazi
+!dotfiles/fish/conf.d/pix_autoexpand.fish

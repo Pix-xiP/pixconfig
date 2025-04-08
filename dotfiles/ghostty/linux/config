@@ -6,9 +6,8 @@
 ## Hotreload with CMD SHIFT ,
 
 # Theme:
-#theme = rose-pine
-theme = pink-n-purple-pix
-#theme = RainDark.theme
+#theme = pink-n-purple-pix
+theme = Umbral
 
 config-file = keybinds
  

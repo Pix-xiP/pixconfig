@@ -1,27 +1,45 @@
-# Main colours
+# First Colour == MainColour
+# Second Colour == BrightColour
+
+# Black
 palette = 0=#140a1d 
-#palette = 1=#B52A5B 
-#palette = 2=#DD4371 
-palette = 1=#DD4371
-palette = 2=#ffcc59
-palette = 3=#8897F4 
-palette = 4=#9a63d9 
-palette = 5=#E9729D 
-palette = 6=#F18FB0 
-palette = 7=#f1c4e0 
-# Bright Colours
 palette = 8=#a8899c  
+
+# Red
+palette = 1=#DD4371
 palette = 9=#B52A5B 
+
+# Green
+palette = 2=#ffcc59
 palette = 10=#FF4971 
+
+# Yellow
+palette = 3=#8897F4 
 palette = 11=#8897F4 
+
+# Blue
+palette = 4=#9a63d9 
 palette = 12=#bd93f9 
+
+# Magenta
+palette = 5=#E9729D 
 palette = 13=#E9729D 
+
+# Cyan
+palette = 6=#F18FB0 
 palette = 14=#F18FB0 
+
+# White
+palette = 7=#f1c4e0 
 palette = 15=#140a1d
-# palette = 15=#f1c4e0 
-# General
+
+# Terminal Colours
 background = #121212
 foreground = #e3c7fc
+
+# Cursor/Block/Line
 cursor-color = #f1c4e0
+
+# Terminal Selection Colours
 selection-background = #191724
 selection-foreground = #FFE900
