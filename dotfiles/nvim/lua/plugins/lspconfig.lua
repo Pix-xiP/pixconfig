@@ -67,6 +67,13 @@ return {
             },
           },
         },
+        taplo = {
+          cmd = { "taplo", "lsp", "stdio" },
+          filetypes = { "toml" },
+          root_dir = function(fname)
+            return vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1])
+          end,
+        },
         -- ols = {
         --   cmd = { "ols" },
         --   filetypes = { "odin" },
@@ -164,6 +171,7 @@ return {
         sh = { "shfmt" },
         c = { "clang-format" },
         zig = { "zigfmt" },
+        -- toml = { "taplo" },
         -- odin = { "odinfmt" },
         -- swift = { "swift_format" },
       },

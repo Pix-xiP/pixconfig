@@ -1,6 +1,8 @@
 # This file is to be loaded when inside a Darwin based system.
 # Contains setups, functions and aliases specific to this environment.
 
+alias zig="~/AdeptusCustodes/Nocturne/zig14/zig-macos-aarch64-0.14.0/zig"
+
 # Secrets not in github <3
 set SECRETS_PATH /Users/pix/.config/fish/secrets.fish
 if test -e "$SECRETS_PATH"
