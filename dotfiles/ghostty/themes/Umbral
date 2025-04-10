@@ -1,82 +1,38 @@
-# # First Colour == MainColour
-# # Second Colour == BrightColour
-#
-# # Potential Colour: ##261E5B
-#
-# # Black
-# palette = 0=#08020B
-# palette = 8=#1b1b29
-#
-# # Red
-# palette = 1=#261E5B
-# palette = 9=#261E5B
-#
-# # Green
-# palette = 2=#17649C
-# palette = 10=#17FF9C
-#
-# # Yellow
-# palette = 3=#E69E0F
-# palette = 11=#E69E0F
-#
-# # Blue
-# palette = 4=#1F2DEA
-# palette = 12=#1111FF
-#
-# # Magenta
-# palette = 5=#5F3BCE
-# palette = 13=#5F3BCE
-#
-# # Cyan
-# palette = 6=#361E84
-# palette = 14=#361E84
-#
-# # White
-# palette = 7=#FEC7FF
-# palette = 15=#FEC7FF
-#
-# # Terminal Colours
-# background = #1b1b29
-# foreground = #FEC7FF
-#
-# # Cursor/Block/Line
-# cursor-color = #FEC7FF
-#
-# # Terminal Selection Colours
-# selection-background = #191724
-# selection-foreground = #E69E0F
+# Colour, BrightColour
+# 0, 8  -- Black
+# 1, 9  -- Red
+# 2, 10 -- Green
+# 3, 11 -- Yellow
+# 4, 12 -- Blue
+# 5, 13 -- Magenta
+# 6, 14 -- Cyan
+# 7, 15 -- White
 
-# Black
-palette = 0=#0A0214
-palette = 8=#0C1035
-# Red
-palette = 1=#562c5f
-palette = 9=#de3e91
-# Green
-palette = 2=#24366c
-palette = 10=#54c8ff
-# Yellow
-palette = 3=#9971c1
-palette = 11=#ffd369
-# Blue
-palette = 4=#1d1e4a
-palette = 12=#4a3a78
-# Magenta
-palette = 5=#261754
-palette = 13=#ff6cac
-# Cyan
-palette = 6=#324890
-palette = 14=#ff7057
-# White
-palette = 7=#B99de1
-palette = 15=#e9e1ff
+palette = 0=#0a0214
+palette = 1=#da3c69
+palette = 2=#4129A1
+palette = 3=#ffd369
+palette = 4=#6422d8
+palette = 5=#5228A6
+palette = 6=#3248F0
+palette = 7=#9971C1
 
-# Terminal Colours
-background = #0a0214
-foreground = #e9e1ff
-# Cursor/Block/Line
-cursor-color = #de3e91
+palette = 8=#414262
+palette = 9=#be3888
+palette =10=#E9729d
+palette =11=#ffd369
+palette =12=#5494FF
+palette =13=#9933DD
+palette =14=#117dFF
+palette =15=#b99de1
 
-# Terminal Selection Colours
-selection-background = #191724
-selection-foreground = #E69E0F
+background = #151022
+foreground = #9971c1
+
+# Perhaps a ligher version for cursor-color? or maybe the same as foreground
+cursor-color = #b99de1
+
+selection-background = #1c0638
+selection-foreground = #ee6699
+
+# comments = #6863A6

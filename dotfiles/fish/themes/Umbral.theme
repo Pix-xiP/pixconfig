@@ -1,12 +1,15 @@
-#
-#
-#
-# STARTING WITH ROSE PINE DEFAULTS ## DONE
-# THEN MERGE WITH SHADO ## PIXTODO:
-# THEN TWEAK TO LIKING
-
-# syntax variables 
 # # https://fishshell.com/docs/current/interactive.html#syntax-highlighting-variables
+
+# TODO: Finish.
+fish_color_normal       9971c1 #9971c1
+fish_color_command      5228a6 #5228a6
+fish_color_keyword      5494ff #5494ff
+fish_color_quote        9933dd #9933dd
+fish_color_redirection  b99de1 #b99de1
+fish_color_end          414262 #414262
+fish_color_error        da3c69 #da3c69
+fish_color_param        3248f0 #3248f0
+fish_color_comment      e9729d #e9729d
 
 # fish_color_normal                             f1c4e0 #f1c4e0
 # fish_color_command                            c4a7e7 #c4a7e7 
