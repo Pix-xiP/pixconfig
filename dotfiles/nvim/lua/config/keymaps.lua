@@ -66,10 +66,10 @@ map({ "x" }, "<leader>pp", '"_dP', { desc = "Paste without overwriting register 
 
 map({ "n" }, "<leader>xr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "Replace current word" })
 map(
-  { "v" },
-  "<leader>xr",
-  ":s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
-  { desc = "replace current word in scope" }
+	{ "v" },
+	"<leader>xr",
+	":s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
+	{ desc = "replace current word in scope" }
 )
 
 map({ "n" }, "<leader>mx", "<cmd>!chmod +x %<CR>", { desc = "Make file executable" })
@@ -77,13 +77,13 @@ map({ "n" }, "<leader>mx", "<cmd>!chmod +x %<CR>", { desc = "Make file executabl
 map({ "n" }, "<leader>mw", ":w !sudo tee %<CR>", { desc = "Reopen a file with changes using sudo permissions" })
 
 -- Nuke CTRL S for saving...
-del({ "i", "x", "n", "s" }, "<C-s>")
+-- del({ "i", "x", "n", "s" }, "<C-s>")
 
 map(
-  { "n" },
-  "<leader>pn",
-  "iif err != nil {<CR> return err<CR>}<Esc>kk",
-  { desc = "Automatically place a if err = nil check in for Go" }
+	{ "n" },
+	"<leader>pn",
+	"iif err != nil {<CR> return err<CR>}<Esc>kk",
+	{ desc = "Automatically place a if err = nil check in for Go" }
 )
 
 map({ "v" }, "<leader>psc", ":s/[a-z]\\@<=[A-Z]/\\_\\l\\0/g<CR>", { desc = "This converts camelCase to snake_case" })
@@ -92,10 +92,10 @@ map({ "n", "v" }, "<leader>pcc", "<cmd>:Compile 13<CR>", { desc = "Runs compile 
 map({ "n", "v" }, "<leader>pcr", "<cmd>:Recompile 13<CR>", { desc = "Runs compile command for compilation mode" })
 
 map(
-  { "n", "v" },
-  "<leader>pmc",
-  pix_buffer.switch_case,
-  { desc = "Changes current line from camelCase to snake_case or back again" }
+	{ "n", "v" },
+	"<leader>pmc",
+	pix_buffer.switch_case,
+	{ desc = "Changes current line from camelCase to snake_case or back again" }
 )
 
 -- Remove leader quit keybind from LazyVim
