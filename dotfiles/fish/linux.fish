@@ -61,4 +61,6 @@ function toggle-keyboard --description "Toggles keyboard between colemak && qwer
 
     # Verify the final state
     echo "Current layout: " (readlink $target_link)
+
+    hyprctl reload
 end
