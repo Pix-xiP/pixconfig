@@ -28,11 +28,10 @@ palette =15=#b99de1
 
 background = #151022
 foreground = #9971c1
+# foreground = #af91d5
 
 # Perhaps a ligher version for cursor-color? or maybe the same as foreground
 cursor-color = #b99de1
 
 selection-background = #1c0638
 selection-foreground = #ee6699
-
-# comments = #6863A6
