@@ -10,20 +10,20 @@
 
 palette = 0=#0a0214
 palette = 1=#da3c69
-palette = 2=#4129A1
+palette = 2=#7644fa
 palette = 3=#ffd369
 palette = 4=#6422d8
-palette = 5=#5228A6
-palette = 6=#3248F0
+palette = 6=#6c4dff
+palette = 5=#3848F8
 palette = 7=#9971C1
 
 palette = 8=#414262
 palette = 9=#be3888
 palette =10=#E9729d
 palette =11=#ffd369
-palette =12=#5494FF
+palette =12=#8c6dff
 palette =13=#9933DD
-palette =14=#117dFF
+palette =14=#586afa
 palette =15=#b99de1
 
 background = #151022

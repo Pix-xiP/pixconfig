@@ -62,25 +62,25 @@ return {
 			require("nvim-highlight-colors").turnOn()
 		end,
 	},
+	{
+		"umbral",
+		name = "umbral",
+		dir = "~/AdeptusCustodes/Lunar/nvim_plugins/umbral.nvim/",
+		dev = true,
+		config = function()
+			vim.cmd.colorscheme("umbral")
+		end,
+	},
 	-- {
-	-- 	"umbral",
-	-- 	name = "umbral",
-	-- 	dir = "~/AdeptusCustodes/Lunar/nvim_plugins/umbral.nvim/",
-	-- 	dev = true,
-	-- 	config = function()
-	-- 	  vim.cmd.colorscheme("umbral")
-	-- 	end
+	-- 	"pix-xip/umbral.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = {},
 	-- },
-	{
-		"pix-xip/umbral.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-	},
-	{
-		"LazyVim/LazyVim",
-		opts = { colorscheme = "umbral" },
-	},
+	-- {
+	-- 	"LazyVim/LazyVim",
+	-- 	opts = { colorscheme = "umbral" },
+	-- },
 	{
 		"nvim-lualine/lualine.nvim",
 		opts = {

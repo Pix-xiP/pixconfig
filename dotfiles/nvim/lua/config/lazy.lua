@@ -23,7 +23,7 @@ require("lazy").setup({
 		---@type string[] plugins that match these patterns will use your local version instead of the remote
 		patterns = { "umbral" },
 		-- don't go looking to github if local plugin doesn't exist
-		fallback = false, 
+		fallback = false,
 	},
 	defaults = {
 		lazy = false,
