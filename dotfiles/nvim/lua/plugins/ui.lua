@@ -75,7 +75,9 @@ return {
 	-- 	"pix-xip/umbral.nvim",
 	-- 	lazy = false,
 	-- 	priority = 1000,
-	-- 	opts = {},
+	-- 	opts = function()
+	-- 		vim.cmd.colorscheme("umbral")
+	-- 	end,
 	-- },
 	-- {
 	-- 	"LazyVim/LazyVim",
