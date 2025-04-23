@@ -79,13 +79,6 @@ map({ "n" }, "<leader>mw", ":w !sudo tee %<CR>", { desc = "Reopen a file with ch
 -- Nuke CTRL S for saving...
 -- del({ "i", "x", "n", "s" }, "<C-s>")
 
-map(
-	{ "n" },
-	"<leader>pn",
-	"iif err != nil {<CR> return err<CR>}<Esc>kk",
-	{ desc = "Automatically place a if err = nil check in for Go" }
-)
-
 map({ "v" }, "<leader>psc", ":s/[a-z]\\@<=[A-Z]/\\_\\l\\0/g<CR>", { desc = "This converts camelCase to snake_case" })
 
 map({ "n", "v" }, "<leader>pcc", "<cmd>:Compile 13<CR>", { desc = "Runs compile command for compilation mode" })

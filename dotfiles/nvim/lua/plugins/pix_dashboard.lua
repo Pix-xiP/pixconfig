@@ -316,6 +316,7 @@ M.hyper_plug_opts = function()
 	return opts
 end
 
+-- TODO: redo my dashboard to take advantage of more of snacks.
 return {
 	"folke/snacks.nvim",
 
