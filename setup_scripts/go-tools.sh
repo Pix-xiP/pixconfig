@@ -10,7 +10,8 @@ go install golang.org/x/tools/cmd/deadcode@latest                     # find dea
 go install golang.org/x/tools/cmd/godoc@latest                        # Documentation
 go install golang.org/x/tools/gopls@latest                            # language server
 go install gotest.tools/gotestsum@latest                              # Testing
-go install mvdan.cc/gofumpt@latest                                    # stricter code formatting
+go install github.com/cweill/gotests/...
+go install mvdan.cc/gofumpt@latest # stricter code formatting
 
 # General tools
 go install github.com/Owloops/updo@latest         # check if something is online!

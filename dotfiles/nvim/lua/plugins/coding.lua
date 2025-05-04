@@ -51,4 +51,56 @@ return {
 			insert_leave = true,
 		},
 	},
+	{
+		"yanskun/gotests.nvim",
+		ft = "go",
+		config = function()
+			require("gotests").setup()
+		end,
+	},
+	{
+		"fredrikaverpil/godoc.nvim",
+		version = "*",
+		dependencies = {
+			{ "ibhagwan/fzf-lua" },
+			{
+				"nvim-treesitter/nvim-treesitter",
+				opts = {
+					ensure_installed = { "go" },
+				},
+			},
+		},
+		build = "go install github.com/lotusirous/gostdsym/stdsym@latest",
+		cmd = { "GoDoc" },
+		opts = {
+			picker = {
+				type = "fzf_lua",
+
+				fzf_lua = {
+					winopts = {
+						height = 0.8,
+						width = 0.8,
+						preview = {
+							vertical = "right:50%",
+							horizontal = "up:60%",
+							layout = "verdical",
+							title = "Go Docs",
+						},
+					},
+	       -- stylua: ignore
+				fzf_opts = {
+					["--layout"] = "reverse",
+					["--info"]   = "inline",
+					["--border"] = "rounded",
+				},
+					keymap = {
+						fzf = {
+							["ctrl-f"] = "preview-page-down",
+							["ctrl-b"] = "preview-page-up",
+						},
+					},
+				},
+			},
+		},
+	},
 }
