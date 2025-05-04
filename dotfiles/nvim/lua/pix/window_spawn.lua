@@ -55,14 +55,9 @@ function M:spawn_floating_window(message)
 	-- Create a new empty buffer
 	local buf = vim.api.nvim_create_buf(false, true)
 
-	-- Get the current window configuration
-	-- local win = vim.api.nvim_get_current_win()
-	-- local config = vim.api.nvim_win_get_config(win)
+	local cols = vim.api.nvim_get_option_value("columns", { scope = "local" })
 
-	local cols = vim.api.nvim_get_option("columns")
-	-- local lines_num = vim.api.nvim_get_option("lines")
-
-	-- Create the floating window
+	-- create the floating window
 	local opts = {
 		relative = "editor",
 		width = w,
@@ -73,7 +68,6 @@ function M:spawn_floating_window(message)
 		-- col = math.floor(500),
 		row = math.floor(2),
 		anchor = "NW",
-		-- style = "minimal",
 		border = "rounded",
 		title = "Pix Spawner",
 	}
@@ -85,14 +79,6 @@ function M:spawn_floating_window(message)
 	for _, line in pairs(message) do
 		table.insert(lines, line)
 	end
-	--
-	-- local ok, output = run_command("ls -lah")
-	-- if ok then
-	--   for line in output:gmatch("[^\n]+") do
-	--     print(line)
-	--     table.insert(lines, line)
-	--   end
-	-- end
 
 	vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
 end
