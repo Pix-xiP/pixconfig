@@ -1,0 +1,22 @@
+// Umbral Zellij Colours
+// Add file to `CONFIG_DIR/themes` as per this:
+// https://zellij.dev/documentation/themes#getting-zellij-to-pick-up-the-theme
+
+themes {
+  umbral {
+    fg      "#9771c1"
+    bg      "#151022"
+
+    // To ensure top and bottom bars are 'transparent', black
+    // should match the terminal background colour
+    black   "#0a0214" // to match: "#151022"
+    red     "#da3c69"
+    green   "#7644fa"
+    yellow  "#ffd369"
+    blue    "#6422d8"
+    magenta "#6c4dff"
+    cyan    "#3848f8"
+    white   "#9971c1"
+    orange  "#e9729d"
+  }
+}
