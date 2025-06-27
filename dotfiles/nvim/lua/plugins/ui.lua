@@ -146,4 +146,5 @@ return {
 			open_for_directories = false,
 		},
 	},
+	{ "echasnovski/mini.hipatterns", version = false },
 }

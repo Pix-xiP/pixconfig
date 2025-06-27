@@ -33,4 +33,18 @@ return {
 	-- quick fixes for mason 2.0 breaking changes in lazy
 	{ "mason-org/mason.nvim", version = "1.11.0" },
 	{ "mason-org/mason-lspconfig.nvim", version = "1.32.0" },
+
+	{
+		"supermaven-inc/supermaven-nvim",
+		config = function()
+			require("supermaven-nvim").setup({})
+			-- 	keymaps = {
+			-- 		accept_suggestion = "<Tab>",
+			-- 		clear_suggestion = "<C-]>",
+			-- 		accept_word = "<C-j>",
+			-- 	},
+			-- 	-- log_level = "off",
+			-- })
+		end,
+	},
 }
