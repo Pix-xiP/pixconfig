@@ -160,8 +160,8 @@ keybinds clear-defaults=true {
         bind "Alt o" { MoveTab "right"; }
     }
     shared_except "locked" "renametab" "renamepane" {
-        bind "Ctrl s" { SwitchToMode "locked"; }
         bind "Ctrl q" { Quit; }
+        bind "Ctrl s" { SwitchToMode "locked"; }
     }
     shared_except "locked" "entersearch" {
         bind "enter" { SwitchToMode "locked"; }
@@ -430,7 +430,9 @@ default_mode "locked"
 // Whether to show tips on startup
 // Default: true
 // 
-// show_startup_tips false
+show_startup_tips false
+
+pane_frames false
  
 // Whether to show release notes on first version run
 // Default: true
