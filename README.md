@@ -1,50 +1,35 @@
 # Pix Config!
 
-My various configuration files for all the fun tools I use!
+The trusty old dotfiles that makes my setup, mine.
 
-## What do you use?
-
-Checkout the Toolset.md file for a list of tools that I have found that I find useful, interesting novel or otherwise caught my attention! I update this from time to time as I find more cool things!
-
+Checkout my giant list of cool tools and software I've found: [necronomicon](https://github.com/pix-xip/necronomicon)
 If you have any suggestions of cool tools to checkout send them my way!
 
-TL;DR - 
+TL;DR Setup - 
 
 ### MacOS
 
-**Terminal**: Ghostty
-**Shell**: Fish
-**Editor**: Neovim
-**WM**: Yabai
-**Launcher**: Alfred
-**Bar**: Sketchybar
-**Notifications**: Native
-**Pager**: Bat
-**PKG Manager**: Homebrew // Nix
+- **Terminal**: Ghostty
+- **Shell**: Fish
+- **Editor**: Neovim
+- **WM**: Aerospace
+- **Launcher**: Alfred || Raycast
+- **Bar**: Sketchybar
+- **Notifications**: Native
+- **Pager**: Bat
+- **PKG Manager**: Homebrew // Nix
 
 ### Linux
 
-**Terminal**: Wezterm
-**Shell**: Fish
-**Editor**: Neovim
-**WM**: Hyprland
-**Launcher**: Rofi
-**Bar**: Waybar
-**Notifications**: Dunst
-**Pager**: Bat
-**PKG Manager**: yay
-
-### Nix WIP
-
-**Terminal**: Ghostty 
-**Shell**: Fish
-**Editor**: Neovim
-**WM**: Hyprland
-**Launcher**: Rofi
-**Bar**: Waybar
-**Notifications**: Dunst
-**Pager**: Bat
-**PKG Manager**: nix
+- **Terminal**: Ghostty 
+- **Shell**: Fish
+- **Editor**: Neovim
+- **WM**: Hyprland
+- **Launcher**: Rofi
+- **Bar**: Waybar
+- **Notifications**: Dunst
+- **Pager**: Bat
+- **PKG Manager**: yay
 
 #### TODOS:
 
