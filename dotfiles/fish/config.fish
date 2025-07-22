@@ -8,7 +8,6 @@ if status is-interactive
     contains /home/pix/AdeptusCustodes/Ultramar/bin $PATH; or set -ga PATH /home/pix/AdeptusCustodes/Ultramar/bin
     # contains /home/pix/go/bin $PATH; or set -ga PATH /home/pix/go/bin
     contains /home/pix/.cargo/bin $PATH; or set -ga PATH /home/pix/.cargo/bin
-    cod init %self fish | source
 end
 
 if test (uname) = Darwin
