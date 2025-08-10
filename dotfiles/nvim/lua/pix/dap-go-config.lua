@@ -1,0 +1,25 @@
+-- local dap, dapui = require("dap"), require("dapui")
+-- local dapgo = require("dap-go")
+--
+-- dapui.setup()
+-- dapgo.setup()
+-- dap.listeners.before.attach.dapui_config = function()
+-- 	dapui.open()
+-- end
+-- dap.listeners.before.launch.dapui_config = function()
+-- 	dapui.open()
+-- end
+--
+--
+--
+-- dap.continue()
+-- dap.step_over()
+-- dap.step_into()
+-- dap.step_out()
+-- dap.toggle_breakpoint()
+-- dap.set_breakpoint()
+-- dap.set_breakpoint(nil, nil, 'log message: ')
+-- dap.repl.open()
+-- dap.run_last()
+-- dapui.open()
+-- dapui.close()
