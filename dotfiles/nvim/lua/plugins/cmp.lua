@@ -6,7 +6,9 @@ return {
 	opts = {
 		completion = {
 			list = {
-				preselect = false,
+				selection = {
+					preselect = false,
+				},
 			},
 		},
 	},
