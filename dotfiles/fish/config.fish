@@ -76,6 +76,7 @@ set -gx C_INCLUDE_PATH "/usr/local/include:$C_INCLUDE_PATH"
 
 # Add a follow up localised bin
 contains "$HOME/.local/bin" $PATH; or set -ga PATH "$HOME/.local/bin"
+contains "$HOME/AdeptusCustodes/pix-bin" $PATH; or set -ga PATH "$HOME/AdeptusCustodes/pix-bin"
 
 # ===================
 # General environment set variables
