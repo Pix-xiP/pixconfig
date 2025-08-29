@@ -1,6 +1,27 @@
--- Setting UI elements!
+-- ui.lua - all the configuration for UI related things, colorschemes, statuslines, etc
 
 return {
+	{
+		"umbral",
+		name = "umbral",
+		dir = "~/AdeptusCustodes/Lunar/nvim_plugins/umbral.nvim/",
+		dev = true,
+		config = function()
+			vim.cmd.colorscheme("umbral")
+		end,
+	},
+	-- {
+	-- 	"pix-xip/umbral.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = function()
+	-- 		vim.cmd.colorscheme("umbral")
+	-- 	end,
+	-- },
+	-- {
+	-- 	"LazyVim/LazyVim",
+	-- 	opts = { colorscheme = "umbral" },
+	-- },
 	{
 		"brenoprata10/nvim-highlight-colors",
 		lazy = true,
@@ -62,27 +83,6 @@ return {
 			require("nvim-highlight-colors").turnOn()
 		end,
 	},
-	{
-		"umbral",
-		name = "umbral",
-		dir = "~/AdeptusCustodes/Lunar/nvim_plugins/umbral.nvim/",
-		dev = true,
-		config = function()
-			vim.cmd.colorscheme("umbral")
-		end,
-	},
-	-- {
-	-- 	"pix-xip/umbral.nvim",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	opts = function()
-	-- 		vim.cmd.colorscheme("umbral")
-	-- 	end,
-	-- },
-	-- {
-	-- 	"LazyVim/LazyVim",
-	-- 	opts = { colorscheme = "umbral" },
-	-- },
 	{
 		"nvim-lualine/lualine.nvim",
 		opts = {
@@ -147,4 +147,17 @@ return {
 		},
 	},
 	{ "echasnovski/mini.hipatterns", version = false },
+
+	-- filetype icons
+	{
+		"echasnovski/mini.icons",
+		opts = {
+			file = {
+				[".go-version"] = { glyph = "", hl = "MiniIconsBlue" },
+			},
+			filetype = {
+				gotmpl = { glyph = "󰟓", hl = "MiniIconsGrey" },
+			},
+		},
+	},
 }

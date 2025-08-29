@@ -1,4 +1,4 @@
--- A file containied plugins I want turned off.
+-- disabled.lua - A file containied plugins I want turned off.
 
 return {
 	{

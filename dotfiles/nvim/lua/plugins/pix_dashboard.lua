@@ -1,3 +1,4 @@
+-- TODO: merge this where it needs to go
 local M = {}
 --- Cmd: `img2braille -h 26 -w 64 -t 60 -c 30 ~/Pictures/misc/caco.png`
 M.caco_dark = [[

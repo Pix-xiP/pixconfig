@@ -1,3 +1,5 @@
+-- TODO: Sort this core file into its own groups.
+
 return {
 	-- Which key for multi menu
 	{

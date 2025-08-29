@@ -1,3 +1,4 @@
+-- pix.lua - all of my lua plugins
 local pad = require("pix.pixpad")
 
 return {
