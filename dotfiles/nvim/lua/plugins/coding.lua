@@ -3,7 +3,40 @@
 --   instead of using files for everything.
 
 local mason_conf = {
+	-- ◍ bash-language-server bashls
+	-- ◍ clangd
+	-- ◍ codelldb
+	-- ◍ delve
+	-- ◍ gofumpt
+	-- ◍ goimports
+	-- ◍ golangci-lint
+	-- ◍ golangci-lint-langserver golangci_lint_ls
+	-- ◍ golines
+	-- ◍ gomodifytags
+	-- ◍ gopls
+	-- ◍ hyprls
+	-- ◍ impl
+	-- ◍ json-lsp jsonls
+	-- ◍ lua-language-server lua_ls
+	-- ◍ markdown-toc
+	-- ◍ markdownlint-cli2
+	-- ◍ marksman
+	-- ◍ nil nil_ls
+	-- ◍ shellcheck
+	-- ◍ shfmt
+	-- ◍ sqlfluff
+	-- ◍ stylua
+	-- ◍ taplo
+	-- ◍ yaml-language-server yamlls
+	-- ◍ zls
+
 	{
+		"mason-org/mason-lspconfig.nvim",
+		-- opts = {},
+		dependencies = {
+			{ "mason-org/mason.nvim", opts = {} },
+			"neovim/nvim-lspconfig",
+		},
 		"mason-org/mason.nvim",
 		opts = {
 			ensure_installed = {
@@ -30,11 +63,65 @@ local mason_conf = {
 		},
 	},
 }
+
+local treesitter = {
+	"nvim-treesitter/nvim-treesitter",
+	opts = {
+		highlight = {
+			enable = true,
+		},
+		indent = {
+			enable = true,
+			disable = { "odin" },
+		},
+		matchup = {
+			enable = true,
+			enable_quotes = true,
+		},
+		incremental_selection = { enable = true },
+		textobjects = {
+			select = {
+				enable = true,
+				lookahead = true,
+				keymaps = {
+					["ak"] = { query = "@block.outer", desc = "around block" },
+					["ik"] = { query = "@block.inner", desc = "inside block" },
+					["ac"] = { query = "@class.outer", desc = "around class" },
+					["ic"] = { query = "@class.inner", desc = "inside class" },
+					["a?"] = { query = "@conditional.outer", desc = "around conditional" },
+					["i?"] = { query = "@conditional.inner", desc = "inside conditional" },
+					["af"] = { query = "@function.outer", desc = "around function " },
+					["if"] = { query = "@function.inner", desc = "inside function " },
+					["al"] = { query = "@loop.outer", desc = "around loop" },
+					["il"] = { query = "@loop.inner", desc = "inside loop" },
+					["aa"] = { query = "@parameter.outer", desc = "around argument" },
+					["ia"] = { query = "@parameter.inner", desc = "inside argument" },
+				},
+			},
+		},
+		ensure_installed = {
+			"bash",
+			"c",
+			"fish",
+			"go",
+			"gomod",
+			"gowork",
+			"gosum",
+			"ini",
+			"lua",
+			"markdown",
+			"nix",
+			"tmux",
+			"zig",
+		},
+	},
+}
+
 local lspconfig = {
 	{
 		"neovim/nvim-lspconfig",
 		opts = {
-			inlay_hints = { enabled = false },
+			inlay_hints = { enabled = true },
 			servers = {
 				bashls = {
 					cmd = { "bash-language-server", "start" },
@@ -198,6 +285,7 @@ local lspconfig = {
 
 return {
 	mason_conf,
+	treesitter,
 	lspconfig,
 	{
 		"echasnovski/mini.surround",
@@ -346,58 +434,6 @@ return {
 		},
 	},
 	{
-		"nvim-treesitter/nvim-treesitter",
-		opts = {
-			highlight = {
-				enable = true,
-			},
-			indent = {
-				enable = true,
-				disable = { "odin" },
-			},
-			matchup = {
-				enable = true,
-				enable_quotes = true,
-			},
-			incremental_selection = { enable = true },
-			textobjects = {
-				select = {
-					enable = true,
-					lookahead = true,
-					keymaps = {
-						["ak"] = { query = "@block.outer", desc = "around block" },
-						["ik"] = { query = "@block.inner", desc = "inside block" },
-						["ac"] = { query = "@class.outer", desc = "around class" },
-						["ic"] = { query = "@class.inner", desc = "inside class" },
-						["a?"] = { query = "@conditional.outer", desc = "around conditional" },
-						["i?"] = { query = "@conditional.inner", desc = "inside conditional" },
-						["af"] = { query = "@function.outer", desc = "around function " },
-						["if"] = { query = "@function.inner", desc = "inside function " },
-						["al"] = { query = "@loop.outer", desc = "around loop" },
-						["il"] = { query = "@loop.inner", desc = "inside loop" },
-						["aa"] = { query = "@parameter.outer", desc = "around argument" },
-						["ia"] = { query = "@parameter.inner", desc = "inside argument" },
-					},
-				},
-			},
-			ensure_installed = {
-				"bash",
-				"c",
-				"fish",
-				"go",
-				"gomod",
-				"gowork",
-				"gosum",
-				"ini",
-				"lua",
-				"markdown",
-				"nix",
-				"tmux",
-				"zig",
-			},
-		},
-	},
-	{
 		"luckasRanarison/tree-sitter-hyprlang",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 	},
@@ -466,7 +502,6 @@ return {
 				-- 	clear_suggestion = "<C-]>",
 				-- },
 			})
-
 			-- 	keymaps = {
 			-- 		accept_suggestion = "<Tab>",
 			-- 		clear_suggestion = "<C-]>",
