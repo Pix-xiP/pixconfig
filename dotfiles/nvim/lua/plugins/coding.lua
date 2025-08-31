@@ -1,303 +1,190 @@
--- coding.lua - all the configuration for coding related things, lsps, highlighting, linting, etc
---   TODO: turn parts of the config into seperate tables for easier management and oragnisation
---   instead of using files for everything.
-
-local mason_conf = {
-	-- ◍ bash-language-server bashls
-	-- ◍ clangd
-	-- ◍ codelldb
-	-- ◍ delve
-	-- ◍ gofumpt
-	-- ◍ goimports
-	-- ◍ golangci-lint
-	-- ◍ golangci-lint-langserver golangci_lint_ls
-	-- ◍ golines
-	-- ◍ gomodifytags
-	-- ◍ gopls
-	-- ◍ hyprls
-	-- ◍ impl
-	-- ◍ json-lsp jsonls
-	-- ◍ lua-language-server lua_ls
-	-- ◍ markdown-toc
-	-- ◍ markdownlint-cli2
-	-- ◍ marksman
-	-- ◍ nil nil_ls
-	-- ◍ shellcheck
-	-- ◍ shfmt
-	-- ◍ sqlfluff
-	-- ◍ stylua
-	-- ◍ taplo
-	-- ◍ yaml-language-server yamlls
-	-- ◍ zls
-
-	{
-		"mason-org/mason-lspconfig.nvim",
-		-- opts = {},
-		dependencies = {
-			{ "mason-org/mason.nvim", opts = {} },
-			"neovim/nvim-lspconfig",
-		},
-		"mason-org/mason.nvim",
-		opts = {
-			ensure_installed = {
-				"bash-language-server",
-				"clangd",
-				"delve",
-				"gofumpt",
-				"goimports",
-				"golangci-lint",
-				"golangci-lint-langserver",
-				"golines",
-				"gomodifytags",
-				"gopls",
-				"impl",
-				"json-lsp",
-				"lua-language-server",
-				"shellcheck",
-				"shfmt",
-				"stylua",
-				"taplo",
-				"yaml-language-server",
-				"zls",
-			},
-		},
-	},
-}
-
-local treesitter = {
-	"nvim-treesitter/nvim-treesitter",
-	opts = {
-		highlight = {
-			enable = true,
-		},
-		indent = {
-			enable = true,
-			disable = { "odin" },
-		},
-		matchup = {
-			enable = true,
-			enable_quotes = true,
-		},
-		incremental_selection = { enable = true },
-		textobjects = {
-			select = {
-				enable = true,
-				lookahead = true,
-				keymaps = {
-					["ak"] = { query = "@block.outer", desc = "around block" },
-					["ik"] = { query = "@block.inner", desc = "inside block" },
-					["ac"] = { query = "@class.outer", desc = "around class" },
-					["ic"] = { query = "@class.inner", desc = "inside class" },
-					["a?"] = { query = "@conditional.outer", desc = "around conditional" },
-					["i?"] = { query = "@conditional.inner", desc = "inside conditional" },
-					["af"] = { query = "@function.outer", desc = "around function " },
-					["if"] = { query = "@function.inner", desc = "inside function " },
-					["al"] = { query = "@loop.outer", desc = "around loop" },
-					["il"] = { query = "@loop.inner", desc = "inside loop" },
-					["aa"] = { query = "@parameter.outer", desc = "around argument" },
-					["ia"] = { query = "@parameter.inner", desc = "inside argument" },
-				},
-			},
-		},
-		ensure_installed = {
-			"bash",
-			"c",
-			"fish",
-			"go",
-			"gomod",
-			"gowork",
-			"gosum",
-			"ini",
-			"lua",
-			"markdown",
-			"nix",
-			"tmux",
-			"zig",
-		},
-	},
-}
-
-local lspconfig = {
-	{
-		"neovim/nvim-lspconfig",
-		opts = {
-			inlay_hints = { enabled = true },
-			servers = {
-				bashls = {
-					cmd = { "bash-language-server", "start" },
-					filetypes = { "sh" },
-					settings = {
-						bashIde = {
-							globPattern = "*@(.sh|.inc|.bash|.command)",
-						},
-					},
-				},
-				clangd = {
-					cmd = { "clangd" },
-					filetypes = { "c", "h", "cpp", "hpp" },
-				},
-				gopls = {
-					cmd = { "gopls" },
-					filetypes = { "go", "gomod", "gowork", "gotmpl" },
-					rootPatterns = { "go.work", "go.mod", ".git" },
-					gofumpt = true, -- Enable gofumpt formatting
-					settings = {
-						analyses = {
-							unusedparams = true,
-							nilness = true,
-							unusedwrite = true,
-							useany = true,
-							-- staticcheck = true,
-							-- st1003 = false,
-						},
-						codelenses = {
-							gc_details = true,
-							generate = true,
-							regenerate_cgo = true,
-							run_govulncheck = true,
-							test = true,
-							tidy = true,
-							upgrade_dependency = true,
-							vendor = true,
-						},
-						hints = {
-							assignVariableTypes = true,
-							compositeLiteralFields = true,
-							compositeLiteralTypes = true,
-							constantValues = true,
-							functionTypeParameters = true,
-							parameterNames = true,
-							rangeVariableTypes = true,
-						},
-						usePlaceholders = true,
-						completeUnimported = true,
-						staticcheck = true,
-						directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules", "-.nvim" },
-						semanticTokens = true,
-					},
-					setup = function(_, _)
-						-- workaround for gopls not supporting semanticTokensProvider
-						vim.lsp.on_attach(function(client, _)
-							if not client.server_capabilities.semanticTokensProvider then
-								local semantic = client.config.capabilities.textDocument.semanticTokens
-								client.server_capabilities.semanticTokensProvider = {
-									full = true,
-									legend = {
-										tokenTypes = semantic.tokenTypes,
-										tokenModifiers = semantic.tokenModifiers,
-									},
-									range = true,
-								}
-							end
-						end, "gopls")
-						-- end workaround
-					end,
-				},
-				hyprls = {
-					cmd = { "hyprls", "--stdio" },
-					filetypes = { "hyprlang" },
-				},
-				lua_ls = {
-					settings = {
-						-- Remove the missing 'vim' from neovim config files :>
-						Lua = {
-							diagnostics = {
-								globals = { "vim" },
-							},
-						},
-					},
-				},
-				taplo = {
-					cmd = { "taplo", "lsp", "stdio" },
-					filetypes = { "toml" },
-					root_dir = function(fname)
-						return vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1])
-					end,
-				},
-				-- ols = {
-				--   cmd = { "ols" },
-				--   filetypes = { "odin" },
-				--   rootPatterns = { "ols.json", ".git" },
-				--   init_options = {
-				--     enable_format = true,
-				--     enable_hover = true,
-				--     enable_document_symbols = true,
-				--     -- enable_semantic_tokens = true, -- Don't want highlighting
-				--     enable_inlay_hints = true,
-				--     enable_snippets = false,
-				--     enable_references = true,
-				--     enable_rename = true,
-				--     enable_label_details = true,
-				--   },
-				-- },
-				-- omnisharp = {
-				--   cmd = { "omnisharp" },
-				--   enable_editorconfig_support = true,
-				--   enable_ms_build_load_projects_on_demand = false,
-				--   -- Enables support for roslyn analyzers, code fixes and rulesets.
-				--   enable_roslyn_analyzers = true,
-				--   organize_imports_on_format = true,
-				--   enable_import_completion = true,
-				--   sdk_include_prereleases = true,
-				--   analyze_open_documents_only = false,
-				--   filetypes = { "cs", "vb" },
-				--   init_options = {},
-				--   rootPatterns = { "*.sln", "*.csproj", "omnisharp.json", "function.json" },
-				--   -- For go-to-definition functionality and decompliatino you require omnisharp-extended.
-				--   handlers = {
-				--     ["textDocument/definition"] = function(...)
-				--       return require("omnisharp_extended").handler(...)
-				--     end,
-				--   },
-				--   keys = {
-				--     {
-				--       "gd",
-				--       function()
-				--         require("omnisharp_extended").telescope_lsp_definitions()
-				--       end,
-				--       desc = "Goto Definition",
-				--     },
-				--   },
-				-- },
-				-- sourcekit = {
-				--   cmd = { "sourcekit-lsp" },
-				--   filetypes = { "swift" },
-				--   rootPatterns = { "compile_commands.json", "Package.swift", ".git" },
-				--   opts = {
-				--     capabilities = {
-				--       workspace = {
-				--         didChangeWatchedFiles = {
-				--           dynamicRegistration = true,
-				--         },
-				--       },
-				--     },
-				--   },
-				-- },
-				zls = {
-					cmd = { "zls" },
-					filetypes = { "zig" },
-					single_file_support = true,
-				},
-			},
-		},
-	},
-}
+-- coding.lua - All the config for coding
+-- TODO: split up language specifics into their own file for ease of management.
 
 return {
-	mason_conf,
-	treesitter,
-	lspconfig,
+
+	-- completion
+	{
+		"saghen/blink.cmp",
+		version = not vim.g.lazyvim_blink_main and "*",
+		build = vim.g.lazyvim_blink_main and "cargo build --release",
+		opts_extend = {
+			"sources.completion.enabled_providers",
+			"sources.compat",
+			"sources.default",
+		},
+		event = "InsertEnter",
+		opts = {
+
+			appearance = {
+				use_nvim_cmp_as_default = false,
+				nerd_font_variant = "mono",
+			},
+
+			completion = {
+				accept = {
+					-- experiental autobrackets support
+					auto_brackets = { enabled = true },
+				},
+				list = {
+					selection = {
+						preselect = false,
+					},
+				},
+				menu = {
+					draw = {
+						treesitter = { "lsp" },
+					},
+				},
+				documentation = {
+					auto_show = true,
+					auto_show_delay_ms = 200,
+				},
+				ghost_text = {
+					enabled = vim.g.ai_cmp,
+				},
+			},
+
+			sources = {
+				compat = {}, -- set by the part under supermaven for when thats on
+				default = { "lsp", "path", "snippets", "buffer" },
+			},
+
+			cmdline = { enabled = false },
+
+			keymap = {
+				preset = "enter",
+				["C-y"] = { "select_and_accept" },
+			},
+		},
+
+		---@param opts blink.cmp.Config | { sources: { compat: string[] } }
+		config = function(_, opts)
+			-- setup compat sources
+			local enabled = opts.sources.default
+			for _, source in ipairs(opts.sources.compat or {}) do
+				opts.sources.providers[source] = vim.tbl_deep_extend(
+					"force",
+					{ name = source, module = "blink.compat.source" },
+					opts.sources.providers[source] or {}
+				)
+				if type(enabled) == "table" and not vim.tbl_contains(enabled, source) then
+					table.insert(enabled, source)
+				end
+			end
+
+			-- add ai_accept to <Tab> key
+			if not opts.keymap["<Tab>"] then
+				if opts.keymap.preset == "super-tab" then -- super-tab
+					opts.kyemap["<Tab>"] = {
+						require("blink.cmp.keymap.presets")["super-tab"]["<Tab>"][1],
+						LazyVim.cmp.map({ "snippet_forward", "ai_accept" }), -- TODO: figure out how to map to own keymaps.
+						"fallback",
+					}
+				else -- other presets
+					opts.keymap["<Tab>"] = {
+						LazyVim.cmp.map({ "snipper_forward", "ai_accept" }),
+						"fallback",
+					}
+				end
+			end
+
+			-- unset custom prop to pass blink.cmp validation
+			opts.sources.compat = nil
+
+			-- check if we need to override symbol kinds
+			for _, provider in pairs(opts.sources.providers or {}) do
+				---@cast provider blink.cmp.SourceProviderConfig|{kind?:string}
+				if provider.kind then
+					local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
+					local kind_idx = #CompletionItemKind + 1
+
+					CompletionItemKind[kind_idx] = provider.kind
+					---@diagnostic disable-next-line: no-unknown
+					CompletionItemKind[provider.kind] = kind_idx
+
+					---@type fun(ctx: blink.cmp.Context, items: blink.cmp.CompletionItem[]): blink.cmp.CompletionItem[]
+					local transform_items = provider.transform_items
+					---@param ctx blink.cmp.Context
+					---@param items blink.cmp.CompletionItem[]
+					provider.transform_items = function(ctx, items)
+						items = transform_items and transform_items(ctx, items) or items
+						for _, item in ipairs(items) do
+							item.kind = kind_idx or item.kind
+							item.kind_icon = LazyVim.config.icons.kinds[item.kind_name] or item.kind_icon or nil
+						end
+						return items
+					end
+
+					-- unset custom prop to pass blink.cmp validation
+					provider.kind = nil
+				end
+			end
+
+			require("blink.cmp").setup(opts)
+		end,
+	},
+
+	-- add lazydev to blink completion
+	{
+		"saghen/blink.cmp",
+		opts = {
+			sources = {
+				default = { "lazydev" },
+				providers = {
+					lazydev = {
+						name = "LazyDev",
+						module = "lazydev.integrations.blink",
+						score_offset = 100,
+					},
+				},
+			},
+		},
+	},
+
+	-- add icons to blink
+	{
+		"saghen/blink.cmp",
+		opts = function(_, opts)
+			opts.appearance = opts.appearance or {}
+			opts.appearance.kind_icons = vim.tbl_extend("force", opts.appearance.kind_icons or {}, LazyVim.config.icons.kinds)
+		end,
+	},
+
+	-- auto pairs
+	{
+		"echasnovski/mini.pairs",
+		event = "VeryLazy",
+		opts = {
+			modes = { insert = true, command = true, terminal = false },
+			-- skip autopair when next character is one of these
+			skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
+			-- skip autopair when the cursor is inside these treesitter nodes
+			skip_ts = { "string" },
+			-- skip autopair when next character is closing pair
+			-- and there are more closing pairs than opening pairs
+			skip_unbalanced = true,
+			-- better deal with markdown code blocks
+			markdown = true,
+		},
+	},
+
+	-- comments!
+	{
+		"folke/ts-comments.nvim",
+		event = "VeryLazy",
+		opts = {},
+	},
+
+	-- quick add and delete surroundings
 	{
 		"echasnovski/mini.surround",
-		version = "*",
 		opts = {
 			-- Add custom surroundings to be used on top of builtin ones. For more
 			-- information with examples, see `:h MiniSurround.config`.
 			custom_surroundings = nil,
-
 			-- Duration (in ms) of highlight when calling `MiniSurround.highlight()`
 			highlight_duration = 500,
-
 			mappings = {
 				add = "gsa", -- Add surrounding in Normal and Visual modes
 				delete = "gsd", -- Delete surrounding
@@ -309,18 +196,284 @@ return {
 			},
 		},
 	},
+
+	-- better text-objects
+	{
+		"echasnovski/mini.ai",
+		event = "VeryLazy",
+		opts = function()
+			local ai = require("mini.ai")
+			return {
+				n_lines = 500,
+				custom_textobjects = {
+					o = ai.gen_spec.treesitter({ -- code block
+						a = { "@block.outer", "@conditional.outer", "@loop.outer" },
+						i = { "@block.inner", "@conditional.inner", "@loop.inner" },
+					}),
+					f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
+					c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }), -- class
+					t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" }, -- tags
+					d = { "%f[%d]%d+" }, -- digits
+					e = { -- Word with case
+						{ "%u[%l%d]+%f[^%l%d]", "%f[%S][%l%d]+%f[^%l%d]", "%f[%P][%l%d]+%f[^%l%d]", "^[%l%d]+%f[^%l%d]" },
+						"^().*()$",
+					},
+					g = LazyVim.mini.ai_buffer, -- buffer
+					u = ai.gen_spec.function_call(), -- u for "Usage"
+					U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
+				},
+			}
+		end,
+	},
+
+	-- lazydev for plugin dev
+	{
+		"folke/lazydev.nvim",
+		ft = "lua",
+		cmd = "LazyDev",
+		opts = {
+			library = {
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				{ path = "LazyVim", words = { "LazyVim" } },
+				{ path = "snacks.nvim", words = { "Snacks" } },
+				{ path = "lazy.nvim", words = { "LazyVim" } },
+			},
+		},
+	},
+
+	vim.g.ai_cmp and {
+		"saghen/blink.cmp",
+		optional = true,
+		dependencies = { "supermaven-nvim", "saghen/blink.compat" },
+		opts = {
+			sources = {
+				compat = { "supermaven" },
+				providers = {
+					supermaven = {
+						kind = "Supermaven",
+						score_offset = 100,
+						async = true,
+					},
+				},
+			},
+		},
+	} or nil,
+
+	-- ai improved autocomplete
+	{
+		"supermaven-inc/supermaven-nvim",
+		event = "InsertEnter",
+		cmd = {
+			"SupermavenUseFree",
+			"SupermavenUsePro",
+		},
+		config = function()
+			require("supermaven-nvim").setup({})
+		end,
+		opts = {
+			keymaps = {
+				accept_suggestion = nil,
+			},
+			disable_inline_completion = vim.g.ai_cmp,
+			ignore_filetypes = { "bigfile", "snacks_input", "snacks_input" },
+		},
+	},
+
+	{
+		"folke/noice.nvim",
+		optional = true,
+		opts = function(_, opts)
+			vim.list_extend(opts.routes, {
+				{
+					filter = {
+						event = "msg_show",
+						any = {
+							{ find = "Starting Supermaven" },
+							{ find = "Supermaven Free Tier" },
+						},
+					},
+				},
+			})
+		end,
+	},
+
+	-- json extras
+	{
+		"b0o/SchemaStore",
+		lazy = true,
+		version = false,
+	},
+
+	-- refactoring in place from Primeagen
+	{
+		"ThePrimeagen/refactoring.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		keys = {
+			{ "<leader>r", "", desc = "+refactor", mode = { "n", "v" } },
+			{
+				"<leader>rs",
+				function()
+					require("refactoring").select_refactor()
+				end,
+				-- pick,
+				mode = "v",
+				desc = "Refactor",
+			},
+			{
+				"<leader>ri",
+				function()
+					require("refactoring").refactor("Inline Variable")
+				end,
+				mode = { "n", "v" },
+				desc = "Inline Variable",
+			},
+			{
+				"<leader>rb",
+				function()
+					require("refactoring").refactor("Extract Block")
+				end,
+				desc = "Extract Block",
+			},
+			{
+				"<leader>rf",
+				function()
+					require("refactoring").refactor("Extract Block To File")
+				end,
+				desc = "Extract Block To File",
+			},
+			{
+				"<leader>rP",
+				function()
+					require("refactoring").debug.printf({ below = false })
+				end,
+				desc = "Debug Print",
+			},
+			{
+				"<leader>rp",
+				function()
+					require("refactoring").debug.print_var({ normal = true })
+				end,
+				desc = "Debug Print Variable",
+			},
+			{
+				"<leader>rc",
+				function()
+					require("refactoring").debug.cleanup({})
+				end,
+				desc = "Debug Cleanup",
+			},
+			{
+				"<leader>rf",
+				function()
+					require("refactoring").refactor("Extract Function")
+				end,
+				mode = "v",
+				desc = "Extract Function",
+			},
+			{
+				"<leader>rF",
+				function()
+					require("refactoring").refactor("Extract Function To File")
+				end,
+				mode = "v",
+				desc = "Extract Function To File",
+			},
+			{
+				"<leader>rx",
+				function()
+					require("refactoring").refactor("Extract Variable")
+				end,
+				mode = "v",
+				desc = "Extract Variable",
+			},
+			{
+				"<leader>rp",
+				function()
+					require("refactoring").debug.print_var()
+				end,
+				mode = "v",
+				desc = "Debug Print Variable",
+			},
+		},
+		opts = {
+			prompt_func_return_type = {
+				go = false,
+				java = false,
+				cpp = false,
+				c = false,
+				h = false,
+				hpp = false,
+				cxx = false,
+			},
+			prompt_func_param_type = {
+				go = false,
+				java = false,
+				cpp = false,
+				c = false,
+				h = false,
+				hpp = false,
+				cxx = false,
+			},
+			printf_statements = {},
+			print_var_statements = {},
+			show_success_message = true, -- shows a message with information about the refactor on success
+			-- i.e. [Refactor] Inlined 3 variable occurrences
+		},
+	},
+
+	-- nvim debug adapter
+	{
+		"mfussenegger/nvim-dap",
+		dependencies = {
+			{
+				"mason-org/mason.nvim",
+				opts = { ensure_installed = { "delve" } },
+			},
+			{
+				"leoluz/nvim-dap-go",
+				opts = {},
+			},
+		},
+	},
+
+	-- neo test for various languages
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			-- required for neotest.
+			{ "nvim-neotest/nvim-nio" },
+			-- zig
+			{ "lawrence-laz/neotest-zig" },
+			-- go
+			{ "fredrikaverpil/neotest-golang" },
+		},
+		opts = {
+			adapters = {
+				["neotest-zig"] = {},
+				["neotest-golang"] = {
+					-- Here we can set options for neotest-golang, e.g.
+					-- go_test_args = { "-v", "-race", "-count=1", "-timeout=60s" },
+					dap_go_enabled = true,
+				},
+			},
+		},
+	},
+
+	-- compile mode builtin to neovim
 	{
 		"ej-shafran/compile-mode.nvim",
-		-- tag = "v5.*",
+		lazy = true,
 		branch = "latest",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			-- if you want to enable coloring of ANSI escape codes in compilation output, add:
 			{ "m00qek/baleia.nvim", tag = "v1.3.0" },
 		},
 		config = function()
 			vim.g.compile_mode = {
-				-- to add ANSI escape code support, add:
 				baleia_setup = true,
 				default_command = "",
 				error_threshold = require("compile-mode").level.INFO,
@@ -328,6 +481,8 @@ return {
 			}
 		end,
 	},
+
+	-- markdown table mode for auto formatting
 	{
 		"Kicamon/markdown-table-mode.nvim",
 		opts = {
@@ -335,6 +490,8 @@ return {
 			insert_leave = true,
 		},
 	},
+
+	-- go autotests
 	{
 		"yanskun/gotests.nvim",
 		ft = "go",
@@ -342,6 +499,8 @@ return {
 			require("gotests").setup()
 		end,
 	},
+
+	-- godoc
 	{
 		"fredrikaverpil/godoc.nvim",
 		version = "*",
@@ -387,272 +546,4 @@ return {
 			},
 		},
 	},
-	--  --  To make omnisharp not trash
-	--  { "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
-	{
-		"stevearc/conform.nvim",
-		dependencies = { "neovim/nvim-lspconfig" },
-		lazy = true,
-		cmd = "ConformInfo",
-		keys = {
-			-- Leader, Code, Format
-			{
-				"<leader>cF",
-				mode = { "n", "v" },
-				function()
-					require("conform").format({ formatters = { "injected" } })
-				end,
-				desc = "Format injected languages from lsp",
-			},
-		},
-		opts = {
-			default_format_opts = {
-				timeout_ms = 5000,
-				async = false,
-				quiet = false,
-			},
-			formatters_by_ft = {
-				lua = { "stylua" },
-				go = { "goimports", "gofumpt" },
-				fish = { "fish_indent" },
-				sh = { "shfmt" },
-				c = { "clang-format" },
-				zig = { "zigfmt" },
-				-- toml = { "taplo" },
-				-- odin = { "odinfmt" },
-				-- swift = { "swift_format" },
-			},
-			formatters = {
-				injected = { options = { ignore_errors = true } },
-				-- -- Formatting for Swift since nothing built in x(
-				-- swift_format = {
-				--   command = "swift-format",
-				--   args = { "--configuration", "/Users/pix/.config/formatting/swift-config.json" },
-				--   stdin = true,
-				-- },
-			},
-		},
-	},
-	{
-		"luckasRanarison/tree-sitter-hyprlang",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-	},
-	-- fix for supremaven and blink fighting for text.
-	-- will not preselect the first option unless you manually select
-	-- while still allowing for preview, enter selection and inesrting as normal
-	{
-		"Saghen/blink.cmp",
-		opts = {
-			completion = {
-				list = {
-					selection = {
-						preselect = false,
-					},
-				},
-			},
-		},
-	},
-	{
-		"stevearc/oil.nvim",
-		---@module 'oil'
-		---@type oil.SetupOpts
-		opts = {},
-		-- Optional dependencies
-		dependencies = { { "echasnovski/mini.icons", opts = {} } },
-		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
-		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-		lazy = false,
-	},
-	{
-		"nvim-neotest/neotest",
-		optional = true,
-		dependencies = {
-			"fredrikaverpil/neotest-golang",
-		},
-		opts = {
-			adapters = {
-				["neotest-golang"] = {
-					-- Here we can set options for neotest-golang, e.g.
-					-- go_test_args = { "-v", "-race", "-count=1", "-timeout=60s" },
-					dap_go_enabled = true, -- requires leoluz/nvim-dap-go
-				},
-			},
-		},
-	},
-	{
-		"mfussenegger/nvim-dap",
-		optional = true,
-		dependencies = {
-			{
-				"mason-org/mason.nvim",
-				opts = { ensure_installed = { "delve" } },
-			},
-			{
-				"leoluz/nvim-dap-go",
-				opts = {},
-			},
-		},
-	},
-	{
-		"supermaven-inc/supermaven-nvim",
-		config = function()
-			require("supermaven-nvim").setup({
-				-- keymaps = {
-				-- 	accept_suggestion = "<S-Tab>",
-				-- 	clear_suggestion = "<C-]>",
-				-- },
-			})
-			-- 	keymaps = {
-			-- 		accept_suggestion = "<Tab>",
-			-- 		clear_suggestion = "<C-]>",
-			-- 		accept_word = "<C-j>",
-			-- 	},
-			-- 	-- log_level = "off",
-			-- })
-		end,
-	},
-
-	-- TODO: can I make this work with conform or nvim-lint?
-	-- {
-	-- 	"nvimtools/none-ls.nvim",
-	-- 	opts = function(_, opts)
-	-- 		local nls = require("null-ls")
-	-- 		opts.sources = vim.list_extend(opts.sources or {}, {
-	-- 			-- this relies on goimports, gofumpt, gomodifytags and impl installed from mason.
-	-- 			nls.builtins.code_actions.gomodifytags,
-	-- 			nls.builtins.code_actions.impl,
-	-- 			nls.builtins.formatting.goimports,
-	-- 			nls.builtins.formatting.gofumpt,
-	-- 		})
-	-- 	end,
-	-- },
 }
-
--- {
--- 	"mfussenegger/nvim-lint",
--- 	opts = {
--- 		events = { "BufWritePost", "BufReadPost", "InsertLeave" },
--- 		-- linters = {
--- 		-- 	golangcilint = {
--- 		-- 		exe = "golangcilint",
--- 		-- 		cmd = "golangci-lint --config " .. os.getenv("HOME") .. "/config/formatting/golangci.yml",
--- 		-- 		args = {},
--- 		-- 		stdin = true,
--- 		-- 		to_stdin = true,
--- 		-- 		format = "line",
--- 		-- 		offset = 0,
--- 		-- 		check_exit_code = 1,
--- 		-- 		--env = {},
--- 		-- 		--on_output = function(output, exit_code)
--- 		-- 		--    print(output)
--- 		-- 		--end,
--- 		-- 	},
--- 		-- },
--- 	},
--- },
-
--- if true then
--- 	return {}
--- end
-
--- Use <tab> for completion and snippets (supertab)
--- first: disable default <tab> and <s-tab> behavior in LuaSnip
-
--- local function border(hl_name)
--- 	return {
--- 		{ "╭", hl_name },
--- 		{ "─", hl_name },
--- 		{ "╮", hl_name },
--- 		{ "│", hl_name },
--- 		{ "╯", hl_name },
--- 		{ "─", hl_name },
--- 		{ "╰", hl_name },
--- 		{ "│", hl_name },
--- 	}
--- end
-
--- return {
--- {
--- 	"L3MON4D3/LuaSnip",
--- 	keys = function()
--- 		return {}
--- 	end,
--- },
--- then: setup supertab in cmp
--- {
--- 	"hrsh7th/nvim-cmp",
--- 	dependencies = {
--- 		"hrsh7th/cmp-emoji",
--- 	},
---
--- 	--    ---@param opts cmp.ConfigSchema
--- 	opts = function(_, opts)
--- 		local has_words_before = function()
--- 			unpack = unpack or table.unpack
--- 			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
--- 			return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
--- 		end
---
--- 		local luasnip = require("luasnip")
--- 		local cmp = require("cmp")
---
--- 		opts.mapping = vim.tbl_extend("force", opts.mapping, {
--- 			["<Tab>"] = cmp.mapping(function(fallback)
--- 				if cmp.visible() then
--- 					cmp.select_next_item()
--- 				-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
--- 				-- this way you will only jump inside the snippet region
--- 				elseif luasnip.expand_or_locally_jumpable() then
--- 					luasnip.expand_or_jump()
--- 				-- Not sure why, but need to take this out for it to work..
--- 				elseif has_words_before() then
--- 					cmp.complete()
--- 				else
--- 					fallback()
--- 				end
--- 			end, { "i", "s" }),
--- 			["<S-Tab>"] = cmp.mapping(function(fallback)
--- 				if cmp.visible() then
--- 					cmp.select_prev_item()
--- 				elseif luasnip.jumpable(-1) then
--- 					luasnip.jump(-1)
--- 				else
--- 					fallback()
--- 				end
--- 			end, { "i", "s" }),
--- 		})
---
--- 		-- opts.window = {
--- 		--   completion = cmp.config.window.bordered(),
--- 		--   documentation = cmp.config.window.bordered(),
--- 		-- }
---
--- 		opts.window = {
--- 			completion = {
--- 				side_padding = 1,
--- 				-- winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
--- 				scrollbar = false,
--- 				border = border("CmpBorder"),
--- 			},
--- 			documentation = {
--- 				border = border("CmpDocBorder"),
--- 				winhighlight = "Normal:CmpDoc",
--- 			},
--- 		}
---
--- 		opts.sorting = {
--- 			comparators = {
--- 				cmp.config.compare.offset,
--- 				cmp.config.compare.exact,
--- 				cmp.config.compare.sort_text,
--- 				cmp.config.compare.score,
--- 				-- require("cmp-under-comparator").under,
--- 				cmp.config.compare.recently_used,
--- 				cmp.config.compare.kind,
--- 				cmp.config.compare.length,
--- 				cmp.config.compare.order,
--- 			},
--- 		}
--- 	end,
--- },
--- }

@@ -1,8 +1,21 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
+-- boostrap and setup lazy and the rest of the config.
 require("config.lazy")
+require("config.options")
+require("config.autocmds")
+require("config.keymaps")
 
--- local utils = require("pix.utils")
---
--- local foo = require("lazy").plugins()
---
--- print(utils.tprint(foo, 2))
+-- pretty print dump of objects with treesitter highlighting
+_G.dd = function(...)
+	Snacks.debug.inspect(...)
+end
+_G.bt = function()
+	Snacks.debug.backtrace()
+end
+vim.print = _G.dd
+
+-- append imports to the lazy.lua file inside of config
+-- to allow for more folders to be included
+-- presently its:
+-- { "plugins", "pix" }
+
+-- also append lazyvim.plugins in front to build off of this for the time being.
