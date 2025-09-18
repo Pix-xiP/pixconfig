@@ -27,4 +27,8 @@ return {
 		optional = true,
 		enabled = false,
 	},
+	{
+		"echasnovski/mini.pairs",
+		enabled = false,
+	},
 }

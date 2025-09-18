@@ -6,13 +6,13 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- diagnostic keymaps?
-map('n', "<leader>q", vim.diagnostic.setloclist, { desc = "open disagnostic [Q]uickfix list" })
+map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "open disagnostic [Q]uickfix list" })
 
 -- move between windows with hjkl
-map('n', "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-map('n', "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-map('n', "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-map('n', "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- resize window using arrow keys
 map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
@@ -36,11 +36,11 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsea
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 -- TLDR: Make n always forard and N always backward.
 map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search result" })
-map("x", "n", "'Nn'[v:searchforward]", 			{ expr = true, desc = "Next search result" })
-map("o", "n", "'Nn'[v:searchforward]", 			{ expr = true, desc = "Next search result" })
+map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
 map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev search result" })
-map("x", "N", "'nN'[v:searchforward]", 			{ expr = true, desc = "Prev search result" })
-map("o", "N", "'nN'[v:searchforward]", 			{ expr = true, desc = "Prev search result" })
+map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
 -- better indentation with g
 map("v", "<", "<gv")
@@ -55,7 +55,12 @@ map({ "n" }, "N", "Nzzzv", { desc = "Previous search result" })
 
 -- replace work under cursor
 map({ "n" }, "<leader>xr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "Replace current word" })
-map({ "v" }, "<leader>xr", ":s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",  { desc = "replace current word in scope" })
+map(
+	{ "v" },
+	"<leader>xr",
+	":s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
+	{ desc = "replace current word in scope" }
+)
 
 -- convert camelCase to snake_case
 map({ "v" }, "<leader>psc", ":s/[a-z]\\@<=[A-Z]/\\_\\l\\0/g<CR>", { desc = "This converts camelCase to snake_case" })

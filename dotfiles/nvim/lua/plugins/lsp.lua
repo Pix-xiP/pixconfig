@@ -140,7 +140,7 @@ return {
 								checkThirdParty = false,
 							},
 							codeLens = {
-								enable = true,
+								enable = false,
 							},
 							completion = {
 								callSnipped = "Replace",
