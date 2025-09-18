@@ -13,7 +13,7 @@ return {
 			"sources.compat",
 			"sources.default",
 		},
-		event = "InsertEnter",
+		event = { "InsertEnter", "CmdlineEnter" },
 		opts = {
 
 			appearance = {
@@ -153,7 +153,7 @@ return {
 
 	-- -- auto pairs
 	-- {
-	-- 	"echasnovski/mini.pairs",
+	-- 	"nvim-mini/mini.pairs",
 	-- 	event = "VeryLazy",
 	-- 	opts = {
 	-- 		modes = { insert = true, command = true, terminal = false },
@@ -178,7 +178,7 @@ return {
 
 	-- quick add and delete surroundings
 	{
-		"echasnovski/mini.surround",
+		"nvim-mini/mini.surround",
 		opts = {
 			-- Add custom surroundings to be used on top of builtin ones. For more
 			-- information with examples, see `:h MiniSurround.config`.
@@ -194,12 +194,16 @@ return {
 				replace = "gsr", -- Replace surrounding
 				update_n_lines = "gsn", -- Update `n_lines`
 			},
+
+			keys = {
+				{ "gz", "", desc = "+surround" },
+			},
 		},
 	},
 
 	-- better text-objects
 	{
-		"echasnovski/mini.ai",
+		"nvim-mini/mini.ai",
 		event = "VeryLazy",
 		opts = function()
 			local ai = require("mini.ai")

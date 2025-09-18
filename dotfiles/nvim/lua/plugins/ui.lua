@@ -426,7 +426,7 @@ return {
 
 	-- icons!
 	{
-		"echasnovski/mini.icons",
+		"nvim-mini/mini.icons",
 		lazy = true,
 		opts = {
 			file = {
@@ -508,7 +508,7 @@ return {
 	},
 
 	-- highlight patterns
-	{ "echasnovski/mini.hipatterns", version = false },
+	{ "nvim-mini/mini.hipatterns", version = false },
 
 	-- highlight hex codes and colours in neovim!
 	{
