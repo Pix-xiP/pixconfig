@@ -1,13 +1,72 @@
+function fish_prompt -d "Write out the prompt"
+
+    # This shows up as USER@HOST /home/user/ >, with the directory colored
+    # $USER and $hostname are set by fish, so you can just use them
+    # instead of using `whoami` and `hostname`
+    printf '%s@%s %s%s%s > ' $USER $hostname \
+        (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
+
+end
+
 # IF ITS GONNA BE USED NOT JUST INVOKED
 if status is-interactive
     # Commands to run hn interactive sessions can go here
-    # fish_config theme choose PinkNPurplePix
-    fish_config theme choose Umbral
+    # fish_config theme choose Umbral ## my theme <3
+    #
+    # <C-r> but better!
     atuin init fish --disable-up-arrow | source
+
+    # zoxide big jumper!
     zoxide init --cmd z fish | source
-    contains /home/pix/AdeptusCustodes/Ultramar/bin $PATH; or set -ga PATH /home/pix/AdeptusCustodes/Ultramar/bin
-    # contains /home/pix/go/bin $PATH; or set -ga PATH /home/pix/go/bin
-    contains /home/pix/.cargo/bin $PATH; or set -ga PATH /home/pix/.cargo/bin
+
+    # setup starship instead of tide for a trail
+
+    set fish_greeting
+
+    starship init fish | source
+    if test -f ~/.local/state/quickshell/user/generated/terminal/sequences.txt
+        cat ~/.local/state/quickshell/user/generated/terminal/sequences.txt
+    end
+
+    # ===================
+    # Alias Hours
+    # ===================
+    alias q 'qs -c ii'
+    alias cat="bat --style header --style snip --style changes --style header"
+    alias zerotier-cli="sudo zerotier-cli"
+    alias df="duf"
+    alias du="dust"
+    alias diff="icdiff"
+    alias vim="nvim"
+    alias docker="sudo docker"
+    alias gg="git pull"
+    alias n="nvim"
+    alias tree="eza -g --icons --sort=type --tree"
+    alias pq="pueue"
+    alias ls="eza -g --icons --sort=type"
+    alias go-get-all="go get -u -v all"
+    alias fm="fastmod"
+    alias scratch="nvim /tmp/scratchie"
+
+    # ===================
+    # Abbr Hours
+    # ===================
+    abbr nb goread
+    abbr rsync "rsync -avP"
+    abbr fish-config "nvim ~/.config/fish/config.fish"
+    abbr ssh-config "nvim ~/.ssh/config"
+    abbr nvim-config "nvim ~/.config/nvim/init.lua"
+    abbr ghost-config "nvim ~/.config/ghostty/config"
+    abbr re-src "source ~/.config/fish/config.fish"
+    abbr rg "rg --color=auto"
+    abbr rgc "rg --color=always --column --line-number --smart-case --no-heading"
+    abbr fping "ping -c 20 -i.2"
+    abbr ll "eza -g --icons --sort=type -lah"
+    abbr zt zerotier-cli
+    abbr lg lazygit
+    abbr trip "sudo trip"
+    abbr mkdir "mkdir -p"
+
 end
 
 if test (uname) = Darwin
@@ -30,44 +89,6 @@ end
 set -gx EDITOR nvim
 set -gx VISUAL $EDITOR
 
-# ===================
-# Alias Hours
-# ===================
-alias cat="bat --style header --style snip --style changes --style header"
-alias zerotier-cli="sudo zerotier-cli"
-alias df="duf"
-alias du="dust"
-alias diff="icdiff"
-alias vim="nvim"
-alias docker="sudo docker"
-alias gg="git pull"
-alias n="nvim"
-alias tree="eza -g --icons --sort=type --tree"
-alias pq="pueue"
-alias ls="eza -g --icons --sort=type"
-alias go-get-all="go get -u -v all"
-alias fm="fastmod"
-alias scratch="nvim /tmp/scratchie"
-
-# ===================
-# Abbr Hours
-# ===================
-abbr nb goread
-abbr rsync "rsync -avP"
-abbr fish-config "nvim ~/.config/fish/config.fish"
-abbr ssh-config "nvim ~/.ssh/config"
-abbr nvim-config "nvim ~/.config/nvim/init.lua"
-abbr ghost-config "nvim ~/.config/ghostty/config"
-abbr re-src "source ~/.config/fish/config.fish"
-abbr rg "rg --color=auto"
-abbr rgc "rg --color=always --column --line-number --smart-case --no-heading"
-abbr fping "ping -c 20 -i.2"
-abbr ll "eza -g --icons --sort=type -lah"
-abbr zt zerotier-cli
-abbr lg lazygit
-abbr trip "sudo trip"
-abbr mkdir "mkdir -p"
-
 # ====================
 # EXPORTS - (Not unique to either platform)
 # ====================
@@ -77,6 +98,8 @@ set -gx C_INCLUDE_PATH "/usr/local/include:$C_INCLUDE_PATH"
 # Add a follow up localised bin
 contains "$HOME/.local/bin" $PATH; or set -ga PATH "$HOME/.local/bin"
 contains "$HOME/AdeptusCustodes/pix-bin" $PATH; or set -ga PATH "$HOME/AdeptusCustodes/pix-bin"
+contains /home/pix/AdeptusCustodes/Ultramar/bin $PATH; or set -ga PATH /home/pix/AdeptusCustodes/Ultramar/bin
+contains /home/pix/.cargo/bin $PATH; or set -ga PATH /home/pix/.cargo/bin
 
 # ===================
 # General environment set variables
