@@ -18,6 +18,7 @@ alias valgrind="sudo -E valgrind"
 alias kb-config="nvim ~/.config/hypr/keybinds.conf"
 
 function toggle-loopback --description "Toggle microphone loopback to speakers"
+
     # Check if PIX_PA_LOOP_ENABLED is set and equals "true"
     if set -q PIX_PA_LOOP_ENABLED[1]; and test "$PIX_PA_LOOP_ENABLED" = true
         # Unload module and set to false
@@ -28,13 +29,14 @@ function toggle-loopback --description "Toggle microphone loopback to speakers"
         pactl load-module module-loopback
         set -g PIX_PA_LOOP_ENABLED true
     end
+
 end
 
 function toggle-keyboard --description "Toggles keyboard between colemak && qwerty"
     # Define the configuration directory and files
-    set target_link ~/.config/hypr/input.conf
-    set colemak_source ~/.config/hypr/colemak.input.conf
-    set qwerty_source ~/.config/hypr/qwerty.input.conf
+    set target_link ~/.config/hypr/pix.hypr/input.conf
+    set colemak_source ~/.config/hypr/pix.hypr/colemak.input.conf
+    set qwerty_source ~/.config/hypr/pix.hypr/qwerty.input.conf
 
     # Check if the symlink exists
     if test -L $target_link
@@ -43,12 +45,12 @@ function toggle-keyboard --description "Toggles keyboard between colemak && qwer
         # echo "colemak: $colemak_source"
         # echo "qwerty: $qwerty_source"
 
-        # Check current target and switch accordingly
-        if test "$current_target" = "$colemak_source"
+        if test (basename $current_target) = (basename $colemak_source)
             echo "Switching from Colemak to QWERTY..."
             rm $target_link
             ln -s $qwerty_source $target_link
-        else if test "$current_target" = "$qwerty_source"
+
+        else if test (basename $current_target) = (basename $qwerty_source)
             echo "Switching from QWERTY to Colemak..."
             rm $target_link
             ln -s $colemak_source $target_link
@@ -63,4 +65,5 @@ function toggle-keyboard --description "Toggles keyboard between colemak && qwer
     echo "Current layout: " (readlink $target_link)
 
     hyprctl reload
+
 end

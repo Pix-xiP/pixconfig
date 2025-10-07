@@ -4,7 +4,7 @@
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
-[mgr]
+[manager]
 ratio          = [ 1, 3, 4 ]
 sort_by        = "alphabetical"
 sort_sensitive = false
@@ -15,7 +15,7 @@ show_hidden    = false
 show_symlink   = true
 scrolloff      = 5
 
-[[mgr.prepend_keymaps]]
+[[manager.prepend_keymaps]]
   on = [ "c", "m" ]
   run = "plugin chmod"
   desc = "chmod on selected files"

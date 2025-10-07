@@ -1,7 +1,6 @@
 **secrets**
 
 dotfiles/fish/completions
-dotfiles/fish/conf.d
 dotfiles/fish/fish_variables
 dotfiles/fish/fishd.tmp*
 dotfiles/fish/functions/_*
@@ -25,5 +24,6 @@ dotfiles/ghostty/config
 dotfiles/fish/work.fish
 dotfiles/ghostty/keybinds
 dotfiles/yazi/plugins/preview.yazi
-!dotfiles/fish/conf.d/pix_autoexpand.fish
 dotfiles/zellij/config.kdl.bak
+
+!dotfiles/fish/conf.d/pix_autoexpand.fish
