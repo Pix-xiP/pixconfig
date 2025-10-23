@@ -240,6 +240,7 @@ return {
 					cmd = { "zls" },
 					filetypes = { "zig" },
 					single_file_support = true,
+					enable_build_on_save = true,
 				},
 			},
 		},
