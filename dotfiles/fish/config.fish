@@ -24,8 +24,8 @@ end
 # Hook the rest of my stuff :>
 set pixfish "$HOME/.config/fish/pix.fish"
 if test -f $pixfish
-    echo "Loading pix.fish..."
     source $pixfish
-    echo "Success!"
+else
+    echo "Unable to load $pixfish"
 end
 # End hook
