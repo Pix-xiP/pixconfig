@@ -1,0 +1,7 @@
+[Match]
+MACAddress= <MAC ADDR OF IFACE GO HERE>
+
+[Link]
+NamePolicy=kernel database onboard slot path
+MACAddressPolicy=persistent
+WakeOnLan=magic
