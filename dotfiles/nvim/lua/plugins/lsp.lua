@@ -34,14 +34,7 @@ return {
 
 			inlay_hints = { enabled = false }, -- turn off the inlay hints.
 			codelens = { enabled = true },
-			capabilities = {
-				workspace = {
-					fileOperations = {
-						didRename = true,
-						willRename = true,
-					},
-				},
-			},
+
 			-- options for vim.lsp.buf.format
 			-- when using LazyVim 'bufnr' and 'filter' are handled by LazyVim formatter
 			format = {
@@ -51,6 +44,14 @@ return {
 
 			-- lsp servers to setup!
 			servers = {
+				capabilities = {
+					workspace = {
+						fileOperations = {
+							didRename = true,
+							willRename = true,
+						},
+					},
+				},
 
 				-- bash
 				bashls = {
@@ -251,6 +252,7 @@ return {
 		"neovim/nvim-lspconfig",
 		setup = {
 			gopls = function(_, opts)
+				_ = opts
 				-- workaround for gopls not supporting semanticTokensProvider
 				-- https://github.com/golang/go/issues/54531#issuecomment-1464982242
 				LazyVim.lsp.on_attach(function(client, _)
