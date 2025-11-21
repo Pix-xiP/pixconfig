@@ -1,5 +1,8 @@
 # This file is to be loaded when inside a Darwin based system.
 # Contains setups, functions and aliases specific to this environment.
+if status is-interactive
+    /opt/homebrew/bin/brew shellenv | source
+end
 
 # Secrets not in github <3
 set SECRETS_PATH /Users/pix/.config/fish/secrets.fish
@@ -24,9 +27,8 @@ set -gx GOROOT /opt/homebrew/opt/go/libexec
 
 # Add to the general path
 contains /Users/pix/AdeptusCustodes/Ultramar/bin $PATH; or set -ga PATH /Users/pix/AdeptusCustodes/Ultramar/bin
-contains /opt/homebrew $PATH; or set -ga PATH /opt/homebrew
-contains /opt/homebrew/bin $PATH; or set -ga PATH /opt/homebrew/bin
-contains /opt/homebrew/opt/gnu-getopt/bin $PATH; or set -ga PATH /opt/homebrew/opt/gnu-getopt/bin
+# contains /opt/homebrew $PATH; or set -ga PATH /opt/homebrew
+# contains /opt/homebrew/bin $PATH; or set -ga PATH /opt/homebrew/bin
 
 # Cargo Bin
 contains /Users/pix/.cargo/bin $PATH; or set -ga PATH /Users/pix/.cargo/bin
@@ -54,16 +56,16 @@ function zt_restart --description "Restarts the ZeroTier daemon for when you're 
     echo "Done!"
 end
 
-function brew --description "Wraps brew and sends a sketchybar trigger and checks for yabai"
-    command brew $argv
-    sketchybar --trigger brew_update
-end
+# function brew --description "Wraps brew and sends a sketchybar trigger and checks for yabai"
+#     command brew $argv
+#     sketchybar --trigger brew_update
+# end
 
-function wez_update --description "Update nightly version of Wezterm"
-    echo "Running update"
-    command brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest
-    echo Updated
-end
+# function wez_update --description "Update nightly version of Wezterm"
+#     echo "Running update"
+#     command brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest
+#     echo Updated
+# end
 
 function _brew_update_yabai --description "Does the extra steps needed for yabai update"
     yabai --stop-service

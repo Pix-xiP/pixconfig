@@ -1,7 +1,7 @@
 # IF ITS GONNA BE USED NOT JUST INVOKED
 if status is-interactive
     # Commands to run hn interactive sessions can go here
-    # fish_config theme choose Umbral ## my theme <3
+    fish_config theme choose Umbral ## my theme <3
 
     # <C-r> but better!
     atuin init fish --disable-up-arrow | source
