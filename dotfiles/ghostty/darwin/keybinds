@@ -39,3 +39,7 @@ keybind = global:ctrl+alt+u=toggle_quick_terminal
 
 keybind = ctrl+alt+j=jump_to_prompt:-1
 keybind = ctrl+alt+k=jump_to_prompt:1
+
+# Fake CMD+F
+keybind = super+f=write_screen_file:open
+

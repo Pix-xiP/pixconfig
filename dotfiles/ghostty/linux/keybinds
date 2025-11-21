@@ -32,3 +32,6 @@ keybind = ctrl+alt+shift+m=equalize_splits
 
 ## Pane Close
 keybind = ctrl+alt+w=close_surface
+
+# fake CTRL+F
+keybind = ctrl+f=write_screen_file:open

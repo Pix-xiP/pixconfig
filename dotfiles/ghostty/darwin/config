@@ -21,7 +21,7 @@ unfocused-split-opacity = 1
 
 ## FONT:
 font-family = "Maple Mono"
-font-feature = cv01
+font-feature = cv01:uc
 #font-feature = cv02
 font-feature = ss01
 font-feature = ss02
@@ -93,3 +93,4 @@ macos-option-as-alt = true
 shell-integration = fish
 shell-integration-features = cursor,sudo,no-title
 
+command = /opt/homebrew/bin/fish --login --interactive
