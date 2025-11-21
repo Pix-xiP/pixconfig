@@ -27,3 +27,5 @@ dotfiles/yazi/plugins/preview.yazi
 dotfiles/zellij/config.kdl.bak
 
 !dotfiles/fish/conf.d/pix_autoexpand.fish
+!dotfiles/fish/functions/_pix_expand_bang.fish
+!dotfiles/fish/functions/_pix_expand_dots.fish
