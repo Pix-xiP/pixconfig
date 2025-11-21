@@ -34,7 +34,14 @@ return {
 
 			inlay_hints = { enabled = false }, -- turn off the inlay hints.
 			codelens = { enabled = true },
-
+			capabilities = {
+				workspace = {
+					fileOperations = {
+						didRename = true,
+						willRename = true,
+					},
+				},
+			},
 			-- options for vim.lsp.buf.format
 			-- when using LazyVim 'bufnr' and 'filter' are handled by LazyVim formatter
 			format = {
@@ -171,6 +178,13 @@ return {
 					root_dir = require("lspconfig.util").root_pattern("*.toml", ".git"),
 				},
 
+				-- Terraform Language Server
+				terraformls = {
+					cmd = { "terraform-lsp", "serve" },
+					filetypes = { "tf", "tfvars" },
+					root_dir = require("lspconfig.util").root_pattern(".terraform", ".git"),
+				},
+
 				-- -- Odin Language Server
 				-- ols = {
 				--   cmd = { "ols" },
@@ -235,6 +249,12 @@ return {
 				--     },
 				--   },
 				-- },
+
+				-- Yaml language server
+				yamlls = {
+					cmd = { "yaml-language-server", "--stdio" },
+					filetypes = { "yaml" },
+				},
 
 				-- zig language server
 				zls = {
