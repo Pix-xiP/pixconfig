@@ -4,6 +4,8 @@ if status is-interactive
     /opt/homebrew/bin/brew shellenv | source
 end
 
+functions --erase q
+
 # Secrets not in github <3
 set SECRETS_PATH /Users/pix/.config/fish/secrets.fish
 if test -e "$SECRETS_PATH"

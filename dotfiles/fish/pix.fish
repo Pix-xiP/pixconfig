@@ -1,3 +1,18 @@
+#
+# Use this copy paste in the 'config.fish' to include the rest of my stuff
+# allows for easy testing of other stuff from people! :D
+#
+# # Hook the rest of my stuff :>
+# set pixfish "$HOME/.config/fish/pix.fish"
+# if test -f $pixfish
+#     source $pixfish
+# else
+#     echo "Unable to load $pixfish"
+# end
+# End hook
+#
+#
+#
 # IF ITS GONNA BE USED NOT JUST INVOKED
 if status is-interactive
     # Commands to run hn interactive sessions can go here
@@ -15,7 +30,6 @@ end
 # ===================
 # Alias Hours
 # ===================
-alias q 'qs -c ii'
 alias cat="bat --style header --style snip --style changes --style header"
 alias zerotier-cli="sudo zerotier-cli"
 alias df="duf"

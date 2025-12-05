@@ -17,6 +17,10 @@ alias ip='ip -c'
 alias valgrind="sudo -E valgrind"
 alias kb-config="nvim ~/.config/hypr/keybinds.conf"
 
+# remove the likely preset one.
+functions --erase q
+alias q 'qs -c ii'
+
 function toggle-loopback --description "Toggle microphone loopback to speakers"
 
     # Check if PIX_PA_LOOP_ENABLED is set and equals "true"
