@@ -21,6 +21,9 @@ alias kb-config="nvim ~/.config/hypr/keybinds.conf"
 functions --erase q
 alias q 'qs -c ii'
 
+contains "$HOME/.local/bin" $PATH; or set -ga PATH "$HOME/.local/bin"
+contains "$HOME/.local/share/gem/ruby/3.4.0/bin" $PATH; or set -ga PATH "$HOME/.local/share/gem/ruby/3.4.0/bin"
+
 function toggle-loopback --description "Toggle microphone loopback to speakers"
 
     # Check if PIX_PA_LOOP_ENABLED is set and equals "true"
