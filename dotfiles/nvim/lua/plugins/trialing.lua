@@ -12,4 +12,11 @@ return {
 			})
 		end,
 	},
+
+	-- VSCde style Diff view?
+	{
+		"esmuellert/vscode-diff.nvim",
+		dependencies = { "MunifTanjim/nui.nvim" },
+		cmd = "CodeDiff",
+	},
 }
