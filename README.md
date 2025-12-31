@@ -2,7 +2,7 @@
 
 The trusty old dotfiles that makes my setup, mine.
 
-Checkout my giant list of cool tools and software I've found: [necronomicon](https://github.com/pix-xip/necronomicon)
+#### Checkout my giant list of cool tools and software I've found: [necronomicon](https://github.com/pix-xip/necronomicon)
 
   *If you have any suggestions of cool tools to checkout send them my way!*
 
