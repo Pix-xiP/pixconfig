@@ -20,6 +20,8 @@ The trusty old dotfiles that makes my setup, mine.
 - **Pager**: Bat
 - **PKG Manager**: Homebrew
 
+<img width="3440" height="1440" alt="Image" src="https://github.com/user-attachments/assets/88ffb253-2577-4160-a04a-8edd959535d9" />
+
 ### Linux
 
 - **Terminal**: Ghostty
