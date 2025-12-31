@@ -1,4 +1,4 @@
-# Pix Config!
+# Pix Config
 
 The trusty old dotfiles that makes my setup, mine.
 
@@ -15,23 +15,23 @@ The trusty old dotfiles that makes my setup, mine.
 - **Editor**: Neovim
 - **WM**: Aerospace
 - **Launcher**: Alfred || Raycast
-- **Bar**: Sketchybar
+- **Bar**: Sketchybar || none
 - **Notifications**: Native
 - **Pager**: Bat
-- **PKG Manager**: Homebrew // Nix
+- **PKG Manager**: Homebrew
 
 ### Linux
 
-- **Terminal**: Ghostty 
+- **Terminal**: Ghostty
 - **Shell**: Fish
 - **Editor**: Neovim
 - **WM**: Hyprland
-- **Launcher**: Rofi
-- **Bar**: Waybar
+- **Launcher**: Quickshell
+- **Bar**: Quickshell
 - **Notifications**: Dunst
 - **Pager**: Bat
 - **PKG Manager**: yay
 
-#### TODOS:
+#### TODOS
 
 Add some screenshots :>
