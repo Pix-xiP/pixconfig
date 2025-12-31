@@ -42,7 +42,6 @@ alias n="nvim"
 alias tree="eza -g --icons --sort=type --tree"
 alias pq="pueue"
 alias ls="eza -g --icons --sort=type"
-alias go-get-all="go get -u -v all"
 alias fm="fastmod"
 alias scratch="nvim /tmp/scratchie"
 

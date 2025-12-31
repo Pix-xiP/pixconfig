@@ -12,11 +12,6 @@ if test -e "$SECRETS_PATH"
     source "$SECRETS_PATH"
 end
 
-# Nix Specific 
-if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
-    source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
-end
-
 set -gx DOCKER_DEFAULT_PLATFORM linux/amd64
 set -gx GRAVEYARD "/Users/pix/.local/graveyard"
 set -gx ODIN_ROOT /Users/pix/AdeptusCustodes/Fenris/Odin
