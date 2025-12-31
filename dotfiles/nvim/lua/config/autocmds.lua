@@ -2,6 +2,7 @@ local ft = vim.filetype
 
 ft.add({ pattern = { [".*/hyprland%.conf"] = "hyprlang" } })
 ft.add({ pattern = { ["*.modulemap"] = "modulemap" } })
+ft.add({ pattern = { ["^Brewfile$"] = "ruby" } })
 
 vim.api.nvim_create_augroup("RpyFileSettings", { clear = true })
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
