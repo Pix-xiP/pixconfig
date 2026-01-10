@@ -67,11 +67,11 @@ style = "auto"
 # inline_height = 0
 
 ## Invert the UI - put the search bar at the top , Default to `false`
-invert = false 
+invert = false
 
 ## enable or disable showing a preview of the selected command
 ## useful when the command is longer than the terminal width and is cut off
-show_preview = true 
+show_preview = true
 
 ## what to do when the escape key is pressed when searching
 ## possible values: return-original, return-query
@@ -168,7 +168,6 @@ common_subcommands = [
   "docker",
   "make",
   "./bootstrap",
-
   "apt",
   "cargo",
   "composer",
@@ -186,20 +185,13 @@ common_subcommands = [
   "port",
   "systemctl",
   "tmux",
-  "yarn",
 ]
 
 ## Set commands that should be totally stripped and ignored from stats
 common_prefix = ["sudo"]
 
 ## Set commands that will be completely ignored from stats
-ignored_commands = [
-  "eza",
-  "exit",
-  "ls",
-  "z",
-  "cd",
-]
+ignored_commands = ["eza", "exit", "ls", "z", "cd"]
 
 [keys]
 # Defaults to true. If disabled, using the up/down key won't exit the TUI when scrolled past the first/last entry.
