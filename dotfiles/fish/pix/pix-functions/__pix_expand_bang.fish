@@ -1,4 +1,4 @@
-function _pix_expand_bang
+function __pix_expand_bang
     if commandline --search-field >/dev/null
         commandline --search-field --insert '!'
     else if string match --quiet -- '!' "$(commandline --current-token)"

@@ -1,4 +1,3 @@
-#
 # Use this copy paste in the 'config.fish' to include the rest of my stuff
 # allows for easy testing of other stuff from people! :D
 #
@@ -11,26 +10,39 @@
 # end
 # End hook
 
-# Include additions from Pix.
-set -a fish_function_path (path resolve $__fish_config_dir/pix/pix-functions)
-set -a fish_complete_path (path resolve $__fish_config_dir/pix/pix-completions)
-for conf in (path resolve $__fish_config_dir/pix/pix-conf.d/*.fish)
-    set base (basename $conf) # for debugging whats actually being sourced
-    echo "Loading $base"
+# ===================
+# Hooks and Autoloading
+# ===================
+
+set -l pix_dir $__fish_config_dir/pix
+
+functions --erase q
+
+# add functions and completions 
+set -a fish_function_path (path resolve $pix_dir/pix-functions)
+set -a fish_complete_path (path resolve $pix_dir/pix-completions)
+path filter -f $pix_dir/pix-conf.d/*.fish | while read -l conf
+    # set base (basename $conf) # for debugging whats actually being sourced
+    # echo "Loading $base"
     source $conf
 end
 
-# IF ITS GONNA BE USED NOT JUST INVOKED
+# # Include additions from Pix.
+# set -a fish_function_path (path resolve $__fish_config_dir/pix/pix-functions)
+# set -a fish_complete_path (path resolve $__fish_config_dir/pix/pix-completions)
+# for conf in (path resolve $__fish_config_dir/pix/pix-conf.d/*.fish)
+#     # set base (basename $conf) # for debugging whats actually being sourced
+#     # echo "Loading $base"
+#     source $conf
+# end
+
+# ===================
+# Interactive Blocks
+# ===================
 if status is-interactive
-    # Commands to run hn interactive sessions can go here
     fish_config theme choose Umbral ## my theme <3
-
-    # <C-r> but better!
-    atuin init fish --disable-up-arrow | source
-
-    # zoxide big jumper!
-    zoxide init --cmd z fish | source
-
+    type -q atuin; and atuin init fish --disable-up-arrow | source
+    type -q zoxide; and zoxide init --cmd z fish | source
     # TODO: Create my own starship version? Write loaders for different stuff to improve it?
 end
 
@@ -71,57 +83,44 @@ abbr lg lazygit
 abbr trip "sudo trip"
 abbr mkdir "mkdir -p"
 
-if test (uname) = Darwin
-    set -l os_specific (path resolve $__fish_config_dir/pix/darwin.fish)
-    if test -e $os_specific
-        source $os_specific
-    end
-else if test (uname) = Linux
-    set -l os_specific (path resolve $__fish_config_dir/pix/linux.fish)
-    if test -e $os_specific
-        source $os_specific
-    end
-end
-set -l secrets_path (path resolve $__fish_config_dir/pix/secrets.fish)
-if test -e $secrets_path
-    source "$secrets_path"
+# ===================
+# OS Specific Blocks && Secrets
+# ===================
+
+switch (uname)
+    case Darwin
+        set -l os_file $pix_dir/darwin.fish
+        test -f $os_file; and source $os_file
+        set -a fish_function_path (path resolve $pix_dir/pix-functions/linux)
+    case Linux
+        set -l os_file $pix_dir/linux.fish
+        test -f $os_file; and source $os_file
+        set -a fish_function_path (path resolve $pix_dir/pix-functions/darwin)
 end
 
+test -f $pix_dir/secrets.fish; and source $pix_dir/secrets.fish
+
 # ===================
-# Set / Export Hours 
+# Env and Paths
 # ===================
 set -gx EDITOR nvim
 set -gx VISUAL $EDITOR
-
-# ====================
-# EXPORTS - (Not unique to either platform)
-# ====================
-# Set X for export :: Set G for global
 set -gx C_INCLUDE_PATH "/usr/local/include:$C_INCLUDE_PATH"
 
-# Add a follow up localised bin
-contains "$HOME/.local/bin" $PATH; or set -ga PATH "$HOME/.local/bin"
-contains "$HOME/AdeptusCustodes/pix-bin" $PATH; or set -ga PATH "$HOME/AdeptusCustodes/pix-bin"
-contains "$HOME/AdeptusCustodes/Ultramar/bin" $PATH; or set -ga PATH "$HOME/AdeptusCustodes/Ultramar/bin"
-contains "$HOME/.cargo/bin" $PATH; or set -ga PATH "$HOME/.cargo/bin"
+# # Add a follow up localised bin
+# contains "$HOME/.local/bin" $PATH; or set -ga PATH "$HOME/.local/bin"
+# contains "$HOME/AdeptusCustodes/pix-bin" $PATH; or set -ga PATH "$HOME/AdeptusCustodes/pix-bin"
+# contains "$HOME/AdeptusCustodes/Ultramar/bin" $PATH; or set -ga PATH "$HOME/AdeptusCustodes/Ultramar/bin"
+# contains "$HOME/.cargo/bin" $PATH; or set -ga PATH "$HOME/.cargo/bin"
+# TODO: validate this doesn't just kepe adding
+fish_add_path -a "$HOME/.local/bin" \
+    "$HOME/AdeptusCustodes/pix-bin" \
+    "$HOME/AdeptusCustodes/Ultramar/bin" \
+    "$HOME/.cargo/bin"
 
 # ===================
 # General environment set variables
 # ===================
-set fzf_preview_dir_cmd eza --all --color=always
-
-# ===================
-# FUNCTIONS  (that aren't in their own fish files)
-# ===================
-function xtar --argument filename
-    tar -I pixz -cvf $filename.tar.xz $filename
-end
-
-# Quick backup!
-function qbackup --argument filename --description "Makes a very quick in place backup of a file or directory"
-    cp -vr $filename $filename.bak
-end
-
 set -Ux FZF_DEFAULT_OPTS '--color=fg:#908caa,hl:#ea9a97 
                           --color=border:#44415a,header:#3e8fb0,gutter:#232136
                           --color=spinner:#f6c177,info:#9ccfd8,separator:#44415a
@@ -130,12 +129,8 @@ set -Ux FZF_DEFAULT_OPTS '--color=fg:#908caa,hl:#ea9a97
                           --preview-window=wrap 
                           --marker="=>" 
                           --bind "shift-up:preview-up,shift-down:preview-down"'
+set fzf_preview_dir_cmd "eza --all --color=always"
 
-# Ez cat SSH pub key
-function get_pub_key --description "Quickly cat out public file"
-    /bin/cat "$KEY_PATH"
-end
-
-function sync_folder --description "Syncs a folder with a remote server" -a FOLDER REMOTE REMOTE_PATH
-    rsync -azuvP $FOLDER $REMOTE:$REMOTE_PATH
+function qbackup --argument filename --description "Makes a very quick in place backup of a file or directory"
+    cp -vr $filename $filename.bak
 end

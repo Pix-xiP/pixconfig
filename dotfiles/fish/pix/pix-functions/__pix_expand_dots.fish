@@ -1,4 +1,4 @@
-function _pix_expand_dots
+function __pix_expand_dots
     if commandline --search-field >/dev/null
         commandline --search-field --insert '.'
     else if string match --quiet --regex -- '^(\.\./)*\.\.$' "$(commandline --current-token)"
