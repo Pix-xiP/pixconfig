@@ -23,9 +23,5 @@ end
 
 # Hook the rest of my stuff :>
 set -l pixfish (path resolve $__fish_config_dir/pix/pix.fish)
-if test -f $pixfish
-    source $pixfish
-else
-    echo "Unable to load pix config at: '$pixfish'"
-end
+test -f $pixfish; and source $pixfish; or echo "Unable to load pix config at: '$pixfish'"
 # End hook
