@@ -3,16 +3,23 @@
 # allows for easy testing of other stuff from people! :D
 #
 # # Hook the rest of my stuff :>
-# set pixfish "$HOME/.config/fish/pix.fish"
+# set pixfish "$HOME/.config/fish/pix/pix.fish"
 # if test -f $pixfish
 #     source $pixfish
 # else
 #     echo "Unable to load $pixfish"
 # end
 # End hook
-#
-#
-#
+
+# Include additions from Pix.
+set -a fish_function_path (path resolve $__fish_config_dir/pix/pix-functions)
+set -a fish_complete_path (path resolve $__fish_config_dir/pix/pix-completions)
+for conf in (path resolve $__fish_config_dir/pix/pix-conf.d/*.fish)
+    set base (basename $conf) # for debugging whats actually being sourced
+    echo "Loading $base"
+    source $conf
+end
+
 # IF ITS GONNA BE USED NOT JUST INVOKED
 if status is-interactive
     # Commands to run hn interactive sessions can go here
@@ -65,17 +72,19 @@ abbr trip "sudo trip"
 abbr mkdir "mkdir -p"
 
 if test (uname) = Darwin
-    if test -e "/Users/pix/.config/fish/darwin.fish"
-        source "/Users/pix/.config/fish/darwin.fish"
+    set -l os_specific (path resolve $__fish_config_dir/pix/darwin.fish)
+    if test -e $os_specific
+        source $os_specific
     end
 else if test (uname) = Linux
-    if test -e "/home/pix/.config/fish/linux.fish"
-        source "/home/pix/.config/fish/linux.fish"
+    set -l os_specific (path resolve $__fish_config_dir/pix/linux.fish)
+    if test -e $os_specific
+        source $os_specific
     end
 end
-
-if test -e "/Users/pix/.config/fish/work.fish"
-    source "/Users/pix/.config/fish/work.fish"
+set -l secrets_path (path resolve $__fish_config_dir/pix/secrets.fish)
+if test -e $secrets_path
+    source "$secrets_path"
 end
 
 # ===================
@@ -93,8 +102,8 @@ set -gx C_INCLUDE_PATH "/usr/local/include:$C_INCLUDE_PATH"
 # Add a follow up localised bin
 contains "$HOME/.local/bin" $PATH; or set -ga PATH "$HOME/.local/bin"
 contains "$HOME/AdeptusCustodes/pix-bin" $PATH; or set -ga PATH "$HOME/AdeptusCustodes/pix-bin"
-contains /home/pix/AdeptusCustodes/Ultramar/bin $PATH; or set -ga PATH /home/pix/AdeptusCustodes/Ultramar/bin
-contains /home/pix/.cargo/bin $PATH; or set -ga PATH /home/pix/.cargo/bin
+contains "$HOME/AdeptusCustodes/Ultramar/bin" $PATH; or set -ga PATH "$HOME/AdeptusCustodes/Ultramar/bin"
+contains "$HOME/.cargo/bin" $PATH; or set -ga PATH "$HOME/.cargo/bin"
 
 # ===================
 # General environment set variables

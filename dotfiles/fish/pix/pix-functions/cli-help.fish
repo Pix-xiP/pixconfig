@@ -2,7 +2,6 @@
 # of a given command line program listed here
 
 function cli-help -d "spawn help of given input" -a tool
-    echo "spawning help"
     switch $tool
         case yazi
             open https://yazi-rs.github.io/docs/quick-start
@@ -22,7 +21,7 @@ Quick View of how to search in FZF
   !^music | inverse-prefix-exact-match  | Items that do not start with music
   !.mp3\$  | inverse-suffix-exact-match  | Items that do not end with .mp3
       "
-        case "*"
+        case "*" help
             echo "\
 No help found. Valid options include:
     -> yazi 

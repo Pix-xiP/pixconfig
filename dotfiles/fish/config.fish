@@ -22,10 +22,10 @@ if status is-interactive # Commands to run in interactive sessions can go here
 end
 
 # Hook the rest of my stuff :>
-set -l pixfish "$HOME/.config/fish/pix/pix.fish"
+set -l pixfish (path resolve $__fish_config_dir/pix/pix.fish)
 if test -f $pixfish
     source $pixfish
 else
-    echo "Unable to load $pixfish"
+    echo "Unable to load pix config at: '$pixfish'"
 end
 # End hook

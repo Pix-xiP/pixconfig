@@ -1,21 +1,11 @@
 # This file is to be loaded when inside a Linux based system.
 # Contains setups, functions and aliases specific to this environment.
 
-set SECRETS_PATH /home/pix/.config/fish/secrets.fish
-if test -e "$SECRETS_PATH"
-    source "$SECRETS_PATH"
-end
-
-set -gx GRAVEYARD "/home/pix/.local/graveyard"
-set -gx PIXCONFIG /home/pix/AdeptusCustodes/pixconfig
-
 abbr edit "swappy -f"
 abbr hypr-config "nvim ~/.config/hypr/hyprland.conf"
 
-alias hw='hwinfo --short' # Hardware Info
 alias ip='ip -c'
 alias valgrind="sudo -E valgrind"
-alias kb-config="nvim ~/.config/hypr/keybinds.conf"
 
 # remove the likely preset one.
 functions --erase q
@@ -41,9 +31,9 @@ end
 
 function toggle-keyboard --description "Toggles keyboard between colemak && qwerty"
     # Define the configuration directory and files
-    set target_link ~/.config/hypr/pix.hypr/input.conf
-    set colemak_source ~/.config/hypr/pix.hypr/colemak.input.conf
-    set qwerty_source ~/.config/hypr/pix.hypr/qwerty.input.conf
+    set target_link "$HOME/.config/hypr/pix.hypr/input.conf"
+    set colemak_source "$HOME/.config/hypr/pix.hypr/colemak.input.conf"
+    set qwerty_source "$HOME/.config/hypr/pix.hypr/qwerty.input.conf"
 
     # Check if the symlink exists
     if test -L $target_link
@@ -72,5 +62,4 @@ function toggle-keyboard --description "Toggles keyboard between colemak && qwer
     echo "Current layout: " (readlink $target_link)
 
     hyprctl reload
-
 end
