@@ -22,7 +22,7 @@ if status is-interactive # Commands to run in interactive sessions can go here
 end
 
 # Hook the rest of my stuff :>
-set pixfish "$HOME/.config/fish/pix.fish"
+set -l pixfish "$HOME/.config/fish/pix/pix.fish"
 if test -f $pixfish
     source $pixfish
 else

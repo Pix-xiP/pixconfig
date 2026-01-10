@@ -1,4 +1,4 @@
-function rg-search
+function rg-s
     set RG_PREFIX "rg --column --line-number --no-heading --color=always --smart-case "
     #set INITIAL_QUERY "\${*:-}"
     set INITIAL_QUERY (or $INITIAL_QUERY "*")
