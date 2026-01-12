@@ -1,0 +1,52 @@
+# .golangci.yml
+version: "2"
+
+linters:
+  default: all
+
+  settings:
+    revive:
+      severity: warning
+      rules:
+        - name: var-naming
+          disabled: true
+    staticcheck:
+      checks:
+        - all
+        - -ST1003
+        - -ST1020
+        - -ST1021
+
+  disable:
+    - depguard
+    - err113
+    - funlen
+    - forcetypeassert
+    - exhaustruct
+    - noinlineerr
+    - varnamelen
+    - nlreturn
+    - godox
+    - mnd
+    - wsl
+    - gochecknoglobals
+    - forbidigo
+    - wrapcheck
+    - godot
+    - tagliatelle
+    - funcorder
+    - gomoddirectives
+    - testpackage
+    - musttag
+    - exhaustive
+    - ireturn
+    - nestif
+
+    # could turn back on later to improve code readability and structure.
+    - cyclop
+    - funlen
+    - gocognit
+    - contextcheck
+    - godoclint
+    - gocyclo
+    - maintidx
