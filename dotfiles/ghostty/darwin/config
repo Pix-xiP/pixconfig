@@ -67,8 +67,8 @@ window-theme = ghostty
 window-vsync = true
 
 # Scrollback limit default is 1Mb. Make it 100Mb.
-scrollback-limit = 1000000000
-image-storage-limit = 1280000000
+scrollback-limit = 100000000
+image-storage-limit = 128000000
 
 # QoL || Misc
 copy-on-select = clipboard
