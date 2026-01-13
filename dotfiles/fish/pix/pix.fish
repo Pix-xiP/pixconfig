@@ -106,6 +106,7 @@ test -f $pix_dir/secrets.fish; and source $pix_dir/secrets.fish
 set -gx EDITOR nvim
 set -gx VISUAL $EDITOR
 set -gx C_INCLUDE_PATH "/usr/local/include:$C_INCLUDE_PATH"
+set -gx STARSHIP_CONFIG "$HOME/.config/starship/starship.toml"
 
 # # Add a follow up localised bin
 # contains "$HOME/.local/bin" $PATH; or set -ga PATH "$HOME/.local/bin"
