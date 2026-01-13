@@ -25,3 +25,4 @@ dotfiles/fish/conf.d/fish_frozen_theme.fish
 dotfiles/fish/fish_variables
 dotfiles/fish/corals
 dotfiles/fish/conf.d/fish_frozen_theme.fish.bak
+dotfiles/fish/completions
