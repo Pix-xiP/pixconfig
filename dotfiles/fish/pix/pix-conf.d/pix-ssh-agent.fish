@@ -1,5 +1,6 @@
-set -q SSH_ENV; or set -xg SSH_ENV "$HOME/.ssh/environment"
-
+if test -z "$SSH_ENV"
+    set -xg SSH_ENV $HOME/.ssh/environment
+end
 if not __ssh_agent_running
     __ssh_agent_start
 end
