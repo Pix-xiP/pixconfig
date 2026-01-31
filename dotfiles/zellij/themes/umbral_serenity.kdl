@@ -1,0 +1,22 @@
+// Umbral Serenity Colours
+// Add file to `CONFIG_DIR/themes` as per this:
+// https://zellij.dev/documentation/themes#getting-zellij-to-pick-up-the-theme
+
+themes {
+  umbral-serenity {
+    fg      "#dfb7e8"
+    bg      "#111119"
+
+    // To ensure top and bottom bars are 'transparent', black
+    // should match the terminal background colour
+    black   "#0b0b14" // to match: "#111119"
+    red     "#d14e7c"
+    green   "#c081fa"
+    yellow  "#f1c4e0"
+    blue    "#6f7ef0"
+    magenta "#a048ed"
+    cyan    "#7aa6ff"
+    white   "#dfb7e8"
+    orange  "#e9729d"
+  }
+}
