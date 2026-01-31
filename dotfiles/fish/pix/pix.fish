@@ -91,11 +91,11 @@ switch (uname)
     case Darwin
         set -l os_file $pix_dir/darwin.fish
         test -f $os_file; and source $os_file
-        set -a fish_function_path (path resolve $pix_dir/pix-functions/linux)
+        set -a fish_function_path (path resolve $pix_dir/pix-functions/darwin)
     case Linux
         set -l os_file $pix_dir/linux.fish
         test -f $os_file; and source $os_file
-        set -a fish_function_path (path resolve $pix_dir/pix-functions/darwin)
+        set -a fish_function_path (path resolve $pix_dir/pix-functions/linux)
 end
 
 test -f $pix_dir/secrets.fish; and source $pix_dir/secrets.fish
