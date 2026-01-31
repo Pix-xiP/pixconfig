@@ -4,9 +4,9 @@ abbr edit "swappy -f"
 abbr hypr-config "nvim ~/.config/hypr/hyprland.conf"
 
 alias ip='ip -c'
-alias valgrind="sudo -E valgrind"
 
 # remove the likely preset one.
 alias q 'qs -c ii'
+alias task go-task
 
 fish_add_path -a "$HOME/.local/bin" "$HOME/.local/share/gem/ruby/3.4.0/bin"
