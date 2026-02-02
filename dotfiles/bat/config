@@ -25,5 +25,4 @@
 #--map-syntax ".ignore:Git Ignore"
 
 --pager="less"
-# --theme="Catppucin-mocha"
---theme="tokyonight_night"
+--theme="umbral-serenity"
