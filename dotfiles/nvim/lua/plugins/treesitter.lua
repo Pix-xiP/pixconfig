@@ -1,5 +1,6 @@
 -- treesitter.lua - This boi is just so heckin long it needs its own file to be easier to manage
 
+-- Skip treesitter for now
 return {
 
 	-- treesitter syntax highlighting
@@ -7,56 +8,17 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		branch = "main",
 		version = false,
+		lazy = false,
 		build = ":TSUpdate",
-		event = { "LazyFile", "VeryLazy" },
-		lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening file direct from commandline
-		cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-		opts_extend = { "ensure_installed" },
-		---@type TSConfig
-		---@diagnostic disable-next-line: missing-fields
-		opts = {
-			highlight = { enable = true },
-			indent = { enable = true },
-			matchup = { enable = true, enable_quotes = true },
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "<C-space>",
-					node_incremental = "<C-space>",
-					scope_incremental = false,
-					node_decremental = "<bs>",
-				},
-			},
-			textobjects = {
-				select = {
-					enable = true,
-					lookahead = true,
-					keymaps = {
-						["ak"] = { query = "@block.outer", desc = "around block" },
-						["ik"] = { query = "@block.inner", desc = "inside block" },
-						["ac"] = { query = "@class.outer", desc = "around class" },
-						["ic"] = { query = "@class.inner", desc = "inside class" },
-						["a?"] = { query = "@conditional.outer", desc = "around conditional" },
-						["i?"] = { query = "@conditional.inner", desc = "inside conditional" },
-						["af"] = { query = "@function.outer", desc = "around function " },
-						["if"] = { query = "@function.inner", desc = "inside function " },
-						["al"] = { query = "@loop.outer", desc = "around loop" },
-						["il"] = { query = "@loop.inner", desc = "inside loop" },
-						["aa"] = { query = "@parameter.outer", desc = "around argument" },
-						["ia"] = { query = "@parameter.inner", desc = "inside argument" },
-					},
-				},
-				move = {
-					enable = true,
-					goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer", ["]a"] = "@parameter.inner" },
-					goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
-					goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer", ["[a"] = "@parameter.inner" },
-					goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer", ["[A"] = "@parameter.inner" },
-				},
-			},
+		config = function()
+			local ts = require("nvim-treesitter")
+			-- create a standard install dir for easier management
+			ts.setup({
+				install_dir = vim.fn.stdpath("data") .. "/site",
+			})
 
 			-- languages we want installed easy to find.
-			ensure_installed = {
+			ts.install({
 				"bash",
 				"c",
 				"diff",
@@ -73,7 +35,7 @@ return {
 				"ini",
 				"json",
 				"json5",
-				"jsonc",
+				-- "jsonc",
 				"lua",
 				"luadoc",
 				"luap",
@@ -85,6 +47,7 @@ return {
 				"query",
 				"rasi",
 				"regex",
+				"ruby",
 				"terraform",
 				"tmux",
 				"toml",
@@ -92,8 +55,8 @@ return {
 				"vimdoc",
 				"yaml",
 				"zig",
-			},
-		},
+			})
+		end,
 	},
 
 	-- easier way to wrap with a second redeclare
@@ -115,34 +78,94 @@ return {
 		end,
 	},
 
-	-- taken from the lazyvim treesitter to ensure textobjects have run :>
-	-- {
-	-- 	"nvim-treesitter/nvim-treesitter-textobjects",
-	-- 	event = "VeryLazy",
-	-- 	enabled = true,
-	-- 	config = function()
-	-- 		-- When in diff mode, we want to use the default
-	-- 		-- vim text objects c & C instead of the treesitter ones.
-	-- 		local move = require("nvim-treesitter.textobjects.move") ---@type table<string,fun(...)>
-	-- 		local configs = require("nvim-treesitter.configs")
-	-- 		for name, fn in pairs(move) do
-	-- 			if name:find("goto") == 1 then
-	-- 				move[name] = function(q, ...)
-	-- 					if vim.wo.diff then
-	-- 						local config = configs.get_module("textobjects.move")[name] ---@type table<string,string>
-	-- 						for key, query in pairs(config or {}) do
-	-- 							if q == query and key:find("[%]%[][cC]") then
-	-- 								vim.cmd("normal! " .. key)
-	-- 								return
-	-- 							end
-	-- 						end
-	-- 					end
-	-- 					return fn(q, ...)
-	-- 				end
-	-- 			end
-	-- 		end
-	-- 	end,
-	-- },
+	-- treesitter-textobjects since they've been moved out of nvim-treesitter
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		branch = "main",
+		lazy = false,
+		init = function()
+			-- avoid builtin ftplugin mapping conflicts as per README
+			vim.g.no_plugin_maps = true
+		end,
+		config = function()
+			require("nvim-treesitter-textobjects").setup({
+				select = {
+					lookahead = true,
+					include_surrounding_whitespace = false,
+				},
+				move = {
+					set_jumps = true,
+				},
+			})
+
+			local sel = require("nvim-treesitter-textobjects.select")
+
+			local function xo_keymap(lhs, query)
+				vim.keymap.set({ "x", "o" }, lhs, function()
+					sel.select_textobject(query, "textobjects")
+				end, { silent = true, desc = "TS select " .. query })
+			end
+
+			xo_keymap("ak", "@block.outer")
+			xo_keymap("ik", "@block.inner")
+			xo_keymap("ac", "@class.outer")
+			xo_keymap("ic", "@class.inner")
+			xo_keymap("a?", "@conditional.outer")
+			xo_keymap("i?", "@conditional.inner")
+			xo_keymap("af", "@function.outer")
+			xo_keymap("if", "@function.inner")
+			xo_keymap("al", "@loop.outer")
+			xo_keymap("il", "@loop.inner")
+			xo_keymap("aa", "@parameter.outer")
+			xo_keymap("ia", "@parameter.inner")
+
+			local mv = require("nvim-treesitter-textobjects.move")
+
+			local function nxo_keymap(lhs, fn)
+				vim.keymap.set({ "n", "x", "o" }, lhs, fn, { silent = true })
+			end
+
+			nxo_keymap("]f", function()
+				mv.goto_next_start("@function.outer", "textobjects")
+			end)
+			nxo_keymap("]c", function()
+				mv.goto_next_start("@class.outer", "textobjects")
+			end)
+			nxo_keymap("]a", function()
+				mv.goto_next_start("@parameter.inner", "textobjects")
+			end)
+
+			nxo_keymap("]F", function()
+				mv.goto_next_end("@function.outer", "textobjects")
+			end)
+			nxo_keymap("]C", function()
+				mv.goto_next_end("@class.outer", "textobjects")
+			end)
+			nxo_keymap("]A", function()
+				mv.goto_next_end("@parameter.inner", "textobjects")
+			end)
+
+			nxo_keymap("[f", function()
+				mv.goto_previous_start("@function.outer", "textobjects")
+			end)
+			nxo_keymap("[c", function()
+				mv.goto_previous_start("@class.outer", "textobjects")
+			end)
+			nxo_keymap("[a", function()
+				mv.goto_previous_start("@parameter.inner", "textobjects")
+			end)
+
+			nxo_keymap("[F", function()
+				mv.goto_previous_end("@function.outer", "textobjects")
+			end)
+			nxo_keymap("[C", function()
+				mv.goto_previous_end("@class.outer", "textobjects")
+			end)
+			nxo_keymap("[A", function()
+				mv.goto_previous_end("@parameter.inner", "textobjects")
+			end)
+		end,
+	},
 
 	-- add Folke's ts comments
 	{ "folke/ts-comments.nvim" },

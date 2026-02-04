@@ -76,7 +76,7 @@ return {
 			-- add ai_accept to <Tab> key
 			if not opts.keymap["<Tab>"] then
 				if opts.keymap.preset == "super-tab" then -- super-tab
-					opts.kyemap["<Tab>"] = {
+					opts.keymap["<Tab>"] = {
 						require("blink.cmp.keymap.presets")["super-tab"]["<Tab>"][1],
 						LazyVim.cmp.map({ "snippet_forward", "ai_accept" }), -- TODO: figure out how to map to own keymaps.
 						"fallback",
