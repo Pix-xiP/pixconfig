@@ -5,6 +5,7 @@
     "settings",
     "colours",
     "app_icons",
-    "icons"
+    "icons",
+        "vim"
   ]
 }
