@@ -31,6 +31,7 @@ require("lazy").setup({
 
 		-- load plugins etc here
 		{ import = "plugins" },
+		{ import = "pix-fnl" },
 		-- { import = "pix" },
 	},
 	dev = {
@@ -40,7 +41,7 @@ require("lazy").setup({
 		--- @type string[]
 		patterns = { "umbral" }, -- my theme <3
 		-- should you go looking to github if the local is missing?
-		fallback = false,
+		fallback = true,
 	},
 	defaults = {
 		lazy = false,

@@ -1,4 +1,7 @@
 -- pix.lua - stuff I built, however jank they be, they get the job done.
+if true then
+	return {}
+end
 
 -- PIXTODO: turn this into an actual plugin I can pull from github.
 local pixpad = require("pix.pixpad")

@@ -25,4 +25,10 @@ return {
 		"wakatime/vim-wakatime",
 		lazy = false,
 	},
+
+	-- Fennel in Neovim
+	{
+		"Olical/nfnl",
+		ft = "fennel",
+	},
 }
