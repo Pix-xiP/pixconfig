@@ -22,6 +22,7 @@ return {
 				"bash",
 				"c",
 				"diff",
+				"fennel",
 				"fish",
 				"git_config",
 				"git_rebase",
