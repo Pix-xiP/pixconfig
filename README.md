@@ -36,6 +36,6 @@ r **Bar**: Sketchybar || none
 
 #### TODOS
 
-[LinuxDesktop](./assets/LinuxDesktop.png)
+![LinuxDesktop](./assets/LinuxDesktop.png)
 
 Add some screenshots :>
