@@ -36,6 +36,6 @@ r **Bar**: Sketchybar || none
 
 #### TODOS
 
-![LinuxDesktop](./assets/LinuxDesktop.png)
+![LinuxDesktop](https://github.com/pix-xip/pixconfig/raw/master/assets/LinuxDesktop.png)
 
 Add some screenshots :>
