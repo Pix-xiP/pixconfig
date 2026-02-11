@@ -34,8 +34,4 @@ r **Bar**: Sketchybar || none
 - **Pager**: Bat
 - **PKG Manager**: yay
 
-#### TODOS
-
 ![LinuxDesktop](https://github.com/pix-xip/pixconfig/raw/master/assets/LinuxDesktop.png)
-
-Add some screenshots :>
