@@ -78,13 +78,13 @@ return {
 			dashboard = {
 				preset = {
 					header = [[
-       ██████╗ ██╗██╗  ██╗██╗   ██╗██╗███╗   ███╗
-       ██╔══██╗██║╚██╗██╔╝██║   ██║██║████╗ ████║
-       ██████╔╝██║ ╚███╔╝ ██║   ██║██║██╔████╔██║
-       ██╔═══╝ ██║ ██╔██╗ ╚██╗ ██╔╝██║██║╚██╔╝██║
-       ██║     ██║██╔╝ ██╗ ╚████╔╝ ██║██║ ╚═╝ ██║
-       ╚═╝     ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
-         ]],
+	      ██████╗ ██╗██╗  ██╗██╗   ██╗██╗███╗   ███╗
+	      ██╔══██╗██║╚██╗██╔╝██║   ██║██║████╗ ████║
+	      ██████╔╝██║ ╚███╔╝ ██║   ██║██║██╔████╔██║
+	      ██╔═══╝ ██║ ██╔██╗ ╚██╗ ██╔╝██║██║╚██╔╝██║
+	      ██║     ██║██╔╝ ██╗ ╚████╔╝ ██║██║ ╚═╝ ██║
+	      ╚═╝     ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
+	        ]],
 				},
 				sections = {
 					{ section = "header" },
@@ -157,7 +157,7 @@ return {
 			{ "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
 			{ "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
 			{ "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
-			{ "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
+			-- { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
 			-- find commands 
 			{ "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
 			{ "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
@@ -460,9 +460,9 @@ return {
 	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
+		cmd = { "TodoTrouble", "TodoTelesecope" },
+		event = "LazyFile",
 		opts = {
-			cmd = { "TodoTrouble", "TodoTelesecope" },
-			event = "LazyFile",
 			colors = {
 				error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
 				warning = { "DiagnosticWarn", "WarningMsg", "#FBBF24" },
@@ -481,19 +481,19 @@ return {
 				PIXTODO = { icon = "", color = "pix_todo", alt = { "PIXTODO" } },
 				IMPROVEMENT = { icon = "󰟶", color = "pix_improve", alt = { "IMPROVE", "IDEA", "IMPROV" } },
 				-- Preview:
-				-- PIXTODO:     Some long text for testing with
-				-- TODO:        Some long text for testing with
-				-- IMPROVEMENT: Some long text for testing with
-				-- IDEA:        Some long text for testing with
-				-- IMPROV:      Some long text for testing with
-				-- PIXHACK:     Some long text for testing with
-				-- HACKFIX:     Some long text for testing with
-				-- THOUGHT:     Some long text for testing with
-				-- PIXNOTE:     Some long text for testing with
-				-- NOTE:        Some long text for testing with
-				-- HACK:        Some long text for testing with
-				-- WARN:        Some long text for testing with
-				-- FIXME:       Some long text for testing with
+				-- PIXTODO:     Sphinx of Black Quartz, Judge my Vow
+				-- TODO:        Sphinx of Black Quartz, Judge my Vow
+				-- IMPROVEMENT: Sphinx of Black Quartz, Judge my Vow
+				-- IDEA:        Sphinx of Black Quartz, Judge my Vow
+				-- IMPROV:      Sphinx of Black Quartz, Judge my Vow
+				-- PIXHACK:     Sphinx of Black Quartz, Judge my Vow
+				-- HACKFIX:     Sphinx of Black Quartz, Judge my Vow
+				-- THOUGHT:     Sphinx of Black Quartz, Judge my Vow
+				-- PIXNOTE:     Sphinx of Black Quartz, Judge my Vow
+				-- NOTE:        Sphinx of Black Quartz, Judge my Vow
+				-- HACK:        Sphinx of Black Quartz, Judge my Vow
+				-- WARN:        Sphinx of Black Quartz, Judge my Vow
+				-- FIXME:       Sphinx of Black Quartz, Judge my Vow
 			},
 			--stylua: ignore
 			keys = {

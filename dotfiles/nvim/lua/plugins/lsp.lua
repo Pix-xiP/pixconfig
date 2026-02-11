@@ -69,6 +69,17 @@ return {
 					filetypes = { "c", "h", "cpp", "hpp" },
 				},
 
+				-- fennel, fnl
+				fennel_language_server = {
+					settings = {
+						fennel = {
+							diagnostics = {
+								globals = { "vim", "Snacks", "LazyVim" },
+							},
+						},
+					},
+				},
+
 				-- go, gomod, gosum, gowork, gotmpl
 				gopls = {
 					cmd = { "gopls" },

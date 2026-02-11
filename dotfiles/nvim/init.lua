@@ -7,7 +7,7 @@ require("config.keymaps")
 -- Require fennel written config, autocompiled with 'nfnl' into this directory
 -- Edit these files in ./fnl/pix-fnl/...
 -- Could in theory just add this folder to config.lazy.spec.imports table
-require("pix-fnl")
+-- require("pix-fnl")
 
 -- pretty print dump of objects with treesitter highlighting
 _G.dd = function(...)
