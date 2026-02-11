@@ -204,8 +204,158 @@
 						:silent true :expr true :desc "Scroll Forward" :mode ["i" "n" "s"] ]
 					[ "<c-b>" (fn [] (if (not (lsp.scroll -4)) "<c-b>")) 
 						:silent true :expr true :desc "Scroll Backward" :mode ["i" "n" "s"]]])
+		  :config (fn [_ opts]
+							  (when (= vim.o.filetype "lazy")
+									(vim.cmd "messages clear"))
+								(let [noice (require :noice)]
+									(noice.setup opts)))
 		}) 
 
+	;; lualine status bar
+	(tx "nvim-lualine/lualine.nvim"
+		{:event "VeryLazy"
+
+		:init (fn []
+						(set vim.g.lualine_laststatus vim.o.laststatus)
+						(if (> (vim.fn.argc -1) 0)
+							(set vim.o.statusline " ")
+							(set vim.o.laststatus 0)))
+
+		:opts (fn []
+						(local lualine-require (require :lualine_require))
+						(set lualine-require.require require)
+
+						(local icons LazyVim.config.icons)
+						(set vim.o.laststatus vim.g.lualine_laststatus)
+
+						(local noice (require :noice))
+						(local lazy-status (require :lazy.status))
+
+						(local opts
+							{:options {:theme "auto"
+												 :globalstatus (= vim.o.laststatus 3)
+												 :disabled_filetypes {:statusline ["dashboard" "snacks_dashboard" "ministarter"]}}
+
+							:sections 
+								{:lualine_a
+								[["mode"
+									:icons_enabled true
+									:separator {:right ""}
+									:fmt (fn []
+													(let [mode-map {:n  "N (ᴗ_ ᴗ。)"
+																					:nt "N (ᴗ_ ᴗ。)"
+																					:i  "I (•̀ - •́ )"
+																					:R  "R ( •̯́ ₃ •̯̀)"
+																					:v  "V (⊙ _ ⊙ )"
+																					:V  "V (⊙ _ ⊙ )"
+																					:no "C Σ(°△°||)"
+																					"\22" "V (⊙ _ ⊙ )"
+																					:t  "T (⌐■_■)"
+																					"!"  "C Σ(°△°||)"
+																					:c  "C Σ(°△°||)"
+																					:s  "S SUB"}
+																mode (vim.api.nvim_get_mode)]
+														(or (. mode-map mode.mode)
+																mode.mode)))]]
+
+								:lualine_b ["branch"]
+
+								:lualine_c 
+								[(LazyVim.lualine.root_dir)
+
+									["diagnostics"
+									:symbols {:error icons.diagnostics.Error
+													:warn icons.diagnostics.Warn
+													:info icons.diagnostics.Info
+													:hint icons.diagnostics.Hint }]
+
+									["filetype" :icon_only true :separator "" :padding {:left 1 :right 0}]
+									[(LazyVim.lualine.pretty_path)]]
+
+								:lualine_x 
+								[(Snacks.profiler.status)
+
+									[(fn [] (noice.api.status.mode.get))
+									:cond (fn [] (and (. package.loaded "noice")
+																		(noice.api.status.command.has)))
+									:color (fn [] {:fg (Snacks.util.color "Statement")})]
+
+									[(fn [] (noice.api.status.mode.get))
+									:cond (fn [] (and (.package.loaded "noice")
+																	(noice.api.status.command.has)))
+									:color (fn [] {:fg (Snacks.util.color "Constant")})]
+
+									[(fn [] (let [dap (require :dap)]
+											(.. "  " (dap.status))))
+									:cond (fn []
+													(let [dap (require :dap)]
+														(and (. package.loaded "dap")
+																(not= (dap.status) ""))))
+									:color (fn [] {:fg (Snacks.util.color "Debug")})]
+
+									[lazy-status.updates
+									:cond lazy-status.has_updates
+									:color (fn [] {:fg (Snacks.util.color "Special")})]
+
+									["diff"
+									:symbols {:added icons.git.added
+														:modified icons.git.modified
+														:removed icons.git.removed}
+									:source (fn []
+														(let [gitsigns vim.b.gitsigns_status_dict]
+															(when gitsigns
+																{:added gitsigns.added
+																	:modified gitsigns.changed
+																	:removed gitsigns.removed})))]]
+
+								:lualine_y
+								[["progress" :separator " " :padding {:left 1 :right 0}]
+									["location" :padding {:left 0 :right 1}]]
+
+								:lualine_z
+								[(fn [] (.. " " (os.date "%R")))]}
+
+							:extensions ["neo-tree" "lazy" "fzf"]})
+
+							;; do not add trouble symbols if aerial is enabled
+							;; and allow it to be overriden for som ebuffer tyse (see autocmds)
+							(when (and vim.g.trouble_lualine (LazyVim.has "trouble.nvim"))
+								(local trouble (require :trouble))
+								(local symbols
+									(trouble.statusline
+										{:mode "symbols"
+											:groups []
+											:title false
+											:filter {:range true}
+											:format "{kind_icon}{symbol.name:Normal}"
+											:hl_group "lualine_c_normal"}))
+
+								(table.insert
+									opts.sections.lualine_c
+									[(and symbols symbols.get)
+										:cond (fn []
+														(and (not= vim.b.trouble_lualine false)
+																(symbols.has)))]))
+
+							opts)})
+
+	;; icons!
+  (tx "nvim-mini/mini.icons"
+		{:lazy true
+		 :opts {:file {".go-version" { :glyph "" :hl "MiniIconsBlue" }
+		               ".keep" {:glyph "󰊢" :hl "MiniIconsGrey" }
+									 "devcontainer.json" {:glyph "" :hl "MiniIconsAzure" }}
+						:filetype {:dotenv {:glyph "" :hl "MiniIconsYellow" }
+											 :gotmpl {:glyph "󰟓" :hl "MiniIconsGrey" }}}})
+
+	;; ui framework
+  (tx "MunifJanjim/nui.nvim" {:lazy true})
+
+	;; key preview for commands
+  (tx "folke/which-key.nvim"
+		{:opts {:plugins {:spelling true}
+            :spec [{:mode ["n" "v"]}
+						       ["<leader>p" :group "pix" :icon "Px" ]]}})
 
 	;; todo comments highlighting extended to include my own
  	(tx "folke/todo-comments.nvim"
