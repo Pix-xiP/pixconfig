@@ -352,10 +352,10 @@
   (tx "MunifJanjim/nui.nvim" {:lazy true})
 
 	;; key preview for commands
-  (tx "folke/which-key.nvim"
+	(tx "folke/which-key.nvim"
 		{:opts {:plugins {:spelling true}
-            :spec [{:mode ["n" "v"]}
-						       ["<leader>p" :group "pix" :icon "Px" ]]}})
+						:spec {:mode ["n" "v"]  
+									2 ["<leader>p" :group "pix" :icon "Px"]}}})
 
 	;; todo comments highlighting extended to include my own
  	(tx "folke/todo-comments.nvim"
