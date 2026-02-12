@@ -19,10 +19,6 @@ end
 ---@type vim.Option
 vim.opt.rtp:prepend(lazypath)
 
--- setup mapleader
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 -- setup lazy.nvim for package management
 require("lazy").setup({
 	spec = {
@@ -31,7 +27,7 @@ require("lazy").setup({
 
 		-- load plugins etc here
 		{ import = "plugins" },
-		{ import = "pix-fnl" },
+		{ import = "pix-fnl.plugins" },
 		-- { import = "pix" },
 	},
 	dev = {

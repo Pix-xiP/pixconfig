@@ -1,4 +1,4 @@
-(import-macros {: tx} :pix-fnl.macros)
+(import-macros {: tx} :pix-fnl.core.macros)
 
 [
  (tx "ggandor/flit.nvim"

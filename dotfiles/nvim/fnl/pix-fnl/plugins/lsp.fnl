@@ -1,5 +1,6 @@
-(import-macros {: tx} :pix-fnl.macros)
+(import-macros {: tx} :pix-fnl.core.macros)
 
+(local lsputil (require :lspconfig.util))
 
 [
 	(tx "neovim/nvim-lspconfig"
@@ -109,15 +110,29 @@
 				:taplo {
 					:cmd ["taplo" "lsp" "stdio"]
 					:filetypes ["toml"]
-					:root_dir (let [util (require :lspconfig.util)] (util.root_pattern "*.toml" ".git"))}
+					:root_dir (lsputil.root_pattern "*.toml" ".git")}
 
+				;; ruby language server
+				:ruby_ls {
+					:cmd ["ruby-lsp"]
+					:filetypes ["ruby" "rb"]
+					:init_options {:formatter "auto"}
+					:root_markers ["Gemfile" ".git"]
+					:root_dir (lsputil.root_pattern "Gemfile" ".git")
+					:reuse_client (fn [client config]
+													(set config.cmd_cwd config.root_dir)
+													(= client.config.cmd_cwd config.cmd_cwd))}
+
+				:yamlls {
+					:cmd ["yaml-language-server" "--stdio"]
+					:filetypes ["yaml" "yml"]}
+
+				:zls {
+					:cmd ["zls"]
+					:filetypes ["zig"]
+					:single_file_support true
+					:enable_build_on_save true}
 				}}})
-
-
-
-
-				
-
 
 	;; attempted fix for gopls
 	(tx "neovim/nvim-lspconfig"
@@ -135,7 +150,6 @@
 																:tokenModifiers semantic.tokenModifiers}
 												:range true}))))
 						"gopls"))}})
-
 
 	;; manage lsp installation and cli tools
 	(tx "mason-org/mason.nvim"

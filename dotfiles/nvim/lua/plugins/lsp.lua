@@ -7,7 +7,7 @@ return {
 		event = "LazyFile",
 		dependencies = {
 			"mason.nvim",
-			{ "mason-org/mason-lspconfig.nvim", config = function() end },
+			"mason-org/mason-lspconfig.nvim",
 		},
 		opts = {
 			diagnostics = {
@@ -147,18 +147,10 @@ return {
 					settings = {
 						-- Remove the missing 'vim' from neovim config files :>
 						Lua = {
-							workspace = {
-								checkThirdParty = false,
-							},
-							codeLens = {
-								enable = false,
-							},
-							completion = {
-								callSnipped = "Replace",
-							},
-							doc = {
-								privateName = { "^_" },
-							},
+							workspace = { checkThirdParty = false },
+							codeLens = { enable = false },
+							completion = { callSnipped = "Replace" },
+							doc = { privateName = { "^_" } },
 							hint = {
 								enable = true,
 								setType = false,
@@ -167,9 +159,7 @@ return {
 								semicolon = "Disable",
 								arrayIndex = "Disable",
 							},
-							diagnostics = {
-								globals = { "vim" },
-							},
+							diagnostics = { globals = { "vim", "Snacks", "LazyVim" } },
 						},
 					},
 				},

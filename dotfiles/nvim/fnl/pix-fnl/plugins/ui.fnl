@@ -1,4 +1,4 @@
-(import-macros {: tx : keymap} :pix-fnl.macros)
+(import-macros {: tx : keymap} :pix-fnl.core.macros)
 
 (local {: colorscheme} (require :pix-fnl.core.utils))
 

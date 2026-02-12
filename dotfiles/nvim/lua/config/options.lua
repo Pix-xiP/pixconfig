@@ -2,7 +2,6 @@
 vim.g.mapleader = " "
 vim.g.localleader = "\\"
 
-vim.opt.nu = true
 vim.opt.relativenumber = true
 
 vim.opt.scrolloff = 10 -- number of lines above and below the cursor
@@ -47,7 +46,7 @@ vim.opt.autowrite = true -- enable autowrite
 vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- sync with system clipboard
 vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.conceallevel = 2 -- Hide * markup for bold and italic but not markers with substitutions
-vim.opt.confirm = true -- confirm to shave changes before exiting buffer with changes
+vim.opt.confirm = true -- confirm to save changes before exiting modified buffer
 vim.opt.cursorline = true -- enable highlighting of the current line
 vim.opt.expandtab = false -- use tabs instead of spaces. TODO: may want to change the default..
 vim.opt.fillchars = {
@@ -63,8 +62,6 @@ vim.opt.foldlevel = 99
 -- opt.formatoptions = "jcroqlnt" -- tcqj
 vim.opt.grepformat = "%f:%l:%c:%m"
 vim.opt.grepprg = "rg --vimgrep"
-vim.opt.ignorecase = true -- Ignore case
--- vim.opt.inccommand = "nosplit" -- preview incremental substitute
 vim.opt.jumpoptions = "view"
 vim.opt.laststatus = 3 -- global statusline
 vim.opt.linebreak = true -- Wrap lines at convenient points
@@ -87,7 +84,6 @@ vim.opt.splitkeep = "screen"
 vim.opt.splitright = true -- Put new windows right of current
 -- vim.opt.statuscolumn = [[%!v:lua.require'lazyvim.util'.ui.statuscolumn()]]
 vim.opt.tabstop = 2 -- Number of spaces tabs count for
-vim.opt.timeoutlen = vim.g.vscode and 1000 or 300 -- Lower than default (1000) to quickly trigger which-key
 vim.opt.undofile = true
 vim.opt.undolevels = 10000
 vim.opt.updatetime = 200 -- Save swap file and trigger CursorHold
