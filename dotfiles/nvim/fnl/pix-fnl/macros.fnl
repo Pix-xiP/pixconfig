@@ -11,4 +11,13 @@
 				args)
 			args)))
 
-{: tx}
+(fn keymap [lhs rhs opts]
+  (let [t [lhs rhs]]
+    (when opts
+      (each [k v (pairs opts)]
+        (tset t k v)))
+    t))
+
+{: tx : keymap}
+
+

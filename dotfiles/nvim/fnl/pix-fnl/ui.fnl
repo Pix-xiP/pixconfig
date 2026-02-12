@@ -1,4 +1,4 @@
-(import-macros {: tx} :pix-fnl.macros)
+(import-macros {: tx : keymap} :pix-fnl.macros)
 
 (local {: colorscheme} (require :pix-fnl.core.utils))
 
@@ -14,15 +14,15 @@
   (tx "akinsho/bufferline.nvim"
 		{:event "VeryLazy"
 		 :keys [
-			[ "<leader>bp" "<cmd>BufferLineTogglePin<cr>" :desc "toggle pin" ]
-			[ "<leader>bP" "<cmd>BufferLineGroupClose ungrouped<cr>" :desc "delete non-pinned buffers" ]
-			[ "<leader>br" "<cmd>BufferLineCloseRight<cr>" :desc "close buffers to the right" ]
-			[ "<leader>bl" "<cmd>BufferLineCloseLeft<cr>" :desc "close buffers to the left" ]
-			[ "<leader>bb" "<cmd>BufferLineCycleNext<cr>" :desc "cycle through buffers" ]
-			[ "<S-l>" "<cmd>BufferLineCycleNext<cr>" :desc "next buffer" ]
-			[ "<S-h>" "<cmd>BufferLineCyclePrev<cr>" :desc "prev buffer" ]
-			[ "[B" "<cmd>BufferLineMovePrev<cr>" :desc "move buffer left" ]
-			[ "]B" "<cmd>BufferLineMoveNext<cr>" :desc "move buffer right" ]]
+			(keymap "<leader>bp" "<cmd>BufferLineTogglePin<cr>" {:desc "toggle pin"} )
+			(keymap  "<leader>bP" "<cmd>BufferLineGroupClose ungrouped<cr>" {:desc "delete non-pinned buffers"} )
+			(keymap  "<leader>br" "<cmd>BufferLineCloseRight<cr>" {:desc "close buffers to the right" })
+			(keymap  "<leader>bl" "<cmd>BufferLineCloseLeft<cr>" {:desc "close buffers to the left" })
+			(keymap  "<leader>bb" "<cmd>BufferLineCycleNext<cr>" {:desc "cycle through buffers" })
+			(keymap  "<S-l>" "<cmd>BufferLineCycleNext<cr>" {:desc "next buffer" })
+			(keymap  "<S-h>" "<cmd>BufferLineCyclePrev<cr>" {:desc "prev buffer" })
+			(keymap  "[B" "<cmd>BufferLineMovePrev<cr>" {:desc "move buffer left" })
+			(keymap  "]B" "<cmd>BufferLineMoveNext<cr>" {:desc "move buffer right" })]
 		 :opts { 
 		   :options {
 					:close_command (fn [n] (Snacks.bufdelete n))
@@ -97,7 +97,7 @@
 				:opts (fn [] 
 								(Snacks.toggle.profiler:map "<leader>pp")
 								(Snacks.toggle.profiler:map "<leader>ph")) 
-				:keys [ [ "<leader>ps" (fn [] (Snacks.profiler.scratch)) :desc "profiler scratch buffer" ] ] }
+				:keys [ (keymap "<leader>ps" (fn [] (Snacks.profiler.scratch)) {:desc "profiler scratch buffer" }) ] }
 			:rename { :enabled true } ;; global rename, grug-far|fastmod replace this?
 			:scroll { :enabled false } ;; disable smooth scrolling
 			:statuscolumn { :enabled true } ;; icons next to numbers
@@ -115,62 +115,62 @@
 									 (and (not= vim.g.snacks_words false)
 												(not= bvars.snacks_words false)))) }
 			:keys  [
-				[ "<leader><space>" (fn [] (Snacks.picker.smart) ) :desc "Smart Find Files" ]
-				[ "<leader>," (fn [] (Snacks.picker.buffers)) :desc "Buffers" ]
-				[ "<leader>/" (fn [] (Snacks.picker.grep)) :desc "Grep" ]
-				[ "<leader>:" (fn [] (Snacks.picker.command_history)) :desc "Command History" ]
+				(keymap "<leader><space>" (fn [] (Snacks.picker.smart) ) {:desc "Smart Find Files" })
+				(keymap "<leader>," (fn [] (Snacks.picker.buffers)) {:desc "Buffers" })
+				(keymap "<leader>/" (fn [] (Snacks.picker.grep)) {:desc "Grep" })
+				(keymap "<leader>:" (fn [] (Snacks.picker.command_history)) {:desc "Command History" })
 				; [ "<leader>n" (fn [] (Snacks.picker.notifications)) :desc "Notification History" ]
 				;; find commands 
-				[ "<leader>fb" (fn [] (Snacks.picker.buffers)) :desc "Buffers" ]
-				[ "<leader>fx" (fn [] (Snacks.picker.files {:cwd (vim.fn.stdpath "config")})) :desc "Find Config File" ]
-				[ "<leader>ff" (fn [] (Snacks.picker.files)) :desc "Find Files" ]
-				[ "<leader>fg" (fn [] (Snacks.picker.git_files)) :desc "Find Git Files" ]
-				[ "<leader>fp" (fn [] (Snacks.picker.projects)) :desc "Projects" ]
-				[ "<leader>fr" (fn [] (Snacks.picker.recent)) :desc "Recent" ]
+				(keymap "<leader>fb" (fn [] (Snacks.picker.buffers)) {:desc "Buffers" })
+				(keymap "<leader>fx" (fn [] (Snacks.picker.files {:cwd (vim.fn.stdpath "config")})) {:desc "Find Config File"})
+				(keymap "<leader>ff" (fn [] (Snacks.picker.files)) {:desc "Find Files" })
+				(keymap "<leader>fg" (fn [] (Snacks.picker.git_files)) {:desc "Find Git Files" })
+				(keymap "<leader>fp" (fn [] (Snacks.picker.projects)) {:desc "Projects" })
+				(keymap "<leader>fr" (fn [] (Snacks.picker.recent)) {:desc "Recent" })
 				;; git commands
-				[ "<leader>gb" (fn [] (Snacks.picker.git_branches)) :desc "Git Branches" ]
-				[ "<leader>gl" (fn [] (Snacks.picker.git_log)) :desc "Git Log" ]
-				[ "<leader>gL" (fn [] (Snacks.picker.git_log_line)) :desc "Git Log Line" ]
-				[ "<leader>gs" (fn [] (Snacks.picker.git_status)) :desc "Git Status" ]
-				[ "<leader>gS" (fn [] (Snacks.picker.git_stash)) :desc "Git Stash" ]
-				[ "<leader>gd" (fn [] (Snacks.picker.git_diff)) :desc "Git Diff (Hunks)" ]
-				[ "<leader>gf" (fn [] (Snacks.picker.git_log_file)) :desc "Git Log File" ]
+				(keymap "<leader>gb" (fn [] (Snacks.picker.git_branches)) {:desc "Git Branches" })
+				(keymap "<leader>gl" (fn [] (Snacks.picker.git_log)) {:desc "Git Log" })
+				(keymap "<leader>gL" (fn [] (Snacks.picker.git_log_line)) {:desc "Git Log Line" })
+				(keymap "<leader>gs" (fn [] (Snacks.picker.git_status)) {:desc "Git Status" })
+				(keymap "<leader>gS" (fn [] (Snacks.picker.git_stash)) {:desc "Git Stash" })
+				(keymap "<leader>gd" (fn [] (Snacks.picker.git_diff)) {:desc "Git Diff (Hunks)" })
+				(keymap "<leader>gf" (fn [] (Snacks.picker.git_log_file)) {:desc "Git Log File" })
 				;; search commands 
-				[ "<leader>s\"" (fn [] (Snacks.picker.registers)) :desc "Registers" ]
-				[ "<leader>s/" (fn [] (Snacks.picker.search_history)) :desc "Search History" ]
-				[ "<leader>sa" (fn [] (Snacks.picker.autocmds)) :desc "Autocmds" ]
-				[ "<leader>sb" (fn [] (Snacks.picker.lines)) :desc "Buffer Lines" ]
-				[ "<leader>sc" (fn [] (Snacks.picker.command_history)) :desc "Command History" ]
-				[ "<leader>sC" (fn [] (Snacks.picker.commands)) :desc "Commands" ]
-				[ "<leader>sd" (fn [] (Snacks.picker.diagnostics)) :desc "Diagnostics" ]
-				[ "<leader>sD" (fn [] (Snacks.picker.diagnostics_buffer)) :desc "Buffer Diagnostics" ]
-				[ "<leader>sh" (fn [] (Snacks.picker.help)) :desc "Help Pages" ]
-				[ "<leader>sH" (fn [] (Snacks.picker.highlights)) :desc "Highlights" ]
-				[ "<leader>si" (fn [] (Snacks.picker.icons)) :desc "Icons" ]
-				[ "<leader>sj" (fn [] (Snacks.picker.jumps)) :desc "Jumps" ]
-				[ "<leader>sk" (fn [] (Snacks.picker.keymaps)) :desc "Keymaps" ]
-				[ "<leader>sl" (fn [] (Snacks.picker.loclist)) :desc "Location List" ]
-				[ "<leader>sm" (fn [] (Snacks.picker.marks)) :desc "Marks" ]
-				[ "<leader>sM" (fn [] (Snacks.picker.man)) :desc "Man Pages" ]
-				[ "<leader>sp" (fn [] (Snacks.picker.lazy)) :desc "Search for Plugin Spec" ]
-				[ "<leader>sq" (fn [] (Snacks.picker.qflist)) :desc "Quickfix List" ]
-				[ "<leader>sR" (fn [] (Snacks.picker.resume)) :desc "Resume" ]
-				[ "<leader>su" (fn [] (Snacks.picker.undo)) :desc "Undo History" ]
-				[ "<leader>uC" (fn [] (Snacks.picker.colorschemes)) :desc "Colorschemes" ]
+				(keymap "<leader>s\"" (fn [] (Snacks.picker.registers)) {:desc "Registers" })
+				(keymap "<leader>s/" (fn [] (Snacks.picker.search_history)) {:desc "Search History" })
+				(keymap "<leader>sa" (fn [] (Snacks.picker.autocmds)) {:desc "Autocmds" })
+				(keymap "<leader>sb" (fn [] (Snacks.picker.lines)) {:desc "Buffer Lines" })
+				(keymap "<leader>sc" (fn [] (Snacks.picker.command_history)) {:desc "Command History" })
+				(keymap "<leader>sC" (fn [] (Snacks.picker.commands)) {:desc "Commands" })
+				(keymap "<leader>sd" (fn [] (Snacks.picker.diagnostics)) {:desc "Diagnostics" })
+				(keymap "<leader>sD" (fn [] (Snacks.picker.diagnostics_buffer)) {:desc "Buffer Diagnostics" })
+				(keymap "<leader>sh" (fn [] (Snacks.picker.help)) {:desc "Help Pages" })
+				(keymap "<leader>sH" (fn [] (Snacks.picker.highlights)) {:desc "Highlights" })
+				(keymap "<leader>si" (fn [] (Snacks.picker.icons)) {:desc "Icons" })
+				(keymap "<leader>sj" (fn [] (Snacks.picker.jumps)) {:desc "Jumps" })
+				(keymap "<leader>sk" (fn [] (Snacks.picker.keymaps)) {:desc "Keymaps" })
+				(keymap "<leader>sl" (fn [] (Snacks.picker.loclist)) {:desc "Location List" })
+				(keymap "<leader>sm" (fn [] (Snacks.picker.marks)) {:desc "Marks" })
+				(keymap "<leader>sM" (fn [] (Snacks.picker.man)) {:desc "Man Pages" })
+				(keymap "<leader>sp" (fn [] (Snacks.picker.lazy)) {:desc "Search for Plugin Spec" })
+				(keymap "<leader>sq" (fn [] (Snacks.picker.qflist)) {:desc "Quickfix List" })
+				(keymap "<leader>sR" (fn [] (Snacks.picker.resume)) {:desc "Resume" })
+				(keymap "<leader>su" (fn [] (Snacks.picker.undo)) {:desc "Undo History" })
+				(keymap "<leader>uC" (fn [] (Snacks.picker.colorschemes)) {:desc "Colorschemes" })
 				;; lsp comamnds
-				[ "gd" (fn [] (Snacks.picker.lsp_definitions)) :desc "Goto Definition" ]
-				[ "gD" (fn [] (Snacks.picker.lsp_declarations)) :desc "Goto Declarationnnn" ]
-				[ "gr" (fn [] (Snacks.picker.lsp_references)) :nowait true :desc "References" ]
-				[ "gI" (fn [] (Snacks.picker.lsp_implementations)) :desc "Goto Implementation" ]
-				[ "gy" (fn [] (Snacks.picker.lsp_type_definitions)) :desc "Goto T[y]pe Definition" ]
-				[ "<leader>ss" (fn [] (Snacks.picker.lsp_symbols)) :desc "LSP Symbols" ]
-				[ "<leader>sS" (fn [] (Snacks.picker.lsp_workspace_symbols)) :desc "LSP Workspace Symbols" ]
+				(keymap "gd" (fn [] (Snacks.picker.lsp_definitions)) {:desc "Goto Definition" })
+				(keymap "gD" (fn [] (Snacks.picker.lsp_declarations)) {:desc "Goto Declarationnnn" })
+				(keymap "gr" (fn [] (Snacks.picker.lsp_references)) {:nowait true :desc "References" })
+				(keymap "gI" (fn [] (Snacks.picker.lsp_implementations)) {:desc "Goto Implementation" })
+				(keymap "gy" (fn [] (Snacks.picker.lsp_type_definitions)) {:desc "Goto T[y]pe Definition" })
+				(keymap "<leader>ss" (fn [] (Snacks.picker.lsp_symbols)) {:desc "LSP Symbols" })
+				(keymap "<leader>sS" (fn [] (Snacks.picker.lsp_workspace_symbols)) {:desc "LSP Workspace Symbols" })
 				;; bonus commands
-				[ "<leader>n"  (fn [] (Snacks.notifier.show_history)) :desc "Notification History" ]
-				[ "<leader>bd" (fn [] (Snacks.bufdelete)) :desc "Delete Buffer" ]
-				[ "<leader>cR" (fn [] (Snacks.rename.rename_file)) :desc "Rename File" ]
-				[ "<leader>gB" (fn [] (Snacks.gitbrowse)) :desc "Git Browse" :mode [ "n" "v" ] ]
-				[ "<leader>gg" (fn [] (Snacks.lazygit)) :desc "Lazygit" ] ]
+				(keymap "<leader>n"  (fn [] (Snacks.notifier.show_history)) {:desc "Notification History" })
+				(keymap "<leader>bd" (fn [] (Snacks.bufdelete)) {:desc "Delete Buffer" })
+				(keymap "<leader>cR" (fn [] (Snacks.rename.rename_file)) {:desc "Rename File" })
+				(keymap "<leader>gB" (fn [] (Snacks.gitbrowse)) {:desc "Git Browse" :mode [ "n" "v" ] })
+				(keymap "<leader>gg" (fn [] (Snacks.lazygit)) {:desc "Lazygit" })]
 				} } )
 
 	;; lualine component to show profilered captured events from snacks
@@ -193,17 +193,15 @@
 											:long_message_to_split true }}
 		:keys (let [noice (require :noice)
 				  lsp (require :noice.lsp)] 
-					[[ "<leader>sn" "" :desc "+noice" ]
-					[ "<S-Enter>" (fn [] (noice.redirect (vim.fn.getcmdline))) :mode "c" :desc "redirect cmdline" ]
-					[ "<leader>snl" (fn [] (noice.cmd "last")) :desc "Noice Last Message" ]
-					[ "<leader>snh" (fn [] (noice.cmd "history")) :desc "Noice History" ]
-					[ "<leader>sna" (fn [] (noice.cmd "all")) :desc "Noice All" ]
-					[ "<leader>snd" (fn [] (noice.cmd "dismiss")) :desc "Dismiss All" ]
-					[ "<leader>snt" (fn [] (noice.cmd "pick")) :desc  "Noice Picker (Telescope/FzfLua)" ]
-					[ "<c-f>" (fn [] (if (not (lsp.scroll 4)) "<c-f>")) 
-						:silent true :expr true :desc "Scroll Forward" :mode ["i" "n" "s"] ]
-					[ "<c-b>" (fn [] (if (not (lsp.scroll -4)) "<c-b>")) 
-						:silent true :expr true :desc "Scroll Backward" :mode ["i" "n" "s"]]])
+					[(keymap "<leader>sn" "" {:desc "+noice" })
+					(keymap "<S-Enter>" (fn [] (noice.redirect (vim.fn.getcmdline))) {:mode "c" :desc "redirect cmdline" })
+					(keymap "<leader>snl" (fn [] (noice.cmd "last")) {:desc "Noice Last Message" })
+					(keymap "<leader>snh" (fn [] (noice.cmd "history")) {:desc "Noice History" })
+					(keymap "<leader>sna" (fn [] (noice.cmd "all")) {:desc "Noice All" })
+					(keymap "<leader>snd" (fn [] (noice.cmd "dismiss")) {:desc "Dismiss All" })
+					(keymap "<leader>snt" (fn [] (noice.cmd "pick")) {:desc  "Noice Picker (Telescope/FzfLua)" })
+					(keymap "<c-f>" (fn [] (if (not (lsp.scroll 4)) "<c-f>")) {:silent true :expr true :desc "Scroll Forward" :mode ["i" "n" "s"]})
+					(keymap "<c-b>" (fn [] (if (not (lsp.scroll -4)) "<c-b>")) {:silent true :expr true :desc "Scroll Backward" :mode ["i" "n" "s"]}) ])
 		  :config (fn [_ opts]
 							  (when (= vim.o.filetype "lazy")
 									(vim.cmd "messages clear"))
@@ -281,7 +279,7 @@
 									:color (fn [] {:fg (Snacks.util.color "Statement")})]
 
 									[(fn [] (noice.api.status.mode.get))
-									:cond (fn [] (and (.package.loaded "noice")
+									:cond (fn [] (and (. package.loaded "noice")
 																	(noice.api.status.command.has)))
 									:color (fn [] {:fg (Snacks.util.color "Constant")})]
 
@@ -349,13 +347,16 @@
 											 :gotmpl {:glyph "󰟓" :hl "MiniIconsGrey" }}}})
 
 	;; ui framework
-  (tx "MunifJanjim/nui.nvim" {:lazy true})
+  (tx "MunifTanjim/nui.nvim" {:lazy true})
 
 	;; key preview for commands
 	(tx "folke/which-key.nvim"
-		{:opts {:plugins {:spelling true}
-						:spec {:mode ["n" "v"]  
-									2 ["<leader>p" :group "pix" :icon "Px"]}}})
+		{:opts {
+		  :plugins { :spelling true }
+			:spec (let [spec []]
+							(tset spec :mode ["n" "v"])
+							(table.insert spec ["<leader>p" {:group "pix" :icon "Px"}])
+							spec)}})
 
 	;; todo comments highlighting extended to include my own
  	(tx "folke/todo-comments.nvim"
@@ -394,13 +395,12 @@
 					;; WARN:        Sphinx of Black Quartz, Judge My Vow
 					;; FIXME:       Sphinx of Black Quartz, Judge My Vow
 				:keys [
-					[ "]t" (fn [] (let [todo (require :todo-comments)] (todo.jump_next))) :desc "next todo comment" ] 
-					[ "[t" (fn [] (let [todo (require :todo-comments)] (todo.jump_prev))) :desc "prev todo comment" ]
-					[ "<leader>xt" "<cmd>Trouble todo toggle<cr>" :desc "Todo (trouble)" ]
-					[ "<leader>xT" "<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<cr>" :desc "Todo/Fix/Fixme (Trouble)" ]
-          [ "<leader>st" "<cmd>TodoTelescope<cr>" :desc "Todo (telescope)" ]
-          [ "<leader>sT" "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>" :desc "todo/fix/fixme (telescope)" ] ]}})
-
+					(keymap "]t" (fn [] (let [todo (require :todo-comments)] (todo.jump_next))) {:desc "next todo comment"}) 
+					(keymap "[t" (fn [] (let [todo (require :todo-comments)] (todo.jump_prev))) {:desc "prev todo comment"})
+					(keymap "<leader>xt" "<cmd>Trouble todo toggle<cr>" {:desc "Todo (trouble)" })
+					(keymap "<leader>xT" "<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<cr>" {:desc "Todo/Fix/Fixme (Trouble)" })
+          (keymap "<leader>st" "<cmd>TodoTelescope<cr>" {:desc "Todo (telescope)" })
+          (keymap "<leader>sT" "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>" {:desc "todo/fix/fixme (telescope)" }) ]}})
 
 	;; highlight patterns
   (tx "nvim-mini/mini.hipatterns" {:version false})

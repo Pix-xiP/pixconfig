@@ -1,3 +1,6 @@
+if true then
+	return {}
+end
 return {
 	-- ensure we have mason
 	{ "mason-org/mason.nvim" },
