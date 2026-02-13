@@ -41,7 +41,7 @@ return {
 	-- search and replace cross project
 	{
 		"MagicDuck/grug-far.nvim",
-		cmd = "GrupFar",
+		cmd = "GrugFar",
 		keys = {
 			{
 				"<leader>sr",

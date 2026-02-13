@@ -18,6 +18,21 @@
         (tset t k v)))
     t))
 
-{: tx : keymap}
+(fn wk-entry [lhs kvs]
+	(let [t [lhs]]
+		(when kvs
+			(each [k v (pairs kvs)]
+				(tset t k v)))
+		t))
+
+;; makes: { mode = {..}, {..}, {..}}
+(fn wk-spec [modes entries]
+	(let [t []]
+			(tset t :mode modes)
+			(each [_ e (ipairs entries)]
+				(table.insert t e))
+			t))
+
+{: tx : keymap : wk-entry : wk-spec}
 
 
