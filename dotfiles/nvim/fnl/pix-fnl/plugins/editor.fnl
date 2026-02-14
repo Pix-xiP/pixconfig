@@ -31,7 +31,7 @@
 
 	;; search and replace cross project
 	(tx "MagicDuck/grug-far.nvim"
-		{:cmd ":GrugFar"
+		{:cmd "GrugFar"
 		 :keys [(keymap "<leader>sr" (fn [] 
 																	 (let [gf (require :grug-far)
 																				 ext (if (= vim.bo.buftype "")

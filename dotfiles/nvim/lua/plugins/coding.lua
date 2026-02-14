@@ -530,16 +530,16 @@ return {
 						preview = {
 							vertical = "right:50%",
 							horizontal = "up:60%",
-							layout = "verdical",
+							layout = "vertical",
 							title = "Go Docs",
 						},
 					},
-	       -- stylua: ignore
-				fzf_opts = {
-					["--layout"] = "reverse",
-					["--info"]   = "inline",
-					["--border"] = "rounded",
-				},
+					-- stylua: ignore
+					fzf_opts = {
+						["--layout"] = "reverse",
+						["--info"]   = "inline",
+						["--border"] = "rounded",
+					},
 					keymap = {
 						fzf = {
 							["ctrl-f"] = "preview-page-down",
