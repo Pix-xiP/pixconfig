@@ -2,7 +2,7 @@
 
 return {
 
-	-- conform fortmatter
+	-- conform formatter
 	{
 		"stevearc/conform.nvim",
 		dependencies = { "mason.nvim" },

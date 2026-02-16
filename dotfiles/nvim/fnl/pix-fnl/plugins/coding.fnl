@@ -220,7 +220,7 @@
 						;; i.e [Refactor] Inlined 3 variable occurrences
 
 	;; nvim debug adapter
-	(tx "mfusseneggar/nvim-dap"
+	(tx "mfussenegger/nvim-dap"
 		{:dependencies [(tx "mason-org/mason.nvim" {:opts {:ensure_installed ["delve"]}})
 										(tx "leoluz/nvim-dap-go" {:opts {}})]})
 
