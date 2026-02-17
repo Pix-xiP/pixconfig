@@ -1,8 +1,6 @@
 -- treesitter.lua - This boi is just so heckin long it needs its own file to be easier to manage
 
--- Skip treesitter for now
 return {
-
 	-- treesitter syntax highlighting
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -167,9 +165,6 @@ return {
 			end)
 		end,
 	},
-
-	-- add Folke's ts comments
-	{ "folke/ts-comments.nvim" },
 
 	-- add hyprland treesitter in
 	{ "luckasRanarison/tree-sitter-hyprlang" },

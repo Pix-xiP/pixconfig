@@ -26,7 +26,7 @@ require("lazy").setup({
 		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
 
 		-- load plugins etc here
-		{ import = "plugins" },
+		-- { import = "plugins" },
 		{ import = "pix-fnl.plugins" },
 		-- { import = "pix" },
 	},

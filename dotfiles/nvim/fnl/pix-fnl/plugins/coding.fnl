@@ -183,22 +183,29 @@
 		{:event ["BufReadPre" "BufNewFile"]
 		 :dependencies ["nvim-lua/plenary.nvim" "nvim-treesitter/nvim-treesitter"]
 		 :keys
-		   (let [r (require :refactoring)]
-				[
-				(keymap "<leader>r" "" {:desc "+refactor" :mode ["n" "v"]})
-				(keymap "<leader>rs" (fn [] (r.select_refactor))
-														{:desc "refactor" :mode ["v"]})
-				(keymap "<leader>ri" (fn [] (r.refactor "Extract Block"))
-														{:desc "inline variable" :mode ["n" "v"]})
-				(keymap "<leader>rb" (fn [] (r.refactor "extract block")) {:desc "extract block"})
-				(keymap "<leader>rf" (fn [] (r.refactor "Extract Block To File")) {:desc "extract block to file"})
-				(keymap "<leader>rP" (fn [] (r.debug.printf {:below false}) {:desc "debug print"}))
-				(keymap "<leader>rp" (fn [] (r.debug.print_var {:normal true}) {:desc "debug print variable"}))
-				(keymap "<leader>rc" (fn [] (r.debug.cleanup {})) {:desc "debug cleanup"})
-				(keymap "<leader>rf" (fn [] (r.refactor "Extract Function")) {:mode ["v"] :desc "extract function"})
-				(keymap "<leader>rF" (fn [] (r.refactor "Extract Function To File")) {:mode ["v"] :desc "extract function to file"})
-				(keymap "<leader>rx" (fn [] (r.refactor "Extract Variable")) {:mode ["v"] :desc "extract variable"})
-				(keymap "<leader>rp" (fn [] (r.debug.print_var)) {:mode ["v"] :desc "debug print variable"})])
+				[(keymap "<leader>r" "" {:desc "+refactor" :mode ["n" "v"]})
+				(keymap "<leader>rs" (fn [] (let [r (require :refactoring)] 
+																			(r.select_refactor))) {:desc "refactor" :mode ["v"]})
+				(keymap "<leader>ri" (fn [] (let [r (require :refactoring)] 
+																			(r.refactor "Extract Block"))) {:desc "inline variable" :mode ["n" "v"]})
+				(keymap "<leader>rb" (fn [] (let [r (require :refactoring)] 
+																			(r.refactor "extract block")) {:desc "extract block"}))
+				(keymap "<leader>rf" (fn [] (let [r (require :refactoring)] 
+																			(r.refactor "Extract Block To File")) {:desc "extract block to file"}))
+				(keymap "<leader>rP" (fn [] (let [r (require :refactoring)] 
+																			(r.debug.printf {:below false}) {:desc "debug print"})))
+				(keymap "<leader>rp" (fn [] (let [r (require :refactoring)] 
+																			(r.debug.print_var {:normal true}) {:desc "debug print variable"})))
+				(keymap "<leader>rc" (fn [] (let [r (require :refactoring)] 
+																			(r.debug.cleanup {})) {:desc "debug cleanup"}))
+				(keymap "<leader>rf" (fn [] (let [r (require :refactoring)] 
+																			(r.refactor "Extract Function")) {:mode ["v"] :desc "extract function"}))
+				(keymap "<leader>rF" (fn [] (let [r (require :refactoring)] 
+																			(r.refactor "Extract Function To File")) {:mode ["v"] :desc "extract function to file"}))
+				(keymap "<leader>rx" (fn [] (let [r (require :refactoring)] 
+																			(r.refactor "Extract Variable")) {:mode ["v"] :desc "extract variable"}))
+				(keymap "<leader>rp" (fn [] (let [r (require :refactoring)] 
+																			(r.debug.print_var)) {:mode ["v"] :desc "debug print variable"}))]
 
 		 :opts {:prompt_func_return_type {:go false
 		 																  :java false
@@ -221,8 +228,16 @@
 
 	;; nvim debug adapter
 	(tx "mfussenegger/nvim-dap"
-		{:dependencies [(tx "mason-org/mason.nvim" {:opts {:ensure_installed ["delve"]}})
-										(tx "leoluz/nvim-dap-go" {:opts {}})]})
+		{:dependencies [(tx "mason-org/mason.nvim" 
+											{:opts {:ensure_installed ["delve"]}
+											 :cmd ["Mason" "MasonInstall" "MasonUpdate" "MasonUninstall" "MasonLog"]})
+										(tx "leoluz/nvim-dap-go" {:ft ["go"]})]
+		 :cmd ["DapContinue"
+						"DapToggleBreakpoint"
+						"DapStepOver"
+						"DapStepInto"
+						"DapStepOut"
+						"DapTerminate"]})
 
 	;; neotest for various languages
 	(tx "nvim-neotest/neotest"
@@ -230,7 +245,13 @@
 										["lawrence-laz/neotest-zig"]
 										["fredrikaverpil/neotest-golang"]]
 		 :opts {:adapters {"neotest-zig" []
-		 									 "neotest-golang" {:dap_go_enabled true}}}})
+		 									 "neotest-golang" {:dap_go_enabled true}}}
+		 :cmd ["Neotest"
+					"NeotestRun"
+					"NeotestSummary"
+					"NeotestOutput"
+					"NeotestOutputPanel"
+					"NeotestStop"] })
 
 	;; compile mode builtin to neovim
 	(tx "ej-shafran/compile-mode.nvim"
@@ -245,7 +266,7 @@
 																				:recompile_no_fail true})))})
 
 	;; markdown table mode for auto formatting
-	(tx "Kicamon/markdown-table-mode.nvim" {:opts {:insert true :insert_leave true}})
+	(tx "Kicamon/markdown-table-mode.nvim" {:ft ["markdown"] :opts {:insert true :insert_leave true}})
 
 	;; go autotests
 	(tx "yanskun/gotests.nvim" {:ft "go" :config (fn [] (let [gt (require :gotests)] (gt.setup)))})
@@ -270,4 +291,10 @@
 															 :keymap {:fzf {"ctrl-f" "preview-page-down"
 															 								"ctrl-b" "preview-page-up"}}}}}})
 
+
+	;; fennel in neovim!
+	(tx "Olical/nfnl" {:ft "fennel"})
+
+	;; wakatime coding tracking
+	(tx "wakatime/vim-wakatime" {:lazy false})
 ]

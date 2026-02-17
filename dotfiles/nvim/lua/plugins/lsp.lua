@@ -319,7 +319,6 @@ return {
 				"golangci-lint",
 				"golangci-lint-langserver",
 				"golines",
-				"gomodifytags",
 				"gopls",
 				"hyprls",
 				"impl",
@@ -338,30 +337,4 @@ return {
 			},
 		},
 	},
-
-	-- none-ls integration for gomodifytags && impl
-	{
-		"nvimtools/none-ls.nvim",
-		optional = true,
-		dependencies = {
-			{
-				"mason-org/mason.nvim",
-				opts = { ensure_installed = { "gomodifytags", "impl" } },
-			},
-		},
-		opts = function(_, opts)
-			local nls = require("null-ls")
-			opts.sources = vim.list_extend(opts.sources or {}, {
-				nls.builtins.code_actions.gomodifytags,
-				nls.builtins.code_actions.impl,
-				nls.builtins.formatting.goimports,
-				nls.builtins.formatting.gofumpt,
-			})
-		end,
-	},
-
-	-- LazyVim currently pins to this mason version due to a problem with
-	-- lazy.nvim and mason having upgraded recently to 2.0 - will adjust later.
-	-- { "mason-org/mason.nvim", version = "^1.0.0" },
-	-- { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
 }

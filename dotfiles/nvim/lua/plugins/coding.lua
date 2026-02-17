@@ -432,15 +432,10 @@ return {
 	-- nvim debug adapter
 	{
 		"mfussenegger/nvim-dap",
+		cmd = { "DapContinue", "DapToggleBreakpoint", "DapStepOver", "DapStepInto", "DapStepOut", "DapTerminate" },
 		dependencies = {
-			{
-				"mason-org/mason.nvim",
-				opts = { ensure_installed = { "delve" } },
-			},
-			{
-				"leoluz/nvim-dap-go",
-				opts = {},
-			},
+			{ "mason-org/mason.nvim", opts = { ensure_installed = { "delve" } } },
+			{ "leoluz/nvim-dap-go", ft = { "go" } },
 		},
 	},
 
@@ -465,6 +460,7 @@ return {
 				},
 			},
 		},
+		cmds = { "Neotest", "NeotestRun", "NeotestSummary", "NeotestOutputPanel", "NeotestStop" },
 	},
 
 	-- compile mode builtin to neovim
@@ -489,6 +485,7 @@ return {
 	-- markdown table mode for auto formatting
 	{
 		"Kicamon/markdown-table-mode.nvim",
+		ft = { "markdown" },
 		opts = {
 			insert = true,
 			insert_leave = true,

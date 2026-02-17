@@ -5,7 +5,7 @@
 [
 	(tx "neovim/nvim-lspconfig"
 		{:event "LazyFile"
-		 :dependencies ["mason.nvim" "mason-org/mason-lspconfig.nvim"]
+		 ; :dependencies ["mason.nvim" "mason-org/mason-lspconfig.nvim"]
 		 :opts {
 		   :diagnostics {
 				 :underline true
@@ -153,7 +153,7 @@
 
 	;; manage lsp installation and cli tools
 	(tx "mason-org/mason.nvim"
-		{:cmd "Mason"
+		{:cmd ["Mason" "MasonInstall" "MasonUpdate" "MasonUninstall" "MasonLog"]
 		 :keys [[ "<leader>cm" "<cmd>Mason<cr>" {:desc "Mason"} ]]
 		 :build ":MasonUpdate"
 		 :opts_extend [ "ensure_installed" ]
@@ -168,7 +168,6 @@
 				"golangci-lint"
 				"golangci-lint-langserver"
 				"golines"
-				"gomodifytags"
 				"gopls"
 				"hyprls"
 				"impl"
@@ -184,10 +183,4 @@
 				"taplo"
 				"yaml-language-server"
 				"zls"]}})
-
-	;; none-ls integration for gomodifytags && impl
-	(tx "nvimtools/none-ls.nvim"
-		{:optional true
-		 :dependencies [(tx "mason-org/mason.nvim"
-			{:opts { :ensure_installed ["gomodifytags" "impl"]}})]})
 ]
