@@ -23,9 +23,10 @@
 			:format {:formatting_options nil :timeout_ms nil}
 
 			:servers {
+				"*" {
 				:capabilities {
 					:workspace {
-						:fileOperations {:didRename true :willRename true }}}
+						:fileOperations {:didRename true :willRename true }}}}
 
 				;; bash language server
 				:bashls {

@@ -1,7 +1,6 @@
 -- editor.lua - interactions with the editor not already handled by [ui.lua]
 
 return {
-
 	-- symbols and quick code lookup of current buffer
 	{
 		"hedyhli/outline.nvim",

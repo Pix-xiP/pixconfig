@@ -43,11 +43,13 @@ return {
 
 			-- lsp servers to setup!
 			servers = {
-				capabilities = {
-					workspace = {
-						fileOperations = {
-							didRename = true,
-							willRename = true,
+				["*"] = {
+					capabilities = {
+						workspace = {
+							fileOperations = {
+								didRename = true,
+								willRename = true,
+							},
 						},
 					},
 				},

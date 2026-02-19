@@ -104,7 +104,7 @@
 	(tx "nvim-mini/mini.surround"
 		{:opts {:custom_surroundings nil
 						:highlight_duration 500
-						:mapping {:add "gsa" ;; add surrounding in Normal and Visual
+						:mappings {:add "gsa" ;; add surrounding in Normal and Visual
 											:delete "gsd" ;; delete surrounding
 											:find "gsf" ;; find surrounding to the right
 											:find_left "gsF" ;; find surrounding to the left
@@ -184,28 +184,16 @@
 		 :dependencies ["nvim-lua/plenary.nvim" "nvim-treesitter/nvim-treesitter"]
 		 :keys
 				[(keymap "<leader>r" "" {:desc "+refactor" :mode ["n" "v"]})
-				(keymap "<leader>rs" (fn [] (let [r (require :refactoring)] 
-																			(r.select_refactor))) {:desc "refactor" :mode ["v"]})
-				(keymap "<leader>ri" (fn [] (let [r (require :refactoring)] 
-																			(r.refactor "Extract Block"))) {:desc "inline variable" :mode ["n" "v"]})
-				(keymap "<leader>rb" (fn [] (let [r (require :refactoring)] 
-																			(r.refactor "extract block")) {:desc "extract block"}))
-				(keymap "<leader>rf" (fn [] (let [r (require :refactoring)] 
-																			(r.refactor "Extract Block To File")) {:desc "extract block to file"}))
-				(keymap "<leader>rP" (fn [] (let [r (require :refactoring)] 
-																			(r.debug.printf {:below false}) {:desc "debug print"})))
-				(keymap "<leader>rp" (fn [] (let [r (require :refactoring)] 
-																			(r.debug.print_var {:normal true}) {:desc "debug print variable"})))
-				(keymap "<leader>rc" (fn [] (let [r (require :refactoring)] 
-																			(r.debug.cleanup {})) {:desc "debug cleanup"}))
-				(keymap "<leader>rf" (fn [] (let [r (require :refactoring)] 
-																			(r.refactor "Extract Function")) {:mode ["v"] :desc "extract function"}))
-				(keymap "<leader>rF" (fn [] (let [r (require :refactoring)] 
-																			(r.refactor "Extract Function To File")) {:mode ["v"] :desc "extract function to file"}))
-				(keymap "<leader>rx" (fn [] (let [r (require :refactoring)] 
-																			(r.refactor "Extract Variable")) {:mode ["v"] :desc "extract variable"}))
-				(keymap "<leader>rp" (fn [] (let [r (require :refactoring)] 
-																			(r.debug.print_var)) {:mode ["v"] :desc "debug print variable"}))]
+				(keymap "<leader>rs" (fn [] ((. (require :refactoring) :select_refactor))) {:desc "refactor" :mode ["v"]})
+				(keymap "<leader>ri" (fn [] ((. (require :refactoring) :refactor) "Inline Variable")) {:desc "inline variable" :mode ["n" "v"]})
+				(keymap "<leader>rb" (fn [] ((. (require :refactoring) :refactor) "Extract Block")) {:desc "extract block"})
+				(keymap "<leader>rf" (fn [] ((. (require :refactoring) :refactor) "Extract Block To File")) {:desc "extract block to file"})
+				(keymap "<leader>rP" (fn [] ((. (require :refactoring) :debug :printf) {:below false})) {:desc "debug print"})
+				(keymap "<leader>rp" (fn [] ((. (require :refactoring) :debug :print_var) {:normal true})) {:desc "debug print variable"})
+				(keymap "<leader>rc" (fn [] ((. (require :refactoring) :debug :cleanup) {})) {:desc "debug cleanup"})
+				(keymap "<leader>rf" (fn [] ((. (require :refactoring) :refactor) "Extract Function")) {:mode ["v"] :desc "extract function"})
+				(keymap "<leader>rF" (fn [] ((. (require :refactoring) :refactor) "Extract Function To File")) {:mode ["v"] :desc "extract function to file"})
+				(keymap "<leader>rx" (fn [] ((. (require :refactoring) :refactor) "Extract Variable")) {:mode ["v"] :desc "extract variable"})]
 
 		 :opts {:prompt_func_return_type {:go false
 		 																  :java false
@@ -252,18 +240,6 @@
 					"NeotestOutput"
 					"NeotestOutputPanel"
 					"NeotestStop"] })
-
-	;; compile mode builtin to neovim
-	(tx "ej-shafran/compile-mode.nvim"
-		{:lazy true
-		 :branch "latest"
-		 :dependencies ["nvim-lua/plenary.nvim" (tx "m00qek/baleia.nvim" {:tag "v1.3.0"})]
-		 :config (fn []
-							 (let [cm (require :compile-mode)]
-							 (set vim.g.compile_mode {:baleia_setup true
-																				:default_command ""
-																				:error_threshold cm.level.INFO
-																				:recompile_no_fail true})))})
 
 	;; markdown table mode for auto formatting
 	(tx "Kicamon/markdown-table-mode.nvim" {:ft ["markdown"] :opts {:insert true :insert_leave true}})

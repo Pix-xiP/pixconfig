@@ -1,8 +1,4 @@
 -- ui.lua - everything that affects the viewing experience of the editor
-if true then
-	return {}
-end
-
 return {
 	-- my theme <3
 	{

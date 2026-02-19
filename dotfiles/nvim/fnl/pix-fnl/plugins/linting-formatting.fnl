@@ -5,7 +5,7 @@
 	(tx "stevearc/conform.nvim"
 		{:dependencies ["mason.nvim"]
 		 :lazy true
-		 :cmd "ConformInfo"
+		 :cmd ["ConformInfo"]
 		 :keys [
 				(keymap "<leader>cF" (fn [] 
 															 (let [conform (require :conform)]

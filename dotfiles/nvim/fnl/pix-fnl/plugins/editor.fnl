@@ -1,7 +1,5 @@
 (import-macros {: tx : keymap} :pix-fnl.core.macros)
 
-(local flash (require :flash))
-
 [
 	;; symbols and quick code lookup of current buffer
   (tx "hedyhli/outline.nvim"
@@ -51,8 +49,9 @@
 	(tx "folke/flash.nvim"
 		{:event "VeryLazy"
 		 :keys [
+						(let [flash (require :flash)]
 			 (keymap "s" 
-							 (fn [] (flash.jump)) 
+							 (fn [] ((. (require :flash) :jump)))
 							 {:mode ["n" "x" "o"] 
 							 :desc "flash"})
 			 (keymap "S" 
@@ -70,7 +69,7 @@
 			 (keymap "<c-s>" 
 							 (fn [] (flash.toggle)) 
 							 {:mode ["c"] 
-							 :desc "toggle flash search"})]
+							 :desc "toggle flash search"}))]
 		 :opts {}})
 
 	;; improved diagnostics
@@ -102,7 +101,6 @@
             "<cmd>Trouble qflist toggle<cr>"
             {:desc "Quickfix List (Trouble)"})
 
-    ;; [q
     (keymap "[q" (fn []
               (let [trouble (require :trouble)]
                 (if (trouble.is_open)
@@ -113,7 +111,6 @@
                         (vim.notify err vim.log.levels.ERROR))))))
             {:desc "Previous Trouble/Quickfix Item"})
 
-    ;; ]q
     (keymap "]q" (fn []
               (let [trouble (require :trouble)]
                 (if (trouble.is_open)

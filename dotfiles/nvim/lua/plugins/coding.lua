@@ -394,14 +394,6 @@ return {
 				mode = "v",
 				desc = "Extract Variable",
 			},
-			{
-				"<leader>rp",
-				function()
-					require("refactoring").debug.print_var()
-				end,
-				mode = "v",
-				desc = "Debug Print Variable",
-			},
 		},
 		opts = {
 			prompt_func_return_type = {
@@ -464,23 +456,23 @@ return {
 	},
 
 	-- compile mode builtin to neovim
-	{
-		"ej-shafran/compile-mode.nvim",
-		lazy = true,
-		branch = "latest",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			{ "m00qek/baleia.nvim", tag = "v1.3.0" },
-		},
-		config = function()
-			vim.g.compile_mode = {
-				baleia_setup = true,
-				default_command = "",
-				error_threshold = require("compile-mode").level.INFO,
-				recompile_no_fail = true,
-			}
-		end,
-	},
+	-- {
+	-- 	"ej-shafran/compile-mode.nvim",
+	-- 	lazy = true,
+	-- 	branch = "latest",
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		{ "m00qek/baleia.nvim", tag = "v1.3.0" },
+	-- 	},
+	-- 	config = function()
+	-- 		vim.g.compile_mode = {
+	-- 			baleia_setup = true,
+	-- 			default_command = "",
+	-- 			error_threshold = require("compile-mode").level.INFO,
+	-- 			recompile_no_fail = true,
+	-- 		}
+	-- 	end,
+	-- },
 
 	-- markdown table mode for auto formatting
 	{
