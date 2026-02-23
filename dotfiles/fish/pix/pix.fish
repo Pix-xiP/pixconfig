@@ -1,13 +1,9 @@
 # Use this copy paste in the 'config.fish' to include the rest of my stuff
 # allows for easy testing of other stuff from people! :D
 #
-# # Hook the rest of my stuff :>
-# set pixfish "$HOME/.config/fish/pix/pix.fish"
-# if test -f $pixfish
-#     source $pixfish
-# else
-#     echo "Unable to load $pixfish"
-# end
+# Hook the rest of my stuff :>
+# set -l pixfish (path resolve $__fish_config_dir/pix/pix.fish)
+# test -f $pixfish; and source $pixfish; or echo "Unable to load pix config at: '$pixfish'"
 # End hook
 
 # ===================
@@ -69,7 +65,7 @@ alias scratch="nvim /tmp/scratchie"
 # ===================
 abbr nb goread
 abbr rsync "rsync -avP"
-abbr fish-config "nvim ~/.config/fish/config.fish"
+abbr fish-config "nvim ~/.config/fish/pix/pix.fish"
 abbr ssh-config "nvim ~/.ssh/config"
 abbr nvim-config "nvim ~/.config/nvim/init.lua"
 abbr ghost-config "nvim ~/.config/ghostty/config"
@@ -82,6 +78,7 @@ abbr zt zerotier-cli
 abbr lg lazygit
 abbr trip "sudo trip"
 abbr mkdir "mkdir -p"
+abbr goup "go get -u -v all"
 
 # ===================
 # OS Specific Blocks && Secrets
