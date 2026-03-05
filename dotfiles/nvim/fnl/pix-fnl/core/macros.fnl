@@ -33,6 +33,27 @@
 				(table.insert t e))
 			t))
 
-{: tx : keymap : wk-entry : wk-spec}
+;; helper for closing pipes if supports
+(fn close-pipe! [p]
+	(when p
+		;; stop reads if it supports it
+		(pcall (fn [] (p:read_stop)))
+		(pcall (fn [] (p:close)))))
+
+(fn split-lines [chunk]
+	(let [lines []]
+		(when chunk
+			(each [s (chunk:gmatch "[^\r\n]+")]
+				(table.insert lines s)))
+		lines))
+
+{
+: tx 
+: keymap 
+: wk-entry 
+: wk-spec
+: close-pipe!
+: split-lines
+}
 
 
