@@ -27,7 +27,7 @@
         [["LazyVim/LazyVim" {:import "lazyvim.plugins"}]
 
         ;; load plugins etc here
-        [{:import "plugins"}]
+        ; [{:import "plugins"}]
         [{:import "pix-fnl.plugins"}]
         ;; [{:import "pix"}]
         ]
@@ -40,7 +40,7 @@
 
        :defaults {:lazy false :version false} ;; always use the latest git commit
 
-       :install {:colorscheme ["tokyonight" "habamax"]}
+       :install {:colorscheme ["tokyonight"]}
 
        :checker {:enabled true} ;; automatically check for plugin updates
 

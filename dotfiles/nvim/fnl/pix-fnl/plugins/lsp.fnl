@@ -1,10 +1,11 @@
 (import-macros {: tx} :pix-fnl.core.macros)
 
-(local lsputil (require :lspconfig.util))
+(local core-utils (require :pix-fnl.core.utils))
 
 [
 	(tx "neovim/nvim-lspconfig"
 		{:event "LazyFile"
+		; {:event ["BufReadPost"] ; "BufNewFile *" ]
 		 ; :dependencies ["mason.nvim" "mason-org/mason-lspconfig.nvim"]
 		 :opts {
 		   :diagnostics {
@@ -111,7 +112,13 @@
 				:taplo {
 					:cmd ["taplo" "lsp" "stdio"]
 					:filetypes ["toml"]
-					:root_dir (lsputil.root_pattern "*.toml" ".git")}
+					:root_dir (core-utils.root_pattern "*.toml" ".git")}
+
+				;; terraform lsp
+				:terraformls {
+					:cmd [ "terraform-lsp" "serve" ]
+					:filetypes [ "tf" "tfvars" ]
+					:root_dir (core-utils.root_pattern ".terraform" ".git")}
 
 				;; ruby language server
 				:ruby_ls {
@@ -119,7 +126,7 @@
 					:filetypes ["ruby" "rb"]
 					:init_options {:formatter "auto"}
 					:root_markers ["Gemfile" ".git"]
-					:root_dir (lsputil.root_pattern "Gemfile" ".git")
+					:root_dir (core-utils.root_pattern "Gemfile" ".git")
 					:reuse_client (fn [client config]
 													(set config.cmd_cwd config.root_dir)
 													(= client.config.cmd_cwd config.cmd_cwd))}

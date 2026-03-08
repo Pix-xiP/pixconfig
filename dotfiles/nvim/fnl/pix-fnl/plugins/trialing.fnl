@@ -1,4 +1,4 @@
-(import-macros {: tx } :pix-fnl.core.macros)
+(import-macros {: tx : keymap } :pix-fnl.core.macros)
 
 [
 	; (tx "ray-x/go.nvim"
@@ -12,5 +12,17 @@
 	;
 	; 		:event ["CmdlineEnter"]
 	; 		:ft ["go" "gomod"]})
+
+  (tx "martindur/zdiff.nvim"
+		{:cmd ["Zdiff"]
+		 :keys [
+		 	(keymap "<leader>zd" "<cmd>Zdiff<cr>" {:desc "Zdiff (uncommitted)"})
+			(keymap "<leader>zD" "<cmd>Zdiff main<cr>" {:desc "Zdiff (vs main)"})]
+			; (keymap "<leader>zp" "<cmd>Zdiff TODO: ask for input and zdiff input
+		 :opts {
+		 	:default_expanded true
+			:default_branch "main"
+			:syntax {:max_lines 20000 :mode "projection"}
+		 }})
 ]
 
