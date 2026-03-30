@@ -539,4 +539,7 @@ return {
 			},
 		},
 	},
+
+	-- wakatime to track coding time
+	{ "wakatime/vim-wakatime", lazy = false },
 }
