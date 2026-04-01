@@ -39,9 +39,6 @@ vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
 -- show current document symbols from Trouble in Lualine
 vim.g.trouble_lualine = true
 
--- turn on ai cmp
--- vim.g.ai_cmp = true
-
 vim.opt.autowrite = true -- enable autowrite
 vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- sync with system clipboard
 vim.opt.completeopt = "menu,menuone,noselect"
@@ -58,8 +55,6 @@ vim.opt.fillchars = {
 	eob = " ",
 }
 vim.opt.foldlevel = 99
--- opt.formatexpr = "v:lua.require'lazyvim.util'.format.formatexpr()"
--- opt.formatoptions = "jcroqlnt" -- tcqj
 vim.opt.grepformat = "%f:%l:%c:%m"
 vim.opt.grepprg = "rg --vimgrep"
 vim.opt.jumpoptions = "view"
