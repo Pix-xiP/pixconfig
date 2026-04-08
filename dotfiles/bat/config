@@ -26,3 +26,4 @@
 
 --pager="less"
 --theme="umbral-serenity"
+--map-syntax "*.service:INI"
