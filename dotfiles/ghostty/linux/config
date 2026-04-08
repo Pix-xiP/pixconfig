@@ -18,27 +18,10 @@ unfocused-split-opacity = 1
 
 ## FONT:
 font-family = "Maple Mono"
+font-feature = +calt
+font-feature = +cv01,+cv09,+cv10,+cv42,+cv43,+cv66
+font-feature = +ss03,+ss07,+ss08,+ss09,+ss11
 font-size = 12
-font-feature = cv01
-#font-feature = cv02
-font-feature = ss01
-font-feature = ss02
-font-feature = ss03
-font-feature = ss04
-font-feature = ss05
-
-# Maple Mono v7 when it drops.
-font-feature = zero #: dot style 0
-font-feature = cv01 #: Classic @ / $ / & / Q / => / ->
-font-feature = cv02 #: Alternative a (with top alarm)
-font-feature = cv03 #: Alternative i (without bottom left bar)
-font-feature = cv04 #: Alternative l (with bottom left bar) and 1 (without bottom bar)
-font-feature = cv98 #: Full width …(ellipsis) and —(emdash) support for Maple Mono NF CN
-font-feature = cv99 #: Traditional punctuations support for Maple Mono NF CN
-font-feature = ss01 #: Non-cursive italic style l i j k x
-font-feature = ss02 #: Disable ligautures on equals like == / != / <=
-font-feature = ss03 #: Ignore cases on all tags
-font-feature = ss04 #: Disable ligatures on __, #__, ***, \n
 
 # minimum-contrast = 1.1
 
