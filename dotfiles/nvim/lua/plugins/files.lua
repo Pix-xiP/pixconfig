@@ -9,7 +9,24 @@ return {
 		---@type oil.SetupOpts
 		opts = {},
 		dependencies = { { "nvim-mini/mini.icons", opts = {} } },
-		lazy = false,
+		cmd = { "Oil" },
+		keys = {
+			{ "-", "<cmd>Oil<cr>", desc = "Open Oil" },
+		},
+		init = function()
+			-- If nvim starts with a directory argument (e.g. `nvim .`), open Oil for it.
+			vim.api.nvim_create_autocmd("VimEnter", {
+				callback = function()
+					local arg = vim.fn.argv(0)
+					if arg and arg ~= "" and vim.fn.isdirectory(arg) == 1 then
+						require("lazy").load({ plugins = { "oil.nvim" } })
+						vim.schedule(function()
+							vim.cmd("Oil")
+						end)
+					end
+				end,
+			})
+		end,
 	},
 
 	-- yazi terminal file manager
