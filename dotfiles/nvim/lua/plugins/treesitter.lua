@@ -8,15 +8,9 @@ return {
 		version = false,
 		lazy = false,
 		build = ":TSUpdate",
-		config = function()
-			local ts = require("nvim-treesitter")
-			-- create a standard install dir for easier management
-			ts.setup({
-				install_dir = vim.fn.stdpath("data") .. "/site",
-			})
-
-			-- languages we want installed easy to find.
-			ts.install({
+		opts = {
+			install_dir = vim.fn.stdpath("data") .. "/site",
+			ensure_installed = {
 				"bash",
 				"c",
 				"diff",
@@ -54,27 +48,10 @@ return {
 				"vimdoc",
 				"yaml",
 				"zig",
-			})
-		end,
-	},
-
-	-- easier way to wrap with a second redeclare
-	{
-		"nvim-treesitter/nvim-treesitter",
-		opts = function(_, _)
-			vim.filetype.add({
-				extension = { rasi = "rasi", rofi = "rasi", wofi = "rasi" },
-				filename = {
-					["vifmrc"] = "vim",
-				},
-				pattern = {
-					[".*/waybar/config"] = "jsonc",
-					[".*/mako/config"] = "dosini",
-					[".*/hypr/.+%.conf"] = "hyprlang",
-					["%.env%.[%w_.-]+"] = "sh",
-				},
-			})
-		end,
+			},
+			highlight = { enable = true },
+			indent = { enable = true },
+		},
 	},
 
 	-- treesitter-textobjects since they've been moved out of nvim-treesitter

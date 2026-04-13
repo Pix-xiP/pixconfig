@@ -1,9 +1,5 @@
 -- keymaps that just affect regular use, plugin keybinsd will be found on the plugin itself.
 local map = vim.keymap.set
-local del = vim.keymap.del
-
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
 
 -- diagnostic keymaps?
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "open disagnostic [Q]uickfix list" })
@@ -34,11 +30,11 @@ map({ "v" }, "<M-up>", ":m '<-2<CR>gv=gv")
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
--- TLDR: Make n always forard and N always backward.
-map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search result" })
+-- TLDR: Make n always forward and N always backward, while keeping the cursor centered.
+map("n", "n", "'Nn'[v:searchforward] .. 'zzzv'", { expr = true, desc = "Next search result" })
 map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
 map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev search result" })
+map("n", "N", "'nN'[v:searchforward] .. 'zzzv'", { expr = true, desc = "Prev search result" })
 map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
@@ -48,10 +44,6 @@ map("v", ">", ">gv")
 
 -- J but cursor stays in current location.
 map({ "n" }, "J", "mzJ`z", { desc = "Join lines without moving cursor" })
-
--- n / N but it keeps cursor in middle of screen.
-map({ "n" }, "n", "nzzzv", { desc = "Next search result" })
-map({ "n" }, "N", "Nzzzv", { desc = "Previous search result" })
 
 -- replace work under cursor
 map({ "n" }, "<leader>xr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "Replace current word" })

@@ -46,7 +46,7 @@ return {
 				"<leader>sr",
 				function()
 					local gf = require("grug-far")
-					local ext = vim.bo.buftopy == "" and vim.fn.expand("%:e")
+					local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
 					gf.open({
 						transient = true,
 						prefills = {

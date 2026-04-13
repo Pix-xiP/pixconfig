@@ -6,6 +6,8 @@ return {
 		name = "umbral",
 		dir = "~/AdeptusCustodes/Lunar/nvim_plugins/umbral.nvim",
 		dev = true,
+		lazy = false,
+		priority = 1000,
 		config = function()
 			vim.cmd.colorscheme("umbral")
 		end,
@@ -62,7 +64,7 @@ return {
 			vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
 				callback = function()
 					vim.schedule(function()
-						pcall(nvim_bufferline)
+						pcall(require("bufferline.ui").refresh)
 					end)
 				end,
 			})
@@ -124,11 +126,7 @@ return {
 			notifier = { enabled = true, timeout = 3000 },
 			picker = { enabled = true },
 			profiler = {
-				enabled = true,
-				opts = function()
-					Snacks.toggle.profiler():map("<leader>pp")
-					Snacks.toggle.profiler():map("<leader>ph")
-				end,
+				enabled = false,
 				-- stylua: ignore
 				keys = { { "<leader>ps", function() Snacks.profiler.scratch() end, desc = "Profiler scratch buffer" }, },
 			},
@@ -209,14 +207,6 @@ return {
 			{ "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
 			{ "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
 		},
-	},
-
-	-- lualine component to show profilered captured events from snacks.
-	{
-		"nvim-lualine/lualine.nvim",
-		opts = function(_, opts)
-			table.insert(opts.sections.lualine_x, Snacks.profiler.status())
-		end,
 	},
 
 	-- Folke's replacement UI for everything loosk gewd
@@ -342,7 +332,6 @@ return {
 						{ LazyVim.lualine.pretty_path() },
 					},
 					lualine_x = {
-						Snacks.profiler.status(),
             -- stylua: ignore
             {
               function() return require("noice").api.status.command.get() end,

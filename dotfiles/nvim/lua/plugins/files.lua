@@ -7,6 +7,10 @@ return {
 		"stevearc/oil.nvim",
 		---@module 'oil'
 		---@type oil.SetupOpts
+		cmd = "Oil",
+		keys = {
+			{ "-", "<cmd>Oil<cr>", desc = "Open parent directory" },
+		},
 		opts = {},
 		dependencies = { { "nvim-mini/mini.icons", opts = {} } },
 		cmd = { "Oil" },

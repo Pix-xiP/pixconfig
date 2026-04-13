@@ -36,7 +36,7 @@ return {
 				zig = { "zigfmt" },
 			},
 			formatters = {
-				injected = { options = { ignore_erros = true } },
+				injected = { options = { ignore_errors = true } },
 			},
 		},
 	},

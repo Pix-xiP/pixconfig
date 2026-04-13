@@ -26,8 +26,7 @@ require("lazy").setup({
 		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
 
 		-- load plugins etc here
-		-- { import = "plugins" },
-		{ import = "pix-fnl.plugins" },
+		{ import = "plugins" },
 		-- { import = "pix" },
 	},
 	dev = {
@@ -40,7 +39,7 @@ require("lazy").setup({
 		fallback = true,
 	},
 	defaults = {
-		lazy = false,
+		lazy = true,
 		version = false, -- always use the latest git commit
 	},
 	install = { colorscheme = { "tokyonight", "habamax" } },

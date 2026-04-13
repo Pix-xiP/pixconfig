@@ -1,6 +1,6 @@
 -- leader key
 vim.g.mapleader = " "
-vim.g.localleader = "\\"
+vim.g.maplocalleader = "\\"
 
 vim.opt.relativenumber = true
 

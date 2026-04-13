@@ -21,7 +21,7 @@ return {
 					-- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
 					-- prefix = "icons",
 				},
-				serverity_sort = true,
+				severity_sort = true,
 				signs = {
 					text = {
 						[vim.diagnostic.severity.ERROR] = LazyVim.config.icons.diagnostics.Error,
@@ -89,7 +89,7 @@ return {
 					rootPatterns = { "go.work", "go.mod", ".git" },
 					gofumpt = true, -- enable gofumpt formatting
 					settings = {
-						analyes = {
+						analyses = {
 							nilness = true,
 							staticcheck = true,
 							unusedparams = true,
@@ -151,7 +151,7 @@ return {
 						Lua = {
 							workspace = { checkThirdParty = false },
 							codeLens = { enable = false },
-							completion = { callSnipped = "Replace" },
+							completion = { callSnippet = "Replace" },
 							doc = { privateName = { "^_" } },
 							hint = {
 								enable = true,

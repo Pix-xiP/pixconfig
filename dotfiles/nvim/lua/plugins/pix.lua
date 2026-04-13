@@ -1,7 +1,5 @@
 -- pix.lua - stuff I built, however jank they be, they get the job done.
 -- PIXTODO: turn this into an actual plugin I can pull from github.
-local pixpad = require("pix.pixpad")
-local pixutils = require("pix.utils")
 
 return {
 
@@ -12,11 +10,29 @@ return {
 		-- stylua: ignore
 		keys = {
 			-- scratchie pad and command runner with collected output
-			{ "<leader>pw", function() pixpad:spawn_pixpad({""}) end, desc = "Spawn scratchpad" },
-			{ "<leader>pcw", function() pixpad:toggle_pixpad() end, desc = "Run command, collect output" },
+			{
+				"<leader>pw",
+				function()
+					require("pix.pixpad"):spawn_pixpad({ "" })
+				end,
+				desc = "Spawn scratchpad",
+			},
+			{
+				"<leader>pcw",
+				function()
+					require("pix.pixpad"):toggle_pixpad()
+				end,
+				desc = "Run command, collect output",
+			},
 
 			-- buffer helpers
-			{ "<leader>pmc", pixutils.switch_case, desc = "Toggle camelCase|snake_case" },
+			{
+				"<leader>pmc",
+				function()
+					require("pix.utils").switch_case()
+				end,
+				desc = "Toggle camelCase|snake_case",
+			},
 		},
 	},
 }
