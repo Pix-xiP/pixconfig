@@ -5,10 +5,6 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		event = "LazyFile",
-		dependencies = {
-			"mason.nvim",
-			"mason-org/mason-lspconfig.nvim",
-		},
 		opts = {
 			diagnostics = {
 				underline = true,
@@ -308,7 +304,9 @@ return {
 		keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
 		build = ":MasonUpdate",
 		opts_extend = { "ensure_installed" },
-
+		config = function(_, opts)
+			require("mason").setup(opts)
+		end,
 		opts = {
 			ensure_installed = {
 				"bash-language-server",

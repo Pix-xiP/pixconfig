@@ -434,6 +434,7 @@ return {
 	-- neo test for various languages
 	{
 		"nvim-neotest/neotest",
+		lazy = true,
 		dependencies = {
 			-- required for neotest.
 			{ "nvim-neotest/nvim-nio" },
@@ -452,7 +453,7 @@ return {
 				},
 			},
 		},
-		cmds = { "Neotest", "NeotestRun", "NeotestSummary", "NeotestOutputPanel", "NeotestStop" },
+		cmd = { "Neotest", "NeotestRun", "NeotestSummary", "NeotestOutputPanel", "NeotestStop" },
 	},
 
 	-- compile mode builtin to neovim

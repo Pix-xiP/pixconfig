@@ -27,6 +27,7 @@ require("lazy").setup({
 
 		-- load plugins etc here
 		{ import = "plugins" },
+		-- { import = "pix-fnl.plugins" },
 		-- { import = "pix" },
 	},
 	dev = {

@@ -501,7 +501,7 @@ return {
 	-- highlight hex codes and colours in neovim!
 	{
 		"brenoprata10/nvim-highlight-colors",
-		lazy = true,
+		event = { "BufReadPost", "BufNewFile" },
 		opts = {
 			---Render style
 			---@usage 'background'|'foreground'|'virtual'
@@ -543,8 +543,5 @@ return {
 			exclude_filetypes = {},
 			exclude_buftypes = {},
 		},
-		init = function()
-			require("nvim-highlight-colors").turnOn()
-		end,
 	},
 }
