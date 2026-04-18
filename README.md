@@ -34,4 +34,6 @@ r **Bar**: Sketchybar || none
 - **Pager**: Bat
 - **PKG Manager**: yay
 
+<img width="3438" height="1438" alt="Image" src="https://github.com/user-attachments/assets/90b3fa9f-0b6b-4475-b5cc-46d82ece57ee" />
+
 ![LinuxDesktop](https://github.com/pix-xip/pixconfig/raw/master/assets/LinuxDesktop.png)
