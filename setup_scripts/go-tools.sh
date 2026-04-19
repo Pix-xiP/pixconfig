@@ -21,3 +21,5 @@ go install github.com/dim-an/cod@latest           # Code completion on anything
 go install github.com/TypicalAM/goread@latest     # RSS Reader
 
 go install github.com/projectdiscovery/simplehttpserver/cmd/simplehttpserver@latest # Replacement for updog
+
+go install github.com/lazynop/lazyenv@latest # Lazyenv TUI manager
