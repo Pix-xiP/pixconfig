@@ -40,6 +40,9 @@ if status is-interactive
     type -q atuin; and atuin init fish --disable-up-arrow | source
     type -q zoxide; and zoxide init --cmd z fish | source
     # TODO: Create my own starship version? Write loaders for different stuff to improve it?
+
+    # type -q carapace; and set -Ux CARAPACE_BRIDGES 'zsh,fish,bash,inshelllisense'
+    type -q carapace; and carapace _carapace | source
 end
 
 # ===================
