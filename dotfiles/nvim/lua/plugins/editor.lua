@@ -30,13 +30,6 @@ return {
 		end,
 	},
 
-	-- complete undo history
-	{
-		"mbbill/undotree",
-		lazy = true,
-		keys = { { "<leader>cu", "<cmd>UndotreeToggle<cr>", desc = "Toggle undotree" } },
-	},
-
 	-- search and replace cross project
 	{
 		"MagicDuck/grug-far.nvim",

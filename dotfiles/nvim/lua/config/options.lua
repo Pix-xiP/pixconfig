@@ -99,3 +99,9 @@ end
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+
+-- Add undotree now that its builtin! 0.12 only
+if vim.fn.has("nvim-0.12") == 1 then
+	vim.cmd("packadd nvim.undotree")
+	vim.keymap.set("n", "<leader>cu", require("undotree").open)
+end
