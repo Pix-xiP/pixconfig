@@ -122,16 +122,6 @@ fish_add_path -a "$HOME/.local/bin" \
 # ===================
 # General environment set variables
 # ===================
-set -Ux FZF_DEFAULT_OPTS '--color=fg:#908caa,hl:#ea9a97 
-                          --color=border:#44415a,header:#3e8fb0,gutter:#232136
-                          --color=spinner:#f6c177,info:#9ccfd8,separator:#44415a
-                          --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa
-                          --cycle --layout=reverse --border --height=95% 
-                          --preview-window=wrap 
-                          --marker="=>" 
-                          --bind "shift-up:preview-up,shift-down:preview-down"'
-set fzf_preview_dir_cmd "eza --all --color=always"
-
 function qbackup --argument filename --description "Makes a very quick in place backup of a file or directory"
     cp -vr $filename $filename.bak
 end
