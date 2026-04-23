@@ -15,7 +15,7 @@ The trusty old dotfiles that makes my setup, mine.
 - **Editor**: Neovim
 - **WM**: Aerospace
 - **Launcher**: Alfred || Raycast
-r **Bar**: Sketchybar || none
+- **Bar**: Sketchybar || none
 - **Notifications**: Native
 - **Pager**: Bat
 - **PKG Manager**: Homebrew
