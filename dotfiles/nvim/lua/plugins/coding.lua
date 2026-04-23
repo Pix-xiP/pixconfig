@@ -313,8 +313,7 @@ return {
 		"ThePrimeagen/refactoring.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
+			"lewis6991/async.nvim",
 		},
 		keys = {
 			{ "<leader>r", "", desc = "+refactor", mode = { "n", "v" } },
@@ -495,51 +494,51 @@ return {
 	},
 
 	-- godoc
-	{
-		"fredrikaverpil/godoc.nvim",
-		version = "*",
-		dependencies = {
-			{ "ibhagwan/fzf-lua" },
-			{
-				"nvim-treesitter/nvim-treesitter",
-				opts = {
-					ensure_installed = { "go" },
-				},
-			},
-		},
-		build = "go install github.com/lotusirous/gostdsym/stdsym@latest",
-		cmd = { "GoDoc" },
-		opts = {
-			picker = {
-				type = "fzf_lua",
-
-				fzf_lua = {
-					winopts = {
-						height = 0.8,
-						width = 0.8,
-						preview = {
-							vertical = "right:50%",
-							horizontal = "up:60%",
-							layout = "vertical",
-							title = "Go Docs",
-						},
-					},
-					-- stylua: ignore
-					fzf_opts = {
-						["--layout"] = "reverse",
-						["--info"]   = "inline",
-						["--border"] = "rounded",
-					},
-					keymap = {
-						fzf = {
-							["ctrl-f"] = "preview-page-down",
-							["ctrl-b"] = "preview-page-up",
-						},
-					},
-				},
-			},
-		},
-	},
+	-- {
+	-- 	"fredrikaverpil/godoc.nvim",
+	-- 	version = "*",
+	-- 	dependencies = {
+	-- 		{ "ibhagwan/fzf-lua" },
+	-- 		{
+	-- 			"nvim-treesitter/nvim-treesitter",
+	-- 			opts = {
+	-- 				ensure_installed = { "go" },
+	-- 			},
+	-- 		},
+	-- 	},
+	-- 	build = "go install github.com/lotusirous/gostdsym/stdsym@latest",
+	-- 	cmd = { "GoDoc" },
+	-- 	opts = {
+	-- 		picker = {
+	-- 			type = "fzf_lua",
+	--
+	-- 			fzf_lua = {
+	-- 				winopts = {
+	-- 					height = 0.8,
+	-- 					width = 0.8,
+	-- 					preview = {
+	-- 						vertical = "right:50%",
+	-- 						horizontal = "up:60%",
+	-- 						layout = "vertical",
+	-- 						title = "Go Docs",
+	-- 					},
+	-- 				},
+	-- 				-- stylua: ignore
+	-- 				fzf_opts = {
+	-- 					["--layout"] = "reverse",
+	-- 					["--info"]   = "inline",
+	-- 					["--border"] = "rounded",
+	-- 				},
+	-- 				keymap = {
+	-- 					fzf = {
+	-- 						["ctrl-f"] = "preview-page-down",
+	-- 						["ctrl-b"] = "preview-page-up",
+	-- 					},
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 
 	-- wakatime to track coding time
 	{ "wakatime/vim-wakatime", lazy = false },
