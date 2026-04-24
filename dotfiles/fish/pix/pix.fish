@@ -68,7 +68,6 @@ alias scratch="nvim /tmp/scratchie"
 # ===================
 abbr nb goread
 abbr rsync "rsync -avP"
-abbr fish-config "nvim ~/.config/fish/pix/pix.fish"
 abbr ssh-config "nvim ~/.ssh/config"
 abbr nvim-config "nvim ~/.config/nvim/init.lua"
 abbr ghost-config "nvim ~/.config/ghostty/config"
@@ -124,4 +123,13 @@ fish_add_path -a "$HOME/.local/bin" \
 # ===================
 function qbackup --argument filename --description "Makes a very quick in place backup of a file or directory"
     cp -vr $filename $filename.bak
+end
+
+function fish-config -d "Open list of fish config files to edit"
+    if ! command -v fd >/dev/null
+        echo "Please install fd"
+        return 1
+    end
+    set -l choice (fd .fish $HOME/.config/fish/pix | tr ' ' '\n' |  fzf)
+    nvim $choice
 end
