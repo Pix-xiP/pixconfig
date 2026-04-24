@@ -226,17 +226,17 @@ return {
 				-- },
 
 				-- Ruby Language Server
-				ruby_ls = {
-					cmd = { "ruby-lsp" },
-					filetypes = { "ruby" },
-					init_options = { formatter = "auto" },
-					reuse_client = function(client, config)
-						config.cmd_cwd = config.root_dir
-						return client.config.cmd_cwd == config.cmd_cwd
-					end,
-					root_markers = { "Gemfile", ".git" },
-					root_dir = require("lspconfig.util").root_pattern("Gemfile", ".git"),
-				},
+				-- ruby_ls = {
+				-- 	cmd = { "ruby-lsp" },
+				-- 	filetypes = { "ruby" },
+				-- 	init_options = { formatter = "auto" },
+				-- 	reuse_client = function(client, config)
+				-- 		config.cmd_cwd = config.root_dir
+				-- 		return client.config.cmd_cwd == config.cmd_cwd
+				-- 	end,
+				-- 	root_markers = { "Gemfile", ".git" },
+				-- 	root_dir = require("lspconfig.util").root_pattern("Gemfile", ".git"),
+				-- },
 
 				-- -- Swift language servers
 				-- sourcekit = {
@@ -327,7 +327,7 @@ return {
 				"markdown-toc",
 				"markdownlint-cli2",
 				"marksman",
-				"ruby-lsp",
+				-- "ruby-lsp",
 				"shellcheck",
 				"shfmt",
 				"stylua",

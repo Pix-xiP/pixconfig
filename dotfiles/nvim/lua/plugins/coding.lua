@@ -485,13 +485,13 @@ return {
 	},
 
 	-- go autotests
-	{
-		"yanskun/gotests.nvim",
-		ft = "go",
-		config = function()
-			require("gotests").setup()
-		end,
-	},
+	-- {
+	-- 	"yanskun/gotests.nvim",
+	-- 	ft = "go",
+	-- 	config = function()
+	-- 		require("gotests").setup()
+	-- 	end,
+	-- },
 
 	-- godoc
 	-- {

@@ -12,25 +12,19 @@ return {
 			-- scratchie pad and command runner with collected output
 			{
 				"<leader>pw",
-				function()
-					require("pix.pixpad"):spawn_pixpad({ "" })
-				end,
+				function() require("pix.pixpad"):spawn_pixpad({ "" }) end,
 				desc = "Spawn scratchpad",
 			},
 			{
 				"<leader>pcw",
-				function()
-					require("pix.pixpad"):toggle_pixpad()
-				end,
+				function() require("pix.pixpad"):toggle_pixpad() end,
 				desc = "Run command, collect output",
 			},
 
 			-- buffer helpers
 			{
 				"<leader>pmc",
-				function()
-					require("pix.utils").switch_case()
-				end,
+				function() require("pix.utils").switch_case() end,
 				desc = "Toggle camelCase|snake_case",
 			},
 		},
