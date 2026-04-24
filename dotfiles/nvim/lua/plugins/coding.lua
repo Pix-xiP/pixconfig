@@ -431,29 +431,29 @@ return {
 	},
 
 	-- neo test for various languages
-	{
-		"nvim-neotest/neotest",
-		lazy = true,
-		dependencies = {
-			-- required for neotest.
-			{ "nvim-neotest/nvim-nio" },
-			-- zig
-			{ "lawrence-laz/neotest-zig" },
-			-- go
-			{ "fredrikaverpil/neotest-golang" },
-		},
-		opts = {
-			adapters = {
-				["neotest-zig"] = {},
-				["neotest-golang"] = {
-					-- Here we can set options for neotest-golang, e.g.
-					-- go_test_args = { "-v", "-race", "-count=1", "-timeout=60s" },
-					dap_go_enabled = true,
-				},
-			},
-		},
-		cmd = { "Neotest", "NeotestRun", "NeotestSummary", "NeotestOutputPanel", "NeotestStop" },
-	},
+	-- {
+	-- 	"nvim-neotest/neotest",
+	-- 	lazy = true,
+	-- 	dependencies = {
+	-- 		-- required for neotest.
+	-- 		{ "nvim-neotest/nvim-nio" },
+	-- 		-- zig
+	-- 		{ "lawrence-laz/neotest-zig" },
+	-- 		-- go
+	-- 		{ "fredrikaverpil/neotest-golang" },
+	-- 	},
+	-- 	opts = {
+	-- 		adapters = {
+	-- 			["neotest-zig"] = {},
+	-- 			["neotest-golang"] = {
+	-- 				-- Here we can set options for neotest-golang, e.g.
+	-- 				-- go_test_args = { "-v", "-race", "-count=1", "-timeout=60s" },
+	-- 				dap_go_enabled = true,
+	-- 			},
+	-- 		},
+	-- 	},
+	-- 	cmd = { "Neotest", "NeotestRun", "NeotestSummary", "NeotestOutputPanel", "NeotestStop" },
+	-- },
 
 	-- compile mode builtin to neovim
 	-- {
