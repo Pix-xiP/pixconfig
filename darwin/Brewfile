@@ -229,3 +229,8 @@ cargo "bp"
 cargo "havn"
 cargo "rust-stakeholder"
 cargo "skim"
+
+
+## NEW
+
+brew "carapace"
