@@ -28,3 +28,4 @@ dotfiles/fish/conf.d/fish_frozen_theme.fish.bak
 dotfiles/fish/completions
 dotfiles/fish/pix/work.fish
 /dotfiles/nvim/lua/pix-fnl
+/dotfiles/fish/conf.d/reef.fish
