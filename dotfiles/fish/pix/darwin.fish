@@ -13,4 +13,7 @@ set -gx GOROOT /opt/homebrew/opt/go/libexec
 set -x LLVM_CONFIG /opt/homebrew/Cellar/llvm/18.1.8/bin/llvm-config
 set -gx LUA_INIT "@/Users/pix/.config/lua/init.lua"
 
-fish_add_path -a $GOPATH/bin $HOME/.cargo/bin /opt/homebrew/bin
+set -gx ZEROBREW_PREFIX /opt/zb
+set -gx ZEROBREW_ROOT /opt/zb
+
+fish_add_path -a $GOPATH/bin $HOME/.cargo/bin /opt/homebrew/bin /opt/zb/bin
