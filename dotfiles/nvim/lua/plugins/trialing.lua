@@ -12,4 +12,11 @@ return {
 		},
 		opts = {},
 	},
+	{
+		"error311/wayfinder.nvim",
+		opts = {},
+		keys = {
+			{ "<leader>wf", "<cmd>Wayfinder<cr>", desc = "Wayfinder" },
+		},
+	},
 }

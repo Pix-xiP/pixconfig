@@ -1,4 +1,5 @@
 -- boostrap and setup lazy and the rest of the config.
+require("vim._core.ui2").enable({ enable = true })
 require("config.lazy")
 require("config.options")
 require("config.filetypes")
