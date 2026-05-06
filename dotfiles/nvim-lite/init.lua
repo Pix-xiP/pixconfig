@@ -9,7 +9,5 @@ require("vim._core.ui2").enable({
 	},
 })
 
-print("Hello, running the 'init.lua'")
-
 require("lua.pix.opts")
 require("lua.pix.core")

@@ -1,4 +1,3 @@
-print("Hello, running the 'core.lua'")
 local GH = "https://github.com/"
 local map = vim.keymap.set
 

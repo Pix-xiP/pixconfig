@@ -1,5 +1,3 @@
-print("Hello, running the 'opts.lua'")
-
 -- -- leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
