@@ -9,5 +9,5 @@ require("vim._core.ui2").enable({
 	},
 })
 
-require("lua.pix.opts")
-require("lua.pix.core")
+require("pix.opts")
+require("pix.core")
