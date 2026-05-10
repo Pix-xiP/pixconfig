@@ -8,9 +8,7 @@ vim.opt.scrolloff = 10 -- number of lines above and below the cursor
 vim.opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 
 vim.opt.colorcolumn = "120" -- line to show 'max width'
-
 vim.opt.termguicolors = true
-vim.g.pix_var = "Pix's Neovim"
 
 vim.opt.ignorecase = true -- search case insensitive
 vim.opt.smartcase = true -- search case sensitivie IF capitial letter at start
@@ -89,12 +87,10 @@ vim.opt.wrap = false -- Disable line wrap
 
 if vim.fn.has("nvim-0.10") == 1 then
 	vim.opt.smoothscroll = true
-	-- opt.foldexpr = "v:lua.require'lazyvim.util'.ui.foldexpr()"
 	vim.opt.foldmethod = "expr"
 	vim.opt.foldtext = ""
 else
 	vim.opt.foldmethod = "indent"
-	-- opt.foldtext = "v:lua.require'lazyvim.util'.ui.foldtext()"
 end
 
 -- Fix markdown indentation settings

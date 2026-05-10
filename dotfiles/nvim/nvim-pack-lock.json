@@ -1,0 +1,16 @@
+{
+  "plugins": {
+    "snacks.nvim": {
+      "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
+      "src": "https://github.com/folke/snacks.nvim"
+    },
+    "tiny-cmdline.nvim": {
+      "rev": "ad58747b955d0743ccfd56e97da1a4c1fac89f58",
+      "src": "https://github.com/rachartier/tiny-cmdline.nvim"
+    },
+    "umbral.nvim": {
+      "rev": "63b2cf0713cc0a3429d487ca0e7411462d87890d",
+      "src": "https://github.com/pix-xip/umbral.nvim"
+    }
+  }
+}
