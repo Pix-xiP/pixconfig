@@ -130,6 +130,6 @@ function fish-config -d "Open list of fish config files to edit"
         echo "Please install fd"
         return 1
     end
-    set -l choice (fd .fish $HOME/.config/fish/pix | tr ' ' '\n' |  fzf)
+    set -l choice (fd --no-ignore .fish $HOME/.config/fish/pix | tr ' ' '\n' |  fzf)
     nvim $choice
 end
