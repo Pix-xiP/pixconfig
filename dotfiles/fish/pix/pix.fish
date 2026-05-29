@@ -81,6 +81,7 @@ abbr lg lazygit
 abbr trip "sudo trip"
 abbr mkdir "mkdir -p"
 abbr goup "go get -u -v all"
+abbr tb "task build"
 
 # ===================
 # OS Specific Blocks && Secrets
