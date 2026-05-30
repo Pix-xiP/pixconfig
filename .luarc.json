@@ -1,11 +1,16 @@
 {
-  "diagnostics.globals": [
-    "get_os",
-    "sbar",
-    "settings",
-    "colours",
-    "app_icons",
-    "icons",
-        "vim"
-  ]
+	"diagnostics.globals": [
+		"get_os",
+		"sbar",
+		"settings",
+		"colours",
+		"app_icons",
+		"icons",
+		"vim"
+	],
+	"workspace": {
+		"library": [
+			"/usr/share/hypr/stubs"
+		]
+	}
 }
