@@ -73,11 +73,11 @@ hl.bind("SUPER+Q",      hl.dsp.window.close(), { desc = "Window: Close" })
 hl.bind("SUPER+DELETE", hl.dsp.exit(),         { desc = "Exit Hyprland" })
 
 -- Media Controls
-hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { desc = "Media: Play/Pause" })
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { desc = "Media: Play/Pause" })
-hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { desc = "Media: Next"       })
-hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { desc = "Media: Previous"   })
-hl.bind("XF86AudioStop",  hl.dsp.exec_cmd("playerctl stop"),       { desc = "Media: Stop"       })
+-- hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { desc = "Media: Play/Pause" })
+-- hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { desc = "Media: Play/Pause" })
+-- hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { desc = "Media: Next"       })
+-- hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { desc = "Media: Previous"   })
+-- hl.bind("XF86AudioStop",  hl.dsp.exec_cmd("playerctl stop"),       { desc = "Media: Stop"       })
 
 -- Groups
 hl.bind("CTRL+SUPER+I", hl.dsp.group.next(), { desc = "Group: Next"     })
