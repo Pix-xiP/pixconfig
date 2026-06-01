@@ -44,7 +44,7 @@ hl.unbind("SUPER+W")
 -- stylua: ignore start
 -- {
 -- Quickshell replacement keys
-hl.bind("SUPER+Space",   hl.dsp.global("quickshell:serachToggleRelease"), { desc = "Shell: Toggle search" })
+hl.bind("SUPER+Space",   hl.dsp.global("quickshell:searchToggle"), { desc = "Shell: Toggle search" })
 hl.bind("SUPER+R",       hl.dsp.global("quickshell:sidebarRightToggle"),  { desc = "Shell: Toggle right sidebar" })
 hl.bind("SUPER+P",       hl.dsp.global("quickshell:regionScreenshot"),    { desc = "Shell: Screen snip" })
 hl.bind("SUPER+SHIFT+I", hl.dsp.exec_cmd(vars.settings_app),              { desc = "Launch settings app" })

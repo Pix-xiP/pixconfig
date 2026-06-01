@@ -2,4 +2,4 @@
 -- The file name is for the sake of organization and does not matter
 -- See the corresponding files in ~/.config/hypr/hyprland for examples
 
-require("pix/pix")
+require("pix.pix")
