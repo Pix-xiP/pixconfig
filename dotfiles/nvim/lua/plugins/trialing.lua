@@ -1,8 +1,5 @@
--- This file is for plugins that I don't use often, but I want to try out.
+-- This file is for trying out new plugins without polluting the main config
 return {
-	-- Fennel in Neovim
-	-- { "Olical/nfnl", ft = "fennel" },
-
 	{
 		"martindur/zdiff.nvim",
 		cmd = "Zdiff",
@@ -12,19 +9,19 @@ return {
 		},
 		opts = {},
 	},
-	{
-		"error311/wayfinder.nvim",
-		opts = {},
-		keys = {
-			{ "<leader>wf", "<cmd>Wayfinder<cr>", desc = "Wayfinder" },
-		},
-	},
 
 	{
 		"rachartier/tiny-cmdline.nvim",
+		init = function()
+			vim.o.cmdheight = 1
+			vim.g.tiny_cmdline = {
+				width = { value = "70%" },
+			}
+		end,
 		config = function()
-			vim.o.cmdheight = 0
-			require("tiny-cmdline").setup()
+			require("tiny-cmdline").setup({
+				on_reposition = require("tiny-cmdline").adapters.blink,
+			})
 		end,
 	},
 }
