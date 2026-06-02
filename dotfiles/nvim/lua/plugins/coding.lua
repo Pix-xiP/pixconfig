@@ -542,4 +542,13 @@ return {
 
 	-- wakatime to track coding time
 	{ "wakatime/vim-wakatime", lazy = false },
+
+	-- Find references and definitions of code
+	{
+		"error311/wayfinder.nvim",
+		opts = {},
+		keys = {
+			{ "<leader>wf", "<cmd>Wayfinder<cr>", desc = "Wayfinder" },
+		},
+	},
 }
