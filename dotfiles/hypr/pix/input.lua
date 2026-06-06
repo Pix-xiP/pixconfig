@@ -2,7 +2,7 @@ hl.config({
 	input = {
 		kb_layout = "us",
 		kb_variant = "colemak",
-		kb_options = "grp:rwin_toggle",
+		kb_options = "grp:rwin_toggle,compose:ralt",
 
 		follow_mouse = 1,
 		resolve_binds_by_sym = 1,
