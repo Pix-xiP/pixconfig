@@ -78,6 +78,7 @@ abbr fping "ping -c 20 -i.2"
 abbr ll "eza -g --icons --sort=type -lah"
 abbr zt zerotier-cli
 abbr lg lazygit
+abbr lj lazyjj
 abbr trip "sudo trip"
 abbr mkdir "mkdir -p"
 abbr goup "go get -u -v all"
