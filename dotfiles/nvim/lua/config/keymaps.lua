@@ -56,3 +56,10 @@ map(
 
 -- convert camelCase to snake_case
 map({ "v" }, "<leader>psc", ":s/[a-z]\\@<=[A-Z]/\\_\\l\\0/g<CR>", { desc = "This converts camelCase to snake_case" })
+
+map({ "n" }, "<leader>pag", function()
+	vim.system({ "airgap", "-f", vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()) }):wait()
+	-- vim.cmd("edit!")
+	vim.cmd("checktime")
+	vim.print("Formatted with 'airgap'")
+end, { desc = "Run 'airgap' formatter" })
