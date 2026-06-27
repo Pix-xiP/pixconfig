@@ -109,17 +109,10 @@ set -gx VISUAL $EDITOR
 set -gx C_INCLUDE_PATH "/usr/local/include:$C_INCLUDE_PATH"
 set -gx STARSHIP_CONFIG "$HOME/.config/starship/starship.toml"
 
-# # Add a follow up localised bin
-# contains "$HOME/.local/bin" $PATH; or set -ga PATH "$HOME/.local/bin"
-# contains "$HOME/AdeptusCustodes/pix-bin" $PATH; or set -ga PATH "$HOME/AdeptusCustodes/pix-bin"
-# contains "$HOME/AdeptusCustodes/Ultramar/bin" $PATH; or set -ga PATH "$HOME/AdeptusCustodes/Ultramar/bin"
-# contains "$HOME/.cargo/bin" $PATH; or set -ga PATH "$HOME/.cargo/bin"
-# TODO: validate this doesn't just kepe adding
 fish_add_path -a "$HOME/.local/bin" \
     "$HOME/AdeptusCustodes/pix-bin" \
     "$HOME/AdeptusCustodes/Ultramar/bin" \
-    "$HOME/.cargo/bin" \
-    "$HOME/.local/bin"
+    "$HOME/.cargo/bin"
 
 # ===================
 # General environment set variables
