@@ -118,7 +118,8 @@ set -gx STARSHIP_CONFIG "$HOME/.config/starship/starship.toml"
 fish_add_path -a "$HOME/.local/bin" \
     "$HOME/AdeptusCustodes/pix-bin" \
     "$HOME/AdeptusCustodes/Ultramar/bin" \
-    "$HOME/.cargo/bin"
+    "$HOME/.cargo/bin" \
+    "$HOME/.local/bin"
 
 # ===================
 # General environment set variables
