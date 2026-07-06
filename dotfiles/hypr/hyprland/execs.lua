@@ -22,4 +22,7 @@ hl.on("hyprland.start", function ()
 
     -- Cursor
     hl.exec_cmd("hyprctl setcursor Bibata-Modern-Classic 24")
+
+		-- Steam stuff
+		hl.exec_cmd("xrandr --output DP-1 --primary")
 end)
