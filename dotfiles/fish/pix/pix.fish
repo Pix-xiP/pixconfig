@@ -79,6 +79,7 @@ abbr ll "eza -g --icons --sort=type -lah"
 abbr zt zerotier-cli
 abbr lg lazygit
 abbr lj lazyjj
+abbr jjlt "jj log -T builtin_log_detailed"
 abbr trip "sudo trip"
 abbr mkdir "mkdir -p"
 abbr goup "go get -u -v all"
