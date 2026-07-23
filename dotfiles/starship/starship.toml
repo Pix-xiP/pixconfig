@@ -11,7 +11,7 @@ add_newline = false
 # $character
 # """
 format = """
-$cmd_duration 󰜥 $directory $git_branch
+$cmd_duration 󰜥 $directory $git_branch ${custom.jj}
 $character"""
 
 # Replace the "❯" symbol in the prompt with "➜"
@@ -98,3 +98,9 @@ format = '[](bold fg:green)[󰉋 $path]($style)[](bold fg:green)'
 [cmd_duration]
 min_time = 0
 format = '[](bold fg:yellow)[󰪢 $duration](bold bg:yellow fg:black)[](bold fg:yellow)'
+
+[custom.jj]
+when = "jj-starship detect"
+shell = ["jj-starship"]
+format = "$output "
+# format = "󰜥 [](bold fg:cyan)[$output](fg:black bg:cyan)[ ](bold fg:cyan)"
