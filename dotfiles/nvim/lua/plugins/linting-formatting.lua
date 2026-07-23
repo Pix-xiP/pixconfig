@@ -50,8 +50,22 @@ return {
 			events = { "BufWritePost", "BufReadPost", "InsertLeave" },
 			linters_by_ft = {
 				fish = { "fish" },
+				zig = { "ziglint" },
 			},
-			linters = {},
+			linters = {
+				ziglint = {
+					cmd = "ziglint",
+					stdin = false,
+					stream = "both",
+					ignore_exitcode = true,
+					parser = require("lint.parser").from_pattern(
+						"^(Z%d+): (.-):(%d+): (.+)$",
+						{ "code", "file", "lnum", "message" },
+						nil,
+						{ source = "ziglint", severity = vim.diagnostic.severity.WARN }
+					),
+				},
+			},
 		},
 		-- -- Config setup from LazyVim
 		-- config = function(_, opts)
