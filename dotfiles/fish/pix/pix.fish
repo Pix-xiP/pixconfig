@@ -82,7 +82,7 @@ abbr lj lazyjj
 abbr jjlt "jj log -T builtin_log_detailed"
 abbr trip "sudo trip"
 abbr mkdir "mkdir -p"
-abbr goup "go get -u -v all"
+abbr goup "go get -u -v ./..."
 abbr tb "task build"
 
 # ===================
