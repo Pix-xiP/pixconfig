@@ -185,6 +185,9 @@ common_subcommands = [
   "port",
   "systemctl",
   "tmux",
+  "zellij",
+  "brew",
+  "zb",
 ]
 
 ## Set commands that should be totally stripped and ignored from stats
