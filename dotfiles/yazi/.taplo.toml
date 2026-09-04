@@ -1,0 +1,11 @@
+include = ["**/*.toml"]
+
+[formatting]
+  align_comments        = true
+  align_entries         = true
+  indent_entries        = true
+  indent_tables         = true
+  reorder_keys          = false
+  allowed_blank_lines   = 2
+  compact_inline_tables = true
+  column_width          = 100
