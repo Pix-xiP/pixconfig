@@ -4,7 +4,7 @@ return {
 	{
 		"umbral",
 		name = "umbral",
-		dir = "~/Syntherium/Lua/nvim_plugins/umbral.nvim",
+		dir = "~/Syntherium/nvim_plugins/umbral.nvim",
 		dev = true,
 		lazy = false,
 		priority = 1000,
