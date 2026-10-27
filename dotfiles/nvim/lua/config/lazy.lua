@@ -32,7 +32,7 @@ require("lazy").setup({
 	},
 	dev = {
 		-- directory where local plugins ar stored
-		path = "~/Syntherium/Lua/nvim_plugins",
+		path = "~/Syntherium/nvim_plugins",
 		--- plugins that match these patterns will use your local version instead of the remote
 		--- @type string[]
 		patterns = { "umbral" }, -- my theme <3
