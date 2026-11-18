@@ -6,7 +6,6 @@ end
 
 test -f $__fish_config_dir/pix/work.fish; and source $__fish_config_dir/pix/work.fish
 
-set -gx DOCKER_DEFAULT_PLATFORM linux/amd64
 set -gx WEZTERM_CONFIG_FILE "$HOME/.config/wezterm/wezterm.lua"
 set -gx GOPATH /Users/pix/AdeptusCustodes/Ultramar/
 set -gx GOROOT /opt/homebrew/opt/go/libexec
