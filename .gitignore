@@ -30,3 +30,5 @@ dotfiles/fish/pix/work.fish
 /dotfiles/nvim/lua/pix-fnl
 /dotfiles/fish/conf.d/reef.fish
 /dotfiles/fish/conf.d
+/dotfiles/fish/pfm_plugins
+/dotfiles/fish/pfm/plugins/pix-xip
