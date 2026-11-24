@@ -33,11 +33,59 @@ rex.bind("ctrl+alt+n", "pane.focus", { direction = "left" })
 rex.bind("ctrl+alt+e", "pane.focus", { direction = "up" })
 rex.bind("ctrl+alt+i", "pane.focus", { direction = "down" })
 rex.bind("ctrl+alt+o", "pane.focus", { direction = "right" })
+-- Move the focused pane the same directions, swapping it with its neighbor.
+rex.bind("ctrl+alt+shift+n", "pane.move", { direction = "left" })
+rex.bind("ctrl+alt+shift+e", "pane.move", { direction = "up" })
+rex.bind("ctrl+alt+shift+i", "pane.move", { direction = "down" })
+rex.bind("ctrl+alt+shift+o", "pane.move", { direction = "right" })
 rex.bind("ctrl+alt+f", "pane.zoom")
 rex.bind("ctrl+alt+shift+m", "pane.balance")
 rex.bind("ctrl+alt+w", "pane.close")
 rex.bind("ctrl+alt+j", "client.prompt.previous")
 rex.bind("ctrl+alt+k", "client.prompt.next")
+
+-- ---------------------------------------------------------------------------
+-- Resize mode: ctrl+alt+r, then n/e/i/o. Shift gives bigger steps.
+-- ---------------------------------------------------------------------------
+rex.mode("resize", { exclusive = true })
+rex.bind("ctrl+alt+r", "client.mode.enter", { name = "resize" })
+rex.bind("resize/n", "pane.resize", { direction = "left" })
+rex.bind("resize/e", "pane.resize", { direction = "up" })
+rex.bind("resize/i", "pane.resize", { direction = "down" })
+rex.bind("resize/o", "pane.resize", { direction = "right" })
+rex.bind("resize/shift+n", "pane.resize", { direction = "left", amount = 15 })
+rex.bind("resize/shift+e", "pane.resize", { direction = "up", amount = 15 })
+rex.bind("resize/shift+i", "pane.resize", { direction = "down", amount = 15 })
+rex.bind("resize/shift+o", "pane.resize", { direction = "right", amount = 15 })
+rex.bind("resize/=", "pane.balance")
+rex.bind("resize/enter", "client.mode.exit")
+
+rex.bind("ctrl+alt+shift+r", "client.config.reload")
+
+-- ---------------------------------------------------------------------------
+-- Optional extras: uncomment the ones you want.
+-- ---------------------------------------------------------------------------
+-- Copy mode and block ID
+-- rex.bind("ctrl+alt+c", "pane.copy_mode.enter")
+-- rex.bind("ctrl+alt+shift+c", "pane.copy_id")
+--
+-- Floating scratch pane
+-- rex.bind("ctrl+alt+shift+f", "pane.new_floating")
+-- rex.bind("ctrl+alt+m", "pane.minimize_floating")
+--
+-- Session navigation
+-- rex.bind("ctrl+alt+shift+[", "session.previous")
+-- rex.bind("ctrl+alt+shift+]", "session.next")
+--
+-- Split left/up
+-- rex.bind("ctrl+alt+shift+\\", "pane.split", { direction = "left" })
+-- rex.bind("ctrl+alt+shift+-", "pane.split", { direction = "up" })
+--
+-- Move pane to an existing tab (picker)
+-- rex.bind("ctrl+alt+shift+p", "pane.move_to_tab")
+--
+-- Close the other panes in this tab
+-- rex.bind("ctrl+alt+shift+q", "pane.close_others")
 
 -- ---------------------------------------------------------------------------
 -- kitty (the keys Ghostty also binds were kept from Ghostty)
