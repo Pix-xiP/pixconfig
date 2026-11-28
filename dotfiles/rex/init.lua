@@ -100,10 +100,11 @@ rex.bind("ctrl+0", "client.font.reset")
 -- Pix preferences: Maple Mono + Umbral Serenity
 --
 -- Client settings live in the app, not in init.lua, so these actions apply
--- them. "Set Up Pix Preferences (local)" writes the Ghostty theme beside this
--- file and imports it; use it when Rex.app and the server share a machine.
--- "Apply Pix Preferences" only selects the theme and font, so it works from a
--- remote server once the theme has been imported on the app's machine.
+-- them, including copy on selection. "Set Up Pix Preferences (local)" writes
+-- the Ghostty theme beside this file and imports it; use it when Rex.app and
+-- the server share a machine. "Apply Pix Preferences" only selects the theme
+-- and font, so it works from a remote server once the theme has been imported
+-- on the app's machine.
 -- ---------------------------------------------------------------------------
 local umbral_serenity = [[
 # Umbral Serenity, imported from Ghostty.
@@ -153,23 +154,25 @@ end
 rex.action({
 	name = "pix_setup_local",
 	title = "Set Up Pix Preferences (local app + server)",
-	description = "Writes and imports the Umbral Serenity theme, selects it as the dark theme, and sets the terminal font to Maple Mono. Use when Rex.app and the server are on the same machine.",
+	description = "Writes and imports the Umbral Serenity theme, selects it as the dark theme, sets the terminal font to Maple Mono, and turns on copy on selection. Use when Rex.app and the server are on the same machine.",
 	category = "Pix",
-	keywords = "setup maple mono umbral serenity theme font ghostty local",
+	keywords = "setup maple mono umbral serenity theme font ghostty local copy selection clipboard",
 	run = function()
 		rex.client.queue("client.theme.import", { path = pix_write_umbral_serenity() })
 		rex.client.queue("client.setting.themes.dark.palette", { value = "umbral-serenity" })
 		rex.client.queue("client.setting.terminal.typography.font", { value = "Maple Mono" })
+		-- Copy highlighted terminal text to the clipboard automatically.
+		rex.client.queue("client.setting.terminal.selection.copy_on_select", { value = true })
 	end,
 })
 
 rex.action({
 	name = "pix_apply_preferences",
 	title = "Apply Pix Preferences (Maple Mono + Umbral Serenity)",
-	description = "Selects the Umbral Serenity dark theme and sets the terminal font to Maple Mono. Pass theme_path to import the theme from a file on the app's machine first.",
+	description = "Selects the Umbral Serenity dark theme, sets the terminal font to Maple Mono, and turns on copy on selection. Pass theme_path to import the theme from a file on the app's machine first.",
 	args = { theme_path = "string?" },
 	category = "Pix",
-	keywords = "apply maple mono umbral serenity theme font remote",
+	keywords = "apply maple mono umbral serenity theme font remote copy selection clipboard",
 	run = function(ctx, args)
 		args = args or {}
 		if args.theme_path then
@@ -177,5 +180,7 @@ rex.action({
 		end
 		rex.client.queue("client.setting.themes.dark.palette", { value = "umbral-serenity" })
 		rex.client.queue("client.setting.terminal.typography.font", { value = "Maple Mono" })
+		-- Copy highlighted terminal text to the clipboard automatically.
+		rex.client.queue("client.setting.terminal.selection.copy_on_select", { value = true })
 	end,
 })
